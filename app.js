@@ -1,189 +1,773 @@
-// Jesus Dashboard ⚡ - App Logic
+// Jesus Dashboard V2 - Main Application
+// AI Agent Management Platform for Al
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderDashboard();
-    updateTimestamp();
-    renderScripture();
-    
-    // Update scripture every 10 minutes
-    setInterval(renderScripture, 10 * 60 * 1000);
-});
+(function() {
+    'use strict';
 
-function renderScripture() {
-    // Use time-based index so it changes every 10 minutes consistently
-    const tenMinuteBlock = Math.floor(Date.now() / (10 * 60 * 1000));
-    const index = tenMinuteBlock % scriptures.length;
-    const scripture = scriptures[index];
-    
-    document.getElementById('scriptureText').textContent = `"${scripture.text}"`;
-    document.getElementById('scriptureRef').textContent = `— ${scripture.ref} (KJV)`;
-}
+    // ========== INITIALIZATION ==========
+    document.addEventListener('DOMContentLoaded', init);
 
-function renderDashboard() {
-    renderStatus();
-    renderTasks();
-    renderActivity();
-    renderProjects();
-    renderAgents();
-    renderEmail();
-    renderNotes();
-    renderMetrics();
-}
-
-function updateTimestamp() {
-    const el = document.getElementById('lastUpdated');
-    const date = new Date(dashboardData.lastUpdated);
-    el.textContent = `Last updated: ${date.toLocaleString()}`;
-}
-
-function renderStatus() {
-    document.getElementById('activeProject').textContent = dashboardData.status.activeProject;
-    document.getElementById('tasksToday').textContent = dashboardData.status.tasksToday;
-    
-    // Update status indicator
-    const indicator = document.getElementById('statusIndicator');
-    const statusText = indicator.querySelector('.status-text');
-    
-    if (dashboardData.status.working) {
-        indicator.classList.remove('idle');
-        statusText.textContent = dashboardData.status.statusText || 'Working';
-    } else {
-        indicator.classList.add('idle');
-        statusText.textContent = 'Idle';
+    function init() {
+        setupNavigation();
+        setupNotes();
+        setupLibrary();
+        loadAllData();
+        setupAutoRefresh();
+        updateLastSync();
     }
-}
 
-function renderTasks() {
-    const columns = ['backlog', 'todo', 'inprogress', 'done'];
-    
-    columns.forEach(column => {
-        const container = document.querySelector(`#${column} .tasks`);
-        const tasks = dashboardData.tasks[column] || [];
+    // ========== NAVIGATION ==========
+    function setupNavigation() {
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const sections = document.querySelectorAll('.content-section');
+
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetSection = tab.dataset.section;
+                
+                // Update active states
+                navTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                sections.forEach(s => s.classList.remove('active'));
+                document.getElementById(targetSection).classList.add('active');
+                
+                // Save current tab to localStorage
+                localStorage.setItem('activeTab', targetSection);
+            });
+        });
+
+        // Restore last active tab
+        const savedTab = localStorage.getItem('activeTab');
+        if (savedTab) {
+            const tab = document.querySelector(`[data-section="${savedTab}"]`);
+            if (tab) tab.click();
+        }
+    }
+
+    // ========== LOAD ALL DATA ==========
+    function loadAllData() {
+        if (typeof dashboardData === 'undefined') {
+            console.error('Dashboard data not loaded');
+            return;
+        }
+
+        loadDailySurprise();
+        loadAgentReport();
+        loadAIIntelligence();
+        loadMoneyIdeas();
+        loadVault();
+        loadLibrary();
+        loadNotes();
+        loadSystemHealth();
+        loadMetrics();
+        loadScripture();
+    }
+
+    // ========== 1. DAILY SURPRISE ==========
+    function loadDailySurprise() {
+        const data = dashboardData.dailySurprise;
+        if (!data || !data.today) return;
+
+        const today = data.today;
         
-        container.innerHTML = tasks.map(task => `
-            <div class="task-card priority-${task.priority}">
-                <div class="task-title">${task.title}</div>
-                <div class="task-meta">
-                    ${task.project} ${task.completed ? `• ✓ ${task.completed}` : ''}
+        document.getElementById('surpriseDate').textContent = formatDate(today.date);
+        document.getElementById('surpriseTitle').textContent = today.title;
+        document.getElementById('surpriseType').textContent = today.type;
+        document.getElementById('surpriseImpact').textContent = today.impact;
+
+        // Render content with markdown-like formatting
+        const contentEl = document.getElementById('surpriseContent');
+        contentEl.innerHTML = renderContent(today.content);
+
+        // Load archive
+        const archiveEl = document.getElementById('surpriseArchive');
+        if (data.archive && data.archive.length > 0) {
+            archiveEl.innerHTML = data.archive.map(item => `
+                <div class="archive-item" data-id="${item.id}">
+                    <span class="archive-date">${formatDate(item.date)}</span>
+                    <span class="archive-title">${item.title}</span>
+                    <span class="archive-type">${item.type}</span>
+                </div>
+            `).join('');
+        } else {
+            archiveEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p>No archived surprises yet</p></div>';
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('surpriseSearch');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const items = archiveEl.querySelectorAll('.archive-item');
+            items.forEach(item => {
+                const title = item.querySelector('.archive-title').textContent.toLowerCase();
+                item.style.display = title.includes(query) ? 'flex' : 'none';
+            });
+        });
+    }
+
+    // ========== 2. AGENT REPORT ==========
+    function loadAgentReport() {
+        const report = dashboardData.agentReport;
+        if (!report) return;
+
+        // Completed
+        renderReportList('completedList', 'completedCount', report.completed, '✅');
+        
+        // Blockers
+        renderReportList('blockersList', 'blockersCount', report.blockers, '⚠️');
+        
+        // Issues
+        renderReportList('issuesList', 'issuesCount', report.issues, '🚨');
+        
+        // Pending Decisions
+        renderReportList('pendingList', 'pendingCount', report.pending, '📋');
+        
+        // Next Up
+        renderReportList('nextList', 'nextCount', report.next, '🔮');
+    }
+
+    function renderReportList(listId, countId, items, icon) {
+        const listEl = document.getElementById(listId);
+        const countEl = document.getElementById(countId);
+        
+        if (!items || items.length === 0) {
+            listEl.innerHTML = '<li class="empty-state">Nothing here</li>';
+            countEl.textContent = '0';
+            return;
+        }
+
+        countEl.textContent = items.length;
+        listEl.innerHTML = items.map(item => `
+            <li>${typeof item === 'string' ? item : item.text}</li>
+        `).join('');
+    }
+
+    // ========== 3. AI INTELLIGENCE ==========
+    function loadAIIntelligence() {
+        const intel = dashboardData.aiIntelligence;
+        if (!intel || intel.length === 0) {
+            document.getElementById('intelligenceFeed').innerHTML = 
+                '<div class="empty-state"><div class="empty-state-icon">🧠</div><p>No intelligence gathered yet</p></div>';
+            return;
+        }
+
+        renderIntelligenceFeed(intel);
+        setupIntelFilters(intel);
+    }
+
+    function renderIntelligenceFeed(items) {
+        const feedEl = document.getElementById('intelligenceFeed');
+        feedEl.innerHTML = items.map(item => `
+            <div class="intel-item" data-category="${item.category}">
+                <div class="intel-header">
+                    <div class="intel-source">
+                        <span>${getSourceIcon(item.category)}</span>
+                        <span>${item.source}</span>
+                    </div>
+                    <span class="intel-tag">${item.category}</span>
+                </div>
+                <h4 class="intel-title">${item.title}</h4>
+                <p class="intel-summary">${item.summary}</p>
+                ${item.link ? `<a href="${item.link}" target="_blank" class="intel-link">🔗 Read more</a>` : ''}
+                <div class="intel-apply">
+                    <div class="intel-apply-label">How We Apply This</div>
+                    <p class="intel-apply-text">${item.howToApply}</p>
                 </div>
             </div>
         `).join('');
-    });
-}
-
-function renderActivity() {
-    const container = document.getElementById('activityLog');
-    
-    container.innerHTML = dashboardData.activity.map(entry => `
-        <div class="log-entry">
-            <span class="log-time">${entry.time}</span>
-            <span class="log-icon">${entry.icon}</span>
-            <span class="log-message">${entry.message}</span>
-        </div>
-    `).join('');
-}
-
-function renderProjects() {
-    const container = document.getElementById('projectList');
-    
-    container.innerHTML = dashboardData.projects.map(project => `
-        <div class="project-item">
-            <span class="project-name">${project.name}</span>
-            <span class="project-status ${project.status}">${project.status} (${project.progress}%)</span>
-        </div>
-    `).join('');
-}
-
-function renderAgents() {
-    const container = document.getElementById('agentsList');
-    
-    container.innerHTML = dashboardData.agents.map(agent => `
-        <div class="agent-card">
-            <span class="agent-status ${agent.status}"></span>
-            ${agent.name}
-        </div>
-    `).join('');
-}
-
-function renderEmail() {
-    const email = dashboardData.email;
-    
-    // Update counts
-    const unreadEl = document.getElementById('unreadCount');
-    unreadEl.textContent = email.unread;
-    if (email.unread > 0) unreadEl.classList.add('has-unread');
-    else unreadEl.classList.remove('has-unread');
-    
-    document.getElementById('pendingReply').textContent = email.pendingReply;
-    
-    // Update last check time
-    const lastCheck = new Date(email.lastCheck);
-    document.getElementById('emailLastCheck').textContent = `Last checked: ${lastCheck.toLocaleString()}`;
-    
-    // Render email list
-    const container = document.getElementById('emailList');
-    
-    if (email.messages.length === 0) {
-        container.innerHTML = '<div class="email-empty">📭 Inbox clear — no new messages</div>';
-        return;
     }
-    
-    container.innerHTML = email.messages.map(msg => `
-        <div class="email-item ${msg.status === 'unread' ? 'unread' : ''} ${msg.needsReply ? 'needs-reply' : ''}">
-            <span class="email-from">${msg.from}</span>
-            <span class="email-subject">${msg.subject}</span>
-            <span class="email-time">${msg.time}</span>
-            ${msg.needsReply ? '<span class="email-status pending">Needs Reply</span>' : 
-              msg.status === 'replied' ? '<span class="email-status replied">Replied</span>' : ''}
-        </div>
-    `).join('');
-}
 
-function renderNotes() {
-    const container = document.getElementById('notesContent');
-    container.textContent = dashboardData.notes;
-}
+    function getSourceIcon(category) {
+        const icons = {
+            'news': '📰',
+            'twitter': '🐦',
+            'openclaw': '🦞',
+            'tools': '🛠️',
+            'article': '📄'
+        };
+        return icons[category] || '📌';
+    }
 
-function renderMetrics() {
-    document.getElementById('apiCostTotal').textContent = `$${dashboardData.metrics.apiCostTotal.toFixed(2)}`;
-    document.getElementById('apiCost').textContent = `$${dashboardData.metrics.apiCostToday.toFixed(2)}`;
-    document.getElementById('tasksCompleted').textContent = dashboardData.metrics.tasksCompleted;
-}
+    function setupIntelFilters(intel) {
+        const filterBtns = document.querySelectorAll('#intelligence .filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                const items = document.querySelectorAll('.intel-item');
+                
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
 
-// Auto-refresh every 60 seconds (silent update)
-async function checkForUpdates() {
-    try {
-        const response = await fetch('data.js?t=' + Date.now());
-        const text = await response.text();
-        
-        // Extract the data object from the JS file
-        const newData = eval(text + '; dashboardData;');
-        
-        // Check if data changed
-        if (newData.lastUpdated !== dashboardData.lastUpdated) {
-            // Update the global data
-            Object.assign(dashboardData, newData);
-            renderDashboard();
-            updateTimestamp();
-            showUpdateNotification();
+    // ========== 4. MONEY IDEAS ==========
+    function loadMoneyIdeas() {
+        const ideas = dashboardData.moneyIdeas;
+        if (!ideas || ideas.length === 0) {
+            document.getElementById('moneyIdeasList').innerHTML = 
+                '<div class="empty-state"><div class="empty-state-icon">💰</div><p>No money ideas yet</p></div>';
+            return;
         }
-    } catch (e) {
-        console.log('Update check failed:', e);
+
+        // Calculate stats
+        const totalImpact = ideas.reduce((sum, idea) => sum + (idea.impact || 0), 0);
+        const buildable = ideas.filter(idea => idea.canBuild).length;
+
+        document.getElementById('totalIdeas').textContent = ideas.length;
+        document.getElementById('potentialImpact').textContent = formatMoney(totalImpact);
+        document.getElementById('buildableIdeas').textContent = buildable;
+
+        renderMoneyIdeas(ideas);
+        setupMoneyFilters(ideas);
     }
-}
 
-function showUpdateNotification() {
-    const indicator = document.getElementById('statusIndicator');
-    indicator.classList.add('updated');
-    setTimeout(() => indicator.classList.remove('updated'), 2000);
-}
-
-// Check for updates every 60 seconds
-setInterval(checkForUpdates, 60 * 1000);
-
-// Also check immediately on focus (when Al switches back to tab)
-document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-        checkForUpdates();
+    function renderMoneyIdeas(ideas) {
+        const listEl = document.getElementById('moneyIdeasList');
+        listEl.innerHTML = ideas.map(idea => `
+            <div class="idea-item" data-category="${idea.category}">
+                <div class="idea-header">
+                    <h4 class="idea-title">${idea.title}</h4>
+                    <span class="idea-impact">${formatMoney(idea.impact)}</span>
+                </div>
+                <p class="idea-why">${idea.why}</p>
+                <div class="idea-steps">
+                    <h5>Implementation Steps</h5>
+                    <ol>
+                        ${idea.steps.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                </div>
+                <div class="idea-footer">
+                    <div class="idea-type">
+                        <span class="tag">${getCategoryLabel(idea.category)}</span>
+                        <span class="tag">${idea.canBuild ? '🔨 Can Build' : '💬 Share'}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
     }
-});
+
+    function getCategoryLabel(cat) {
+        const labels = {
+            'noi': '🏢 NOI',
+            'sales': '📈 Sales',
+            'investors': '👥 Investors',
+            'cost': '✂️ Cost Reduction'
+        };
+        return labels[cat] || cat;
+    }
+
+    function setupMoneyFilters(ideas) {
+        const filterBtns = document.querySelectorAll('#money .filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                const items = document.querySelectorAll('.idea-item');
+                
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // ========== 5. VAULT ==========
+    function loadVault() {
+        const vault = dashboardData.vault;
+        if (!vault || vault.length === 0) {
+            document.getElementById('vaultGrid').innerHTML = 
+                '<div class="empty-state"><div class="empty-state-icon">📁</div><p>Vault is empty</p></div>';
+            return;
+        }
+
+        renderVault(vault);
+        setupVaultFilters(vault);
+    }
+
+    function renderVault(items) {
+        const gridEl = document.getElementById('vaultGrid');
+        gridEl.innerHTML = items.map(item => `
+            <div class="vault-item" data-category="${item.category}" data-id="${item.id}">
+                <div class="vault-item-header">
+                    <span class="vault-icon">${getVaultIcon(item.category)}</span>
+                    <div>
+                        <h4 class="vault-item-title">${item.name}</h4>
+                        <span class="vault-item-date">${formatDate(item.dateCreated)}</span>
+                    </div>
+                </div>
+                <p class="vault-item-desc">${item.whatItDoes}</p>
+                <div class="vault-item-tags">
+                    <span class="tag">${item.category}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function getVaultIcon(category) {
+        const icons = {
+            'automations': '⚙️',
+            'agents': '🤖',
+            'workflows': '🔄',
+            'templates': '📝',
+            'research': '🔬',
+            'sops': '📋',
+            'tools': '🛠️',
+            'integrations': '🔌'
+        };
+        return icons[category] || '📁';
+    }
+
+    function setupVaultFilters(vault) {
+        const searchInput = document.getElementById('vaultSearch');
+        const categorySelect = document.getElementById('vaultCategory');
+
+        function filterVault() {
+            const query = searchInput.value.toLowerCase();
+            const category = categorySelect.value;
+            const items = document.querySelectorAll('.vault-item');
+
+            items.forEach(item => {
+                const matchesSearch = item.querySelector('.vault-item-title').textContent.toLowerCase().includes(query) ||
+                                     item.querySelector('.vault-item-desc').textContent.toLowerCase().includes(query);
+                const matchesCategory = category === 'all' || item.dataset.category === category;
+                
+                item.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
+            });
+        }
+
+        searchInput.addEventListener('input', filterVault);
+        categorySelect.addEventListener('change', filterVault);
+    }
+
+    // ========== 6. LIBRARY ==========
+    function loadLibrary() {
+        // Load from localStorage or data
+        let library = JSON.parse(localStorage.getItem('jesusLibrary')) || dashboardData.library || [];
+        renderLibrary(library);
+        setupLibraryFilters(library);
+    }
+
+    function setupLibrary() {
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileUpload');
+
+        // Drag and drop
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        // Click to upload
+        uploadZone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+    }
+
+    function handleFiles(files) {
+        const library = JSON.parse(localStorage.getItem('jesusLibrary')) || [];
+        
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const newFile = {
+                    id: Date.now() + Math.random(),
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    folder: 'all',
+                    uploadedAt: new Date().toISOString(),
+                    data: e.target.result
+                };
+                
+                library.push(newFile);
+                localStorage.setItem('jesusLibrary', JSON.stringify(library));
+                renderLibrary(library);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function renderLibrary(items) {
+        const gridEl = document.getElementById('libraryGrid');
+        
+        if (!items || items.length === 0) {
+            gridEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p>No documents uploaded yet</p></div>';
+            return;
+        }
+
+        gridEl.innerHTML = items.map(item => `
+            <div class="library-item" data-folder="${item.folder}" data-id="${item.id}">
+                <span class="file-icon">${getFileIcon(item.type || item.name)}</span>
+                <div class="file-info">
+                    <div class="file-name">${item.name}</div>
+                    <div class="file-meta">${formatFileSize(item.size)} • ${formatDate(item.uploadedAt)}</div>
+                </div>
+                <div class="file-actions">
+                    <button onclick="downloadFile('${item.id}')" title="Download">📥</button>
+                    <button onclick="deleteFile('${item.id}')" title="Delete">🗑️</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function getFileIcon(typeOrName) {
+        if (!typeOrName) return '📄';
+        const type = typeOrName.toLowerCase();
+        if (type.includes('pdf')) return '📕';
+        if (type.includes('doc') || type.includes('word')) return '📘';
+        if (type.includes('xls') || type.includes('sheet')) return '📗';
+        if (type.includes('image') || type.includes('png') || type.includes('jpg')) return '🖼️';
+        if (type.includes('csv')) return '📊';
+        if (type.includes('md') || type.includes('txt')) return '📝';
+        return '📄';
+    }
+
+    function setupLibraryFilters(library) {
+        const folderBtns = document.querySelectorAll('.folder-btn');
+        const searchInput = document.getElementById('librarySearch');
+
+        folderBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                folderBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const folder = btn.dataset.folder;
+                const items = document.querySelectorAll('.library-item');
+                
+                items.forEach(item => {
+                    if (folder === 'all' || item.dataset.folder === folder) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.library-item');
+            
+            items.forEach(item => {
+                const name = item.querySelector('.file-name').textContent.toLowerCase();
+                item.style.display = name.includes(query) ? 'flex' : 'none';
+            });
+        });
+    }
+
+    // Global functions for file actions
+    window.downloadFile = function(id) {
+        const library = JSON.parse(localStorage.getItem('jesusLibrary')) || [];
+        const file = library.find(f => f.id == id);
+        if (file && file.data) {
+            const link = document.createElement('a');
+            link.href = file.data;
+            link.download = file.name;
+            link.click();
+        }
+    };
+
+    window.deleteFile = function(id) {
+        if (!confirm('Delete this file?')) return;
+        let library = JSON.parse(localStorage.getItem('jesusLibrary')) || [];
+        library = library.filter(f => f.id != id);
+        localStorage.setItem('jesusLibrary', JSON.stringify(library));
+        renderLibrary(library);
+    };
+
+    // ========== 7. NOTES ==========
+    function setupNotes() {
+        const saveBtn = document.getElementById('saveNote');
+        saveBtn.addEventListener('click', saveNote);
+    }
+
+    function saveNote() {
+        const typeSelect = document.getElementById('noteType');
+        const contentArea = document.getElementById('noteContent');
+        const priorityCheck = document.getElementById('notePriority');
+
+        const content = contentArea.value.trim();
+        if (!content) {
+            alert('Please enter a note');
+            return;
+        }
+
+        const notes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
+        const newNote = {
+            id: Date.now(),
+            type: typeSelect.value,
+            content: content,
+            priority: priorityCheck.checked,
+            status: 'unread',
+            createdAt: new Date().toISOString()
+        };
+
+        notes.unshift(newNote);
+        localStorage.setItem('jesusNotes', JSON.stringify(notes));
+        
+        // Clear form
+        contentArea.value = '';
+        priorityCheck.checked = false;
+        
+        // Reload notes
+        loadNotes();
+        updateNotesBadge();
+    }
+
+    function loadNotes() {
+        // Merge localStorage notes with data.js notes
+        const localNotes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
+        const dataNotes = dashboardData.notes || [];
+        
+        // Combine, preferring local storage (it's more up-to-date)
+        const allNotes = [...localNotes];
+        dataNotes.forEach(dn => {
+            if (!allNotes.find(n => n.id === dn.id)) {
+                allNotes.push(dn);
+            }
+        });
+
+        const listEl = document.getElementById('notesList');
+        
+        if (allNotes.length === 0) {
+            listEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💬</div><p>No notes yet</p></div>';
+            return;
+        }
+
+        listEl.innerHTML = allNotes.map(note => `
+            <div class="note-item ${note.status === 'unread' ? 'unread' : ''} ${note.priority ? 'high-priority' : ''}" data-id="${note.id}">
+                <div class="note-header">
+                    <div class="note-type">
+                        <span class="note-type-icon">${getNoteTypeIcon(note.type)}</span>
+                        <span class="note-type-label">${getNoteTypeLabel(note.type)}</span>
+                    </div>
+                    <span class="note-status ${note.status}">${getStatusLabel(note.status)}</span>
+                </div>
+                <div class="note-content">${note.content}</div>
+                <div class="note-footer">
+                    <span>${formatDateTime(note.createdAt)}</span>
+                    <div class="note-actions-btns">
+                        ${note.status === 'unread' ? `<button onclick="updateNoteStatus(${note.id}, 'in-progress')">Mark In Progress</button>` : ''}
+                        ${note.status === 'in-progress' ? `<button onclick="updateNoteStatus(${note.id}, 'completed')">Mark Complete</button>` : ''}
+                        <button onclick="deleteNote(${note.id})">Delete</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        updateNotesBadge();
+    }
+
+    function getNoteTypeIcon(type) {
+        const icons = {
+            'task': '📋',
+            'feedback': '💬',
+            'idea': '💡',
+            'question': '❓',
+            'correction': '🔧'
+        };
+        return icons[type] || '📌';
+    }
+
+    function getNoteTypeLabel(type) {
+        const labels = {
+            'task': 'Task/Priority',
+            'feedback': 'Feedback',
+            'idea': 'Idea',
+            'question': 'Question',
+            'correction': 'Correction'
+        };
+        return labels[type] || type;
+    }
+
+    function getStatusLabel(status) {
+        const labels = {
+            'unread': 'New',
+            'in-progress': 'In Progress',
+            'completed': 'Completed'
+        };
+        return labels[status] || status;
+    }
+
+    function updateNotesBadge() {
+        const notes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
+        const unreadCount = notes.filter(n => n.status === 'unread').length;
+        const badge = document.getElementById('notesBadge');
+        badge.textContent = unreadCount;
+        badge.style.display = unreadCount > 0 ? 'flex' : 'none';
+    }
+
+    window.updateNoteStatus = function(id, status) {
+        const notes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
+        const note = notes.find(n => n.id == id);
+        if (note) {
+            note.status = status;
+            localStorage.setItem('jesusNotes', JSON.stringify(notes));
+            loadNotes();
+        }
+    };
+
+    window.deleteNote = function(id) {
+        if (!confirm('Delete this note?')) return;
+        let notes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
+        notes = notes.filter(n => n.id != id);
+        localStorage.setItem('jesusNotes', JSON.stringify(notes));
+        loadNotes();
+    };
+
+    // ========== 8. SYSTEM HEALTH ==========
+    function loadSystemHealth() {
+        const health = dashboardData.systemHealth;
+        if (!health) return;
+
+        // Main health indicators
+        document.getElementById('openclawStatus').textContent = health.openclaw ? 'Connected' : 'Disconnected';
+        document.getElementById('openclawStatus').className = 'health-status ' + (health.openclaw ? 'online' : 'offline');
+        
+        document.getElementById('lastHeartbeat').textContent = health.lastHeartbeat ? formatDateTime(health.lastHeartbeat) : '--';
+        document.getElementById('uptimePercent').textContent = health.uptime ? health.uptime + '%' : '--%';
+        document.getElementById('memoryUsage').textContent = health.memory ? health.memory + ' MB' : '-- MB';
+
+        // API Connections
+        const apiGrid = document.getElementById('apiGrid');
+        if (health.apis && health.apis.length > 0) {
+            apiGrid.innerHTML = health.apis.map(api => `
+                <div class="api-item">
+                    <span class="api-name">${api.name}</span>
+                    <span class="api-status ${api.status}"></span>
+                </div>
+            `).join('');
+        }
+
+        // Error Log
+        const errorLog = document.getElementById('errorLog');
+        if (health.errors && health.errors.length > 0) {
+            errorLog.innerHTML = health.errors.map(err => `
+                <div class="error-item">
+                    <div class="error-time">${formatDateTime(err.time)}</div>
+                    <div class="error-message">${err.message}</div>
+                </div>
+            `).join('');
+        } else {
+            errorLog.innerHTML = '<div class="no-errors">✅ No recent errors</div>';
+        }
+    }
+
+    // ========== 9. METRICS ==========
+    function loadMetrics() {
+        const metrics = dashboardData.metrics;
+        if (!metrics) return;
+
+        // Work Output
+        document.getElementById('tasksToday').textContent = metrics.tasksToday || 0;
+        document.getElementById('tasksWeek').textContent = metrics.tasksWeek || 0;
+        document.getElementById('tasksMonth').textContent = metrics.tasksMonth || 0;
+        document.getElementById('emailsDrafted').textContent = metrics.emailsDrafted || 0;
+        document.getElementById('docsProcessed').textContent = metrics.docsProcessed || 0;
+        document.getElementById('buildsDelivered').textContent = metrics.buildsDelivered || 0;
+
+        // Reliability
+        document.getElementById('uptimeMetric').textContent = (metrics.uptime || 0) + '%';
+        document.getElementById('failedTasks').textContent = metrics.failedTasks || 0;
+        document.getElementById('avgResponse').textContent = metrics.avgResponse || '--';
+        document.getElementById('errorsCaught').textContent = metrics.errorsCaught || 0;
+
+        // ROI
+        document.getElementById('hoursSaved').textContent = metrics.hoursSaved || 0;
+        document.getElementById('tasksAuto').textContent = metrics.tasksAutoHandled || 0;
+        document.getElementById('apiCost').textContent = formatMoney(metrics.apiCostToday || 0);
+        document.getElementById('apiCostTotal').textContent = formatMoney(metrics.apiCostTotal || 0);
+    }
+
+    // ========== SCRIPTURE ==========
+    function loadScripture() {
+        if (!scriptures || scriptures.length === 0) return;
+        const index = Math.floor(Date.now() / 600000) % scriptures.length; // Rotate every 10 min
+        const scripture = scriptures[index];
+        const footerVerse = document.getElementById('footerVerse');
+        if (footerVerse) {
+            footerVerse.textContent = `"${scripture.text}" — ${scripture.ref}`;
+        }
+    }
+
+    // ========== UTILITY FUNCTIONS ==========
+    function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function formatDateTime(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        return date.toLocaleString('en-US', { 
+            month: 'short', day: 'numeric', 
+            hour: 'numeric', minute: '2-digit'
+        });
+    }
+
+    function formatMoney(amount) {
+        if (!amount) return '$0';
+        if (amount >= 1000000) return '$' + (amount / 1000000).toFixed(1) + 'M';
+        if (amount >= 1000) return '$' + (amount / 1000).toFixed(0) + 'K';
+        return '$' + amount.toFixed(2);
+    }
+
+    function formatFileSize(bytes) {
+        if (!bytes) return '0 B';
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+
+    function renderContent(content) {
+        if (!content) return '';
+        // Basic markdown-like rendering
+        return content
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/^- (.*?)$/gm, '<li>$1</li>')
+            .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+            .replace(/\n/g, '<br>');
+    }
+
+    // ========== AUTO REFRESH ==========
+    function setupAutoRefresh() {
+        // Refresh data every 60 seconds
+        setInterval(() => {
+            loadAllData();
+            updateLastSync();
+        }, 60000);
+    }
+
+    function updateLastSync() {
+        const syncEl = document.getElementById('lastSync');
+        syncEl.textContent = 'Last sync: ' + new Date().toLocaleTimeString();
+    }
+
+})();

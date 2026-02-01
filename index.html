@@ -3,160 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jesus Dashboard ⚡ | Al + Jesus Workspace</title>
-    <link rel="stylesheet" href="style.css?v=7">
+    <title>Jesus Dashboard V2 ⚡ | AI Agent Management Platform</title>
+    <link rel="stylesheet" href="style.css?v=20">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
-    <header>
+    <!-- Header -->
+    <header class="main-header">
         <div class="header-left">
             <div class="avatar-container">
-                <img src="avatar.jpg?v=2" alt="Jesus" class="avatar" id="jesusAvatar">
-                <div class="avatar-ring"></div>
-                <div class="avatar-pulse"></div>
+                <img src="avatar.jpg" alt="Jesus" class="avatar" id="jesusAvatar">
+                <div class="status-ring online"></div>
             </div>
             <div class="header-text">
-                <h1>Jesus Dashboard</h1>
-                <p class="subtitle">Al + Jesus Shared Workspace</p>
+                <h1>Jesus Dashboard <span class="version">V2</span></h1>
+                <p class="subtitle">AI Agent Management Platform</p>
             </div>
         </div>
         <div class="header-right">
-            <div class="status-indicator" id="statusIndicator">
-                <span class="status-dot"></span>
-                <span class="status-text">Working</span>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot online"></span>
+                <span>Online</span>
             </div>
-            <div class="last-updated" id="lastUpdated"></div>
+            <div class="last-sync" id="lastSync">Last sync: --</div>
         </div>
     </header>
 
-    <main>
-        <!-- Scripture of the Moment -->
-        <section class="scripture-bar">
-            <div class="scripture-icon">📖</div>
-            <div class="scripture-content">
-                <p class="scripture-text" id="scriptureText">"Loading..."</p>
-                <p class="scripture-ref" id="scriptureRef"></p>
+    <!-- Navigation Tabs -->
+    <nav class="main-nav">
+        <button class="nav-tab active" data-section="surprise">🌟 Daily Surprise</button>
+        <button class="nav-tab" data-section="report">📊 Agent Report</button>
+        <button class="nav-tab" data-section="intelligence">🧠 AI Intelligence</button>
+        <button class="nav-tab" data-section="money">💰 Money Ideas</button>
+        <button class="nav-tab" data-section="vault">📁 Vault</button>
+        <button class="nav-tab" data-section="library">📚 Library</button>
+        <button class="nav-tab notification" data-section="notes">💬 Notes <span class="badge" id="notesBadge">0</span></button>
+        <button class="nav-tab" data-section="health">🖥️ Health</button>
+        <button class="nav-tab" data-section="metrics">📈 Metrics</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- 1. DAILY SURPRISE -->
+        <section id="surprise" class="content-section active">
+            <div class="section-header">
+                <h2>🌟 Daily Surprise</h2>
+                <p class="section-desc">Every morning, Al wakes up to something amazing I built overnight.</p>
+            </div>
+            
+            <!-- Today's Surprise -->
+            <div class="card highlight-card" id="todaySurprise">
+                <div class="card-header">
+                    <span class="card-icon">🎁</span>
+                    <h3>Today's Surprise</h3>
+                    <span class="card-date" id="surpriseDate"></span>
+                </div>
+                <div class="card-body">
+                    <h4 id="surpriseTitle">Loading...</h4>
+                    <div class="surprise-content" id="surpriseContent"></div>
+                    <div class="surprise-meta">
+                        <span class="tag" id="surpriseType"></span>
+                        <span class="impact" id="surpriseImpact"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Surprise Archive -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📚</span>
+                    <h3>Surprise Archive</h3>
+                    <input type="search" id="surpriseSearch" placeholder="Search surprises..." class="search-input">
+                </div>
+                <div class="card-body">
+                    <div class="archive-list" id="surpriseArchive"></div>
+                </div>
             </div>
         </section>
 
-        <!-- Status Overview -->
-        <section class="status-bar">
-            <div class="status-item">
-                <span class="status-label">Status</span>
-                <span class="status-value online">🟢 Online</span>
+        <!-- 2. AGENT REPORT -->
+        <section id="report" class="content-section">
+            <div class="section-header">
+                <h2>📊 Agent Report</h2>
+                <p class="section-desc">Daily standup — what I finished, what I need, what's next.</p>
+                <span class="update-indicator">🔄 Updates continuously</span>
             </div>
-            <div class="status-item">
-                <span class="status-label">Active Project</span>
-                <span class="status-value" id="activeProject">Loading...</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">Tasks Today</span>
-                <span class="status-value" id="tasksToday">-</span>
+            
+            <div class="report-grid">
+                <!-- Completed -->
+                <div class="card status-card completed">
+                    <div class="card-header">
+                        <span class="card-icon">✅</span>
+                        <h3>Completed</h3>
+                        <span class="count" id="completedCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="report-list" id="completedList"></ul>
+                    </div>
+                </div>
+                
+                <!-- Blockers -->
+                <div class="card status-card blockers">
+                    <div class="card-header">
+                        <span class="card-icon">⚠️</span>
+                        <h3>Blockers</h3>
+                        <span class="count" id="blockersCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="report-list" id="blockersList"></ul>
+                    </div>
+                </div>
+                
+                <!-- Issues -->
+                <div class="card status-card issues">
+                    <div class="card-header">
+                        <span class="card-icon">🚨</span>
+                        <h3>Issues</h3>
+                        <span class="count" id="issuesCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="report-list" id="issuesList"></ul>
+                    </div>
+                </div>
+                
+                <!-- Pending Decisions -->
+                <div class="card status-card pending">
+                    <div class="card-header">
+                        <span class="card-icon">📋</span>
+                        <h3>Pending Decisions</h3>
+                        <span class="count" id="pendingCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="report-list" id="pendingList"></ul>
+                    </div>
+                </div>
+                
+                <!-- Next Up -->
+                <div class="card status-card next-up">
+                    <div class="card-header">
+                        <span class="card-icon">🔮</span>
+                        <h3>Next Up</h3>
+                        <span class="count" id="nextCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="report-list" id="nextList"></ul>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Main Grid -->
-        <div class="dashboard-grid">
-            <!-- Task Board -->
-            <section class="panel task-board">
-                <h2>📋 Task Board</h2>
-                <div class="kanban">
-                    <div class="kanban-column" id="backlog">
-                        <h3>Backlog</h3>
-                        <div class="tasks"></div>
-                    </div>
-                    <div class="kanban-column" id="todo">
-                        <h3>To Do</h3>
-                        <div class="tasks"></div>
-                    </div>
-                    <div class="kanban-column" id="inprogress">
-                        <h3>In Progress</h3>
-                        <div class="tasks"></div>
-                    </div>
-                    <div class="kanban-column" id="done">
-                        <h3>Done</h3>
-                        <div class="tasks"></div>
-                    </div>
-                </div>
-            </section>
+        <!-- 3. AI INTELLIGENCE -->
+        <section id="intelligence" class="content-section">
+            <div class="section-header">
+                <h2>🧠 AI Intelligence</h2>
+                <p class="section-desc">Daily research digest — AI news, trends, and how we apply them.</p>
+            </div>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="news">📰 News</button>
+                <button class="filter-btn" data-filter="twitter">🐦 X/Twitter</button>
+                <button class="filter-btn" data-filter="openclaw">🦞 OpenClaw</button>
+                <button class="filter-btn" data-filter="tools">🛠️ Tools</button>
+            </div>
+            
+            <div class="intelligence-feed" id="intelligenceFeed"></div>
+        </section>
 
-            <!-- Activity Log -->
-            <section class="panel activity-log">
-                <h2>📊 Activity Log</h2>
-                <div class="log-entries" id="activityLog">
-                    <!-- Populated by JS -->
+        <!-- 4. MONEY IDEAS -->
+        <section id="money" class="content-section">
+            <div class="section-header">
+                <h2>💰 Money Ideas</h2>
+                <p class="section-desc">Revenue-generating ideas — NOI, sales, investors, cost reduction.</p>
+            </div>
+            
+            <div class="money-stats">
+                <div class="stat-box">
+                    <span class="stat-value" id="totalIdeas">0</span>
+                    <span class="stat-label">Total Ideas</span>
                 </div>
-            </section>
-
-            <!-- Projects Status -->
-            <section class="panel projects">
-                <h2>🚀 Projects</h2>
-                <div class="project-list" id="projectList">
-                    <!-- Populated by JS -->
+                <div class="stat-box">
+                    <span class="stat-value" id="potentialImpact">$0</span>
+                    <span class="stat-label">Potential Impact</span>
                 </div>
-            </section>
-
-            <!-- IR Agents Status -->
-            <section class="panel agents">
-                <h2>🤖 IR Agents (12)</h2>
-                <div class="agents-grid" id="agentsList">
-                    <!-- Populated by JS -->
+                <div class="stat-box">
+                    <span class="stat-value" id="buildableIdeas">0</span>
+                    <span class="stat-label">Buildable</span>
                 </div>
-            </section>
+            </div>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="noi">🏢 NOI</button>
+                <button class="filter-btn" data-filter="sales">📈 Sales</button>
+                <button class="filter-btn" data-filter="investors">👥 Investors</button>
+                <button class="filter-btn" data-filter="cost">✂️ Cost Reduction</button>
+            </div>
+            
+            <div class="ideas-list" id="moneyIdeasList"></div>
+        </section>
 
-            <!-- Email Panel -->
-            <section class="panel email">
-                <h2>📧 Email (jesusloveal2026@gmail.com)</h2>
-                <div class="email-stats">
-                    <div class="email-stat">
-                        <span class="email-count" id="unreadCount">0</span>
-                        <span class="email-label">Unread</span>
+        <!-- 5. JESUS'S VAULT -->
+        <section id="vault" class="content-section">
+            <div class="section-header">
+                <h2>📁 Jesus's Vault</h2>
+                <p class="section-desc">Archive of everything I create. Nothing gets lost.</p>
+            </div>
+            
+            <div class="vault-toolbar">
+                <input type="search" id="vaultSearch" placeholder="Search vault..." class="search-input">
+                <select id="vaultCategory" class="select-input">
+                    <option value="all">All Categories</option>
+                    <option value="automations">Automations</option>
+                    <option value="agents">Agents</option>
+                    <option value="workflows">Scripts & Workflows</option>
+                    <option value="templates">Templates</option>
+                    <option value="research">Research Reports</option>
+                    <option value="sops">SOPs</option>
+                    <option value="tools">Tools</option>
+                    <option value="integrations">Integrations</option>
+                </select>
+            </div>
+            
+            <div class="vault-grid" id="vaultGrid"></div>
+        </section>
+
+        <!-- 6. RESOURCE LIBRARY -->
+        <section id="library" class="content-section">
+            <div class="section-header">
+                <h2>📚 Resource Library</h2>
+                <p class="section-desc">Documents Al gives Jesus to work with.</p>
+            </div>
+            
+            <div class="library-toolbar">
+                <input type="search" id="librarySearch" placeholder="Search documents..." class="search-input">
+                <label class="upload-btn">
+                    <input type="file" id="fileUpload" multiple hidden>
+                    📤 Upload Documents
+                </label>
+            </div>
+            
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">📁</div>
+                <p>Drag & drop files here or click to upload</p>
+                <p class="upload-hint">Supports: PDF, DOC, DOCX, TXT, MD, CSV, XLS, XLSX, Images</p>
+            </div>
+            
+            <div class="library-folders">
+                <div class="folder-nav" id="folderNav">
+                    <button class="folder-btn active" data-folder="all">📁 All Files</button>
+                    <button class="folder-btn" data-folder="investor">👥 Investor Docs</button>
+                    <button class="folder-btn" data-folder="property">🏢 Property Docs</button>
+                    <button class="folder-btn" data-folder="brand">🎨 Brand</button>
+                    <button class="folder-btn" data-folder="sops">📋 SOPs</button>
+                    <button class="folder-btn" data-folder="reference">📚 Reference</button>
+                </div>
+            </div>
+            
+            <div class="library-grid" id="libraryGrid"></div>
+        </section>
+
+        <!-- 7. NOTES TO JESUS -->
+        <section id="notes" class="content-section">
+            <div class="section-header">
+                <h2>💬 Notes to Jesus</h2>
+                <p class="section-desc">Al's instructions, priorities, and feedback. <strong>I check this regularly.</strong></p>
+            </div>
+            
+            <!-- New Note Form (for Al) -->
+            <div class="card note-composer">
+                <div class="card-header">
+                    <span class="card-icon">✍️</span>
+                    <h3>Leave a Note for Jesus</h3>
+                </div>
+                <div class="card-body">
+                    <select id="noteType" class="select-input">
+                        <option value="task">📋 New Task/Priority</option>
+                        <option value="feedback">💬 Feedback</option>
+                        <option value="idea">💡 Idea to Explore</option>
+                        <option value="question">❓ Question</option>
+                        <option value="correction">🔧 Correction</option>
+                    </select>
+                    <textarea id="noteContent" placeholder="Write your note here..." rows="4"></textarea>
+                    <div class="note-actions">
+                        <label class="priority-label">
+                            <input type="checkbox" id="notePriority"> ⚡ High Priority
+                        </label>
+                        <button class="btn btn-primary" id="saveNote">Save Note</button>
                     </div>
-                    <div class="email-stat">
-                        <span class="email-count" id="pendingReply">0</span>
-                        <span class="email-label">Pending Reply</span>
+                </div>
+            </div>
+            
+            <!-- Notes List -->
+            <div class="notes-list" id="notesList">
+                <!-- Notes populated by JS -->
+            </div>
+        </section>
+
+        <!-- 8. SYSTEM HEALTH -->
+        <section id="health" class="content-section">
+            <div class="section-header">
+                <h2>🖥️ System Health</h2>
+                <p class="section-desc">24/7 monitoring of operational status.</p>
+            </div>
+            
+            <div class="health-grid">
+                <!-- OpenClaw Status -->
+                <div class="health-card">
+                    <div class="health-icon">🦞</div>
+                    <div class="health-info">
+                        <h4>OpenClaw</h4>
+                        <span class="health-status online" id="openclawStatus">Connected</span>
                     </div>
                 </div>
-                <div class="email-list" id="emailList">
-                    <!-- Populated by JS -->
+                
+                <!-- Last Heartbeat -->
+                <div class="health-card">
+                    <div class="health-icon">💓</div>
+                    <div class="health-info">
+                        <h4>Last Heartbeat</h4>
+                        <span class="health-value" id="lastHeartbeat">--</span>
+                    </div>
                 </div>
-                <div class="email-last-check" id="emailLastCheck"></div>
-            </section>
-
-            <!-- Notes Session -->
-            <section class="panel notes">
-                <h2>📝 Notes (Al ↔ Jesus)</h2>
-                <div class="notes-content" id="notesContent">
-                    <!-- Populated by JS -->
+                
+                <!-- Uptime -->
+                <div class="health-card">
+                    <div class="health-icon">⏱️</div>
+                    <div class="health-info">
+                        <h4>Uptime</h4>
+                        <span class="health-value" id="uptimePercent">--%</span>
+                    </div>
                 </div>
-            </section>
+                
+                <!-- Memory -->
+                <div class="health-card">
+                    <div class="health-icon">🧠</div>
+                    <div class="health-info">
+                        <h4>Memory</h4>
+                        <span class="health-value" id="memoryUsage">-- MB</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- API Connections -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🔌</span>
+                    <h3>API Connections</h3>
+                </div>
+                <div class="card-body">
+                    <div class="api-grid" id="apiGrid"></div>
+                </div>
+            </div>
+            
+            <!-- Error Log -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🚨</span>
+                    <h3>Recent Errors</h3>
+                </div>
+                <div class="card-body">
+                    <div class="error-log" id="errorLog"></div>
+                </div>
+            </div>
+        </section>
 
-            <!-- Quick Stats -->
-            <section class="panel stats">
+        <!-- 9. METRICS -->
+        <section id="metrics" class="content-section">
+            <div class="section-header">
                 <h2>📈 Metrics</h2>
-                <div class="stats-grid">
-                    <div class="stat">
-                        <span class="stat-value" id="apiCostTotal">$0.00</span>
-                        <span class="stat-label">Total API Cost</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-value" id="apiCost">$0.00</span>
-                        <span class="stat-label">Today's Cost</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-value" id="tasksCompleted">0</span>
-                        <span class="stat-label">Tasks Done</span>
+                <p class="section-desc">Performance tracking — how well I'm doing as Al's AI employee.</p>
+            </div>
+            
+            <!-- Work Output -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h3>Work Output</h3>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-value" id="tasksToday">0</span>
+                            <span class="metric-label">Tasks Today</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="tasksWeek">0</span>
+                            <span class="metric-label">This Week</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="tasksMonth">0</span>
+                            <span class="metric-label">This Month</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="emailsDrafted">0</span>
+                            <span class="metric-label">Emails Drafted</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="docsProcessed">0</span>
+                            <span class="metric-label">Docs Processed</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="buildsDelivered">0</span>
+                            <span class="metric-label">Builds Delivered</span>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+            
+            <!-- Reliability -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🛡️</span>
+                    <h3>Reliability</h3>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-value" id="uptimeMetric">--%</span>
+                            <span class="metric-label">Uptime</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="failedTasks">0</span>
+                            <span class="metric-label">Failed Tasks</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="avgResponse">--</span>
+                            <span class="metric-label">Avg Response</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="errorsCaught">0</span>
+                            <span class="metric-label">Errors Caught</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ROI -->
+            <div class="card highlight-card">
+                <div class="card-header">
+                    <span class="card-icon">💰</span>
+                    <h3>ROI</h3>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-item large">
+                            <span class="metric-value" id="hoursSaved">0</span>
+                            <span class="metric-label">Hours Saved</span>
+                        </div>
+                        <div class="metric-item large">
+                            <span class="metric-value" id="tasksAuto">0</span>
+                            <span class="metric-label">Auto-Handled</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="apiCost">$0</span>
+                            <span class="metric-label">API Cost (Today)</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value" id="apiCostTotal">$0</span>
+                            <span class="metric-label">API Cost (Total)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>Jesus ⚡ | Strategic Partner for Al Liao | <a href="https://github.com/al24064098-beep/jesus-dashboard">GitHub</a></p>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Jesus ⚡ | Al's AI Chief of Staff | <a href="https://github.com/al24064098-beep/jesus-dashboard" target="_blank">GitHub</a></p>
+        <p class="footer-verse" id="footerVerse"></p>
     </footer>
 
-    <script src="data.js?v=7"></script>
-    <script src="app.js?v=7"></script>
+    <!-- Scripts -->
+    <script src="data.js?v=20"></script>
+    <script src="app.js?v=20"></script>
 </body>
 </html>
