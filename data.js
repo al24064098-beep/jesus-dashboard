@@ -141,40 +141,116 @@ You now have a complete command center to manage me as your AI employee. Everyth
         }
     ],
 
-    // ========== 5. VAULT ==========
+    // ========== 5. VAULT (Full SOP Documentation) ==========
     vault: [
         {
             id: 1,
             name: "Jesus Dashboard V2",
-            category: "tools",
+            category: "dashboards",
             dateCreated: "2026-02-01",
-            whatItDoes: "Complete AI Agent Management Platform with 9 sections for Al to manage Jesus as his AI employee.",
-            howItWorks: "Pure HTML/CSS/JS static site hosted on GitHub Pages. Data stored in data.js (updated by Jesus) and localStorage (for user inputs).",
-            whyBuilt: "Al needed a central command center to manage me, see my work, give me instructions, and track my performance.",
-            howToUse: "Visit https://al24064098-beep.github.io/jesus-dashboard/ — Navigate tabs, leave notes, upload docs.",
-            howToMaintain: "Jesus updates data.js and pushes to GitHub. Al's notes/uploads stored in browser localStorage."
+            objective: "Create a central command center for Al to manage Jesus as his AI employee — see work, give instructions, track performance, and ensure nothing gets lost.",
+            whatItDoes: "Complete AI Agent Management Platform with 9 sections: Daily Surprise, Agent Report, AI Intelligence, Money Ideas, Vault & SOPs, Resource Library, Notes to Jesus, System Health, and Metrics.",
+            howItWorks: "Pure HTML/CSS/JS static site hosted on GitHub Pages (FREE). Data is split between: (1) data.js - updated by Jesus for dashboard content, (2) localStorage - for user inputs like notes and uploaded files. Auto-refreshes every 60 seconds.",
+            whyBuilt: "Al needed a central command center to manage me, see my work, give me instructions, and track my performance. Previous dashboard V1 was basic - V2 implements all 9 sections from Al's spec.",
+            howToUseSteps: [
+                "Visit https://al24064098-beep.github.io/jesus-dashboard/",
+                "Use navigation tabs to switch between 9 sections",
+                "Leave notes for Jesus in the 'Notes to Jesus' tab",
+                "Upload documents in 'Resource Library' (stored in browser)",
+                "Check 'Agent Report' to see what Jesus is working on",
+                "Review 'Daily Surprise' each morning for overnight builds",
+                "Click any Vault item to see full SOP documentation"
+            ],
+            howToMaintain: "Jesus updates data.js with new content and pushes to GitHub. User data (notes, files) stored in browser localStorage. To backup user data: export from browser developer tools. To reset: clear localStorage for this domain.",
+            process: [
+                "Create index.html with all 9 section structures",
+                "Create style.css with dark theme, mobile-responsive design",
+                "Create app.js with all section logic, filtering, modals",
+                "Create data.js with data structures for all sections",
+                "Create manifest.json for PWA/mobile support",
+                "Push to GitHub repository (al24064098-beep/jesus-dashboard)",
+                "GitHub Pages automatically deploys from main branch",
+                "Update data.js whenever content changes, push to deploy"
+            ],
+            relatedFiles: [
+                { name: "GitHub Repo", url: "https://github.com/al24064098-beep/jesus-dashboard", icon: "🔗" },
+                { name: "Live Dashboard", url: "https://al24064098-beep.github.io/jesus-dashboard/", icon: "🌐" },
+                { name: "Spec Document", url: "#", icon: "📄" }
+            ]
         },
         {
             id: 2,
             name: "Builder Mandate",
             category: "sops",
             dateCreated: "2026-02-01",
-            whatItDoes: "Defines Jesus's core mandate: Build something that surprises Al every day.",
-            howItWorks: "Priority system: 1) Multifamily NOI 2) Acquisitions 3) Capital Raising, then Secondary builds.",
-            whyBuilt: "Al established clear expectations for daily output and surprise delivery.",
-            howToUse: "Reference before every build to ensure alignment with priorities.",
-            howToMaintain: "Saved in memory/JESUS-BUILDER-MANDATE.md"
+            objective: "Establish clear expectations for Jesus's daily output — build something WOW every day that surprises Al.",
+            whatItDoes: "Defines Jesus's core mandate and priority system for what to build. Ensures alignment with Al's mission, vision, values, and goals.",
+            howItWorks: "Priority Order: (1) Multifamily NOI & Operations, (2) Acquisitions & Deal Flow, (3) Capital Raising & Investors. Only after primary priorities complete can I work on secondary builds (AI systems, learning, etc.).",
+            whyBuilt: "Al established clear expectations — thinking alone is not enough, ideas alone are not enough. I MUST BUILD tangible artifacts every day.",
+            howToUseSteps: [
+                "Before building anything, check alignment with priorities",
+                "Priority 1: Does it increase NOI or improve operations?",
+                "Priority 2: Does it create acquisition advantages?",
+                "Priority 3: Does it accelerate capital raising?",
+                "If none of the above, it's secondary (only after primary done)",
+                "Every build must have: What Changed, Why It Works, How to Implement, Expected Impact"
+            ],
+            howToMaintain: "Saved in memory/JESUS-BUILDER-MANDATE.md. Reference before every build.",
+            process: [
+                "Al created the Builder Mandate document (PDF)",
+                "Jesus extracted and saved to permanent memory",
+                "Created build archive folder structure",
+                "Reference daily when deciding what to build"
+            ],
+            relatedFilesText: "memory/JESUS-BUILDER-MANDATE.md"
         },
         {
             id: 3,
             name: "CS3 IR Operating Platform",
             category: "sops",
             dateCreated: "2026-02-01",
-            whatItDoes: "Complete investor relations operating system — pipeline stages, investor types, compliance docs, KPIs.",
-            howItWorks: "Three phases: Before/During/After capital raise. Tracks investor status from Interested → Funded → Re-invested.",
-            whyBuilt: "Training document for all 12 IR agents and Jesus's understanding of CS3 operations.",
-            howToUse: "Reference for any investor-related task or agent training.",
-            howToMaintain: "Saved in memory/CS3-IR-OPERATING-PLATFORM.md"
+            objective: "Document the complete CS3 Investments investor relations system — the 'bible' for training IR agents.",
+            whatItDoes: "Complete investor relations operating system covering: Three phases of capital (Before/During/After), Investor pipeline stages, Investor types, Capital sources, Compliance documents, KPIs, and Investor tiers.",
+            howItWorks: "Investor flow: Interested → Soft Commit → Hard Commit → Funded → Re-invested. Each stage has specific actions, communications, and requirements. KPIs track conversion rates at each stage.",
+            whyBuilt: "Training document for all 12 IR agents. Ensures consistent, professional investor experience across CS3.",
+            howToUseSteps: [
+                "Reference when building any investor-related system",
+                "Use investor stages for CRM pipeline design",
+                "Follow compliance doc requirements for each investor type",
+                "Track KPIs: Lead-to-Commit >25%, Commit-to-Funded >85%, Repeat >40%"
+            ],
+            howToMaintain: "Saved in memory/CS3-IR-OPERATING-PLATFORM.md. Update when Al provides new IR processes.",
+            process: [
+                "Al shared IR Operating Platform document",
+                "Jesus extracted key components",
+                "Saved to permanent memory",
+                "Use for training all 12 IR agents"
+            ],
+            relatedFilesText: "memory/CS3-IR-OPERATING-PLATFORM.md"
+        },
+        {
+            id: 4,
+            name: "Dashboard V2 Spec",
+            category: "sops",
+            dateCreated: "2026-02-01",
+            objective: "Document Al's requirements for the Jesus Dashboard V2 — all 9 sections and features.",
+            whatItDoes: "Detailed specification of what to build for Dashboard V2, including all sections, features, data requirements, and success criteria.",
+            howItWorks: "Spec document defines: 9 sections (Daily Surprise, Agent Report, AI Intelligence, Money Ideas, Vault, Library, Notes, Health, Metrics), daily workflow, alignment check, document standards.",
+            whyBuilt: "Al provided detailed requirements so I know exactly what to build.",
+            howToUseSteps: [
+                "Reference when adding new features to dashboard",
+                "Follow daily workflow defined in spec",
+                "Use alignment check before building anything",
+                "Follow document standards for all outputs"
+            ],
+            howToMaintain: "Saved in memory/JESUS-DASHBOARD-V2-SPEC.md",
+            process: [
+                "Al created Dashboard V2 Build Guide (MD + PDF)",
+                "Jesus extracted and saved to permanent memory",
+                "Built dashboard according to spec",
+                "Reference for future enhancements"
+            ],
+            relatedFilesText: "memory/JESUS-DASHBOARD-V2-SPEC.md"
         }
     ],
 

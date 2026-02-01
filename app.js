@@ -287,7 +287,7 @@
         });
     }
 
-    // ========== 5. VAULT ==========
+    // ========== 5. VAULT & SOPs ==========
     function loadVault() {
         const vault = dashboardData.vault;
         if (!vault || vault.length === 0) {
@@ -296,6 +296,16 @@
             return;
         }
 
+        // Update stats
+        document.getElementById('totalBuilds').textContent = vault.length;
+        document.getElementById('totalSOPs').textContent = vault.filter(v => v.process || v.howToUse).length;
+        
+        // Count this week's builds
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+        const thisWeek = vault.filter(v => new Date(v.dateCreated) > oneWeekAgo).length;
+        document.getElementById('thisWeekBuilds').textContent = thisWeek;
+
         renderVault(vault);
         setupVaultFilters(vault);
     }
@@ -303,7 +313,7 @@
     function renderVault(items) {
         const gridEl = document.getElementById('vaultGrid');
         gridEl.innerHTML = items.map(item => `
-            <div class="vault-item" data-category="${item.category}" data-id="${item.id}">
+            <div class="vault-item" data-category="${item.category}" data-id="${item.id}" onclick="openSopModal(${item.id})">
                 <div class="vault-item-header">
                     <span class="vault-icon">${getVaultIcon(item.category)}</span>
                     <div>
@@ -314,6 +324,7 @@
                 <p class="vault-item-desc">${item.whatItDoes}</p>
                 <div class="vault-item-tags">
                     <span class="tag">${item.category}</span>
+                    ${item.process ? '<span class="tag">📋 SOP</span>' : ''}
                 </div>
             </div>
         `).join('');
@@ -328,10 +339,137 @@
             'research': '🔬',
             'sops': '📋',
             'tools': '🛠️',
-            'integrations': '🔌'
+            'integrations': '🔌',
+            'dashboards': '📊',
+            'systems': '🖥️'
         };
         return icons[category] || '📁';
     }
+
+    // SOP Modal Functions
+    window.openSopModal = function(id) {
+        const vault = dashboardData.vault;
+        const item = vault.find(v => v.id == id);
+        if (!item) return;
+
+        document.getElementById('sopIcon').textContent = getVaultIcon(item.category);
+        document.getElementById('sopTitle').textContent = item.name;
+        document.getElementById('sopMeta').textContent = `${item.category} • ${formatDate(item.dateCreated)}`;
+        
+        document.getElementById('sopObjective').textContent = item.objective || item.whyBuilt || 'Not specified';
+        document.getElementById('sopWhatItDoes').textContent = item.whatItDoes || 'Not specified';
+        document.getElementById('sopHowItWorks').textContent = item.howItWorks || 'Not specified';
+        
+        // How to Use (step by step)
+        const howToUseEl = document.getElementById('sopHowToUse');
+        if (item.howToUseSteps && item.howToUseSteps.length > 0) {
+            howToUseEl.innerHTML = '<ol>' + item.howToUseSteps.map(s => `<li>${s}</li>`).join('') + '</ol>';
+        } else {
+            howToUseEl.innerHTML = `<p>${item.howToUse || 'Not specified'}</p>`;
+        }
+        
+        document.getElementById('sopHowToMaintain').textContent = item.howToMaintain || 'Not specified';
+        
+        // Process / SOP
+        const processEl = document.getElementById('sopProcess');
+        if (item.process && item.process.length > 0) {
+            processEl.innerHTML = '<ol>' + item.process.map(s => `<li>${s}</li>`).join('') + '</ol>';
+        } else {
+            processEl.innerHTML = '<p>No detailed process documented yet.</p>';
+        }
+        
+        // Related Files
+        const filesEl = document.getElementById('sopRelatedFiles');
+        if (item.relatedFiles && item.relatedFiles.length > 0) {
+            filesEl.innerHTML = item.relatedFiles.map(f => 
+                `<a href="${f.url}" target="_blank">${f.icon || '📎'} ${f.name}</a>`
+            ).join('');
+        } else if (item.relatedFilesText) {
+            filesEl.innerHTML = `<p>${item.relatedFilesText}</p>`;
+        } else {
+            filesEl.innerHTML = '<p>No related files.</p>';
+        }
+
+        document.getElementById('sopModal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeSopModal = function() {
+        document.getElementById('sopModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+
+    window.downloadSOP = function() {
+        const title = document.getElementById('sopTitle').textContent;
+        const content = generateSOPMarkdown();
+        const blob = new Blob([content], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `SOP_${title.replace(/[^a-z0-9]/gi, '_')}.md`;
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
+    window.copySOP = function() {
+        const content = generateSOPMarkdown();
+        navigator.clipboard.writeText(content).then(() => {
+            alert('SOP copied to clipboard!');
+        });
+    };
+
+    function generateSOPMarkdown() {
+        const title = document.getElementById('sopTitle').textContent;
+        const meta = document.getElementById('sopMeta').textContent;
+        const objective = document.getElementById('sopObjective').textContent;
+        const whatItDoes = document.getElementById('sopWhatItDoes').textContent;
+        const howItWorks = document.getElementById('sopHowItWorks').textContent;
+        const howToUse = document.getElementById('sopHowToUse').innerText;
+        const howToMaintain = document.getElementById('sopHowToMaintain').textContent;
+        const process = document.getElementById('sopProcess').innerText;
+        const relatedFiles = document.getElementById('sopRelatedFiles').innerText;
+
+        return `# ${title}
+
+**${meta}**
+
+---
+
+## 🎯 Objective
+${objective}
+
+## 📝 What It Does
+${whatItDoes}
+
+## ⚙️ How It Works
+${howItWorks}
+
+## 📋 How To Use (Step-by-Step)
+${howToUse}
+
+## 🔧 How To Maintain
+${howToMaintain}
+
+## 🔄 Process / SOP (How to Recreate)
+${process}
+
+## 📎 Related Files & Links
+${relatedFiles}
+
+---
+*Generated from Jesus Dashboard V2*
+`;
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSopModal();
+    });
+
+    // Close modal on backdrop click
+    document.getElementById('sopModal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'sopModal') closeSopModal();
+    });
 
     function setupVaultFilters(vault) {
         const searchInput = document.getElementById('vaultSearch');

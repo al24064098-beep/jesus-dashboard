@@ -39,7 +39,7 @@
         <button class="nav-tab" data-section="report">📊 Agent Report</button>
         <button class="nav-tab" data-section="intelligence">🧠 AI Intelligence</button>
         <button class="nav-tab" data-section="money">💰 Money Ideas</button>
-        <button class="nav-tab" data-section="vault">📁 Vault</button>
+        <button class="nav-tab" data-section="vault">📁 Vault & SOPs</button>
         <button class="nav-tab" data-section="library">📚 Library</button>
         <button class="nav-tab notification" data-section="notes">💬 Notes <span class="badge" id="notesBadge">0</span></button>
         <button class="nav-tab" data-section="health">🖥️ Health</button>
@@ -208,11 +208,27 @@
             <div class="ideas-list" id="moneyIdeasList"></div>
         </section>
 
-        <!-- 5. JESUS'S VAULT -->
+        <!-- 5. JESUS'S VAULT & SOPs -->
         <section id="vault" class="content-section">
             <div class="section-header">
-                <h2>📁 Jesus's Vault</h2>
-                <p class="section-desc">Archive of everything I create. Nothing gets lost.</p>
+                <h2>📁 Jesus's Vault & SOPs</h2>
+                <p class="section-desc">Archive of everything I build. Full documentation like a company SOP system.</p>
+            </div>
+            
+            <!-- Stats -->
+            <div class="vault-stats">
+                <div class="stat-box">
+                    <span class="stat-value" id="totalBuilds">0</span>
+                    <span class="stat-label">Total Builds</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="totalSOPs">0</span>
+                    <span class="stat-label">SOPs Documented</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="thisWeekBuilds">0</span>
+                    <span class="stat-label">This Week</span>
+                </div>
             </div>
             
             <div class="vault-toolbar">
@@ -227,10 +243,66 @@
                     <option value="sops">SOPs</option>
                     <option value="tools">Tools</option>
                     <option value="integrations">Integrations</option>
+                    <option value="dashboards">Dashboards</option>
+                    <option value="systems">Systems</option>
                 </select>
             </div>
             
             <div class="vault-grid" id="vaultGrid"></div>
+            
+            <!-- Expanded SOP View (shown when item clicked) -->
+            <div class="sop-detail-modal" id="sopModal" style="display:none;">
+                <div class="sop-detail-content">
+                    <button class="sop-close" onclick="closeSopModal()">✕</button>
+                    <div class="sop-header">
+                        <span class="sop-icon" id="sopIcon">📁</span>
+                        <div>
+                            <h2 id="sopTitle">Build Name</h2>
+                            <span class="sop-meta" id="sopMeta">Category • Date</span>
+                        </div>
+                    </div>
+                    
+                    <div class="sop-section">
+                        <h3>🎯 Objective</h3>
+                        <p id="sopObjective"></p>
+                    </div>
+                    
+                    <div class="sop-section">
+                        <h3>📝 What It Does</h3>
+                        <p id="sopWhatItDoes"></p>
+                    </div>
+                    
+                    <div class="sop-section">
+                        <h3>⚙️ How It Works</h3>
+                        <p id="sopHowItWorks"></p>
+                    </div>
+                    
+                    <div class="sop-section">
+                        <h3>📋 How To Use (Step-by-Step)</h3>
+                        <div id="sopHowToUse"></div>
+                    </div>
+                    
+                    <div class="sop-section">
+                        <h3>🔧 How To Maintain</h3>
+                        <p id="sopHowToMaintain"></p>
+                    </div>
+                    
+                    <div class="sop-section">
+                        <h3>🔄 Process / SOP (How to Recreate)</h3>
+                        <div id="sopProcess"></div>
+                    </div>
+                    
+                    <div class="sop-section">
+                        <h3>📎 Related Files & Links</h3>
+                        <div id="sopRelatedFiles"></div>
+                    </div>
+                    
+                    <div class="sop-actions">
+                        <button class="btn" onclick="downloadSOP()">📥 Download SOP</button>
+                        <button class="btn" onclick="copySOP()">📋 Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- 6. RESOURCE LIBRARY -->
