@@ -363,8 +363,8 @@ property-partner-landing/
         {
             name: "Property Partner Landing (Demo)",
             url: "https://al24064098-beep.github.io/property-partner-demo/",
-            status: "pending_deploy",
-            description: "Partner signup page template"
+            status: "live",
+            description: "Partner signup page template - LIVE"
         },
         {
             name: "CS3 CRM",
