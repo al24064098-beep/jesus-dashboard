@@ -3047,3 +3047,23 @@ textarea {
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
+
+/* Sync Config */
+.sync-config-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+.sync-config-card div {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+.sync-config-card code {
+    background: var(--bg-tertiary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+}

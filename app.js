@@ -1738,6 +1738,16 @@ function renderAccess() {
         `).join('');
     }
     
+    // Render Sync Config
+    const syncBlobId = document.getElementById('syncBlobId');
+    const syncRefreshInterval = document.getElementById('syncRefreshInterval');
+    if (syncBlobId && access.syncConfig) {
+        syncBlobId.textContent = access.syncConfig.notesBlobId;
+    }
+    if (syncRefreshInterval && access.syncConfig) {
+        syncRefreshInterval.textContent = access.syncConfig.autoRefreshInterval;
+    }
+    
     // Render Credentials
     const credsGrid = document.getElementById('accessCredsGrid');
     if (credsGrid && access.credentials) {
