@@ -2880,3 +2880,20 @@ textarea {
         grid-template-columns: 1fr;
     }
 }
+
+/* Sync Button */
+.btn-success {
+    background: var(--accent-success);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-success:hover {
+    background: #2da44e;
+    transform: translateY(-1px);
+}

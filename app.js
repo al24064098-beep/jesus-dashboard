@@ -750,6 +750,57 @@ ${relatedFiles}
     function setupNotes() {
         const saveBtn = document.getElementById('saveNote');
         saveBtn.addEventListener('click', saveNote);
+        
+        // Sync to Jesus button
+        const syncBtn = document.getElementById('syncToJesus');
+        if (syncBtn) {
+            syncBtn.addEventListener('click', syncNotesToJesus);
+        }
+    }
+    
+    function syncNotesToJesus() {
+        const notes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
+        const unreadNotes = notes.filter(n => n.status === 'unread');
+        
+        if (unreadNotes.length === 0) {
+            alert('No unread notes to send!');
+            return;
+        }
+        
+        // Format notes for sending
+        let message = '📋 DASHBOARD NOTES:\n\n';
+        unreadNotes.forEach((note, i) => {
+            const typeEmoji = {
+                'task': '📋',
+                'feedback': '💬',
+                'idea': '💡',
+                'question': '❓',
+                'correction': '🔧'
+            }[note.type] || '📝';
+            
+            message += `${i+1}. ${typeEmoji} ${note.priority ? '⚡HIGH: ' : ''}${note.content}\n\n`;
+        });
+        
+        // Copy to clipboard
+        navigator.clipboard.writeText(message).then(() => {
+            // Mark notes as read
+            notes.forEach(n => {
+                if (n.status === 'unread') n.status = 'sent';
+            });
+            localStorage.setItem('jesusNotes', JSON.stringify(notes));
+            
+            // Open Telegram (works on mobile and desktop)
+            const telegramUrl = `https://t.me/share/url?text=${encodeURIComponent(message)}`;
+            window.open(telegramUrl, '_blank');
+            
+            alert('Notes copied to clipboard and Telegram opened!\n\nJust paste and send to Jesus.');
+            
+            loadNotes();
+            updateNotesBadge();
+        }).catch(() => {
+            // Fallback: just show the message
+            prompt('Copy this and send to Jesus:', message);
+        });
     }
 
     function saveNote() {
