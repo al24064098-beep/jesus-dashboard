@@ -923,10 +923,8 @@ property-partner-landing/
         
         // Sync Configuration
         syncConfig: {
-            provider: "rentry.co",
-            rentryUrl: "vgvyu5ad",
-            notesReadUrl: "https://rentry.co/api/raw/vgvyu5ad",
-            notesViewUrl: "https://rentry.co/vgvyu5ad",
+            provider: "Cloudflare Worker",
+            workerUrl: "https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev",
             autoRefreshInterval: 30
         },
         

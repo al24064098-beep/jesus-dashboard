@@ -758,9 +758,8 @@ ${relatedFiles}
         }
     }
     
-    // Notes sync via email (Formspree - free, CORS-enabled)
-    // Jesus receives email notification when Al syncs notes
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mrbpkpvp'; // Jesus's email
+    // Cloudflare Worker for notes sync
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
     
     async function syncNotesToJesus() {
         // First check if there's text in the textarea - save it first
@@ -789,31 +788,33 @@ ${relatedFiles}
             }))
         };
         
-        // Download as JSON file for Al to upload to repo
-        const jsonStr = JSON.stringify(exportData, null, 2);
-        const blob = new Blob([jsonStr], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'al-notes.json';
-        a.click();
-        URL.revokeObjectURL(url);
-        
-        // Mark notes as sent
-        notes.forEach(n => {
-            if (n.status === 'unread') n.status = 'sent';
-        });
-        localStorage.setItem('jesusNotes', JSON.stringify(notes));
-        
-        // Open GitHub upload page
-        const uploadUrl = 'https://github.com/al24064098-beep/jesus-dashboard/upload/main';
-        
-        alert('✅ Notes downloaded as al-notes.json!\n\nClick OK to open GitHub → drag & drop the file → commit.');
-        window.open(uploadUrl, '_blank');
-        
-        loadNotes();
-        updateNotesBadge();
-        renderChat();
+        // Send to Cloudflare Worker
+        try {
+            const response = await fetch(WORKER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(exportData)
+            });
+            
+            if (response.ok) {
+                // Mark notes as sent
+                notes.forEach(n => {
+                    if (n.status === 'unread') n.status = 'sent';
+                });
+                localStorage.setItem('jesusNotes', JSON.stringify(notes));
+                
+                alert('✅ Note sent to Jesus!');
+                
+                loadNotes();
+                updateNotesBadge();
+                renderChat();
+            } else {
+                throw new Error('Failed');
+            }
+        } catch (e) {
+            console.error('Sync error:', e);
+            alert('Sync failed. Try again.');
+        }
     }
 
     function saveNote() {
