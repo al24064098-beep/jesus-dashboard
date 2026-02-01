@@ -759,11 +759,17 @@ ${relatedFiles}
     }
     
     function syncNotesToJesus() {
+        // First check if there's text in the textarea - save it first
+        const contentArea = document.getElementById('noteContent');
+        if (contentArea && contentArea.value.trim()) {
+            saveNote(); // Auto-save before sync
+        }
+        
         const notes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
-        const unreadNotes = notes.filter(n => n.status === 'unread');
+        const unreadNotes = notes.filter(n => n.status === 'unread' || n.status === 'sent');
         
         if (unreadNotes.length === 0) {
-            alert('No unread notes to sync!');
+            alert('No notes to sync! Write a note first.');
             return;
         }
         
