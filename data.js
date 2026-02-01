@@ -7,6 +7,8 @@ const dashboardData = {
     // Current status
     status: {
         online: true,
+        working: true,  // true = actively working, false = idle
+        statusText: "Building Dashboard",  // What I'm doing right now
         activeProject: "Jesus Dashboard Build",
         tasksToday: 3
     },

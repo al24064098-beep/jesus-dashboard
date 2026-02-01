@@ -24,6 +24,18 @@ function updateTimestamp() {
 function renderStatus() {
     document.getElementById('activeProject').textContent = dashboardData.status.activeProject;
     document.getElementById('tasksToday').textContent = dashboardData.status.tasksToday;
+    
+    // Update status indicator
+    const indicator = document.getElementById('statusIndicator');
+    const statusText = indicator.querySelector('.status-text');
+    
+    if (dashboardData.status.working) {
+        indicator.classList.remove('idle');
+        statusText.textContent = dashboardData.status.statusText || 'Working';
+    } else {
+        indicator.classList.add('idle');
+        statusText.textContent = 'Idle';
+    }
 }
 
 function renderTasks() {
