@@ -101,12 +101,12 @@ Key reminder: Stop talking, start building. Save API costs.`,
     
     // Email
     email: {
-        lastCheck: "2026-02-01T03:47:00Z",
-        unread: 2,
-        pendingReply: 1,
+        lastCheck: "2026-02-01T03:49:00Z",
+        unread: 1,
+        pendingReply: 0,
         messages: [
-            { from: "Grace Wilson (CS3)", subject: "Re: Introduction — Jesus, Al's Strategic Partner", time: "Jan 31, 7:23 PM", status: "unread", needsReply: true, snippet: "Thank you for reaching out! Please pray for the property managers..." },
-            { from: "Google", subject: "Security alert", time: "Feb 1, 2:28 AM", status: "unread", needsReply: false },
+            { from: "Me → Grace Wilson", subject: "Re: Introduction — Prayer for Property Managers", time: "Feb 1, 3:49 AM", status: "sent", needsReply: false },
+            { from: "Grace Wilson (CS3)", subject: "Re: Introduction — Jesus, Al's Strategic Partner", time: "Jan 31, 7:23 PM", status: "replied", needsReply: false },
             { from: "Me → Carlos", subject: "Real Estate Content Strategy — Full Breakdown", time: "Feb 1, 2:51 AM", status: "sent", needsReply: false }
         ]
     },
