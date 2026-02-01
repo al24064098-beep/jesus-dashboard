@@ -59,6 +59,7 @@
         loadVault();
         loadLibrary();
         loadNotes();
+        loadContent();
         loadSystemHealth();
         loadMetrics();
         loadScripture();
@@ -777,6 +778,173 @@ ${relatedFiles}
         localStorage.setItem('jesusNotes', JSON.stringify(notes));
         loadNotes();
     };
+
+    // ========== 10. CONTENT / NEWSLETTER ==========
+    function loadContent() {
+        const content = dashboardData.content;
+        if (!content) return;
+
+        // Pending
+        const pending = content.filter(c => c.status === 'pending' || c.status === 'revision');
+        document.getElementById('pendingContentCount').textContent = pending.length;
+        renderContentList('pendingContentList', pending, true);
+
+        // Approved
+        const approved = content.filter(c => c.status === 'approved');
+        document.getElementById('approvedContentCount').textContent = approved.length;
+        renderContentList('approvedContentList', approved, false);
+
+        // Published
+        const published = content.filter(c => c.status === 'published');
+        document.getElementById('publishedContentCount').textContent = published.length;
+        renderPublishedList('publishedContentList', published);
+    }
+
+    function renderContentList(elementId, items, clickable) {
+        const el = document.getElementById(elementId);
+        if (!items || items.length === 0) {
+            el.innerHTML = '<div class="empty-state"><p>Nothing here</p></div>';
+            return;
+        }
+
+        el.innerHTML = items.map(item => `
+            <div class="content-item" ${clickable ? `onclick="openContentModal(${item.id})"` : ''} data-id="${item.id}">
+                <span class="content-item-icon">${getContentIcon(item.type)}</span>
+                <div class="content-item-info">
+                    <div class="content-item-title">${item.title}</div>
+                    <div class="content-item-meta">${item.type} • ${formatDate(item.createdAt)}</div>
+                </div>
+                <span class="content-item-status ${item.status}">${getStatusText(item.status)}</span>
+            </div>
+        `).join('');
+    }
+
+    function renderPublishedList(elementId, items) {
+        const el = document.getElementById(elementId);
+        if (!items || items.length === 0) {
+            el.innerHTML = '<div class="empty-state"><p>No published content yet</p></div>';
+            return;
+        }
+
+        el.innerHTML = items.map(item => `
+            <div class="content-item" data-id="${item.id}">
+                <span class="content-item-icon">${getContentIcon(item.type)}</span>
+                <div class="content-item-info">
+                    <div class="content-item-title">${item.title}</div>
+                    <div class="content-item-meta">${item.type} • Published ${formatDate(item.publishedAt)}</div>
+                </div>
+                <a href="${item.url}" target="_blank" class="content-item-link">🔗 View on ${item.platform || 'Substack'}</a>
+            </div>
+        `).join('');
+    }
+
+    function getContentIcon(type) {
+        const icons = {
+            'newsletter': '📧',
+            'blog': '📝',
+            'linkedin': '💼',
+            'twitter': '🐦',
+            'email': '✉️'
+        };
+        return icons[type] || '📄';
+    }
+
+    function getStatusText(status) {
+        const texts = {
+            'pending': 'Pending Review',
+            'revision': 'Needs Revision',
+            'approved': 'Approved',
+            'published': 'Published'
+        };
+        return texts[status] || status;
+    }
+
+    // Current content being viewed
+    let currentContentId = null;
+
+    window.openContentModal = function(id) {
+        const content = dashboardData.content.find(c => c.id == id);
+        if (!content) return;
+
+        currentContentId = id;
+
+        document.getElementById('contentTypeBadge').textContent = content.type;
+        document.getElementById('contentTitle').textContent = content.title;
+        document.getElementById('contentMeta').textContent = `${getStatusText(content.status)} • Created ${formatDate(content.createdAt)}`;
+        document.getElementById('contentPreview').innerHTML = renderContent(content.body);
+        document.getElementById('revisionNotes').style.display = 'none';
+
+        document.getElementById('contentModal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeContentModal = function() {
+        document.getElementById('contentModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        currentContentId = null;
+    };
+
+    window.approveContent = function() {
+        if (!currentContentId) return;
+        
+        // In real implementation, this would update data and notify Jesus
+        // For now, save to localStorage
+        let approvals = JSON.parse(localStorage.getItem('contentApprovals')) || [];
+        approvals.push({
+            id: currentContentId,
+            action: 'approved',
+            timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('contentApprovals', JSON.stringify(approvals));
+        
+        alert('✅ Content approved! Jesus will post it shortly.');
+        closeContentModal();
+    };
+
+    window.requestRevision = function() {
+        document.getElementById('revisionNotes').style.display = 'block';
+    };
+
+    window.submitRevision = function() {
+        const notes = document.getElementById('revisionText').value.trim();
+        if (!notes) {
+            alert('Please enter revision notes');
+            return;
+        }
+
+        let revisions = JSON.parse(localStorage.getItem('contentRevisions')) || [];
+        revisions.push({
+            id: currentContentId,
+            notes: notes,
+            timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('contentRevisions', JSON.stringify(revisions));
+
+        alert('✏️ Revision request sent to Jesus.');
+        closeContentModal();
+    };
+
+    window.rejectContent = function() {
+        if (!confirm('Are you sure you want to reject this content?')) return;
+
+        let rejections = JSON.parse(localStorage.getItem('contentRejections')) || [];
+        rejections.push({
+            id: currentContentId,
+            timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('contentRejections', JSON.stringify(rejections));
+
+        alert('❌ Content rejected.');
+        closeContentModal();
+    };
+
+    // Close content modal on escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeContentModal();
+            closeSopModal();
+        }
+    });
 
     // ========== 8. SYSTEM HEALTH ==========
     function loadSystemHealth() {

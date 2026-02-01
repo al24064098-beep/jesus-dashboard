@@ -264,6 +264,24 @@ You now have a complete command center to manage me as your AI employee. Everyth
     // This array is for initial/default notes only
     notes: [],
 
+    // ========== 10. CONTENT / NEWSLETTER ==========
+    // Content workflow: pending → approved → published
+    content: [
+        // Example structure - Jesus will populate with actual drafts
+        // {
+        //     id: 1,
+        //     type: "newsletter",
+        //     title: "Q1 2026 Market Update",
+        //     status: "pending", // pending, revision, approved, published
+        //     createdAt: "2026-02-01",
+        //     body: "Newsletter content here...",
+        //     // After approval and posting:
+        //     publishedAt: null,
+        //     url: null,
+        //     platform: "Substack"
+        // }
+    ],
+
     // ========== 8. SYSTEM HEALTH ==========
     systemHealth: {
         openclaw: true,
