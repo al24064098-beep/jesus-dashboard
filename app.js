@@ -758,9 +758,10 @@ ${relatedFiles}
         }
     }
     
-    // JSONBlob ID for notes storage (free, no signup)
-    const NOTES_BLOB_ID = '019c1a2d-372c-7680-b4e9-b42d61d8c2fa';
-    const NOTES_API_URL = `https://jsonblob.com/api/jsonBlob/${NOTES_BLOB_ID}`;
+    // Rentry.co for notes sync (free, CORS-enabled)
+    const RENTRY_URL = 'vgvyu5ad';
+    const RENTRY_EDIT_CODE = 'TdiZb75Q';
+    const NOTES_READ_URL = `https://rentry.co/api/raw/${RENTRY_URL}`;
     
     async function syncNotesToJesus() {
         // First check if there's text in the textarea - save it first
@@ -789,15 +790,20 @@ ${relatedFiles}
             }))
         };
         
-        // Send to JSONBlob (Jesus will read this)
+        // Send to Rentry.co (Jesus will read this)
         try {
-            const response = await fetch(NOTES_API_URL, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(exportData)
+            const formData = new FormData();
+            formData.append('edit_code', RENTRY_EDIT_CODE);
+            formData.append('text', JSON.stringify(exportData, null, 2));
+            
+            const response = await fetch(`https://rentry.co/api/edit/${RENTRY_URL}`, {
+                method: 'POST',
+                body: formData
             });
             
-            if (response.ok) {
+            const result = await response.json();
+            
+            if (result.status === '200') {
                 // Mark notes as sent
                 notes.forEach(n => {
                     if (n.status === 'unread') n.status = 'sent';
@@ -810,11 +816,14 @@ ${relatedFiles}
                 updateNotesBadge();
                 renderChat();
             } else {
-                throw new Error('Failed to send');
+                throw new Error(result.content || 'Failed to send');
             }
         } catch (e) {
             console.error('Sync error:', e);
-            alert('Failed to sync. Check console for details.');
+            // Fallback: copy to clipboard
+            const jsonStr = JSON.stringify(exportData, null, 2);
+            await navigator.clipboard.writeText(jsonStr);
+            alert('Sync failed. Notes copied to clipboard. Please send via Telegram temporarily.');
         }
     }
 

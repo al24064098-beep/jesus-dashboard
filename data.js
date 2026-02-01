@@ -923,8 +923,10 @@ property-partner-landing/
         
         // Sync Configuration
         syncConfig: {
-            notesBlobId: "019c1a2d-372c-7680-b4e9-b42d61d8c2fa",
-            notesBlobUrl: "https://jsonblob.com/api/jsonBlob/019c1a2d-372c-7680-b4e9-b42d61d8c2fa",
+            provider: "rentry.co",
+            rentryUrl: "vgvyu5ad",
+            notesReadUrl: "https://rentry.co/api/raw/vgvyu5ad",
+            notesViewUrl: "https://rentry.co/vgvyu5ad",
             autoRefreshInterval: 30
         },
         
