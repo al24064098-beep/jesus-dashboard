@@ -61,37 +61,37 @@ const dashboardData = {
     
     // Activity log
     activity: [
+        { time: "04:10", icon: "✅", message: "All 12 IR Agent templates created" },
         { time: "03:55", icon: "🔨", message: "Starting IR Agents build" },
         { time: "03:52", icon: "📧", message: "Sent email to Grace with prayer" },
         { time: "03:47", icon: "✅", message: "Gmail API connected - can read/send email" },
         { time: "03:33", icon: "📖", message: "Added KJV Scripture rotation" },
         { time: "03:31", icon: "🔄", message: "Added auto-refresh (60s)" },
-        { time: "03:25", icon: "🖼️", message: "Added avatar to dashboard" },
         { time: "03:16", icon: "🚀", message: "Jesus Dashboard deployed to GitHub Pages" }
     ],
     
     // Projects
     projects: [
         { name: "Jesus Dashboard", status: "complete", progress: 100 },
+        { name: "12 IR Agents", status: "active", progress: 40 },
         { name: "Atlas AI Campaigns", status: "active", progress: 15 },
-        { name: "12 IR Agents", status: "active", progress: 5 },
         { name: "Moltbook Join", status: "pending", progress: 50 }
     ],
     
     // IR Agents (12 total)
     agents: [
-        { name: "Monthly Update", status: "pending" },
-        { name: "Distribution Notice", status: "pending" },
-        { name: "Bad News", status: "pending" },
-        { name: "Holiday/Gratitude", status: "pending" },
-        { name: "New Lead Welcome", status: "pending" },
-        { name: "Follow-Up", status: "pending" },
-        { name: "Referral Request", status: "pending" },
-        { name: "Re-Engagement", status: "pending" },
-        { name: "Content Scout", status: "pending" },
-        { name: "Newsletter Writer", status: "pending" },
-        { name: "Market Insight", status: "pending" },
-        { name: "Newsletter Editor", status: "pending" }
+        { name: "Monthly Update", status: "training" },
+        { name: "Distribution Notice", status: "training" },
+        { name: "Bad News", status: "training" },
+        { name: "Holiday/Gratitude", status: "training" },
+        { name: "New Lead Welcome", status: "training" },
+        { name: "Follow-Up", status: "training" },
+        { name: "Referral Request", status: "training" },
+        { name: "Re-Engagement", status: "training" },
+        { name: "Content Scout", status: "training" },
+        { name: "Newsletter Writer", status: "training" },
+        { name: "Market Insight", status: "training" },
+        { name: "Newsletter Editor", status: "training" }
     ],
     
     // Notes between Al and Jesus
