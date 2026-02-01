@@ -286,6 +286,43 @@ a:hover {
     color: var(--accent-success);
 }
 
+/* ========== SCRIPTURE BANNER ========== */
+.scripture-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(240, 192, 0, 0.1), rgba(163, 113, 247, 0.1));
+    border: 1px solid var(--accent-gold);
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.scripture-banner .scripture-icon {
+    font-size: 2.5rem;
+}
+
+.scripture-banner .scripture-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.scripture-banner .scripture-ref {
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .scripture-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 /* ========== OVERVIEW / HOME ========== */
 .overview-stats {
     display: grid;

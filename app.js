@@ -76,6 +76,14 @@
     function loadOverview() {
         const data = dashboardData;
         
+        // Scripture First - God First
+        if (typeof scriptures !== 'undefined' && scriptures.length > 0) {
+            const index = Math.floor(Date.now() / 600000) % scriptures.length; // Rotate every 10 min
+            const scripture = scriptures[index];
+            document.getElementById('mainScriptureText').textContent = '"' + scripture.text + '"';
+            document.getElementById('mainScriptureRef').textContent = '— ' + scripture.ref + ' (KJV)';
+        }
+        
         // Quick Stats
         const completedToday = data.agentReport?.completed?.length || 0;
         const blockers = data.agentReport?.blockers?.length || 0;
