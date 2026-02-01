@@ -453,6 +453,113 @@ main {
     background: var(--text-secondary);
 }
 
+/* Email Panel */
+.email-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.email-stat {
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+}
+
+.email-count {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.email-count.has-unread {
+    color: var(--error);
+}
+
+.email-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.email-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.email-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--border);
+}
+
+.email-item.unread {
+    border-left-color: var(--accent);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.email-item.needs-reply {
+    border-left-color: var(--error);
+}
+
+.email-from {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.email-subject {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.email-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.email-status {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+.email-status.pending {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--error);
+}
+
+.email-status.replied {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--success);
+}
+
+.email-last-check {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.75rem;
+    text-align: right;
+}
+
+.email-empty {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
 /* Notes */
 .notes-content {
     background: var(--bg-tertiary);

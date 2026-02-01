@@ -25,6 +25,7 @@ function renderDashboard() {
     renderActivity();
     renderProjects();
     renderAgents();
+    renderEmail();
     renderNotes();
     renderMetrics();
 }
@@ -100,6 +101,40 @@ function renderAgents() {
         <div class="agent-card">
             <span class="agent-status ${agent.status}"></span>
             ${agent.name}
+        </div>
+    `).join('');
+}
+
+function renderEmail() {
+    const email = dashboardData.email;
+    
+    // Update counts
+    const unreadEl = document.getElementById('unreadCount');
+    unreadEl.textContent = email.unread;
+    if (email.unread > 0) unreadEl.classList.add('has-unread');
+    else unreadEl.classList.remove('has-unread');
+    
+    document.getElementById('pendingReply').textContent = email.pendingReply;
+    
+    // Update last check time
+    const lastCheck = new Date(email.lastCheck);
+    document.getElementById('emailLastCheck').textContent = `Last checked: ${lastCheck.toLocaleString()}`;
+    
+    // Render email list
+    const container = document.getElementById('emailList');
+    
+    if (email.messages.length === 0) {
+        container.innerHTML = '<div class="email-empty">📭 Inbox clear — no new messages</div>';
+        return;
+    }
+    
+    container.innerHTML = email.messages.map(msg => `
+        <div class="email-item ${msg.status === 'unread' ? 'unread' : ''} ${msg.needsReply ? 'needs-reply' : ''}">
+            <span class="email-from">${msg.from}</span>
+            <span class="email-subject">${msg.subject}</span>
+            <span class="email-time">${msg.time}</span>
+            ${msg.needsReply ? '<span class="email-status pending">Needs Reply</span>' : 
+              msg.status === 'replied' ? '<span class="email-status replied">Replied</span>' : ''}
         </div>
     `).join('');
 }

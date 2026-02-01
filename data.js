@@ -99,6 +99,17 @@ const dashboardData = {
 
 Key reminder: Stop talking, start building. Save API costs.`,
     
+    // Email
+    email: {
+        lastCheck: "2026-02-01T03:35:00Z",
+        unread: 0,
+        pendingReply: 0,
+        messages: [
+            // Example format:
+            // { from: "someone@email.com", subject: "Hello", time: "03:30", status: "unread", needsReply: false }
+        ]
+    },
+
     // Metrics
     metrics: {
         apiCostToday: 35.00,
