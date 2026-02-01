@@ -550,9 +550,9 @@ property-partner-landing/
             vibe: "Upscale, modern, resort-style",
             targetTenant: "Young professionals, luxury seekers",
             brandColors: {
-                primary: "#1a1a2e",
-                secondary: "#16213e", 
-                accent: "#d4af37"
+                primary: "#2b333f",
+                secondary: "#8e2de2", 
+                accent: "#ffd700"
             },
             amenities: ["Sky lounge with slots", "Rooftop pool (resort-style)", "24/7 Gym", "Basketball court", "Pet Spa", "Penthouse suites", "Community events"],
             apartmentFeatures: ["Smart Fridges", "Smart Locks", "Built-In Speakers", "Valet Trash"],
@@ -584,9 +584,9 @@ property-partner-landing/
             vibe: "Calm, cozy, small-town charm, family-friendly",
             targetTenant: "Families, military (Arnold AFB), young professionals",
             brandColors: {
-                primary: "#2d3436",
-                secondary: "#636e72",
-                accent: "#00b894"
+                primary: "#004f59",
+                secondary: "#30455b",
+                accent: "#bca460"
             },
             amenities: ["Gated community", "Pet-friendly"],
             apartmentFeatures: ["Granite countertops", "Stainless steel appliances", "In-unit washer/dryer", "Stylish backsplashes"],
@@ -615,9 +615,9 @@ property-partner-landing/
             vibe: "Modern, safe, community-focused, professional",
             targetTenant: "Fort Knox military, BlueOval SK employees, Baptist Health workers",
             brandColors: {
-                primary: "#1e3a5f",
-                secondary: "#2c5282",
-                accent: "#48bb78"
+                primary: "#004f59",
+                secondary: "#756749",
+                accent: "#3b82f6"
             },
             amenities: ["Saltwater Resort-Style Pool", "24/7 Fitness Center", "Clubhouse", "Amazon Hub Lockers", "Dog Park", "The Cove Mini Market", "Firepit & BBQ Area", "Valet Trash", "Basketball Courts", "Pickleball Courts"],
             apartmentFeatures: ["Stainless steel appliances", "Granite countertops", "Stylish backsplashes", "Furnished options", "Short-term leases"],
