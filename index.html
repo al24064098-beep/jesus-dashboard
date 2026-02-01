@@ -50,6 +50,7 @@
         <button class="nav-tab" data-section="challenges">🎯 Challenges</button>
         <button class="nav-tab" data-section="properties">🏠 Properties</button>
         <button class="nav-tab" data-section="access">🔐 Access</button>
+        <button class="nav-tab" data-section="timelog">⏱️ Time Log</button>
     </nav>
 
     <!-- Main Content Area -->
@@ -1051,6 +1052,28 @@
             <div class="access-section-group">
                 <h3>🛡️ Security Rules I Follow</h3>
                 <div class="security-rules" id="securityRulesList"></div>
+            </div>
+        </section>
+
+        <!-- TIME LOG SECTION -->
+        <section id="timelog" class="content-section">
+            <div class="section-header">
+                <h2>⏱️ Time Log</h2>
+                <p class="section-desc">What Jesus is working on, minute by minute. Last update: <span id="timelogLastUpdate">--</span></p>
+            </div>
+            
+            <!-- Current Status -->
+            <div class="current-status-card" id="currentStatusCard">
+                <div class="current-status-indicator"></div>
+                <div class="current-status-content">
+                    <div class="current-status-label">Currently:</div>
+                    <div class="current-status-task" id="currentTask">--</div>
+                </div>
+            </div>
+            
+            <!-- Time Log Entries -->
+            <div class="timelog-list" id="timelogList">
+                <!-- Populated by JS -->
             </div>
         </section>
     </main>

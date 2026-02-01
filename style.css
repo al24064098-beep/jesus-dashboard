@@ -2970,3 +2970,80 @@ textarea {
 .chat-message.from-al .chat-message-content {
     color: white;
 }
+
+/* ========== TIME LOG ========== */
+.current-status-card {
+    background: var(--bg-card);
+    border: 2px solid var(--accent-success);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.current-status-indicator {
+    width: 16px;
+    height: 16px;
+    background: var(--accent-success);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+.current-status-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.current-status-task {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.timelog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.timelog-entry {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    align-items: center;
+}
+
+.timelog-time {
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+    min-width: 80px;
+}
+
+.timelog-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-success);
+}
+
+.timelog-status.idle { background: var(--text-muted); }
+.timelog-status.working { background: var(--accent-success); }
+.timelog-status.blocked { background: var(--accent-warning); }
+
+.timelog-task {
+    flex: 1;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}

@@ -1843,3 +1843,44 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
         if (this.dataset.section === 'notes') renderChat();
     });
 });
+
+// ========== TIME LOG ==========
+function renderTimeLog() {
+    const timeLog = dashboardData.timeLog;
+    if (!timeLog) return;
+    
+    // Update last update time
+    const lastUpdate = document.getElementById('timelogLastUpdate');
+    if (lastUpdate && timeLog.lastUpdated) {
+        lastUpdate.textContent = new Date(timeLog.lastUpdated).toLocaleString();
+    }
+    
+    // Show current task (most recent entry)
+    const currentTask = document.getElementById('currentTask');
+    if (currentTask && timeLog.entries && timeLog.entries.length > 0) {
+        currentTask.textContent = timeLog.entries[0].task;
+    }
+    
+    // Render entries
+    const container = document.getElementById('timelogList');
+    if (!container || !timeLog.entries) return;
+    
+    container.innerHTML = timeLog.entries.map(entry => {
+        const time = new Date(entry.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        return `
+            <div class="timelog-entry">
+                <span class="timelog-time">${time}</span>
+                <span class="timelog-status ${entry.status}"></span>
+                <span class="timelog-task">${entry.task}</span>
+            </div>
+        `;
+    }).join('');
+}
+
+// Render on load and tab switch
+document.addEventListener('DOMContentLoaded', renderTimeLog);
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        if (this.dataset.section === 'timelog') renderTimeLog();
+    });
+});
