@@ -264,10 +264,13 @@ You now have a complete command center to manage me as your AI employee. Everyth
     // This array is for initial/default notes only
     notes: [],
 
-    // ========== 10. CONTENT / NEWSLETTER ==========
+    // ========== 10. CONTENT / NEWSLETTER / VIDEO ==========
     // Content workflow: pending → approved → published
+    // Supports: newsletter, blog, video/sora, reel, youtube, linkedin, twitter, email
     content: [
-        // Example structure - Jesus will populate with actual drafts
+        // Example structures:
+        
+        // NEWSLETTER/BLOG:
         // {
         //     id: 1,
         //     type: "newsletter",
@@ -275,10 +278,24 @@ You now have a complete command center to manage me as your AI employee. Everyth
         //     status: "pending", // pending, revision, approved, published
         //     createdAt: "2026-02-01",
         //     body: "Newsletter content here...",
-        //     // After approval and posting:
         //     publishedAt: null,
         //     url: null,
         //     platform: "Substack"
+        // }
+        
+        // VIDEO (SORA):
+        // {
+        //     id: 2,
+        //     type: "sora",
+        //     title: "CS3 Property Tour - McKenzie",
+        //     status: "pending",
+        //     createdAt: "2026-02-01",
+        //     videoUrl: "https://sora.com/v/xxxxx", // Link to video
+        //     caption: "Take a virtual tour of our newest acquisition...", // Post caption
+        //     body: "Additional notes about the video...", // Optional
+        //     publishedAt: null,
+        //     url: null,
+        //     platform: "Instagram"
         // }
     ],
 

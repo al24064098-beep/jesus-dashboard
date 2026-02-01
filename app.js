@@ -844,7 +844,11 @@ ${relatedFiles}
             'blog': '📝',
             'linkedin': '💼',
             'twitter': '🐦',
-            'email': '✉️'
+            'email': '✉️',
+            'video': '🎬',
+            'sora': '🎬',
+            'reel': '📱',
+            'youtube': '▶️'
         };
         return icons[type] || '📄';
     }
@@ -871,12 +875,60 @@ ${relatedFiles}
         document.getElementById('contentTypeBadge').textContent = content.type;
         document.getElementById('contentTitle').textContent = content.title;
         document.getElementById('contentMeta').textContent = `${getStatusText(content.status)} • Created ${formatDate(content.createdAt)}`;
-        document.getElementById('contentPreview').innerHTML = renderContent(content.body);
+        
+        // Handle different content types
+        const previewEl = document.getElementById('contentPreview');
+        
+        if (content.type === 'video' || content.type === 'sora' || content.type === 'reel' || content.type === 'youtube') {
+            // Video content with link and caption
+            let videoHtml = '';
+            
+            // Video embed or link
+            if (content.videoUrl) {
+                if (content.videoUrl.includes('youtube.com') || content.videoUrl.includes('youtu.be')) {
+                    const videoId = extractYouTubeId(content.videoUrl);
+                    videoHtml = `<div class="video-preview">
+                        <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                    </div>`;
+                } else {
+                    videoHtml = `<div class="video-link">
+                        <span class="video-link-icon">🎬</span>
+                        <div>
+                            <a href="${content.videoUrl}" target="_blank">Watch Video ↗</a>
+                            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem;">${content.videoUrl}</p>
+                        </div>
+                    </div>`;
+                }
+            }
+            
+            // Caption
+            if (content.caption) {
+                videoHtml += `<div class="video-caption">
+                    <div class="video-caption-label">Caption / Post Copy</div>
+                    <div class="video-caption-text">${content.caption}</div>
+                </div>`;
+            }
+            
+            // Additional notes
+            if (content.body) {
+                videoHtml += `<div style="margin-top:1rem;">${renderContent(content.body)}</div>`;
+            }
+            
+            previewEl.innerHTML = videoHtml;
+        } else {
+            // Text content (newsletter, blog, etc.)
+            previewEl.innerHTML = renderContent(content.body);
+        }
+        
         document.getElementById('revisionNotes').style.display = 'none';
-
         document.getElementById('contentModal').style.display = 'block';
         document.body.style.overflow = 'hidden';
     };
+    
+    function extractYouTubeId(url) {
+        const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\?\/]+)/);
+        return match ? match[1] : '';
+    }
 
     window.closeContentModal = function() {
         document.getElementById('contentModal').style.display = 'none';
