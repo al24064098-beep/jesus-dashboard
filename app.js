@@ -798,9 +798,9 @@ ${relatedFiles}
             // Open GitHub edit page for al-notes.json
             const githubEditUrl = 'https://github.com/al24064098-beep/jesus-dashboard/edit/main/al-notes.json';
             
-            if (confirm('Notes copied to clipboard!\n\nClick OK to open GitHub and paste.\n\nSteps:\n1. Select all existing content\n2. Paste (Ctrl+V)\n3. Click "Commit changes"')) {
-                window.open(githubEditUrl, '_blank');
-            }
+            // Auto-open GitHub edit page
+            window.open(githubEditUrl, '_blank');
+            alert('Notes copied! Paste in GitHub and commit.');
             
             loadNotes();
             updateNotesBadge();
@@ -1284,11 +1284,29 @@ ${relatedFiles}
 
     // ========== AUTO REFRESH ==========
     function setupAutoRefresh() {
-        // Refresh data every 60 seconds
-        setInterval(() => {
-            loadAllData();
-            updateLastSync();
-        }, 60000);
+        // Refresh data every 30 seconds by fetching fresh data.js
+        setInterval(async () => {
+            try {
+                // Fetch fresh data.js from GitHub (cache bust)
+                const timestamp = Date.now();
+                const response = await fetch(`data.js?t=${timestamp}`);
+                const text = await response.text();
+                
+                // Extract dashboardData from the script
+                const match = text.match(/const dashboardData = (\{[\s\S]*\});/);
+                if (match) {
+                    const newData = eval('(' + match[1] + ')');
+                    // Update global dashboardData
+                    Object.assign(dashboardData, newData);
+                    loadAllData();
+                    renderChat();
+                    updateLastSync();
+                    console.log('Auto-refresh: data updated');
+                }
+            } catch (e) {
+                console.log('Auto-refresh failed:', e);
+            }
+        }, 30000); // Every 30 seconds
     }
 
     function updateLastSync() {
