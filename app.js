@@ -1463,3 +1463,97 @@ function renderQuickLinks() {
 
 // Add to init
 document.addEventListener('DOMContentLoaded', renderQuickLinks);
+
+// ========== PROPERTIES ==========
+function renderProperties() {
+    const properties = dashboardData.properties || [];
+    const container = document.getElementById('propertiesGrid');
+    if (!container) return;
+    
+    // Update summary stats
+    const total = properties.length;
+    const researched = properties.filter(p => p.researchStatus === '100%').length;
+    const atlasLive = properties.filter(p => p.atlasAgentStatus === 'live').length;
+    const needsWork = properties.filter(p => p.researchStatus !== '100%').length;
+    
+    const propTotal = document.getElementById('propTotal');
+    const propResearched = document.getElementById('propResearched');
+    const propAtlasLive = document.getElementById('propAtlasLive');
+    const propNeedsWork = document.getElementById('propNeedsWork');
+    
+    if (propTotal) propTotal.textContent = total;
+    if (propResearched) propResearched.textContent = researched;
+    if (propAtlasLive) propAtlasLive.textContent = atlasLive;
+    if (propNeedsWork) propNeedsWork.textContent = needsWork;
+    
+    // Render property cards
+    container.innerHTML = properties.map(prop => {
+        const statusClass = prop.researchStatus === '100%' ? 'complete' : 
+                           (prop.researchStatus && prop.researchStatus !== '0%') ? 'partial' : 'needs-research';
+        
+        const researchBadgeClass = prop.researchStatus === '100%' ? 'research-complete' :
+                                   (prop.researchStatus && prop.researchStatus !== '0%') ? 'research-partial' : 'research-needed';
+        
+        const atlasBadgeClass = prop.atlasAgentStatus === 'live' ? 'atlas-live' : 'atlas-pending';
+        const atlasText = prop.atlasAgentStatus === 'live' ? `🤖 ${prop.atlasAgent} LIVE` : '🤖 Atlas: Not Started';
+        
+        const brandColorsHtml = prop.brandColors ? `
+            <div class="brand-colors">
+                <div class="color-swatch" style="background: ${prop.brandColors.primary}" title="Primary"></div>
+                <div class="color-swatch" style="background: ${prop.brandColors.secondary}" title="Secondary"></div>
+                <div class="color-swatch" style="background: ${prop.brandColors.accent}" title="Accent"></div>
+            </div>
+        ` : '';
+        
+        const linksHtml = [];
+        if (prop.website) {
+            linksHtml.push(`<a href="https://${prop.website}" target="_blank" class="property-link">🌐 Website</a>`);
+        }
+        if (prop.instagram) {
+            linksHtml.push(`<a href="https://instagram.com/${prop.instagram.replace('@', '')}" target="_blank" class="property-link">📸 Instagram</a>`);
+        }
+        if (prop.atlasAgentPhone && prop.atlasAgentStatus === 'live') {
+            linksHtml.push(`<a href="tel:${prop.atlasAgentPhone}" class="property-link">📞 ${prop.atlasAgentPhone}</a>`);
+        }
+        
+        const notesHtml = prop.notes ? `<div class="property-notes">${prop.notes}</div>` : '';
+        
+        return `
+            <div class="property-card ${statusClass}">
+                <div class="property-header">
+                    <div class="property-name">${prop.name}</div>
+                    <div class="property-location">📍 ${prop.location}${prop.neighborhood ? ` • ${prop.neighborhood}` : ''}</div>
+                    ${brandColorsHtml}
+                </div>
+                <div class="property-body">
+                    <div class="property-stats">
+                        ${prop.units ? `<div class="property-stat"><span class="property-stat-icon">🏢</span> ${prop.units} units</div>` : ''}
+                        ${prop.rent ? `<div class="property-stat"><span class="property-stat-icon">💰</span> ${prop.rent}</div>` : ''}
+                        ${prop.phone ? `<div class="property-stat"><span class="property-stat-icon">📞</span> ${prop.phone}</div>` : ''}
+                    </div>
+                    
+                    ${prop.theme ? `<div class="property-theme">"${prop.theme}"</div>` : ''}
+                    
+                    ${prop.targetTenant ? `<div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">🎯 <strong>Target:</strong> ${prop.targetTenant}</div>` : ''}
+                    
+                    <div class="property-status-row">
+                        <span class="status-badge ${researchBadgeClass}">📊 Research: ${prop.researchStatus || '0%'}</span>
+                        <span class="status-badge ${atlasBadgeClass}">${atlasText}</span>
+                    </div>
+                    
+                    ${linksHtml.length > 0 ? `<div class="property-links">${linksHtml.join('')}</div>` : ''}
+                    
+                    ${notesHtml}
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Render properties on load and tab switch
+document.addEventListener('DOMContentLoaded', renderProperties);
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        if (this.dataset.section === 'properties') renderProperties();
+    });
+});

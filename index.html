@@ -48,6 +48,7 @@
         <button class="nav-tab" data-section="metrics">📈 Metrics</button>
         <button class="nav-tab" data-section="proposals">💰 Proposals</button>
         <button class="nav-tab" data-section="challenges">🎯 Challenges</button>
+        <button class="nav-tab" data-section="properties">🏠 Properties</button>
     </nav>
 
     <!-- Main Content Area -->
@@ -943,6 +944,39 @@
                 
                 <h3 style="margin-top:2rem;">✅ Solved</h3>
                 <div class="challenges-list" id="solvedChallenges"></div>
+            </div>
+        </section>
+
+        <!-- PROPERTIES SECTION -->
+        <section id="properties" class="content-section">
+            <div class="section-header">
+                <h2>🏠 CS3 Properties</h2>
+                <p class="section-desc">All CS3 properties with research status, Atlas agents, and Property Partner pages.</p>
+            </div>
+            
+            <!-- Properties Summary -->
+            <div class="properties-summary">
+                <div class="prop-stat-card">
+                    <span class="prop-stat-value" id="propTotal">6</span>
+                    <span class="prop-stat-label">Total Properties</span>
+                </div>
+                <div class="prop-stat-card success">
+                    <span class="prop-stat-value" id="propResearched">3</span>
+                    <span class="prop-stat-label">100% Researched</span>
+                </div>
+                <div class="prop-stat-card">
+                    <span class="prop-stat-value" id="propAtlasLive">1</span>
+                    <span class="prop-stat-label">Atlas Agents Live</span>
+                </div>
+                <div class="prop-stat-card warning">
+                    <span class="prop-stat-value" id="propNeedsWork">3</span>
+                    <span class="prop-stat-label">Need Research</span>
+                </div>
+            </div>
+            
+            <!-- Properties Grid -->
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Populated by JS -->
             </div>
         </section>
     </main>
