@@ -1388,3 +1388,28 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
         if (section === 'challenges') renderChallenges();
     });
 });
+
+// ========== QUICK LINKS ==========
+function renderQuickLinks() {
+    const links = dashboardData.quickLinks || [];
+    const container = document.getElementById('quickLinksGrid');
+    
+    container.innerHTML = links.map(link => {
+        const isClickable = link.url && link.status === 'live';
+        return `
+            <a href="${link.url || '#'}" 
+               target="_blank" 
+               class="quick-link-card ${!isClickable ? 'disabled' : ''}"
+               ${!isClickable ? 'onclick="return false;"' : ''}>
+                <div class="quick-link-name">
+                    ${link.name}
+                    <span class="quick-link-status ${link.status}">${link.status.replace('_', ' ')}</span>
+                </div>
+                <div class="quick-link-desc">${link.description}</div>
+            </a>
+        `;
+    }).join('');
+}
+
+// Add to init
+document.addEventListener('DOMContentLoaded', renderQuickLinks);

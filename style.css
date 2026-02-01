@@ -2227,3 +2227,76 @@ textarea {
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
+
+/* ========== QUICK LINKS ========== */
+.quick-links-section {
+    margin-bottom: 2rem;
+}
+
+.quick-links-section h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.quick-link-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.quick-link-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.quick-link-card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.quick-link-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quick-link-status {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.quick-link-status.live {
+    background: var(--accent-green);
+    color: white;
+}
+
+.quick-link-status.pending_deploy {
+    background: var(--accent-yellow);
+    color: black;
+}
+
+.quick-link-status.in_development {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.quick-link-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}

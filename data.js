@@ -351,6 +351,47 @@ property-partner-landing/
         }
     ],
 
+    // ========== QUICK LINKS ==========
+    // All project links for Al to click and review
+    quickLinks: [
+        {
+            name: "Jesus Dashboard",
+            url: "https://al24064098-beep.github.io/jesus-dashboard/",
+            status: "live",
+            description: "This dashboard"
+        },
+        {
+            name: "Property Partner Landing (Demo)",
+            url: "https://al24064098-beep.github.io/property-partner-demo/",
+            status: "pending_deploy",
+            description: "Partner signup page template"
+        },
+        {
+            name: "CS3 CRM",
+            url: "",
+            status: "in_development",
+            description: "Phase 1 done (backend). Phase 2 (UI) in progress."
+        },
+        {
+            name: "Atlas AI Platform",
+            url: "https://app.youratlas.com",
+            status: "live",
+            description: "Victoria (McKenzie) agent lives here"
+        },
+        {
+            name: "CS3 Website",
+            url: "https://cs3investments.com",
+            status: "live",
+            description: "Company website"
+        },
+        {
+            name: "GitHub Repo - Dashboard",
+            url: "https://github.com/al24064098-beep/jesus-dashboard",
+            status: "live",
+            description: "Dashboard source code"
+        }
+    ],
+
     // ========== 6. LIBRARY ==========
     library: [],
 
