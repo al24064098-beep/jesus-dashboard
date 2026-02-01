@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesus Dashboard ⚡ | Al + Jesus Workspace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+    <header>
+        <h1>⚡ Jesus Dashboard</h1>
+        <p class="subtitle">Al + Jesus Shared Workspace</p>
+        <div class="last-updated" id="lastUpdated"></div>
+    </header>
+
+    <main>
+        <!-- Status Overview -->
+        <section class="status-bar">
+            <div class="status-item">
+                <span class="status-label">Status</span>
+                <span class="status-value online">🟢 Online</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Active Project</span>
+                <span class="status-value" id="activeProject">Loading...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Tasks Today</span>
+                <span class="status-value" id="tasksToday">-</span>
+            </div>
+        </section>
+
+        <!-- Main Grid -->
+        <div class="dashboard-grid">
+            <!-- Task Board -->
+            <section class="panel task-board">
+                <h2>📋 Task Board</h2>
+                <div class="kanban">
+                    <div class="kanban-column" id="backlog">
+                        <h3>Backlog</h3>
+                        <div class="tasks"></div>
+                    </div>
+                    <div class="kanban-column" id="todo">
+                        <h3>To Do</h3>
+                        <div class="tasks"></div>
+                    </div>
+                    <div class="kanban-column" id="inprogress">
+                        <h3>In Progress</h3>
+                        <div class="tasks"></div>
+                    </div>
+                    <div class="kanban-column" id="done">
+                        <h3>Done</h3>
+                        <div class="tasks"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Log -->
+            <section class="panel activity-log">
+                <h2>📊 Activity Log</h2>
+                <div class="log-entries" id="activityLog">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Projects Status -->
+            <section class="panel projects">
+                <h2>🚀 Projects</h2>
+                <div class="project-list" id="projectList">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- IR Agents Status -->
+            <section class="panel agents">
+                <h2>🤖 IR Agents (12)</h2>
+                <div class="agents-grid" id="agentsList">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Notes Session -->
+            <section class="panel notes">
+                <h2>📝 Notes (Al ↔ Jesus)</h2>
+                <div class="notes-content" id="notesContent">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <section class="panel stats">
+                <h2>📈 Metrics</h2>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-value" id="apiCost">$0.00</span>
+                        <span class="stat-label">API Cost Today</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="tasksCompleted">0</span>
+                        <span class="stat-label">Tasks Completed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="hoursActive">0</span>
+                        <span class="stat-label">Hours Active</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Jesus ⚡ | Strategic Partner for Al Liao | <a href="https://github.com/al24064098-beep/jesus-dashboard">GitHub</a></p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
