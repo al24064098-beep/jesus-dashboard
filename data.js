@@ -730,6 +730,210 @@ property-partner-landing/
         }
     ],
 
+    // ========== ACCESS & PERMISSIONS ==========
+    access: {
+        lastAudit: "2026-02-01T16:42:00Z",
+        
+        // APIs I have access to
+        apis: [
+            {
+                name: "OpenClaw",
+                status: "active",
+                description: "My runtime platform - chat, tools, memory",
+                credentials: "Built-in",
+                canDo: ["Chat with Al", "Run tools", "Access memory", "Cron jobs"],
+                limitations: []
+            },
+            {
+                name: "Gmail API",
+                status: "active",
+                account: "jesusloveal2026@gmail.com",
+                description: "My personal Gmail for sending emails",
+                credentials: "OAuth saved at ~/.config/gmail/credentials.json",
+                canDo: ["Send emails FROM my account", "Read my inbox", "Draft emails"],
+                limitations: ["Cannot access Al's email", "Cannot send AS Al"]
+            },
+            {
+                name: "GitHub",
+                status: "active",
+                account: "al24064098-beep",
+                description: "Push code, manage repos",
+                credentials: "Token saved at ~/.config/github/credentials.json",
+                canDo: ["Push to repos", "Create repos", "Manage dashboard"],
+                limitations: ["Using Al's account - should get my own"]
+            },
+            {
+                name: "Atlas AI",
+                status: "active",
+                platform: "youratlas.com",
+                description: "AI voice agents for properties",
+                credentials: "API key in memory",
+                canDo: ["Create agents", "Update scripts", "View call logs"],
+                limitations: []
+            },
+            {
+                name: "Telegram",
+                status: "active",
+                description: "Message Al directly",
+                credentials: "Built into OpenClaw",
+                canDo: ["Send messages to Al", "Receive messages"],
+                limitations: ["Cannot message others without config"]
+            },
+            {
+                name: "Google AI Studio (Gemini)",
+                status: "active",
+                description: "AI model for analysis",
+                credentials: "Configured in OpenClaw",
+                canDo: ["Text generation", "Analysis", "Embeddings"],
+                limitations: []
+            }
+        ],
+        
+        // Tools I can use
+        tools: [
+            {
+                name: "File System",
+                status: "active",
+                canDo: ["Read files", "Write files", "Edit files", "Create directories"],
+                scope: "Workspace folder (~/.openclaw/workspace)"
+            },
+            {
+                name: "Shell/Terminal",
+                status: "active",
+                canDo: ["Run commands", "Install packages", "Git operations", "Scripts"],
+                scope: "Full shell access in sandbox"
+            },
+            {
+                name: "Browser Automation",
+                status: "active",
+                canDo: ["Open websites", "Take screenshots", "Extract data", "Fill forms"],
+                scope: "Isolated browser (openclaw profile)"
+            },
+            {
+                name: "Web Fetch",
+                status: "active",
+                canDo: ["Fetch webpage content", "Extract text/markdown"],
+                scope: "Any public URL"
+            },
+            {
+                name: "Web Search (Brave)",
+                status: "NOT_CONFIGURED",
+                canDo: [],
+                missing: "Brave Search API key not configured",
+                howToFix: "Run: openclaw configure --section web"
+            },
+            {
+                name: "Memory System",
+                status: "active",
+                canDo: ["Search memory files", "Read memory", "Write to memory"],
+                scope: "MEMORY.md + memory/*.md"
+            },
+            {
+                name: "Cron Jobs",
+                status: "active",
+                canDo: ["Schedule tasks", "Set reminders", "Recurring jobs"],
+                scope: "OpenClaw cron system"
+            },
+            {
+                name: "TTS (Text-to-Speech)",
+                status: "active",
+                canDo: ["Convert text to audio"],
+                scope: "For voice messages"
+            }
+        ],
+        
+        // What I DO NOT have access to
+        noAccess: [
+            {
+                name: "Al's Personal Email",
+                account: "al@cs3investments.com",
+                why: "Security - personal/business email",
+                wouldNeed: "Gmail API OAuth for Al's account"
+            },
+            {
+                name: "Al's Google Drive",
+                why: "Security - personal files",
+                wouldNeed: "Google Drive API OAuth"
+            },
+            {
+                name: "InvestNext",
+                url: "cs3investments.investnext.com",
+                why: "Investor portal - sensitive data",
+                wouldNeed: "API access or login credentials"
+            },
+            {
+                name: "CS3 Company Accounts",
+                includes: ["Company email", "Company Drive", "Company systems"],
+                why: "Business security",
+                wouldNeed: "Explicit permission + credentials"
+            },
+            {
+                name: "Social Media",
+                includes: ["Twitter/X", "LinkedIn", "Instagram", "Facebook"],
+                why: "Not configured",
+                wouldNeed: "API keys or login credentials"
+            },
+            {
+                name: "Calendar",
+                includes: ["Google Calendar", "Outlook"],
+                why: "Not configured",
+                wouldNeed: "Google Calendar API OAuth"
+            },
+            {
+                name: "Payment Systems",
+                includes: ["Bank accounts", "Stripe", "PayPal", "Crypto wallets"],
+                why: "Security - NEVER should have this",
+                wouldNeed: "Al's explicit permission per transaction"
+            },
+            {
+                name: "Phone/SMS",
+                why: "Not configured",
+                wouldNeed: "Twilio or similar API"
+            },
+            {
+                name: "Notion",
+                why: "Not configured",
+                wouldNeed: "Notion API key"
+            },
+            {
+                name: "Slack",
+                why: "Not configured",
+                wouldNeed: "Slack app/bot token"
+            }
+        ],
+        
+        // Credentials I have stored
+        credentials: [
+            {
+                name: "Gmail OAuth",
+                location: "~/.config/gmail/credentials.json",
+                account: "jesusloveal2026@gmail.com",
+                status: "valid"
+            },
+            {
+                name: "GitHub Token",
+                location: "~/.config/github/credentials.json",
+                account: "al24064098-beep",
+                status: "valid"
+            },
+            {
+                name: "Atlas AI API Key",
+                location: "memory (encrypted reference)",
+                status: "valid"
+            }
+        ],
+        
+        // Security rules I follow
+        securityRules: [
+            "NO accessing Al's email without permission",
+            "NO sending anything on Al's behalf without approval",
+            "NO payments/transactions without explicit permission",
+            "NO sharing credentials or sensitive data",
+            "Always CC al@cs3investments.com on emails I send",
+            "Ask before any external action (posts, emails, etc.)"
+        ]
+    },
+
     // ========== 8. SYSTEM HEALTH ==========
     systemHealth: {
         openclaw: true,

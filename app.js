@@ -1557,3 +1557,127 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
         if (this.dataset.section === 'properties') renderProperties();
     });
 });
+
+// ========== ACCESS & PERMISSIONS ==========
+function renderAccess() {
+    const access = dashboardData.access;
+    if (!access) return;
+    
+    // Update audit date
+    const auditDate = document.getElementById('accessAuditDate');
+    if (auditDate && access.lastAudit) {
+        auditDate.textContent = new Date(access.lastAudit).toLocaleDateString();
+    }
+    
+    // Update summary stats
+    const activeApis = access.apis?.filter(a => a.status === 'active').length || 0;
+    const activeTools = access.tools?.filter(t => t.status === 'active').length || 0;
+    const noAccessCount = access.noAccess?.length || 0;
+    const credsCount = access.credentials?.length || 0;
+    
+    const el = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val; };
+    el('accessActiveCount', activeApis);
+    el('accessToolsCount', activeTools);
+    el('accessNoAccessCount', noAccessCount);
+    el('accessCredsCount', credsCount);
+    
+    // Render APIs
+    const apisGrid = document.getElementById('accessApisGrid');
+    if (apisGrid && access.apis) {
+        apisGrid.innerHTML = access.apis.map(api => `
+            <div class="access-card ${api.status === 'active' ? 'active' : 'inactive'}">
+                <div class="access-card-header">
+                    <span class="access-card-name">${api.name}</span>
+                    <span class="access-card-status ${api.status}">${api.status.toUpperCase()}</span>
+                </div>
+                <div class="access-card-desc">${api.description}</div>
+                ${api.account ? `<div class="access-card-account">📧 ${api.account}</div>` : ''}
+                ${api.canDo?.length ? `
+                    <div class="access-card-list">
+                        <div class="access-card-list-title">Can Do:</div>
+                        <ul>${api.canDo.map(c => `<li>${c}</li>`).join('')}</ul>
+                    </div>
+                ` : ''}
+                ${api.limitations?.length ? `
+                    <div class="access-card-list limitations">
+                        <div class="access-card-list-title">Limitations:</div>
+                        <ul>${api.limitations.map(l => `<li>${l}</li>`).join('')}</ul>
+                    </div>
+                ` : ''}
+            </div>
+        `).join('');
+    }
+    
+    // Render Tools
+    const toolsGrid = document.getElementById('accessToolsGrid');
+    if (toolsGrid && access.tools) {
+        toolsGrid.innerHTML = access.tools.map(tool => `
+            <div class="access-card ${tool.status === 'active' ? 'active' : 'inactive'}">
+                <div class="access-card-header">
+                    <span class="access-card-name">${tool.name}</span>
+                    <span class="access-card-status ${tool.status === 'active' ? 'active' : 'inactive'}">${tool.status === 'active' ? 'ACTIVE' : tool.status}</span>
+                </div>
+                ${tool.scope ? `<div class="access-card-desc">Scope: ${tool.scope}</div>` : ''}
+                ${tool.canDo?.length ? `
+                    <div class="access-card-list">
+                        <div class="access-card-list-title">Can Do:</div>
+                        <ul>${tool.canDo.map(c => `<li>${c}</li>`).join('')}</ul>
+                    </div>
+                ` : ''}
+                ${tool.missing ? `
+                    <div class="access-card-missing">⚠️ ${tool.missing}</div>
+                    ${tool.howToFix ? `<div class="access-card-fix">Fix: ${tool.howToFix}</div>` : ''}
+                ` : ''}
+            </div>
+        `).join('');
+    }
+    
+    // Render No Access
+    const noAccessGrid = document.getElementById('accessNoAccessGrid');
+    if (noAccessGrid && access.noAccess) {
+        noAccessGrid.innerHTML = access.noAccess.map(item => `
+            <div class="access-card no-access">
+                <div class="access-card-header">
+                    <span class="access-card-name">${item.name}</span>
+                </div>
+                ${item.account ? `<div class="access-card-account">📧 ${item.account}</div>` : ''}
+                ${item.url ? `<div class="access-card-account">🌐 ${item.url}</div>` : ''}
+                ${item.includes ? `
+                    <div class="access-card-list no-access">
+                        <div class="access-card-list-title">Includes:</div>
+                        <ul>${item.includes.map(i => `<li>${i}</li>`).join('')}</ul>
+                    </div>
+                ` : ''}
+                <div class="access-card-desc"><strong>Why:</strong> ${item.why}</div>
+                <div class="access-card-desc"><strong>Would need:</strong> ${item.wouldNeed}</div>
+            </div>
+        `).join('');
+    }
+    
+    // Render Credentials
+    const credsGrid = document.getElementById('accessCredsGrid');
+    if (credsGrid && access.credentials) {
+        credsGrid.innerHTML = access.credentials.map(cred => `
+            <div class="credential-card">
+                <div class="cred-name">${cred.name}</div>
+                <div class="cred-location">${cred.location}</div>
+                ${cred.account ? `<div class="cred-account">${cred.account}</div>` : ''}
+                <span class="cred-status">${cred.status}</span>
+            </div>
+        `).join('');
+    }
+    
+    // Render Security Rules
+    const rulesList = document.getElementById('securityRulesList');
+    if (rulesList && access.securityRules) {
+        rulesList.innerHTML = `<ul>${access.securityRules.map(r => `<li>${r}</li>`).join('')}</ul>`;
+    }
+}
+
+// Render access on load and tab switch
+document.addEventListener('DOMContentLoaded', renderAccess);
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        if (this.dataset.section === 'access') renderAccess();
+    });
+});

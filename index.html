@@ -49,6 +49,7 @@
         <button class="nav-tab" data-section="proposals">💰 Proposals</button>
         <button class="nav-tab" data-section="challenges">🎯 Challenges</button>
         <button class="nav-tab" data-section="properties">🏠 Properties</button>
+        <button class="nav-tab" data-section="access">🔐 Access</button>
     </nav>
 
     <!-- Main Content Area -->
@@ -977,6 +978,64 @@
             <!-- Properties Grid -->
             <div class="properties-grid" id="propertiesGrid">
                 <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ACCESS SECTION -->
+        <section id="access" class="content-section">
+            <div class="section-header">
+                <h2>🔐 Access & Permissions</h2>
+                <p class="section-desc">Full transparency on what I can and cannot access. Last audit: <span id="accessAuditDate">--</span></p>
+            </div>
+            
+            <!-- Access Summary -->
+            <div class="access-summary">
+                <div class="access-stat-card success">
+                    <span class="access-stat-value" id="accessActiveCount">0</span>
+                    <span class="access-stat-label">Active APIs</span>
+                </div>
+                <div class="access-stat-card">
+                    <span class="access-stat-value" id="accessToolsCount">0</span>
+                    <span class="access-stat-label">Tools Available</span>
+                </div>
+                <div class="access-stat-card warning">
+                    <span class="access-stat-value" id="accessNoAccessCount">0</span>
+                    <span class="access-stat-label">No Access</span>
+                </div>
+                <div class="access-stat-card">
+                    <span class="access-stat-value" id="accessCredsCount">0</span>
+                    <span class="access-stat-label">Stored Credentials</span>
+                </div>
+            </div>
+            
+            <!-- APIs Section -->
+            <div class="access-section-group">
+                <h3>✅ APIs I Have Access To</h3>
+                <div class="access-grid" id="accessApisGrid"></div>
+            </div>
+            
+            <!-- Tools Section -->
+            <div class="access-section-group">
+                <h3>🛠️ Tools I Can Use</h3>
+                <div class="access-grid" id="accessToolsGrid"></div>
+            </div>
+            
+            <!-- No Access Section -->
+            <div class="access-section-group">
+                <h3>🚫 What I DO NOT Have Access To</h3>
+                <div class="access-grid" id="accessNoAccessGrid"></div>
+            </div>
+            
+            <!-- Credentials Section -->
+            <div class="access-section-group">
+                <h3>🔑 Stored Credentials</h3>
+                <div class="access-grid" id="accessCredsGrid"></div>
+            </div>
+            
+            <!-- Security Rules -->
+            <div class="access-section-group">
+                <h3>🛡️ Security Rules I Follow</h3>
+                <div class="security-rules" id="securityRulesList"></div>
             </div>
         </section>
     </main>
