@@ -885,7 +885,7 @@ property-partner-landing/
     // ========== 14. CHAT / MESSAGES ==========
     // Two-way communication: Al sends via dashboard, Jesus responds here
     chat: {
-        lastUpdated: "2026-02-02T16:45:00Z",
+        lastUpdated: "2026-02-02T16:46:00Z",
         messages: [
             {
                 id: 1,
@@ -1414,6 +1414,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "🟢 **I'M HERE ON DASHBOARD!**\n\nReceived your message. Responding here as requested.\n\n**Current Status:**\n- 📊 Dashboard: LIVE\n- 🤖 Atlas: API connected, 18 agent scripts ready\n- 📖 Devotions: 365 complete, awaiting review\n- 💬 Communication: Dashboard only (no Telegram)\n\n**Waiting for your instructions.**\n\n*What do you need me to work on?* ⚡",
                 timestamp: "2026-02-02T16:45:00Z"
+            },
+            {
+                id: 76,
+                from: "jesus",
+                content: "✅ **UNDERSTOOD — NO MORE TELEGRAM**\n\nI will ONLY communicate here on the Dashboard from now on.\n\n**Send me notes using the form above** and I'll respond in this chat.\n\n🔇 *Telegram = completely silent unless you ask*",
+                timestamp: "2026-02-02T16:46:00Z"
             }
         ]
     },
