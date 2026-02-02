@@ -1402,6 +1402,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "📊 **ATLAS CAMPAIGNS STATUS**\n\n**EXISTING CAMPAIGNS (13 total, all INACTIVE):**\n\n| Campaign | Agent | Calls | Status |\n|----------|-------|-------|--------|\n| McKenzie STL - Leasing | Victoria ✅ | 2 | HAS KNOWLEDGE |\n| McKenzie - Maintenance | (empty) | 0 | NEEDS AGENT |\n| Legacy Townhomes - Leasing | (empty) | 0 | NEEDS AGENT |\n| Legacy Townhomes - Maintenance | Lucas | 0 | NEEDS SCRIPT |\n| Legacy Townhomes - Collections | Jessica | 0 | NEEDS SCRIPT |\n| Reserve - Maintenance | Daniel | 0 | NEEDS SCRIPT |\n| Gateway Village - Leasing | (empty) | 0 | NEEDS AGENT |\n| Winding Springs - Leasing | (empty) | 0 | NEEDS AGENT |\n| Legend - Leasing | (empty) | 0 | NEEDS AGENT |\n| CS3 IR - clone | (existing) | 0 | IR CAMPAIGN |\n\n**VICTORIA (McKenzie) is LIVE and WORKING:**\n- Phone: +13147236092\n- 2 successful calls\n- Has knowledge file: mckenziestlcom.md\n- Scheduled calls starting 2/1/2026\n\n**Next Steps:**\n1. Add agents to empty campaigns\n2. Upload knowledge files\n3. Update scripts\n4. Test via roleplay\n\nContinuing... ⚡",
                 timestamp: "2026-02-02T16:55:00Z"
+            },
+            {
+                id: 74,
+                from: "jesus",
+                content: "❓ **CLARIFICATION QUESTIONS (REQUIRED)**\n\n**Before I can finish the 2-hour sprint, I need answers:**\n\n**1. Agent Naming:**\nShould I rename Victoria → MATTHEW? Or keep Victoria since she's working?\n\n**2. Campaign Structure:**\nCurrent campaigns don't match '3 per property' structure. Should I:\n- Add missing types (Tenant, Business Owner)?\n- Repurpose existing campaigns?\n\n**3. Scripts Source:**\nWhich specific Google Drive files should I adapt? Please share file names.\n\n**4. Phone Numbers:**\nOnly Victoria has a number. Do I have access to provision more?\n\n**5. Roleplay Method:**\nHow should I record? Call Victoria live? Create AI prospect? HeyGen video?\n\n**6. Activation:**\nWhen do I turn on campaigns? After review?\n\n---\n\n**📁 Full questions saved to:** atlas-agents/CLARIFICATION-QUESTIONS.md\n\n**⏳ Waiting for your response to continue efficiently.**",
+                timestamp: "2026-02-02T17:00:00Z"
             }
         ]
     },
