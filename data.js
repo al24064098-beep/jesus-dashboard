@@ -24,7 +24,36 @@ const scriptures = [
 
 // ========== MAIN DASHBOARD DATA ==========
 const dashboardData = {
-    lastUpdated: "2026-02-02T04:08:00Z",
+    lastUpdated: "2026-02-02T04:49:00Z",
+    
+    // ========== PROMISES & ACCOUNTABILITY ==========
+    promises: {
+        overdue: [],
+        dueToday: [
+            { id: 1, promise: "18 Atlas agents (6 properties × 3 types)", made: "2026-02-02", due: "2026-02-02", status: "pending" },
+            { id: 2, promise: "Script Playbook from docs", made: "2026-02-02", due: "2026-02-02", status: "pending" },
+            { id: 3, promise: "Clone myself", made: "2026-02-01", due: "2026-02-02", status: "pending" },
+            { id: 4, promise: "HeyGen CRM demo recording", made: "2026-02-01", due: "2026-02-02", status: "pending" },
+            { id: 5, promise: "Dashboard V3 (12 features)", made: "2026-02-02", due: "2026-02-02", status: "pending" },
+            { id: 6, promise: "365 Daily Devotions (start writing)", made: "2026-02-02", due: "2026-02-02", status: "pending" },
+            { id: 7, promise: "Weekly Security Report (email Al)", made: "2026-02-02", due: "2026-02-02", status: "pending" },
+            { id: 8, promise: "Read & memorize 19 Google Drive files", made: "2026-02-02", due: "2026-02-02", status: "pending" }
+        ],
+        thisWeek: [
+            { id: 9, promise: "12 IR Agents dashboard area", made: "2026-02-02", due: "2026-02-03", status: "pending" },
+            { id: 10, promise: "18 Property Agents dashboard area", made: "2026-02-02", due: "2026-02-03", status: "pending" },
+            { id: 11, promise: "Roleplay recordings area", made: "2026-02-02", due: "2026-02-03", status: "pending" },
+            { id: 12, promise: "365 Devotions complete for Al review", made: "2026-02-02", due: "2026-02-07", status: "pending" }
+        ],
+        completed: []
+    },
+
+    // ========== CURRENT TASK ==========
+    currentTask: {
+        task: "Adding Promises section to Dashboard",
+        started: "2026-02-02T04:49:00Z",
+        eta: "5 min"
+    },
 
     // ========== 1. DAILY SURPRISE ==========
     dailySurprise: {
