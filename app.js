@@ -24,14 +24,14 @@
         navTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const targetSection = tab.dataset.section;
-                
+
                 // Update active states
                 navTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-                
+
                 sections.forEach(s => s.classList.remove('active'));
                 document.getElementById(targetSection).classList.add('active');
-                
+
                 // Save current tab to localStorage
                 localStorage.setItem('activeTab', targetSection);
             });
@@ -75,44 +75,44 @@
     // ========== 0. OVERVIEW / HOME ==========
     function loadOverview() {
         const data = dashboardData;
-        
+
         // Scripture First - God First
         if (typeof scriptures !== 'undefined' && scriptures.length > 0) {
             const index = Math.floor(Date.now() / 600000) % scriptures.length; // Rotate every 10 min
             const scripture = scriptures[index];
             document.getElementById('mainScriptureText').textContent = '"' + scripture.text + '"';
-            document.getElementById('mainScriptureRef').textContent = '— ' + scripture.ref + ' (KJV)';
+            document.getElementById('mainScriptureRef').textContent = '- ' + scripture.ref + ' (KJV)';
         }
-        
+
         // Quick Stats
         const completedToday = data.agentReport?.completed?.length || 0;
         const blockers = data.agentReport?.blockers?.length || 0;
         const totalBuilds = data.vault?.length || 0;
         const notes = JSON.parse(localStorage.getItem('jesusNotes')) || data.notes || [];
         const unreadNotes = notes.filter(n => n.status === 'unread').length;
-        
+
         document.getElementById('ovCompletedToday').textContent = completedToday;
         document.getElementById('ovBlockers').textContent = blockers;
         document.getElementById('ovTotalBuilds').textContent = totalBuilds;
         document.getElementById('ovUnreadNotes').textContent = unreadNotes;
-        
+
         // Daily Surprise Preview
         if (data.dailySurprise?.today) {
             document.getElementById('ovSurpriseTitle').textContent = data.dailySurprise.today.title;
             document.getElementById('ovSurpriseDesc').textContent = data.dailySurprise.today.type + ' • ' + data.dailySurprise.today.impact;
         }
-        
+
         // Agent Report Summary
         document.getElementById('ovCompleted').textContent = data.agentReport?.completed?.length || 0;
         document.getElementById('ovPending').textContent = data.agentReport?.pending?.length || 0;
         document.getElementById('ovNext').textContent = data.agentReport?.next?.length || 0;
-        
+
         // Content Summary
         const content = data.content || [];
         document.getElementById('ovContentPending').textContent = content.filter(c => c.status === 'pending' || c.status === 'revision').length;
         document.getElementById('ovContentApproved').textContent = content.filter(c => c.status === 'approved').length;
         document.getElementById('ovContentPublished').textContent = content.filter(c => c.status === 'published').length;
-        
+
         // Notes Preview
         const notesPreview = document.getElementById('ovNotesPreview');
         const recentNotes = notes.filter(n => n.status === 'unread').slice(0, 2);
@@ -121,7 +121,7 @@
         } else {
             notesPreview.innerHTML = '<p class="empty-preview">No unread notes</p>';
         }
-        
+
         // Vault Summary
         document.getElementById('ovVaultTotal').textContent = totalBuilds;
         document.getElementById('ovVaultSOPs').textContent = data.vault?.filter(v => v.process)?.length || 0;
@@ -129,20 +129,20 @@
         if (recentBuild) {
             document.getElementById('ovVaultRecent').textContent = 'Latest: ' + recentBuild.name;
         }
-        
+
         // Money Ideas
         const ideas = data.moneyIdeas || [];
         document.getElementById('ovMoneyIdeas').textContent = ideas.length;
         const totalImpact = ideas.reduce((sum, i) => sum + (i.impact || 0), 0);
         document.getElementById('ovMoneyImpact').textContent = formatMoney(totalImpact);
-        
+
         // AI Intelligence
         const intel = data.aiIntelligence || [];
         document.getElementById('ovIntelCount').textContent = intel.length;
         if (intel.length > 0) {
             document.getElementById('ovIntelRecent').textContent = 'Latest: ' + intel[0].title;
         }
-        
+
         // System Health
         const health = data.systemHealth;
         if (health) {
@@ -158,7 +158,7 @@
             }
             document.getElementById('ovUptime').textContent = (health.uptime || 0) + '%';
         }
-        
+
         // Metrics
         const metrics = data.metrics;
         if (metrics) {
@@ -166,7 +166,7 @@
             document.getElementById('ovHoursSaved').textContent = metrics.hoursSaved || 0;
             document.getElementById('ovApiCost').textContent = '$' + (metrics.apiCostToday || 0);
         }
-        
+
         // Library
         const library = JSON.parse(localStorage.getItem('jesusLibrary')) || data.library || [];
         document.getElementById('ovLibraryCount').textContent = library.length;
@@ -178,7 +178,7 @@
         if (!data || !data.today) return;
 
         const today = data.today;
-        
+
         document.getElementById('surpriseDate').textContent = formatDate(today.date);
         document.getElementById('surpriseTitle').textContent = today.title;
         document.getElementById('surpriseType').textContent = today.type;
@@ -221,16 +221,16 @@
 
         // Completed
         renderReportList('completedList', 'completedCount', report.completed, '✅');
-        
+
         // Blockers
         renderReportList('blockersList', 'blockersCount', report.blockers, '⚠️');
-        
+
         // Issues
         renderReportList('issuesList', 'issuesCount', report.issues, '🚨');
-        
+
         // Pending Decisions
         renderReportList('pendingList', 'pendingCount', report.pending, '📋');
-        
+
         // Next Up
         renderReportList('nextList', 'nextCount', report.next, '🔮');
     }
@@ -238,7 +238,7 @@
     function renderReportList(listId, countId, items, icon) {
         const listEl = document.getElementById(listId);
         const countEl = document.getElementById(countId);
-        
+
         if (!items || items.length === 0) {
             listEl.innerHTML = '<li class="empty-state">Nothing here</li>';
             countEl.textContent = '0';
@@ -255,7 +255,7 @@
     function loadAIIntelligence() {
         const intel = dashboardData.aiIntelligence;
         if (!intel || intel.length === 0) {
-            document.getElementById('intelligenceFeed').innerHTML = 
+            document.getElementById('intelligenceFeed').innerHTML =
                 '<div class="empty-state"><div class="empty-state-icon">🧠</div><p>No intelligence gathered yet</p></div>';
             return;
         }
@@ -303,10 +303,10 @@
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 const filter = btn.dataset.filter;
                 const items = document.querySelectorAll('.intel-item');
-                
+
                 items.forEach(item => {
                     if (filter === 'all' || item.dataset.category === filter) {
                         item.style.display = 'block';
@@ -322,7 +322,7 @@
     function loadMoneyIdeas() {
         const ideas = dashboardData.moneyIdeas;
         if (!ideas || ideas.length === 0) {
-            document.getElementById('moneyIdeasList').innerHTML = 
+            document.getElementById('moneyIdeasList').innerHTML =
                 '<div class="empty-state"><div class="empty-state-icon">💰</div><p>No money ideas yet</p></div>';
             return;
         }
@@ -380,10 +380,10 @@
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 const filter = btn.dataset.filter;
                 const items = document.querySelectorAll('.idea-item');
-                
+
                 items.forEach(item => {
                     if (filter === 'all' || item.dataset.category === filter) {
                         item.style.display = 'block';
@@ -399,7 +399,7 @@
     function loadVault() {
         const vault = dashboardData.vault;
         if (!vault || vault.length === 0) {
-            document.getElementById('vaultGrid').innerHTML = 
+            document.getElementById('vaultGrid').innerHTML =
                 '<div class="empty-state"><div class="empty-state-icon">📁</div><p>Vault is empty</p></div>';
             return;
         }
@@ -407,7 +407,7 @@
         // Update stats
         document.getElementById('totalBuilds').textContent = vault.length;
         document.getElementById('totalSOPs').textContent = vault.filter(v => v.process || v.howToUse).length;
-        
+
         // Count this week's builds
         const oneWeekAgo = new Date();
         oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
@@ -463,11 +463,11 @@
         document.getElementById('sopIcon').textContent = getVaultIcon(item.category);
         document.getElementById('sopTitle').textContent = item.name;
         document.getElementById('sopMeta').textContent = `${item.category} • ${formatDate(item.dateCreated)}`;
-        
+
         document.getElementById('sopObjective').textContent = item.objective || item.whyBuilt || 'Not specified';
         document.getElementById('sopWhatItDoes').textContent = item.whatItDoes || 'Not specified';
         document.getElementById('sopHowItWorks').textContent = item.howItWorks || 'Not specified';
-        
+
         // How to Use (step by step)
         const howToUseEl = document.getElementById('sopHowToUse');
         if (item.howToUseSteps && item.howToUseSteps.length > 0) {
@@ -475,9 +475,9 @@
         } else {
             howToUseEl.innerHTML = `<p>${item.howToUse || 'Not specified'}</p>`;
         }
-        
+
         document.getElementById('sopHowToMaintain').textContent = item.howToMaintain || 'Not specified';
-        
+
         // Process / SOP
         const processEl = document.getElementById('sopProcess');
         if (item.process && item.process.length > 0) {
@@ -485,11 +485,11 @@
         } else {
             processEl.innerHTML = '<p>No detailed process documented yet.</p>';
         }
-        
+
         // Related Files
         const filesEl = document.getElementById('sopRelatedFiles');
         if (item.relatedFiles && item.relatedFiles.length > 0) {
-            filesEl.innerHTML = item.relatedFiles.map(f => 
+            filesEl.innerHTML = item.relatedFiles.map(f =>
                 `<a href="${f.url}" target="_blank">${f.icon || '📎'} ${f.name}</a>`
             ).join('');
         } else if (item.relatedFilesText) {
@@ -592,7 +592,7 @@ ${relatedFiles}
                 const matchesSearch = item.querySelector('.vault-item-title').textContent.toLowerCase().includes(query) ||
                                      item.querySelector('.vault-item-desc').textContent.toLowerCase().includes(query);
                 const matchesCategory = category === 'all' || item.dataset.category === category;
-                
+
                 item.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
             });
         }
@@ -636,7 +636,7 @@ ${relatedFiles}
 
     function handleFiles(files) {
         const library = JSON.parse(localStorage.getItem('jesusLibrary')) || [];
-        
+
         Array.from(files).forEach(file => {
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -649,7 +649,7 @@ ${relatedFiles}
                     uploadedAt: new Date().toISOString(),
                     data: e.target.result
                 };
-                
+
                 library.push(newFile);
                 localStorage.setItem('jesusLibrary', JSON.stringify(library));
                 renderLibrary(library);
@@ -660,7 +660,7 @@ ${relatedFiles}
 
     function renderLibrary(items) {
         const gridEl = document.getElementById('libraryGrid');
-        
+
         if (!items || items.length === 0) {
             gridEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📚</div><p>No documents uploaded yet</p></div>';
             return;
@@ -701,10 +701,10 @@ ${relatedFiles}
             btn.addEventListener('click', () => {
                 folderBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 const folder = btn.dataset.folder;
                 const items = document.querySelectorAll('.library-item');
-                
+
                 items.forEach(item => {
                     if (folder === 'all' || item.dataset.folder === folder) {
                         item.style.display = 'flex';
@@ -718,7 +718,7 @@ ${relatedFiles}
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
             const items = document.querySelectorAll('.library-item');
-            
+
             items.forEach(item => {
                 const name = item.querySelector('.file-name').textContent.toLowerCase();
                 item.style.display = name.includes(query) ? 'flex' : 'none';
@@ -750,19 +750,25 @@ ${relatedFiles}
     function setupNotes() {
         const saveBtn = document.getElementById('saveNote');
         saveBtn.addEventListener('click', saveNote);
-        
+
         // Sync to Jesus button
         const syncBtn = document.getElementById('syncToJesus');
         if (syncBtn) {
             syncBtn.addEventListener('click', syncNotesToJesus);
         }
     }
-    
+
     // Cloudflare Worker for notes sync
     const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
-    
+
     // Expose to window for onclick fallback
     window.syncNotesToJesus = syncNotesToJesus;
+    
+    // ALSO clear old localStorage to fix quota error
+    try {
+        localStorage.removeItem('jesusNotes');
+        console.log('Cleared old jesusNotes from localStorage');
+    } catch(e) {}
     
     async function syncNotesToJesus() {
         // Immediate feedback that button was clicked
@@ -775,10 +781,10 @@ ${relatedFiles}
         console.log('Sync button clicked!');
         
         try {
-            // First check if there's text in the textarea
+            // Get text directly from textarea - NO localStorage
             const contentArea = document.getElementById('noteContent');
             const noteText = contentArea ? contentArea.value.trim() : '';
-        
+
             // If no text, show error
             if (!noteText) {
                 alert('Please write a note first!');
@@ -800,7 +806,7 @@ ${relatedFiles}
             
             console.log('Sending note to worker...');
             
-            // Send to Cloudflare Worker
+            // Send directly to Cloudflare Worker - NO localStorage
             const response = await fetch(WORKER_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -855,11 +861,11 @@ ${relatedFiles}
 
         notes.unshift(newNote);
         localStorage.setItem('jesusNotes', JSON.stringify(notes));
-        
+
         // Clear form
         contentArea.value = '';
         priorityCheck.checked = false;
-        
+
         // Reload notes
         loadNotes();
         updateNotesBadge();
@@ -869,7 +875,7 @@ ${relatedFiles}
         // Merge localStorage notes with data.js notes
         const localNotes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
         const dataNotes = dashboardData.notes || [];
-        
+
         // Combine, preferring local storage (it's more up-to-date)
         const allNotes = [...localNotes];
         dataNotes.forEach(dn => {
@@ -879,7 +885,7 @@ ${relatedFiles}
         });
 
         const listEl = document.getElementById('notesList');
-        
+
         if (allNotes.length === 0) {
             listEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">💬</div><p>No notes yet</p></div>';
             return;
@@ -1062,14 +1068,14 @@ ${relatedFiles}
         document.getElementById('contentTypeBadge').textContent = content.type;
         document.getElementById('contentTitle').textContent = content.title;
         document.getElementById('contentMeta').textContent = `${getStatusText(content.status)} • Created ${formatDate(content.createdAt)}`;
-        
+
         // Handle different content types
         const previewEl = document.getElementById('contentPreview');
-        
+
         if (content.type === 'video' || content.type === 'sora' || content.type === 'reel' || content.type === 'youtube') {
             // Video content with link and caption
             let videoHtml = '';
-            
+
             // Video embed or link
             if (content.videoUrl) {
                 if (content.videoUrl.includes('youtube.com') || content.videoUrl.includes('youtu.be')) {
@@ -1087,7 +1093,7 @@ ${relatedFiles}
                     </div>`;
                 }
             }
-            
+
             // Caption
             if (content.caption) {
                 videoHtml += `<div class="video-caption">
@@ -1095,23 +1101,23 @@ ${relatedFiles}
                     <div class="video-caption-text">${content.caption}</div>
                 </div>`;
             }
-            
+
             // Additional notes
             if (content.body) {
                 videoHtml += `<div style="margin-top:1rem;">${renderContent(content.body)}</div>`;
             }
-            
+
             previewEl.innerHTML = videoHtml;
         } else {
             // Text content (newsletter, blog, etc.)
             previewEl.innerHTML = renderContent(content.body);
         }
-        
+
         document.getElementById('revisionNotes').style.display = 'none';
         document.getElementById('contentModal').style.display = 'block';
         document.body.style.overflow = 'hidden';
     };
-    
+
     function extractYouTubeId(url) {
         const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\?\/]+)/);
         return match ? match[1] : '';
@@ -1125,7 +1131,7 @@ ${relatedFiles}
 
     window.approveContent = function() {
         if (!currentContentId) return;
-        
+
         // In real implementation, this would update data and notify Jesus
         // For now, save to localStorage
         let approvals = JSON.parse(localStorage.getItem('contentApprovals')) || [];
@@ -1135,7 +1141,7 @@ ${relatedFiles}
             timestamp: new Date().toISOString()
         });
         localStorage.setItem('contentApprovals', JSON.stringify(approvals));
-        
+
         alert('✅ Content approved! Jesus will post it shortly.');
         closeContentModal();
     };
@@ -1193,7 +1199,7 @@ ${relatedFiles}
         // Main health indicators
         document.getElementById('openclawStatus').textContent = health.openclaw ? 'Connected' : 'Disconnected';
         document.getElementById('openclawStatus').className = 'health-status ' + (health.openclaw ? 'online' : 'offline');
-        
+
         document.getElementById('lastHeartbeat').textContent = health.lastHeartbeat ? formatDateTime(health.lastHeartbeat) : '--';
         document.getElementById('uptimePercent').textContent = health.uptime ? health.uptime + '%' : '--%';
         document.getElementById('memoryUsage').textContent = health.memory ? health.memory + ' MB' : '-- MB';
@@ -1256,7 +1262,7 @@ ${relatedFiles}
         const scripture = scriptures[index];
         const footerVerse = document.getElementById('footerVerse');
         if (footerVerse) {
-            footerVerse.textContent = `"${scripture.text}" — ${scripture.ref}`;
+            footerVerse.textContent = `"${scripture.text}" - ${scripture.ref}`;
         }
     }
 
@@ -1270,8 +1276,8 @@ ${relatedFiles}
     function formatDateTime(dateStr) {
         if (!dateStr) return '';
         const date = new Date(dateStr);
-        return date.toLocaleString('en-US', { 
-            month: 'short', day: 'numeric', 
+        return date.toLocaleString('en-US', {
+            month: 'short', day: 'numeric',
             hour: 'numeric', minute: '2-digit'
         });
     }
@@ -1310,7 +1316,7 @@ ${relatedFiles}
                 const timestamp = Date.now();
                 const response = await fetch(`data.js?t=${timestamp}`);
                 const text = await response.text();
-                
+
                 // Extract dashboardData from the script
                 const match = text.match(/const dashboardData = (\{[\s\S]*\});/);
                 if (match) {
@@ -1339,17 +1345,17 @@ ${relatedFiles}
 function renderProposals() {
     const proposals = dashboardData.projectProposals || [];
     const budget = dashboardData.budgetTracker || {};
-    
+
     // Update budget display
     document.getElementById('budgetApproved').textContent = '$' + (budget.approvedTotal || 0);
     document.getElementById('budgetSpent').textContent = '$' + (budget.spentTotal || 0);
     document.getElementById('budgetPending').textContent = '$' + (budget.pendingApproval || 0);
     document.getElementById('budgetRemaining').textContent = '$' + ((budget.thisMonth?.remaining) || 0);
-    
+
     // Render pending proposals
     const pendingContainer = document.getElementById('pendingProposals');
     const pending = proposals.filter(p => p.status === 'pending');
-    
+
     if (pending.length === 0) {
         pendingContainer.innerHTML = '<p class="empty-state">No pending proposals</p>';
     } else {
@@ -1367,7 +1373,7 @@ function renderProposals() {
                     <div class="proposal-roi-label">📈 ROI Projection</div>
                     <div class="proposal-roi-text">${p.roiProjection}</div>
                 </div>
-                
+
                 ${p.optimizedOption ? `
                 <div class="proposal-comparison">
                     <div class="comparison-header">💡 Budget Options</div>
@@ -1386,7 +1392,7 @@ function renderProposals() {
                     </div>
                 </div>
                 ` : ''}
-                
+
                 <div class="proposal-actions">
                     <button class="btn-approve" onclick="approveProposal(${p.id}, 'full')">✅ Approve Full</button>
                     ${p.optimizedOption ? `<button class="btn-optimize" onclick="approveProposal(${p.id}, 'optimized')">🔄 Approve Optimized</button>` : ''}
@@ -1396,11 +1402,11 @@ function renderProposals() {
             </div>
         `).join('');
     }
-    
+
     // Render approved proposals
     const approvedContainer = document.getElementById('approvedProposals');
     const approved = proposals.filter(p => p.status === 'approved' || p.status === 'approved_optimized' || p.status === 'in_progress' || p.status === 'complete');
-    
+
     if (approved.length === 0) {
         approvedContainer.innerHTML = '<p class="empty-state">No approved proposals yet</p>';
     } else {
@@ -1448,17 +1454,17 @@ function rejectProposal(id) {
 // ========== CHALLENGES SECTION ==========
 function renderChallenges() {
     const challenges = dashboardData.alChallenges || [];
-    
+
     // In Progress
     const inProgressContainer = document.getElementById('inProgressChallenges');
     const inProgress = challenges.filter(c => c.status === 'in_progress');
     renderChallengeList(inProgressContainer, inProgress);
-    
+
     // Open
     const openContainer = document.getElementById('openChallenges');
     const open = challenges.filter(c => c.status === 'open');
     renderChallengeList(openContainer, open);
-    
+
     // Solved
     const solvedContainer = document.getElementById('solvedChallenges');
     const solved = challenges.filter(c => c.status === 'solved');
@@ -1470,7 +1476,7 @@ function renderChallengeList(container, challenges) {
         container.innerHTML = '<p class="empty-state">None</p>';
         return;
     }
-    
+
     container.innerHTML = challenges.map(c => `
         <div class="challenge-card ${c.priority}">
             <div class="challenge-header">
@@ -1491,15 +1497,15 @@ function addChallenge() {
     const input = document.getElementById('newChallengeInput');
     const priority = document.getElementById('challengePriority');
     const text = input.value.trim();
-    
+
     if (!text) {
         alert('Please enter a challenge');
         return;
     }
-    
+
     // Get existing challenges from localStorage or data
     let challenges = JSON.parse(localStorage.getItem('alChallenges')) || dashboardData.alChallenges || [];
-    
+
     const newChallenge = {
         id: Date.now(),
         challenge: text,
@@ -1509,14 +1515,14 @@ function addChallenge() {
         jesusSolution: '',
         solutionDate: ''
     };
-    
+
     challenges.unshift(newChallenge);
     localStorage.setItem('alChallenges', JSON.stringify(challenges));
     dashboardData.alChallenges = challenges;
-    
+
     input.value = '';
     renderChallenges();
-    
+
     alert('Challenge added! Jesus will review and build a solution.');
 }
 
@@ -1541,12 +1547,12 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 function renderQuickLinks() {
     const links = dashboardData.quickLinks || [];
     const container = document.getElementById('quickLinksGrid');
-    
+
     container.innerHTML = links.map(link => {
         const isClickable = link.url && link.status === 'live';
         return `
-            <a href="${link.url || '#'}" 
-               target="_blank" 
+            <a href="${link.url || '#'}"
+               target="_blank"
                class="quick-link-card ${!isClickable ? 'disabled' : ''}"
                ${!isClickable ? 'onclick="return false;"' : ''}>
                 <div class="quick-link-name">
@@ -1567,34 +1573,34 @@ function renderProperties() {
     const properties = dashboardData.properties || [];
     const container = document.getElementById('propertiesGrid');
     if (!container) return;
-    
+
     // Update summary stats
     const total = properties.length;
     const researched = properties.filter(p => p.researchStatus === '100%').length;
     const atlasLive = properties.filter(p => p.atlasAgentStatus === 'live').length;
     const needsWork = properties.filter(p => p.researchStatus !== '100%').length;
-    
+
     const propTotal = document.getElementById('propTotal');
     const propResearched = document.getElementById('propResearched');
     const propAtlasLive = document.getElementById('propAtlasLive');
     const propNeedsWork = document.getElementById('propNeedsWork');
-    
+
     if (propTotal) propTotal.textContent = total;
     if (propResearched) propResearched.textContent = researched;
     if (propAtlasLive) propAtlasLive.textContent = atlasLive;
     if (propNeedsWork) propNeedsWork.textContent = needsWork;
-    
+
     // Render property cards
     container.innerHTML = properties.map(prop => {
-        const statusClass = prop.researchStatus === '100%' ? 'complete' : 
+        const statusClass = prop.researchStatus === '100%' ? 'complete' :
                            (prop.researchStatus && prop.researchStatus !== '0%') ? 'partial' : 'needs-research';
-        
+
         const researchBadgeClass = prop.researchStatus === '100%' ? 'research-complete' :
                                    (prop.researchStatus && prop.researchStatus !== '0%') ? 'research-partial' : 'research-needed';
-        
+
         const atlasBadgeClass = prop.atlasAgentStatus === 'live' ? 'atlas-live' : 'atlas-pending';
         const atlasText = prop.atlasAgentStatus === 'live' ? `🤖 ${prop.atlasAgent} LIVE` : '🤖 Atlas: Not Started';
-        
+
         const brandColorsHtml = prop.brandColors ? `
             <div class="brand-colors">
                 <div class="color-swatch" style="background: ${prop.brandColors.primary}" title="Primary"></div>
@@ -1602,7 +1608,7 @@ function renderProperties() {
                 <div class="color-swatch" style="background: ${prop.brandColors.accent}" title="Accent"></div>
             </div>
         ` : '';
-        
+
         const linksHtml = [];
         if (prop.website) {
             linksHtml.push(`<a href="https://${prop.website}" target="_blank" class="property-link">🌐 Website</a>`);
@@ -1613,9 +1619,9 @@ function renderProperties() {
         if (prop.atlasAgentPhone && prop.atlasAgentStatus === 'live') {
             linksHtml.push(`<a href="tel:${prop.atlasAgentPhone}" class="property-link">📞 ${prop.atlasAgentPhone}</a>`);
         }
-        
+
         const notesHtml = prop.notes ? `<div class="property-notes">${prop.notes}</div>` : '';
-        
+
         return `
             <div class="property-card ${statusClass}">
                 <div class="property-header">
@@ -1629,18 +1635,18 @@ function renderProperties() {
                         ${prop.rent ? `<div class="property-stat"><span class="property-stat-icon">💰</span> ${prop.rent}</div>` : ''}
                         ${prop.phone ? `<div class="property-stat"><span class="property-stat-icon">📞</span> ${prop.phone}</div>` : ''}
                     </div>
-                    
+
                     ${prop.theme ? `<div class="property-theme">"${prop.theme}"</div>` : ''}
-                    
+
                     ${prop.targetTenant ? `<div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;">🎯 <strong>Target:</strong> ${prop.targetTenant}</div>` : ''}
-                    
+
                     <div class="property-status-row">
                         <span class="status-badge ${researchBadgeClass}">📊 Research: ${prop.researchStatus || '0%'}</span>
                         <span class="status-badge ${atlasBadgeClass}">${atlasText}</span>
                     </div>
-                    
+
                     ${linksHtml.length > 0 ? `<div class="property-links">${linksHtml.join('')}</div>` : ''}
-                    
+
                     ${notesHtml}
                 </div>
             </div>
@@ -1660,25 +1666,25 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 function renderAccess() {
     const access = dashboardData.access;
     if (!access) return;
-    
+
     // Update audit date
     const auditDate = document.getElementById('accessAuditDate');
     if (auditDate && access.lastAudit) {
         auditDate.textContent = new Date(access.lastAudit).toLocaleDateString();
     }
-    
+
     // Update summary stats
     const activeApis = access.apis?.filter(a => a.status === 'active').length || 0;
     const activeTools = access.tools?.filter(t => t.status === 'active').length || 0;
     const noAccessCount = access.noAccess?.length || 0;
     const credsCount = access.credentials?.length || 0;
-    
+
     const el = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val; };
     el('accessActiveCount', activeApis);
     el('accessToolsCount', activeTools);
     el('accessNoAccessCount', noAccessCount);
     el('accessCredsCount', credsCount);
-    
+
     // Render APIs
     const apisGrid = document.getElementById('accessApisGrid');
     if (apisGrid && access.apis) {
@@ -1705,7 +1711,7 @@ function renderAccess() {
             </div>
         `).join('');
     }
-    
+
     // Render Tools
     const toolsGrid = document.getElementById('accessToolsGrid');
     if (toolsGrid && access.tools) {
@@ -1729,7 +1735,7 @@ function renderAccess() {
             </div>
         `).join('');
     }
-    
+
     // Render No Access
     const noAccessGrid = document.getElementById('accessNoAccessGrid');
     if (noAccessGrid && access.noAccess) {
@@ -1751,7 +1757,7 @@ function renderAccess() {
             </div>
         `).join('');
     }
-    
+
     // Render Sync Config
     const syncBlobId = document.getElementById('syncBlobId');
     const syncRefreshInterval = document.getElementById('syncRefreshInterval');
@@ -1761,7 +1767,7 @@ function renderAccess() {
     if (syncRefreshInterval && access.syncConfig) {
         syncRefreshInterval.textContent = access.syncConfig.autoRefreshInterval;
     }
-    
+
     // Render Credentials
     const credsGrid = document.getElementById('accessCredsGrid');
     if (credsGrid && access.credentials) {
@@ -1774,7 +1780,7 @@ function renderAccess() {
             </div>
         `).join('');
     }
-    
+
     // Render Security Rules
     const rulesList = document.getElementById('securityRulesList');
     if (rulesList && access.securityRules) {
@@ -1794,21 +1800,21 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 function renderChat() {
     const chat = dashboardData.chat;
     if (!chat) return;
-    
+
     // Update last update time
     const lastUpdate = document.getElementById('chatLastUpdate');
     if (lastUpdate && chat.lastUpdated) {
         const date = new Date(chat.lastUpdated);
         lastUpdate.textContent = `Updated: ${date.toLocaleString()}`;
     }
-    
+
     // Get localStorage notes (Al's messages)
     const localNotes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
     const sentNotes = localNotes.filter(n => n.status === 'sent' || n.status === 'read');
-    
+
     // Combine Jesus's messages with Al's sent notes
     const allMessages = [];
-    
+
     // Add Jesus's messages from data.js
     if (chat.messages) {
         chat.messages.forEach(msg => {
@@ -1818,7 +1824,7 @@ function renderChat() {
             });
         });
     }
-    
+
     // Add Al's sent notes as messages
     sentNotes.forEach(note => {
         allMessages.push({
@@ -1829,19 +1835,19 @@ function renderChat() {
             sortTime: new Date(note.createdAt).getTime()
         });
     });
-    
+
     // Sort by time
     allMessages.sort((a, b) => a.sortTime - b.sortTime);
-    
+
     // Render
     const container = document.getElementById('chatMessages');
     if (!container) return;
-    
+
     if (allMessages.length === 0) {
         container.innerHTML = '<div class="empty-state"><p>No messages yet. Send a note to start chatting!</p></div>';
         return;
     }
-    
+
     container.innerHTML = allMessages.map(msg => {
         const isJesus = msg.from === 'jesus';
         const time = new Date(msg.timestamp).toLocaleString();
@@ -1855,7 +1861,7 @@ function renderChat() {
             </div>
         `;
     }).join('');
-    
+
     // Scroll to bottom
     container.scrollTop = container.scrollHeight;
 }
@@ -1872,23 +1878,23 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 function renderTimeLog() {
     const timeLog = dashboardData.timeLog;
     if (!timeLog) return;
-    
+
     // Update last update time
     const lastUpdate = document.getElementById('timelogLastUpdate');
     if (lastUpdate && timeLog.lastUpdated) {
         lastUpdate.textContent = new Date(timeLog.lastUpdated).toLocaleString();
     }
-    
+
     // Show current task (most recent entry)
     const currentTask = document.getElementById('currentTask');
     if (currentTask && timeLog.entries && timeLog.entries.length > 0) {
         currentTask.textContent = timeLog.entries[0].task;
     }
-    
+
     // Render entries
     const container = document.getElementById('timelogList');
     if (!container || !timeLog.entries) return;
-    
+
     container.innerHTML = timeLog.entries.map(entry => {
         const time = new Date(entry.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         return `
