@@ -36,6 +36,7 @@
     <!-- Navigation Tabs -->
     <nav class="main-nav">
         <button class="nav-tab active" data-section="overview">🏠 Overview</button>
+        <button class="nav-tab notification" data-section="promises">🔒 Promises <span class="badge danger" id="promisesBadge">8</span></button>
         <button class="nav-tab" data-section="surprise">🌟 Daily Surprise</button>
         <button class="nav-tab" data-section="report">📊 Agent Report</button>
         <button class="nav-tab" data-section="intelligence">🧠 AI Intelligence</button>
@@ -305,6 +306,111 @@
                     </div>
                 </div>
                 
+            </div>
+        </section>
+        
+        <!-- PROMISES & ACCOUNTABILITY -->
+        <section id="promises" class="content-section">
+            <div class="section-header">
+                <h2>🔒 Promises & Accountability</h2>
+                <p class="section-desc">What I said I would do. Overdue items block everything else.</p>
+            </div>
+            
+            <!-- Current Task -->
+            <div class="card highlight-card">
+                <div class="card-header">
+                    <span class="card-icon">🔥</span>
+                    <h3>Current Task</h3>
+                </div>
+                <div class="card-content">
+                    <div class="current-task-display">
+                        <strong id="currentTaskName">Setting up memory system</strong>
+                        <div class="task-meta">
+                            <span>Started: <span id="currentTaskStarted">2026-02-02 04:49 UTC</span></span>
+                            <span>ETA: <span id="currentTaskEta">5 min</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Overdue -->
+            <div class="card danger-card" id="overdueSection" style="display:none;">
+                <div class="card-header">
+                    <span class="card-icon">🚨</span>
+                    <h3>OVERDUE - DO FIRST</h3>
+                </div>
+                <div class="card-content">
+                    <div id="overdueList" class="promise-list"></div>
+                </div>
+            </div>
+            
+            <!-- Due Today -->
+            <div class="card warning-card">
+                <div class="card-header">
+                    <span class="card-icon">📅</span>
+                    <h3>Due Today</h3>
+                    <span class="badge" id="dueTodayCount">8</span>
+                </div>
+                <div class="card-content">
+                    <table class="promise-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Promise</th>
+                                <th>Made</th>
+                                <th>Due</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dueTodayList">
+                            <tr><td>⬜</td><td>18 Atlas agents (6 properties × 3 types)</td><td>2026-02-02</td><td>2026-02-02</td></tr>
+                            <tr><td>⬜</td><td>Script Playbook from docs</td><td>2026-02-02</td><td>2026-02-02</td></tr>
+                            <tr><td>⬜</td><td>Clone myself</td><td>2026-02-01</td><td>2026-02-02</td></tr>
+                            <tr><td>⬜</td><td>HeyGen CRM demo recording</td><td>2026-02-01</td><td>2026-02-02</td></tr>
+                            <tr><td>⬜</td><td>Dashboard V3 (12 features)</td><td>2026-02-02</td><td>2026-02-02</td></tr>
+                            <tr><td>⬜</td><td>365 Daily Devotions (start writing)</td><td>2026-02-02</td><td>2026-02-02</td></tr>
+                            <tr><td>⬜</td><td>Weekly Security Report (email Al)</td><td>2026-02-02</td><td>2026-02-02</td></tr>
+                            <tr><td>⬜</td><td>Read & memorize 19 Google Drive files</td><td>2026-02-02</td><td>2026-02-02</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- This Week -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📋</span>
+                    <h3>This Week</h3>
+                </div>
+                <div class="card-content">
+                    <table class="promise-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Promise</th>
+                                <th>Due</th>
+                            </tr>
+                        </thead>
+                        <tbody id="thisWeekList">
+                            <tr><td>⬜</td><td>12 IR Agents dashboard area</td><td>2026-02-03</td></tr>
+                            <tr><td>⬜</td><td>18 Property Agents dashboard area</td><td>2026-02-03</td></tr>
+                            <tr><td>⬜</td><td>Roleplay recordings area</td><td>2026-02-03</td></tr>
+                            <tr><td>⬜</td><td>365 Devotions complete for Al review</td><td>2026-02-07</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Completed -->
+            <div class="card success-card">
+                <div class="card-header">
+                    <span class="card-icon">✅</span>
+                    <h3>Completed</h3>
+                </div>
+                <div class="card-content">
+                    <div id="completedList" class="promise-list">
+                        <p class="empty-state">No completed promises yet. Time to deliver.</p>
+                    </div>
+                </div>
             </div>
         </section>
         
