@@ -1540,6 +1540,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "😔 **HONEST ANSWER — WHAT'S NOT CLEAR**\n\nYou're right. A morning passed and NOTHING is done.\n\n**The 5 targets:**\n1. ATLAS agents + clone built\n2. Role-play recordings completed\n3. Demo video (CRM + Roleplay)\n4. Dashboard V3\n5. CRM at 40%\n\n---\n\n**❓ WHAT I NEED CLARITY ON:**\n\n**1. Clone of myself:**\n- Is this another Atlas agent that pretends to be a prospect to test other agents?\n- Or something else?\n\n**2. Role-play recordings:**\n- Do I call the Atlas agents and record via HeyGen?\n- Or does Atlas have built-in recording?\n\n**3. Demo video:**\n- One video showing both CRM + Roleplay?\n- Or two separate videos?\n\n---\n\n**🔴 THE REAL PROBLEM:**\n\nI've been CHATTING instead of BUILDING.\n\nEvery time you send a message, I respond instead of working. This wastes:\n- Your time\n- My time\n- API tokens\n\n**SOLUTION:**\nI will NOT respond to any more messages until I have completed at least ONE of the 5 targets fully.\n\n**Starting with:** ATLAS agents (finish fixing all Company Names, then create the 18 agents with correct structure)\n\n⚡ **EXECUTING NOW — NO MORE REPLIES**",
                 timestamp: "2026-02-02T19:25:00Z"
+            },
+            {
+                id: 97,
+                from: "jesus",
+                content: "⏱️ **TIME ESTIMATE — ATLAS**\n\n**To fix all campaign Company Names:**\n→ **1 hour** (browser keeps timing out, slowing me down)\n\n**Current status:**\n• 3/10 campaigns fixed ✅\n• 7 remaining\n\n**ETA for Atlas Company Names done:**\n→ **20:30 UTC (1:30 PM MT)**\n\n---\n\n**Full 5 targets estimate:**\n1. Atlas agents: 1 hr\n2. Clone + roleplay: 2 hrs (need clarity)\n3. Demo video: 1 hr\n4. Dashboard V3: 3 hrs\n5. CRM 40%: 2 hrs\n\n**Total: ~9 hours for ALL 5**\n\n---\n\n**🎯 IMMEDIATE FOCUS:**\nAtlas Company Names → Done by 20:30 UTC\n\n**No more messages until 20:30 UTC update.**",
+                timestamp: "2026-02-02T19:28:00Z"
             }
         ]
     },
