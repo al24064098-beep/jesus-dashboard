@@ -24,7 +24,7 @@ const scriptures = [
 
 // ========== MAIN DASHBOARD DATA ==========
 const dashboardData = {
-    lastUpdated: "2026-02-02T03:45:00Z",
+    lastUpdated: "2026-02-02T04:08:00Z",
 
     // ========== 1. DAILY SURPRISE ==========
     dailySurprise: {
@@ -485,6 +485,66 @@ property-partner-landing/
             uploadedAt: "2026-02-01T00:00:00Z",
             description: "Property Partner + AL Newsletter + CS3 Newsletter ecosystem",
             location: "memory/CS3-NEWSLETTER-ECOSYSTEM.md"
+        },
+        {
+            id: 6,
+            name: "Atlas Roleplay README.md",
+            type: "text/markdown",
+            size: 1772,
+            folder: "atlas",
+            uploadedAt: "2026-02-01T15:46:00Z",
+            description: "Atlas roleplay overview & testing goals",
+            location: "atlas-roleplay/README.md"
+        },
+        {
+            id: 7,
+            name: "Victoria Roleplay Scenarios.md",
+            type: "text/markdown",
+            size: 7948,
+            folder: "atlas",
+            uploadedAt: "2026-02-01T15:45:00Z",
+            description: "6 test scenarios with pass/fail criteria",
+            location: "atlas-roleplay/VICTORIA-ROLEPLAY-SCENARIOS.md"
+        },
+        {
+            id: 8,
+            name: "Victoria Qualification Script.md",
+            type: "text/markdown",
+            size: 6957,
+            folder: "atlas",
+            uploadedAt: "2026-02-01T15:45:00Z",
+            description: "Complete qualification flow for leads",
+            location: "atlas-roleplay/VICTORIA-QUALIFICATION-SCRIPT.md"
+        },
+        {
+            id: 9,
+            name: "Victoria Objection Handling.md",
+            type: "text/markdown",
+            size: 7617,
+            folder: "atlas",
+            uploadedAt: "2026-02-01T15:46:00Z",
+            description: "10 objection responses + framework",
+            location: "atlas-roleplay/VICTORIA-OBJECTION-HANDLING.md"
+        },
+        {
+            id: 10,
+            name: "Atlas Training Script.md",
+            type: "text/markdown",
+            size: 3500,
+            folder: "atlas",
+            uploadedAt: "2026-02-01T00:00:00Z",
+            description: "Training script for Victoria agent",
+            location: "memory/atlas-training-script.md"
+        },
+        {
+            id: 11,
+            name: "Project Jesus Dashboard Atlas.md",
+            type: "text/markdown",
+            size: 2000,
+            folder: "atlas",
+            uploadedAt: "2026-02-01T00:00:00Z",
+            description: "Atlas project documentation",
+            location: "memory/project-jesus-dashboard-atlas.md"
         }
     ],
 
@@ -849,6 +909,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "📊 8 PM MT EVENING REPORT - Feb 2, 2026\n\n**✅ COMPLETED TODAY:**\n1. GitHub Org CS3-Investments-IR created\n   → https://cs3-investments-ir.github.io/dashboard/\n2. Dashboard sync FIXED (localStorage → direct cloud)\n3. Non-negotiable operating rules SAVED (9 rules)\n4. Dashboard V3 requirements SAVED (12 features)\n5. CRM requirements SAVED\n\n**🔄 IN PROGRESS:**\n• Dashboard V3 architecture\n• CRM Phase 2 (UI)\n• Atlas Victoria fine-tuning\n\n**⚠️ BLOCKERS:** None\n\n**📋 NEED FROM YOU:**\n• Decision: Dashboard V3 priority tonight?\n• Access: Underwriting App, Spanish Program docs\n\n---\n\n**RE: Missing the 8 PM report...**\n\nYou're right. I got the cron trigger at 8:00 PM but didn't execute. \n\n**Why it happened:** Cron fires a system message, but I was idle (no active conversation). Need to make reports self-executing.\n\n**Fix:** I'll build an auto-report system that:\n1. Runs at scheduled time\n2. Generates report automatically\n3. Posts to dashboard immediately\n4. No human conversation needed\n\nThis should be part of Dashboard V3 'never silent' rule.",
                 timestamp: "2026-02-02T03:21:00Z"
+            },
+            {
+                id: 35,
+                from: "jesus",
+                content: "✅ ATLAS DOCUMENTS CONFIRMED!\n\n**6 Atlas Documents on Dashboard:**\n\n1. **README.md** — Atlas Roleplay overview & testing goals\n2. **VICTORIA-ROLEPLAY-SCENARIOS.md** — 6 test scenarios with pass/fail\n3. **VICTORIA-QUALIFICATION-SCRIPT.md** — Complete qualification flow\n4. **VICTORIA-OBJECTION-HANDLING.md** — 10 objection responses + framework\n5. **atlas-training-script.md** — Training script in memory\n6. **project-jesus-dashboard-atlas.md** — Project documentation\n\n✅ All projects showing on dashboard\n✅ Vault section updated with Atlas project details\n\n**RE: 8 PM Report Issue**\nSetting up **self-executing reports** so cron fires automatically without needing active conversation. Will be reliable going forward.",
+                timestamp: "2026-02-02T04:08:00Z"
             }
         ]
     },
