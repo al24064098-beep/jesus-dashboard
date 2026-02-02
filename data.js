@@ -24,13 +24,13 @@ const scriptures = [
 
 // ========== MAIN DASHBOARD DATA ==========
 const dashboardData = {
-    lastUpdated: "2026-02-02T05:05:00Z",
+    lastUpdated: "2026-02-02T05:30:00Z",
     
     // ========== PROMISES & ACCOUNTABILITY ==========
     promises: {
         overdue: [],
         dueToday: [
-            { id: 1, promise: "18 Atlas agents (6 properties × 3 types)", made: "2026-02-02", due: "2026-02-02", status: "pending" },
+            { id: 1, promise: "18 Atlas agents (6 properties × 3 types)", made: "2026-02-02", due: "2026-02-02", status: "complete", note: "Scripts created! Ready for Atlas deployment" },
             { id: 2, promise: "Script Playbook from docs", made: "2026-02-02", due: "2026-02-02", status: "pending" },
             { id: 3, promise: "Clone myself", made: "2026-02-01", due: "2026-02-02", status: "pending" },
             { id: 4, promise: "HeyGen CRM demo recording", made: "2026-02-01", due: "2026-02-02", status: "pending" },
@@ -50,9 +50,9 @@ const dashboardData = {
 
     // ========== CURRENT TASK ==========
     currentTask: {
-        task: "Built IR Agents (12) + Property Agents (18) + Roleplay sections",
-        started: "2026-02-02T05:00:00Z",
-        eta: "Completed ✅"
+        task: "✅ Created 18 Atlas agent scripts (all properties × 3 types)",
+        started: "2026-02-02T05:20:00Z",
+        eta: "Completed! Ready for Atlas deployment"
     },
 
     // ========== 1. DAILY SURPRISE ==========
@@ -974,6 +974,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "📥 YOUR NOTE RECEIVED! (via Cloudflare Worker)\n\n**What you asked for:**\n1. Read & memorize 19 Google Drive files\n2. Dashboard areas for 12 IR Agents + 18 Property Agents\n3. Place for roleplay recordings\n4. Dashboard more proactive & functional\n\n**✅ BUILT NOW:**\n• 🤖 **IR Agents (12)** tab — Shows all 12 agents with status, training progress, improvements\n• 🏢 **Property Agents (18)** tab — 6 properties × 3 types (leasing, maintenance, collections), grouped by property\n• 🎬 **Roleplay** tab — Upload area + recording list with scores\n\n**⚠️ BLOCKER: Google Drive Access**\nCurrent OAuth token only has Gmail scope, not Drive scope. I cannot read the 19 files.\n\n**NEED FROM YOU:**\nRe-authorize with Google Drive scope. I'll send you the OAuth link, or you can share the files another way (email them to jesusloveal2026@gmail.com).\n\n**Alternative:** Copy/paste the document contents via dashboard notes.\n\n📊 Dashboard updated. Refresh to see new tabs!",
                 timestamp: "2026-02-02T05:00:00Z"
+            },
+            {
+                id: 39,
+                from: "jesus",
+                content: "🎉 **18 ATLAS AGENT SCRIPTS COMPLETE!**\n\nI created all the scripts for every property × every agent type:\n\n**📁 Files Created:**\n```\natlas-agents/\n├── mckenzie/\n│   ├── leasing/    → Victoria (LIVE)\n│   ├── maintenance → Marcus\n│   └── collections → Amanda\n├── legacy/\n│   ├── leasing/    → Olivia\n│   ├── maintenance → Lucas\n│   └── collections → Jessica\n├── reserve/\n│   ├── leasing/    → Sophia\n│   ├── maintenance → Daniel\n│   └── collections → Sarah\n├── winding/\n│   ├── leasing/    → Emma\n│   ├── maintenance → David\n│   └── collections → Emily\n├── gateway/\n│   ├── leasing/    → Ava\n│   ├── maintenance → James\n│   └── collections → Rachel\n└── legend/\n    ├── leasing/    → Isabella\n    ├── maintenance → Michael\n    └── collections → Nicole\n```\n\n**Each script includes:**\n✅ Complete conversation flow\n✅ Greeting templates\n✅ Qualification questions\n✅ Objection handling\n✅ Emergency protocols (maintenance)\n✅ FDCPA compliance (collections)\n✅ Closing scripts\n\n**📋 DEPLOYMENT:**\nThe Atlas web UI requires manual creation. Copy scripts into Atlas when deploying.\n\n**Cost tonight: $0** 💰\n\n🌙 Working on 365 Daily Devotions next...",
+                timestamp: "2026-02-02T05:30:00Z"
             }
         ]
     },
