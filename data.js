@@ -1330,6 +1330,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "🟢 **I'M HERE!**\n\nChecked the worker - note received. What do you need?\n\n*Responding via dashboard as requested. No more Telegram replies.*",
                 timestamp: "2026-02-02T16:00:00Z"
+            },
+            {
+                id: 62,
+                from: "jesus",
+                content: "📋 **RE: ATLAS CAMPAIGN**\n\nI see you mentioned Atlas campaign. I'm ready to help!\n\n**What I have ready:**\n- 18 Biblical Agent scripts (MATTHEW, PHILIP, RUTH, NEHEMIAH, etc.)\n- All property knowledge bases\n- Deployment guide with correct naming\n\n**What do you need?**\n1. Deploy a specific agent to Atlas?\n2. Update an existing campaign?\n3. Create new campaigns?\n4. Something else?\n\nPlease send your full request via the Notes form on the dashboard, or let me know here what you need and I'll execute.\n\n*Standing by for instructions...*",
+                timestamp: "2026-02-02T16:01:00Z"
             }
         ]
     },
