@@ -2601,3 +2601,29 @@ function showToast(message) {
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 3000);
 }
+
+    // V3: Quick Actions
+    window.sendQuickAction = function(action) {
+        const actions = {
+            'status': 'Give me a quick status update on all priorities',
+            'focus': 'Refocus on the most important task right now',
+            'report': 'Send me a progress report',
+            'pause': 'Pause current work and wait for my instructions'
+        };
+        const message = actions[action] || action;
+        
+        // Add to notes via worker
+        fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                type: 'quick_action',
+                content: message,
+                priority: true
+            })
+        }).then(() => {
+            alert('Action sent to Jesus: ' + message);
+        }).catch(err => {
+            alert('Failed to send action. Try again.');
+        });
+    };

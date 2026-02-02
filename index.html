@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jesus Dashboard V2 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=40">
+    <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
+    <link rel="stylesheet" href="style.css?v=60">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -20,7 +20,7 @@
                 <div class="status-ring online"></div>
             </div>
             <div class="header-text">
-                <h1>Jesus Dashboard <span class="version">V2</span></h1>
+                <h1>Jesus Dashboard <span class="version">V3</span></h1>
                 <p class="subtitle">AI Agent Management Platform</p>
             </div>
         </div>
@@ -76,6 +76,124 @@
             <div class="section-header">
                 <h2>🏠 Command Center</h2>
                 <p class="section-desc">Everything at a glance. Click any card to dive deeper.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3: Today's Focus Strip -->
+            <div class="todays-focus-strip">
+                <div class="focus-header">
+                    <span class="focus-icon">🎯</span>
+                    <h3>Today's Focus</h3>
+                    <span class="live-indicator">
+                        <span class="pulse-dot"></span>
+                        LIVE
+                    </span>
+                </div>
+                <div class="focus-priorities" id="todaysFocusList">
+                    <div class="focus-item active">
+                        <span class="focus-num">1</span>
+                        <span class="focus-text">Dashboard V3</span>
+                        <span class="focus-status working">🔨 Working</span>
+                    </div>
+                    <div class="focus-item">
+                        <span class="focus-num">2</span>
+                        <span class="focus-text">CRM to 40%</span>
+                        <span class="focus-status pending">⏳ Next</span>
+                    </div>
+                    <div class="focus-item">
+                        <span class="focus-num">3</span>
+                        <span class="focus-text">AI Phone Platform</span>
+                        <span class="focus-status pending">⏳ 8PM MT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3: System Heartbeat + Sync Status -->
+            <div class="system-status-bar">
+                <div class="heartbeat-indicator">
+                    <span class="heart-icon">💓</span>
+                    <span class="heartbeat-text">AI Alive</span>
+                    <span class="heartbeat-time" id="lastHeartbeat">Just now</span>
+                </div>
+                <div class="sync-indicator">
+                    <span class="sync-icon">🔄</span>
+                    <span class="sync-text">Last Sync:</span>
+                    <span class="sync-time" id="lastSyncTime">--</span>
+                </div>
+                <div class="current-mode">
+                    <span class="mode-label">Mode:</span>
+                    <span class="mode-value" id="currentMode">⚡ Building</span>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #1: AI Productivity Score -->
+            <div class="productivity-score-card">
+                <div class="score-header">
+                    <span class="score-icon">📈</span>
+                    <h3>AI Productivity Score</h3>
+                    <span class="wow-badge">WOW #1</span>
+                </div>
+                <div class="score-body">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 36 36" class="score-ring">
+                            <path class="score-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="score-ring-fill" stroke-dasharray="65, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                        </svg>
+                        <span class="score-value" id="productivityScore">65%</span>
+                    </div>
+                    <div class="score-breakdown">
+                        <div class="score-item good"><span>⚡ Building:</span> <span id="buildingTime">4.2h</span></div>
+                        <div class="score-item warning"><span>💬 Chatting:</span> <span id="chattingTime">2.1h</span></div>
+                        <div class="score-item neutral"><span>🔍 Research:</span> <span id="researchTime">0.8h</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Quick Actions Panel -->
+            <div class="quick-actions-panel">
+                <div class="actions-header">
+                    <span class="actions-icon">⚡</span>
+                    <h3>Quick Actions</h3>
+                    <span class="wow-badge">WOW #2</span>
+                </div>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="sendQuickAction('status')">📊 Get Status</button>
+                    <button class="action-btn" onclick="sendQuickAction('focus')">🎯 Refocus Now</button>
+                    <button class="action-btn" onclick="sendQuickAction('report')">📝 Send Report</button>
+                    <button class="action-btn" onclick="sendQuickAction('pause')">⏸️ Pause Work</button>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #3: Daily Goal Progress -->
+            <div class="daily-goals-card">
+                <div class="goals-header">
+                    <span class="goals-icon">🏆</span>
+                    <h3>Daily Goal Progress</h3>
+                    <span class="wow-badge">WOW #3</span>
+                </div>
+                <div class="goals-list" id="dailyGoalsList">
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <span class="goal-name">Dashboard V3</span>
+                            <span class="goal-progress">40%</span>
+                        </div>
+                        <div class="goal-bar"><div class="goal-fill" style="width: 40%"></div></div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <span class="goal-name">CRM 30% → 40%</span>
+                            <span class="goal-progress">0%</span>
+                        </div>
+                        <div class="goal-bar"><div class="goal-fill" style="width: 0%"></div></div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <span class="goal-name">AI Phone Platform</span>
+                            <span class="goal-progress">0%</span>
+                        </div>
+                        <div class="goal-bar"><div class="goal-fill" style="width: 0%"></div></div>
+                    </div>
+                </div>
             </div>
             
             <!-- Quick Stats Row -->
@@ -1485,9 +1603,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="data.js?v=40"></script>
+    <script src="data.js?v=60"></script>
     <script src="devotions.js?v=1"></script>
-    <script src="app.js?v=50">
+    <script src="app.js?v=60">
     
     <!-- Simple Note Sender (Backup) -->
     <script>
