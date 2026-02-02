@@ -240,7 +240,7 @@
 
         // Notes Preview
         const notesPreview = document.getElementById('ovNotesPreview');
-        const notesArray = data.notes || [];
+        const notesArray = Array.isArray(data.notes) ? data.notes : [];
         const recentNotes = notesArray.filter(n => n.status === 'unread').slice(0, 2);
         if (recentNotes.length > 0) {
             notesPreview.innerHTML = recentNotes.map(n => `<p>• ${n.content.substring(0, 50)}...</p>`).join('');
