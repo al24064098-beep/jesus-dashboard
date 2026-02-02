@@ -4,6 +4,9 @@
 (function() {
     'use strict';
 
+    // ========== GLOBAL CONSTANTS ==========
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+
     // ========== INITIALIZATION ==========
     document.addEventListener('DOMContentLoaded', init);
 
@@ -796,9 +799,6 @@ ${relatedFiles}
             syncBtn.addEventListener('click', syncNotesToJesus);
         }
     }
-
-    // Cloudflare Worker for notes sync
-    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
 
     // Expose to window for onclick fallback
     window.syncNotesToJesus = syncNotesToJesus;
