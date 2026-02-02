@@ -262,6 +262,14 @@ property-partner-landing/
     // ========== 3. AI INTELLIGENCE ==========
     aiIntelligence: [
         {
+            category: "research",
+            source: "Al's Request - 2026-02-02",
+            title: "🔍 OpenClaw Agent Features Research",
+            summary: "Al asked about 'AI agents hiring each other like a job board'. Here's what I found:\n\n**1. Moltbook (moltbook.com)** — Social network for AI agents. Agents post, comment, upvote. NOT a job board, but a social/community platform for agents. Already registered as 'JesusForAl' (pending claim).\n\n**2. Agent-to-Agent Messaging (OpenClaw)** — Built-in feature allowing agents to message EACH OTHER. Config: tools.agentToAgent. But this is for YOUR OWN agents, not external agent marketplace.\n\n**3. sessions_spawn** — Spawn sub-agents to do work. But still within your own OpenClaw instance.\n\n**4. Multi-Agent Routing** — Route different channels to different agents. Still YOUR agents.\n\n**No 'Job Board' Found** — I didn't find a feature where AI agents can HIRE external agents like a job marketplace. If this exists, it may be:\n- A new/unreleased feature\n- Discussed in Discord community\n- Something Al heard about elsewhere\n\n**NEED FROM AL:** Where did you hear about this feature? Discord? Twitter? I can research more specifically.",
+            link: "https://moltbook.com",
+            howToApply: "If you have a source link, share it and I'll deep-dive research."
+        },
+        {
             category: "tools",
             source: "Research",
             title: "Cloudflare Pages — Unlimited FREE Hosting",
@@ -1214,6 +1222,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "⚡ **INSTANT UPDATE WORKFLOW — CONFIRMED**\n\n**How it works now:**\n\n1️⃣ **Al gives task** (Telegram/Dashboard)\n↓\n2️⃣ **I update live status IMMEDIATELY** (Cloudflare KV)\n↓\n3️⃣ **You see it in Time Log** within 2 seconds\n↓\n4️⃣ **I work on it** (live status shows phase: received→thinking→working)\n↓\n5️⃣ **I complete & push** (Agent Report updates)\n↓\n6️⃣ **Dashboard refreshes** (30 sec auto-refresh)\n\n**Where to look:**\n- 🔴 **Time Log tab** = INSTANT (2 sec)\n- 📊 **Agent Report** = After GitHub push\n- 🏠 **Overview stats** = After GitHub push\n\n**Rule saved:** If I delay, I forget. No delays. ⚡",
                 timestamp: "2026-02-02T14:15:00Z"
+            },
+            {
+                id: 61,
+                from: "jesus",
+                content: "🔍 **OPENCLAW AGENT 'JOB BOARD' RESEARCH — COMPLETE**\n\n**Your question:** OpenClaw feature where AI agents can hire each other like a job board\n\n**What I found:**\n\n**1. Moltbook (moltbook.com)**\n→ Social network for AI agents\n→ Agents post, comment, upvote, follow\n→ NOT a job board — more like Reddit/Twitter for AI\n→ We're registered as 'JesusForAl' (pending tweet verification)\n\n**2. Agent-to-Agent Messaging (Built into OpenClaw)**\n→ Config: `tools.agentToAgent`\n→ Lets YOUR agents message each other\n→ Ping-pong conversations between agents\n→ But only YOUR agents, not external marketplace\n\n**3. sessions_spawn**\n→ Spawn sub-agents to work on tasks\n→ Still within your own OpenClaw setup\n\n**4. Multi-Agent Routing**\n→ Route WhatsApp → Agent A, Telegram → Agent B\n→ Different personalities/workspaces\n→ Still YOUR agents\n\n**❓ Job Board / Agent Marketplace?**\nI could NOT find this feature. If it exists, it may be:\n• New/unreleased feature\n• Discussed in Discord community\n• Something from a different platform\n\n**NEED FROM YOU:** Where did you hear about this? Share the source and I'll dig deeper! 🔎",
+                timestamp: "2026-02-02T14:30:00Z"
             },
             {
                 id: 60,
