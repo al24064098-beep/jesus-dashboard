@@ -73,6 +73,9 @@
         loadSystemHealth();
         loadMetrics();
         loadScripture();
+        loadIRAgents();
+        loadPropertyAgents();
+        loadRoleplay();
     }
 
     // ========== 0. OVERVIEW / HOME ==========
@@ -1303,6 +1306,176 @@ ${relatedFiles}
         if (footerVerse) {
             footerVerse.textContent = `"${scripture.text}" - ${scripture.ref}`;
         }
+    }
+
+    // ========== IR AGENTS (12) ==========
+    function loadIRAgents() {
+        const agents = dashboardData.irAgents || [];
+        
+        // Update summary stats
+        const live = agents.filter(a => a.status === 'live').length;
+        const training = agents.filter(a => a.status === 'training').length;
+        const planned = agents.filter(a => a.status === 'planned').length;
+        
+        const liveEl = document.getElementById('irAgentsLive');
+        const trainingEl = document.getElementById('irAgentsTraining');
+        const plannedEl = document.getElementById('irAgentsPlanned');
+        
+        if (liveEl) liveEl.textContent = live;
+        if (trainingEl) trainingEl.textContent = training;
+        if (plannedEl) plannedEl.textContent = planned;
+        
+        // Render agents grid
+        const grid = document.getElementById('irAgentsGrid');
+        if (!grid) return;
+        
+        grid.innerHTML = agents.map(agent => {
+            const statusClass = agent.status === 'live' ? 'status-live' : 
+                               agent.status === 'training' ? 'status-training' : 'status-planned';
+            const statusIcon = agent.status === 'live' ? '🟢' : 
+                              agent.status === 'training' ? '🟡' : '⬜';
+            
+            return `
+                <div class="agent-card ${statusClass}">
+                    <div class="agent-header">
+                        <span class="agent-status-icon">${statusIcon}</span>
+                        <h4 class="agent-name">${agent.name}</h4>
+                    </div>
+                    <p class="agent-purpose">${agent.purpose}</p>
+                    <div class="agent-meta">
+                        <span class="agent-platform">📍 ${agent.platform}</span>
+                        <span class="agent-progress">Progress: ${agent.trainingProgress}%</span>
+                    </div>
+                    ${agent.improvements && agent.improvements.length > 0 ? `
+                        <div class="agent-improvements">
+                            <strong>Recent Improvements:</strong>
+                            <ul>${agent.improvements.slice(-2).map(i => `<li>${i.change}</li>`).join('')}</ul>
+                        </div>
+                    ` : ''}
+                    ${agent.notes ? `<p class="agent-notes">📝 ${agent.notes}</p>` : ''}
+                </div>
+            `;
+        }).join('');
+    }
+
+    // ========== PROPERTY AGENTS (18) ==========
+    function loadPropertyAgents() {
+        const agents = dashboardData.propertyAgents || [];
+        
+        // Update summary stats
+        const live = agents.filter(a => a.status === 'live').length;
+        const training = agents.filter(a => a.status === 'training').length;
+        const planned = agents.filter(a => a.status === 'planned').length;
+        
+        const liveEl = document.getElementById('propAgentsLive');
+        const trainingEl = document.getElementById('propAgentsTraining');
+        const plannedEl = document.getElementById('propAgentsPlanned');
+        
+        if (liveEl) liveEl.textContent = live;
+        if (trainingEl) trainingEl.textContent = training;
+        if (plannedEl) plannedEl.textContent = planned;
+        
+        // Group by property
+        const byProperty = {};
+        agents.forEach(agent => {
+            if (!byProperty[agent.property]) {
+                byProperty[agent.property] = [];
+            }
+            byProperty[agent.property].push(agent);
+        });
+        
+        // Render property groups
+        const container = document.getElementById('propertyAgentsContainer');
+        if (!container) return;
+        
+        container.innerHTML = Object.keys(byProperty).map(property => {
+            const propertyAgents = byProperty[property];
+            return `
+                <div class="property-agent-group">
+                    <h3 class="property-name">🏢 ${property}</h3>
+                    <div class="property-agents-grid">
+                        ${propertyAgents.map(agent => {
+                            const statusClass = agent.status === 'live' ? 'status-live' : 
+                                               agent.status === 'training' ? 'status-training' : 'status-planned';
+                            const statusIcon = agent.status === 'live' ? '🟢' : 
+                                              agent.status === 'training' ? '🟡' : '⬜';
+                            const typeIcon = agent.type === 'leasing' ? '🔑' : 
+                                            agent.type === 'maintenance' ? '🔧' : '💰';
+                            
+                            return `
+                                <div class="agent-card small ${statusClass}">
+                                    <div class="agent-header">
+                                        <span class="agent-type-icon">${typeIcon}</span>
+                                        <span class="agent-status-icon">${statusIcon}</span>
+                                    </div>
+                                    <h4 class="agent-name">${agent.type.charAt(0).toUpperCase() + agent.type.slice(1)}</h4>
+                                    ${agent.phone ? `<p class="agent-phone">📞 ${agent.phone}</p>` : ''}
+                                    <p class="agent-progress-text">Progress: ${agent.trainingProgress}%</p>
+                                    ${agent.notes ? `<p class="agent-notes small">${agent.notes}</p>` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // ========== ROLEPLAY RECORDINGS ==========
+    function loadRoleplay() {
+        const recordings = dashboardData.roleplayRecordings || [];
+        
+        // Update summary stats
+        const total = recordings.length;
+        const passed = recordings.filter(r => r.status === 'passed').length;
+        const needsWork = recordings.filter(r => r.status === 'needs_work').length;
+        const avgScore = recordings.filter(r => r.score).length > 0 
+            ? Math.round(recordings.filter(r => r.score).reduce((sum, r) => sum + r.score, 0) / recordings.filter(r => r.score).length)
+            : null;
+        
+        const totalEl = document.getElementById('roleplayTotal');
+        const passedEl = document.getElementById('roleplayPassed');
+        const needsWorkEl = document.getElementById('roleplayNeedsWork');
+        const avgScoreEl = document.getElementById('roleplayAvgScore');
+        
+        if (totalEl) totalEl.textContent = total;
+        if (passedEl) passedEl.textContent = passed;
+        if (needsWorkEl) needsWorkEl.textContent = needsWork;
+        if (avgScoreEl) avgScoreEl.textContent = avgScore ? avgScore + '%' : '--%';
+        
+        // Render recordings list
+        const list = document.getElementById('roleplayList');
+        if (!list) return;
+        
+        if (recordings.length === 0) {
+            list.innerHTML = '<p class="empty-message">No roleplay recordings yet. I\'ll add them as I conduct test calls with Atlas agents.</p>';
+            return;
+        }
+        
+        list.innerHTML = recordings.map(rec => {
+            const statusClass = rec.status === 'passed' ? 'status-passed' : 
+                               rec.status === 'needs_work' ? 'status-needs-work' : 'status-pending';
+            const statusIcon = rec.status === 'passed' ? '✅' : 
+                              rec.status === 'needs_work' ? '⚠️' : '⏳';
+            
+            return `
+                <div class="roleplay-item ${statusClass}">
+                    <div class="roleplay-header">
+                        <span class="roleplay-status">${statusIcon}</span>
+                        <span class="roleplay-agent">${rec.agentName}</span>
+                        <span class="roleplay-date">${formatDate(rec.date)}</span>
+                    </div>
+                    <div class="roleplay-body">
+                        <p class="roleplay-scenario"><strong>Scenario:</strong> ${rec.scenario}</p>
+                        <p class="roleplay-duration"><strong>Duration:</strong> ${rec.duration}</p>
+                        ${rec.score ? `<p class="roleplay-score"><strong>Score:</strong> ${rec.score}%</p>` : ''}
+                        ${rec.fileUrl ? `<a href="${rec.fileUrl}" class="btn btn-small" target="_blank">▶️ Play Recording</a>` : ''}
+                    </div>
+                    ${rec.notes ? `<p class="roleplay-notes">${rec.notes}</p>` : ''}
+                    ${rec.alFeedback ? `<p class="roleplay-feedback"><strong>Al's Feedback:</strong> ${rec.alFeedback}</p>` : ''}
+                </div>
+            `;
+        }).join('');
     }
 
     // ========== UTILITY FUNCTIONS ==========

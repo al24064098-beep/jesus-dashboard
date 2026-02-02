@@ -3129,3 +3129,340 @@ textarea {
 .badge.danger {
     background: #ff4444;
 }
+
+/* ========== IR AGENTS & PROPERTY AGENTS SECTIONS ========== */
+.agents-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.agent-stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.agent-stat-card.success {
+    border-left: 4px solid var(--accent-success);
+}
+
+.agent-stat-card.warning {
+    border-left: 4px solid var(--accent-warning);
+}
+
+.agent-stat-card.highlight {
+    border-left: 4px solid var(--accent-primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.agent-stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    display: block;
+}
+
+.agent-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.agent-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.agent-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.agent-card.status-live {
+    border-left: 4px solid var(--accent-success);
+}
+
+.agent-card.status-training {
+    border-left: 4px solid var(--accent-warning);
+}
+
+.agent-card.status-planned {
+    border-left: 4px solid var(--text-muted);
+}
+
+.agent-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.agent-status-icon {
+    font-size: 1rem;
+}
+
+.agent-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.agent-purpose {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.agent-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.agent-improvements {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.agent-improvements strong {
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.agent-improvements ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.agent-improvements li {
+    margin-bottom: 0.25rem;
+}
+
+.agent-notes {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.agent-notes.small {
+    font-size: 0.75rem;
+}
+
+/* Property Agents Grouping */
+.property-agent-group {
+    margin-bottom: 2rem;
+}
+
+.property-agent-group .property-name {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.property-agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.agent-card.small {
+    padding: 1rem;
+}
+
+.agent-card.small .agent-header {
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.agent-card.small .agent-name {
+    font-size: 0.9rem;
+}
+
+.agent-phone {
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    margin: 0.25rem 0;
+}
+
+.agent-progress-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* ========== ROLEPLAY SECTION ========== */
+.roleplay-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.roleplay-stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.roleplay-stat-card.success {
+    border-left: 4px solid var(--accent-success);
+}
+
+.roleplay-stat-card.warning {
+    border-left: 4px solid var(--accent-warning);
+}
+
+.roleplay-stat-card.highlight {
+    border-left: 4px solid var(--accent-primary);
+}
+
+.roleplay-stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    display: block;
+}
+
+.roleplay-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: block;
+}
+
+.roleplay-upload-area {
+    text-align: center;
+    padding: 2rem;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.upload-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+.roleplay-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.roleplay-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+.roleplay-item.status-passed {
+    border-left: 4px solid var(--accent-success);
+}
+
+.roleplay-item.status-needs-work {
+    border-left: 4px solid var(--accent-warning);
+}
+
+.roleplay-item.status-pending {
+    border-left: 4px solid var(--text-muted);
+}
+
+.roleplay-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.roleplay-status {
+    font-size: 1.25rem;
+}
+
+.roleplay-agent {
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.roleplay-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.roleplay-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.roleplay-notes {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.roleplay-feedback {
+    font-size: 0.9rem;
+    color: var(--accent-success);
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(0, 204, 102, 0.1);
+    border-radius: 4px;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem;
+    font-style: italic;
+}
+
+.btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .agents-summary,
+    .roleplay-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .property-agents-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .agents-grid {
+        grid-template-columns: 1fr;
+    }
+}

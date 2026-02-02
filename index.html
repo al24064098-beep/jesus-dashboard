@@ -50,6 +50,9 @@
         <button class="nav-tab" data-section="proposals">💰 Proposals</button>
         <button class="nav-tab" data-section="challenges">🎯 Challenges</button>
         <button class="nav-tab" data-section="properties">🏠 Properties</button>
+        <button class="nav-tab" data-section="irAgents">🤖 IR Agents (12)</button>
+        <button class="nav-tab" data-section="propertyAgents">🏢 Property Agents (18)</button>
+        <button class="nav-tab" data-section="roleplay">🎬 Roleplay</button>
         <button class="nav-tab" data-section="access">🔐 Access</button>
         <button class="nav-tab" data-section="timelog">⏱️ Time Log</button>
     </nav>
@@ -1100,6 +1103,130 @@
             <!-- Properties Grid -->
             <div class="properties-grid" id="propertiesGrid">
                 <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- IR AGENTS SECTION (12 Agents) -->
+        <section id="irAgents" class="content-section">
+            <div class="section-header">
+                <h2>🤖 IR Agents (12)</h2>
+                <p class="section-desc">12 Investor Relations AI agents — how I'm managing and improving each one.</p>
+            </div>
+            
+            <!-- IR Agents Summary -->
+            <div class="agents-summary">
+                <div class="agent-stat-card success">
+                    <span class="agent-stat-value" id="irAgentsLive">0</span>
+                    <span class="agent-stat-label">Live</span>
+                </div>
+                <div class="agent-stat-card warning">
+                    <span class="agent-stat-value" id="irAgentsTraining">0</span>
+                    <span class="agent-stat-label">Training</span>
+                </div>
+                <div class="agent-stat-card">
+                    <span class="agent-stat-value" id="irAgentsPlanned">0</span>
+                    <span class="agent-stat-label">Planned</span>
+                </div>
+                <div class="agent-stat-card highlight">
+                    <span class="agent-stat-value">12</span>
+                    <span class="agent-stat-label">Total</span>
+                </div>
+            </div>
+            
+            <!-- IR Agents Grid -->
+            <div class="agents-grid" id="irAgentsGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- PROPERTY AGENTS SECTION (18 Agents) -->
+        <section id="propertyAgents" class="content-section">
+            <div class="section-header">
+                <h2>🏢 Property Agents (18)</h2>
+                <p class="section-desc">18 Property Management AI agents (6 properties × 3 types) — leasing, maintenance, collections.</p>
+            </div>
+            
+            <!-- Property Agents Summary -->
+            <div class="agents-summary">
+                <div class="agent-stat-card success">
+                    <span class="agent-stat-value" id="propAgentsLive">0</span>
+                    <span class="agent-stat-label">Live</span>
+                </div>
+                <div class="agent-stat-card warning">
+                    <span class="agent-stat-value" id="propAgentsTraining">0</span>
+                    <span class="agent-stat-label">Training</span>
+                </div>
+                <div class="agent-stat-card">
+                    <span class="agent-stat-value" id="propAgentsPlanned">0</span>
+                    <span class="agent-stat-label">Planned</span>
+                </div>
+                <div class="agent-stat-card highlight">
+                    <span class="agent-stat-value">18</span>
+                    <span class="agent-stat-label">Total</span>
+                </div>
+            </div>
+            
+            <!-- Group by Property -->
+            <div class="property-agents-container" id="propertyAgentsContainer">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ROLEPLAY RECORDINGS SECTION -->
+        <section id="roleplay" class="content-section">
+            <div class="section-header">
+                <h2>🎬 Roleplay Recordings</h2>
+                <p class="section-desc">My roleplay sessions with Atlas agents — practice calls for review and feedback.</p>
+            </div>
+            
+            <!-- Roleplay Summary -->
+            <div class="roleplay-summary">
+                <div class="roleplay-stat-card">
+                    <span class="roleplay-stat-value" id="roleplayTotal">0</span>
+                    <span class="roleplay-stat-label">Total Sessions</span>
+                </div>
+                <div class="roleplay-stat-card success">
+                    <span class="roleplay-stat-value" id="roleplayPassed">0</span>
+                    <span class="roleplay-stat-label">Passed</span>
+                </div>
+                <div class="roleplay-stat-card warning">
+                    <span class="roleplay-stat-value" id="roleplayNeedsWork">0</span>
+                    <span class="roleplay-stat-label">Needs Work</span>
+                </div>
+                <div class="roleplay-stat-card highlight">
+                    <span class="roleplay-stat-value" id="roleplayAvgScore">--%</span>
+                    <span class="roleplay-stat-label">Avg Score</span>
+                </div>
+            </div>
+            
+            <!-- Upload Area -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📤</span>
+                    <h3>Upload New Recording</h3>
+                </div>
+                <div class="card-body">
+                    <div class="roleplay-upload-area">
+                        <input type="file" id="roleplayUpload" accept="audio/*,video/*" style="display:none">
+                        <button class="btn btn-primary" onclick="document.getElementById('roleplayUpload').click()">
+                            📎 Upload Recording
+                        </button>
+                        <p class="upload-hint">Upload audio/video of roleplay sessions for Al to review</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recordings List -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🎥</span>
+                    <h3>Recent Recordings</h3>
+                </div>
+                <div class="card-body">
+                    <div class="roleplay-list" id="roleplayList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
             </div>
         </section>
 

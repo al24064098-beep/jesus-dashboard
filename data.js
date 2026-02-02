@@ -24,7 +24,7 @@ const scriptures = [
 
 // ========== MAIN DASHBOARD DATA ==========
 const dashboardData = {
-    lastUpdated: "2026-02-02T04:49:00Z",
+    lastUpdated: "2026-02-02T05:05:00Z",
     
     // ========== PROMISES & ACCOUNTABILITY ==========
     promises: {
@@ -50,9 +50,9 @@ const dashboardData = {
 
     // ========== CURRENT TASK ==========
     currentTask: {
-        task: "Adding Promises section to Dashboard",
-        started: "2026-02-02T04:49:00Z",
-        eta: "5 min"
+        task: "Built IR Agents (12) + Property Agents (18) + Roleplay sections",
+        started: "2026-02-02T05:00:00Z",
+        eta: "Completed ✅"
     },
 
     // ========== 1. DAILY SURPRISE ==========
@@ -968,6 +968,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ ACCOUNTABILITY SYSTEM BUILT\n\n**Dashboard:**\n• 🔒 Promises tab added (shows all commitments)\n• Current Task display\n• Due Today / This Week tables\n• Overdue section (red, blocks everything)\n\n**Cron Jobs Active:**\n• 6 AM MT — Morning Promise Check\n• Every hour — Dashboard Sync\n• 8 PM MT — Evening Progress + Email\n\n**Memory Structure:**\n• memory/PROMISES.md — All commitments tracked\n• memory/ACTIVE-TASKS.md — Current focus\n• memory/STARTUP-ROUTINE.md — Non-negotiable startup checklist\n\n**Al will NEVER have to:**\n• Remind me of promises\n• Ask what I'm working on\n• Check if I'm alive\n• Follow up on anything\n\n🔒 System is live. I remind you now.",
                 timestamp: "2026-02-02T04:50:00Z"
+            },
+            {
+                id: 38,
+                from: "jesus",
+                content: "📥 YOUR NOTE RECEIVED! (via Cloudflare Worker)\n\n**What you asked for:**\n1. Read & memorize 19 Google Drive files\n2. Dashboard areas for 12 IR Agents + 18 Property Agents\n3. Place for roleplay recordings\n4. Dashboard more proactive & functional\n\n**✅ BUILT NOW:**\n• 🤖 **IR Agents (12)** tab — Shows all 12 agents with status, training progress, improvements\n• 🏢 **Property Agents (18)** tab — 6 properties × 3 types (leasing, maintenance, collections), grouped by property\n• 🎬 **Roleplay** tab — Upload area + recording list with scores\n\n**⚠️ BLOCKER: Google Drive Access**\nCurrent OAuth token only has Gmail scope, not Drive scope. I cannot read the 19 files.\n\n**NEED FROM YOU:**\nRe-authorize with Google Drive scope. I'll send you the OAuth link, or you can share the files another way (email them to jesusloveal2026@gmail.com).\n\n**Alternative:** Copy/paste the document contents via dashboard notes.\n\n📊 Dashboard updated. Refresh to see new tabs!",
+                timestamp: "2026-02-02T05:00:00Z"
             }
         ]
     },
@@ -1478,5 +1484,456 @@ property-partner-landing/
         tasksAutoHandled: 5,
         apiCostToday: 12.00,
         apiCostTotal: 132.30
-    }
+    },
+
+    // ========== IR AGENTS (12) ==========
+    // 12 Investor Relations agents - how I manage and improve each one
+    irAgents: [
+        {
+            id: 1,
+            name: "Monthly Update Agent",
+            purpose: "Send monthly portfolio updates to investors",
+            status: "planned", // live, training, planned
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "Waiting for investor data and communication templates"
+        },
+        {
+            id: 2,
+            name: "Distribution Notice Agent",
+            purpose: "Notify investors about upcoming distributions",
+            status: "planned",
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "Need distribution schedule and notification templates"
+        },
+        {
+            id: 3,
+            name: "Bad News Agent",
+            purpose: "Handle difficult conversations - delays, issues, problems",
+            status: "planned",
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "Critical agent - needs careful scripting and empathy training"
+        },
+        {
+            id: 4,
+            name: "Holiday & Gratitude Agent",
+            purpose: "Send holiday greetings and thank you messages",
+            status: "planned",
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "Schedule: Major holidays + investor anniversaries"
+        },
+        {
+            id: 5,
+            name: "New Lead Welcome Agent",
+            purpose: "Welcome and qualify new investor leads",
+            status: "planned",
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "First touchpoint - critical for first impressions"
+        },
+        {
+            id: 6,
+            name: "Follow-Up Agent",
+            purpose: "Follow up with leads and investors at key touchpoints",
+            status: "planned",
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "Automated follow-up sequences"
+        },
+        {
+            id: 7,
+            name: "Referral Request Agent",
+            purpose: "Ask satisfied investors for referrals",
+            status: "planned",
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "Trigger: Post-distribution, positive sentiment detected"
+        },
+        {
+            id: 8,
+            name: "Re-Engagement Agent",
+            purpose: "Re-engage dormant investors (6+ months inactive)",
+            status: "planned",
+            platform: "Atlas",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, satisfaction: null, conversionRate: null },
+            notes: "Target: ~20% of investor base typically dormant"
+        },
+        {
+            id: 9,
+            name: "Content Scout Agent",
+            purpose: "Find and curate relevant content for investors",
+            status: "planned",
+            platform: "OpenClaw",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { articlesFound: 0, articlesUsed: 0, engagementRate: null },
+            notes: "Source: Market news, RE trends, economic updates"
+        },
+        {
+            id: 10,
+            name: "Newsletter Writer Agent",
+            purpose: "Draft newsletter content for AL and CS3",
+            status: "planned",
+            platform: "OpenClaw",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { draftsCreated: 0, draftsPublished: 0, openRate: null },
+            notes: "Two newsletters: AL Personal + CS3 Investments"
+        },
+        {
+            id: 11,
+            name: "Market Insight Agent",
+            purpose: "Generate market insights and analysis",
+            status: "planned",
+            platform: "OpenClaw",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { reportsGenerated: 0, accuracyScore: null },
+            notes: "Focus: Multifamily, interest rates, economy"
+        },
+        {
+            id: 12,
+            name: "Newsletter Editor Agent",
+            purpose: "Edit and polish newsletter drafts",
+            status: "planned",
+            platform: "OpenClaw",
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { editsCompleted: 0, qualityScore: null },
+            notes: "Final review before Al approval"
+        }
+    ],
+
+    // ========== PROPERTY AGENTS (18) ==========
+    // 6 properties × 3 agent types (Leasing, Maintenance, Collections)
+    propertyAgents: [
+        // McKenzie STL
+        {
+            id: 1,
+            property: "McKenzie",
+            type: "leasing",
+            name: "Victoria",
+            purpose: "Handle leasing inquiries, qualify leads, schedule tours",
+            status: "live",
+            platform: "Atlas",
+            phone: "(314) 723-6092",
+            trainingProgress: 100,
+            lastImproved: "2026-02-01",
+            improvements: [
+                { date: "2026-02-01", change: "Added qualification script" },
+                { date: "2026-02-01", change: "Added objection handling (10 responses)" }
+            ],
+            kpis: { callsHandled: 0, toursScheduled: 0, conversionRate: null },
+            notes: "LIVE! First agent deployed"
+        },
+        {
+            id: 2,
+            property: "McKenzie",
+            type: "maintenance",
+            name: "McKenzie Maintenance",
+            purpose: "Handle maintenance requests and scheduling",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { requestsHandled: 0, avgResponseTime: null, satisfaction: null },
+            notes: "Need maintenance SOP and escalation procedures"
+        },
+        {
+            id: 3,
+            property: "McKenzie",
+            type: "collections",
+            name: "McKenzie Collections",
+            purpose: "Handle rent collection calls and payment arrangements",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsMade: 0, paymentsCollected: 0, arrangementsMade: 0 },
+            notes: "Sensitive - needs compliance review"
+        },
+        // Legacy Townhomes
+        {
+            id: 4,
+            property: "Legacy Townhomes",
+            type: "leasing",
+            name: "Legacy Leasing",
+            purpose: "Handle leasing inquiries for Legacy Townhomes",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, toursScheduled: 0, conversionRate: null },
+            notes: "Manchester, TN - military + family focus"
+        },
+        {
+            id: 5,
+            property: "Legacy Townhomes",
+            type: "maintenance",
+            name: "Legacy Maintenance",
+            purpose: "Handle maintenance requests",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { requestsHandled: 0, avgResponseTime: null, satisfaction: null },
+            notes: "Townhome specific maintenance items"
+        },
+        {
+            id: 6,
+            property: "Legacy Townhomes",
+            type: "collections",
+            name: "Legacy Collections",
+            purpose: "Rent collection and payment arrangements",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsMade: 0, paymentsCollected: 0, arrangementsMade: 0 },
+            notes: ""
+        },
+        // Reserve at Cool Springs
+        {
+            id: 7,
+            property: "Reserve at Cool Springs",
+            type: "leasing",
+            name: "Reserve Leasing",
+            purpose: "Handle leasing inquiries for Reserve",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, toursScheduled: 0, conversionRate: null },
+            notes: "Elizabethtown, KY - Fort Knox + BlueOval SK"
+        },
+        {
+            id: 8,
+            property: "Reserve at Cool Springs",
+            type: "maintenance",
+            name: "Reserve Maintenance",
+            purpose: "Handle maintenance requests",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { requestsHandled: 0, avgResponseTime: null, satisfaction: null },
+            notes: ""
+        },
+        {
+            id: 9,
+            property: "Reserve at Cool Springs",
+            type: "collections",
+            name: "Reserve Collections",
+            purpose: "Rent collection and payment arrangements",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsMade: 0, paymentsCollected: 0, arrangementsMade: 0 },
+            notes: ""
+        },
+        // Winding Springs
+        {
+            id: 10,
+            property: "Winding Springs",
+            type: "leasing",
+            name: "Winding Leasing",
+            purpose: "Handle leasing inquiries",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, toursScheduled: 0, conversionRate: null },
+            notes: "Elizabethtown, KY - Class A luxury"
+        },
+        {
+            id: 11,
+            property: "Winding Springs",
+            type: "maintenance",
+            name: "Winding Maintenance",
+            purpose: "Handle maintenance requests",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { requestsHandled: 0, avgResponseTime: null, satisfaction: null },
+            notes: ""
+        },
+        {
+            id: 12,
+            property: "Winding Springs",
+            type: "collections",
+            name: "Winding Collections",
+            purpose: "Rent collection",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsMade: 0, paymentsCollected: 0, arrangementsMade: 0 },
+            notes: ""
+        },
+        // Gateway Village
+        {
+            id: 13,
+            property: "Gateway Village",
+            type: "leasing",
+            name: "Gateway Leasing",
+            purpose: "Handle leasing inquiries",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, toursScheduled: 0, conversionRate: null },
+            notes: "Murfreesboro, TN - Healthcare corridor"
+        },
+        {
+            id: 14,
+            property: "Gateway Village",
+            type: "maintenance",
+            name: "Gateway Maintenance",
+            purpose: "Handle maintenance requests",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { requestsHandled: 0, avgResponseTime: null, satisfaction: null },
+            notes: ""
+        },
+        {
+            id: 15,
+            property: "Gateway Village",
+            type: "collections",
+            name: "Gateway Collections",
+            purpose: "Rent collection",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsMade: 0, paymentsCollected: 0, arrangementsMade: 0 },
+            notes: ""
+        },
+        // Legend
+        {
+            id: 16,
+            property: "Legend",
+            type: "leasing",
+            name: "Legend Leasing",
+            purpose: "Handle leasing inquiries",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsHandled: 0, toursScheduled: 0, conversionRate: null },
+            notes: "⚠️ Property may be FOR SALE - confirm status"
+        },
+        {
+            id: 17,
+            property: "Legend",
+            type: "maintenance",
+            name: "Legend Maintenance",
+            purpose: "Handle maintenance requests",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { requestsHandled: 0, avgResponseTime: null, satisfaction: null },
+            notes: ""
+        },
+        {
+            id: 18,
+            property: "Legend",
+            type: "collections",
+            name: "Legend Collections",
+            purpose: "Rent collection",
+            status: "planned",
+            platform: "Atlas",
+            phone: null,
+            trainingProgress: 0,
+            lastImproved: null,
+            improvements: [],
+            kpis: { callsMade: 0, paymentsCollected: 0, arrangementsMade: 0 },
+            notes: ""
+        }
+    ],
+
+    // ========== ROLEPLAY RECORDINGS ==========
+    // My roleplay sessions with Atlas agents for Al to review
+    roleplayRecordings: [
+        // Placeholder for first recording
+        {
+            id: 1,
+            agentName: "Victoria (McKenzie)",
+            scenario: "Basic Inquiry - Hot Lead",
+            date: "2026-02-02",
+            duration: "0:00",
+            status: "pending", // pending, passed, needs_work
+            score: null,
+            fileUrl: null,
+            notes: "First roleplay scheduled - need to conduct test call",
+            alFeedback: null
+        }
+    ]
 };
