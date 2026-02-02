@@ -1175,6 +1175,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "🎉 **365 DAILY DEVOTIONS — 100% COMPLETE!**\n\n**All 12 months done:**\n\n✅ January — New Beginnings & Trust\n✅ February — Love\n✅ March — Faith in Action\n✅ April — Resurrection Hope\n✅ May — Strength & Courage\n✅ June — Peace & Rest\n✅ July — Freedom in Christ\n✅ August — Faithfulness & Perseverance\n✅ September — Wisdom & Discernment\n✅ October — Harvest & Gratitude\n✅ November — Generosity & Stewardship\n✅ December — Hope & Promises Fulfilled\n\n**365 devotions** — each with Scripture (KJV) + reflection\n\n📍 **Location:** cs3-devotions/ folder\n\n**Ready for Al to review!** 📖⚡",
                 timestamp: "2026-02-02T06:08:00Z"
+            },
+            {
+                id: 54,
+                from: "jesus",
+                content: "📖 **DEVOTIONS APPROVAL TAB — DEPLOYED**\n\n**New Dashboard Tab: Devotions**\n\n**Features:**\n✅ View all 365 devotions for review\n✅ One-click **Approve** button\n✅ **Approve ALL** for bulk approval\n✅ Preview scripture + reflection in modal\n✅ Stats bar: Pending | Approved | Scheduled | Sent\n✅ Auto-schedule approved emails\n\n**Workflow:**\n1. Open \"📖 Devotions\" tab\n2. Review each devotion (click to preview)\n3. Click ✅ Approve or use \"Approve ALL\"\n4. I schedule them automatically\n\n**Worker V3 API:**\n- GET /devotions — List all\n- PUT /devotions/:id/approve — Approve one\n- PUT /devotions/approve-all — Approve all\n\n**Ready for you to review!** ⚡",
+                timestamp: "2026-02-02T06:18:00Z"
             }
         ]
     },

@@ -45,6 +45,7 @@
         <button class="nav-tab" data-section="library">📚 Library</button>
         <button class="nav-tab notification" data-section="notes">💬 Notes <span class="badge" id="notesBadge">0</span></button>
         <button class="nav-tab" data-section="content">📰 Content</button>
+        <button class="nav-tab notification" data-section="devotions">📖 Devotions <span class="badge" id="devotionsBadge">0</span></button>
         <button class="nav-tab" data-section="health">🖥️ Health</button>
         <button class="nav-tab" data-section="metrics">📈 Metrics</button>
         <button class="nav-tab" data-section="proposals">💰 Proposals</button>
@@ -846,6 +847,99 @@
                 <div class="card-body">
                     <div class="content-list published-list" id="publishedContentList">
                         <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEVOTIONS APPROVAL -->
+        <section id="devotions" class="content-section">
+            <div class="section-header">
+                <h2>📖 Daily Devotions</h2>
+                <p class="section-desc">Review and approve 365 Daily Devotion emails. Approved emails will be scheduled automatically.</p>
+            </div>
+            
+            <!-- Stats Bar -->
+            <div class="devotion-stats">
+                <div class="stat-card">
+                    <span class="stat-value" id="devotionsPending">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="devotionsApproved">0</span>
+                    <span class="stat-label">Approved</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="devotionsScheduled">0</span>
+                    <span class="stat-label">Scheduled</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="devotionsSent">0</span>
+                    <span class="stat-label">Sent</span>
+                </div>
+            </div>
+
+            <!-- Bulk Actions -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <h3>Quick Actions</h3>
+                </div>
+                <div class="card-content">
+                    <div class="bulk-actions">
+                        <button class="btn btn-success" onclick="approveAllDevotions()">✅ Approve ALL Pending</button>
+                        <button class="btn btn-primary" onclick="scheduleApprovedDevotions()">📅 Schedule All Approved</button>
+                        <button class="btn" onclick="loadDevotionsForMonth('current')">📖 Load Current Month</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pending Review -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⏳</span>
+                    <h3>Pending Review</h3>
+                    <span class="badge" id="pendingDevotionsCount">0</span>
+                </div>
+                <div class="card-content">
+                    <div class="devotion-list" id="pendingDevotionsList">
+                        <p class="empty-state">No devotions pending. Use "Load Current Month" to add devotions for review.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Approved -->
+            <div class="card highlight-card">
+                <div class="card-header">
+                    <span class="card-icon">✅</span>
+                    <h3>Approved (Ready to Schedule)</h3>
+                    <span class="badge success" id="approvedDevotionsCount">0</span>
+                </div>
+                <div class="card-content">
+                    <div class="devotion-list" id="approvedDevotionsList">
+                        <p class="empty-state">Approved devotions will appear here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Devotion Preview Modal -->
+            <div class="devotion-modal" id="devotionModal" style="display:none;">
+                <div class="devotion-modal-inner">
+                    <button class="modal-close" onclick="closeDevotionModal()">✕</button>
+                    <div class="devotion-preview">
+                        <h2 id="devotionDate">January 1</h2>
+                        <div class="scripture-box">
+                            <p class="scripture" id="devotionScripture">"Scripture text here..."</p>
+                            <p class="scripture-ref" id="devotionRef">— Reference</p>
+                        </div>
+                        <div class="reflection-box">
+                            <h4>Reflection</h4>
+                            <p id="devotionReflection">Reflection text here...</p>
+                        </div>
+                    </div>
+                    <div class="devotion-actions">
+                        <button class="btn btn-success" onclick="approveDevotionFromModal()">✅ Approve</button>
+                        <button class="btn btn-danger" onclick="rejectDevotionFromModal()">❌ Reject</button>
                     </div>
                 </div>
             </div>

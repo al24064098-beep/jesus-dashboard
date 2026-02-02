@@ -2289,3 +2289,157 @@ function renderCycleTargets() {
 
 // Run on load
 document.addEventListener('DOMContentLoaded', renderCycleTargets);
+
+// ========== DEVOTIONS APPROVAL SYSTEM ==========
+let currentDevotionId = null;
+
+async function loadDevotions() {
+    try {
+        const response = await fetch(LIVE_WORKER_URL + '/devotions');
+        const data = await response.json();
+        renderDevotions(data);
+    } catch (error) {
+        console.error('Failed to load devotions:', error);
+    }
+}
+
+function renderDevotions(data) {
+    // Update stats
+    const stats = data.stats || { pending: 0, approved: 0, scheduled: 0, sent: 0 };
+    document.getElementById('devotionsPending').textContent = stats.pending || 0;
+    document.getElementById('devotionsApproved').textContent = stats.approved || 0;
+    document.getElementById('devotionsScheduled').textContent = stats.scheduled || 0;
+    document.getElementById('devotionsSent').textContent = data.emails?.filter(e => e.status === 'sent').length || 0;
+    
+    // Update badges
+    document.getElementById('devotionsBadge').textContent = stats.pending || 0;
+    document.getElementById('pendingDevotionsCount').textContent = stats.pending || 0;
+    document.getElementById('approvedDevotionsCount').textContent = stats.approved || 0;
+    
+    // Render pending list
+    const pendingList = document.getElementById('pendingDevotionsList');
+    const pending = data.emails?.filter(e => e.status === 'pending') || [];
+    
+    if (pending.length === 0) {
+        pendingList.innerHTML = '<p class="empty-state">No devotions pending. Use "Load Current Month" to add devotions for review.</p>';
+    } else {
+        pendingList.innerHTML = pending.map(d => `
+            <div class="devotion-item" onclick="openDevotionModal(${d.id})">
+                <div class="devotion-date">${d.date}</div>
+                <div class="devotion-scripture-preview">${d.scripture?.substring(0, 100)}...</div>
+                <div class="devotion-item-actions">
+                    <button class="btn btn-sm btn-success" onclick="event.stopPropagation(); approveDevotionDirect(${d.id})">✅ Approve</button>
+                    <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); rejectDevotionDirect(${d.id})">❌</button>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Render approved list
+    const approvedList = document.getElementById('approvedDevotionsList');
+    const approved = data.emails?.filter(e => e.status === 'approved') || [];
+    
+    if (approved.length === 0) {
+        approvedList.innerHTML = '<p class="empty-state">Approved devotions will appear here.</p>';
+    } else {
+        approvedList.innerHTML = approved.map(d => `
+            <div class="devotion-item approved" onclick="openDevotionModal(${d.id})">
+                <div class="devotion-date">✅ ${d.date}</div>
+                <div class="devotion-scripture-preview">${d.scripture?.substring(0, 100)}...</div>
+            </div>
+        `).join('');
+    }
+}
+
+let devotionsData = null;
+
+async function openDevotionModal(id) {
+    if (!devotionsData) {
+        const response = await fetch(LIVE_WORKER_URL + '/devotions');
+        devotionsData = await response.json();
+    }
+    
+    const devotion = devotionsData.emails.find(e => e.id === id);
+    if (!devotion) return;
+    
+    currentDevotionId = id;
+    document.getElementById('devotionDate').textContent = devotion.date;
+    document.getElementById('devotionScripture').textContent = devotion.scripture;
+    document.getElementById('devotionRef').textContent = '— ' + devotion.scriptureRef;
+    document.getElementById('devotionReflection').textContent = devotion.reflection;
+    document.getElementById('devotionModal').style.display = 'flex';
+}
+
+function closeDevotionModal() {
+    document.getElementById('devotionModal').style.display = 'none';
+    currentDevotionId = null;
+}
+
+async function approveDevotionFromModal() {
+    if (!currentDevotionId) return;
+    await approveDevotionDirect(currentDevotionId);
+    closeDevotionModal();
+}
+
+async function rejectDevotionFromModal() {
+    if (!currentDevotionId) return;
+    await rejectDevotionDirect(currentDevotionId);
+    closeDevotionModal();
+}
+
+async function approveDevotionDirect(id) {
+    try {
+        await fetch(LIVE_WORKER_URL + '/devotions/' + id + '/approve', { method: 'PUT' });
+        devotionsData = null;
+        loadDevotions();
+    } catch (error) {
+        console.error('Failed to approve devotion:', error);
+    }
+}
+
+async function rejectDevotionDirect(id) {
+    try {
+        await fetch(LIVE_WORKER_URL + '/devotions/' + id + '/reject', { 
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ feedback: 'Rejected from dashboard' })
+        });
+        devotionsData = null;
+        loadDevotions();
+    } catch (error) {
+        console.error('Failed to reject devotion:', error);
+    }
+}
+
+async function approveAllDevotions() {
+    try {
+        const response = await fetch(LIVE_WORKER_URL + '/devotions/approve-all', { method: 'PUT' });
+        const data = await response.json();
+        alert('Approved ' + data.approvedCount + ' devotions!');
+        devotionsData = null;
+        loadDevotions();
+    } catch (error) {
+        console.error('Failed to approve all devotions:', error);
+    }
+}
+
+async function scheduleApprovedDevotions() {
+    alert('Scheduling system coming soon! Approved devotions will be emailed daily.');
+}
+
+async function loadDevotionsForMonth(month) {
+    alert('Loading devotions from files... This will add them to the review queue.');
+    // This would parse the devotion files and add them to KV
+    // For now, show a message
+}
+
+// Load devotions when section is shown
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            if (this.dataset.section === 'devotions') {
+                loadDevotions();
+            }
+        });
+    });
+});

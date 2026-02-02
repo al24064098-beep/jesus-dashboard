@@ -3634,3 +3634,178 @@ textarea {
     font-size: 0.7rem;
     margin-left: 0.5rem;
 }
+
+/* ========== DEVOTIONS APPROVAL ========== */
+.devotion-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.devotion-stats .stat-card {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+}
+
+.devotion-stats .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.devotion-stats .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.bulk-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.devotion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.devotion-item {
+    background: var(--bg-tertiary);
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    border-left: 3px solid var(--accent-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.devotion-item:hover {
+    background: var(--bg-secondary);
+    transform: translateX(4px);
+}
+
+.devotion-item.approved {
+    border-left-color: var(--accent-green);
+}
+
+.devotion-item.rejected {
+    border-left-color: var(--accent-red);
+    opacity: 0.7;
+}
+
+.devotion-item .devotion-date {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.devotion-item .devotion-scripture-preview {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.devotion-item .devotion-item-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.devotion-item .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+/* Devotion Modal */
+.devotion-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.devotion-modal-inner {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.devotion-preview h2 {
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.scripture-box {
+    background: var(--bg-tertiary);
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--accent-gold);
+}
+
+.scripture-box .scripture {
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.scripture-box .scripture-ref {
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.reflection-box h4 {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.reflection-box p {
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.devotion-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .devotion-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bulk-actions {
+        flex-direction: column;
+    }
+}
