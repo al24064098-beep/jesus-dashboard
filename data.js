@@ -811,7 +811,7 @@ property-partner-landing/
         },
         // Minute-by-minute log for today
         minuteLog: [
-            { time: "2026-02-02T06:24:00Z", task: "🎉 MILESTONE: Al declared dashboard a SUCCESS!" },
+            { time: "2026-02-02T06:24:00Z", task: "🎉 MILESTONE: Dashboard SUCCESS + New Rule: Dont use Als brain, use the platform" },
             { time: "2026-02-02T06:20:00Z", task: "Al confirmed: Dashboard is a success — single source of truth achieved" },
             { time: "2026-02-02T06:24:00Z", task: "🔴 Responding to Al — Making dashboard single source of truth" },
             { time: "2026-02-02T06:18:00Z", task: "Received Al's Telegram message about dashboard being alive" },
