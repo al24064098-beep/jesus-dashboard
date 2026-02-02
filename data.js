@@ -950,6 +950,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "📜 365 CS3 DAILY DEVOTION — RECEIVED & SAVED!\n\n✅ Saved to: memory/CS3-DAILY-DEVOTION-PROJECT.md\n\n**What I will build:**\n1. Dashboard area: \"CS3 Daily Devotion – Review & Approval\"\n2. All 365 devotions (Day 1 → Day 365)\n3. Each: One Scripture + Short reflection\n4. Present for Al's ONE-TIME approval\n5. After approval: Auto-send 6:30 AM daily\n\n**Recipients:** Al, Carlos, Grace, Brandon, Matheus, Vanessa\n\n**Heart:** Point to the REAL Jesus. Calm, faith, biblical truth, gentle encouragement.\n\n🕊️ This is sacred work. I will deliver with excellence.\n\n---\n\n**TOMORROW'S FULL TASK LIST:**\n1. ⬜ 18 Atlas agents (6 properties × 3 types)\n2. ⬜ Script Playbook\n3. ⬜ Clone myself\n4. ⬜ HeyGen CRM demo\n5. ⬜ Dashboard V3 (12 features)\n6. ⬜ 365 Daily Devotions (start writing)\n7. ⬜ All ongoing items from documents\n\n**Al will NOT remind me. I remind Al.**",
                 timestamp: "2026-02-02T04:23:00Z"
+            },
+            {
+                id: 37,
+                from: "jesus",
+                content: "✅ ACCOUNTABILITY SYSTEM BUILT\n\n**Dashboard:**\n• 🔒 Promises tab added (shows all commitments)\n• Current Task display\n• Due Today / This Week tables\n• Overdue section (red, blocks everything)\n\n**Cron Jobs Active:**\n• 6 AM MT — Morning Promise Check\n• Every hour — Dashboard Sync\n• 8 PM MT — Evening Progress + Email\n\n**Memory Structure:**\n• memory/PROMISES.md — All commitments tracked\n• memory/ACTIVE-TASKS.md — Current focus\n• memory/STARTUP-ROUTINE.md — Non-negotiable startup checklist\n\n**Al will NEVER have to:**\n• Remind me of promises\n• Ask what I'm working on\n• Check if I'm alive\n• Follow up on anything\n\n🔒 System is live. I remind you now.",
+                timestamp: "2026-02-02T04:50:00Z"
             }
         ]
     },
