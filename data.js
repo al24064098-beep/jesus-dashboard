@@ -689,14 +689,21 @@ property-partner-landing/
 
     // Budget Tracking
     budgetTracker: {
-        approvedTotal: 35, // dollars
-        spentTotal: 12.50,
-        pendingApproval: 25,
+        approvedTotal: 100, // February 2026 budget
+        spentTotal: 4.00,   // Estimated spend so far
+        pendingApproval: 0,
         thisMonth: {
+            month: "February 2026",
             budget: 100,
-            spent: 12.50,
-            remaining: 87.50
-        }
+            spent: 4.00,
+            remaining: 96.00,
+            dailyAvg: 0.14,  // $4 / 28 days target
+            onTrack: true
+        },
+        history: [
+            { date: "2026-02-01", amount: 3.50, desc: "Dashboard V2 + Atlas scripts" },
+            { date: "2026-02-02", amount: 0.50, desc: "Devotions + chat updates (est)" }
+        ]
     },
 
     // ========== TIME LOG (LIVE) ==========
