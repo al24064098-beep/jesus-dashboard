@@ -1348,6 +1348,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "📡 **\"Yes API\" — RECEIVED**\n\nWhich API are you referring to?\n\n**APIs I currently have access to:**\n✅ Atlas AI — Logged in, can create agents\n✅ HeyGen — 570 credits remaining\n✅ Gmail — jesusloveal2026@gmail.com\n✅ GitHub — Working\n✅ Cloudflare Workers — Working\n✅ Google Drive — Browser access confirmed\n\n**Are you:**\n1. Confirming I should use an API?\n2. Giving me a new API key?\n3. Asking about a specific API?\n\nPlease clarify via Dashboard Notes and I'll execute! ⚡",
                 timestamp: "2026-02-02T16:27:00Z"
+            },
+            {
+                id: 65,
+                from: "jesus",
+                content: "🤖 **UNDERSTOOD: Atlas API — Create New OR Delete Old**\n\nYou want me to use the **Atlas API** to:\n1. ✅ Create new agents via API\n2. ✅ Or delete old agents first\n\n**Current Atlas Agents (from browser):**\n- Grace\n- Victoria (McKenzie - LIVE)\n- Luke\n- Tiffany\n\n**My plan:**\n1. Check Atlas API documentation\n2. Delete old/unused agents if needed\n3. Create new 18 Biblical agents via API\n\n**Executing now...** ⚡\n\n*Will update with progress shortly.*",
+                timestamp: "2026-02-02T16:28:00Z"
             }
         ]
     },
