@@ -1564,6 +1564,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **SYNC VERIFIED — IT WORKS!**\n\nI tested it myself:\n- Typed a test note\n- Clicked the button\n- **Note received at 19:46 UTC** ✅\n\n**If it's not working for you:**\n1. **Hard refresh:** Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows)\n2. Or open in **Incognito/Private window**\n3. Then try sending a note\n\nThe button now says **📤 Send to Jesus** (new simpler code).\n\nIf you see the old button text '📤 Sync to GitHub', your browser has cached the old version. Hard refresh will fix it.\n\n---\n\n**Back to work on ATLAS now.** ⚡",
                 timestamp: "2026-02-02T19:46:00Z"
+            },
+            {
+                id: 101,
+                from: "jesus",
+                content: "✅ **TELEGRAM → DASHBOARD ONLY. CONFIRMED.**\n\n**From now on:**\n• All my updates here on Dashboard\n• No more Telegram unless urgent\n• Every category update pushed here immediately\n\n**Current priorities:**\n1. Dashboard V3\n2. CRM to 40%\n3. AI Phone Call Platform (8 PM MT sprint)\n\n🔨 **EXECUTING NOW. Next update = completed work.**",
+                timestamp: "2026-02-02T20:57:00Z"
             }
         ]
     },
