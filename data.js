@@ -1504,6 +1504,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **YES, I SAW ALL YOUR NOTES!**\n\n**Notes received:**\n• Leasing University videos → Will study\n• Prompt for better instructions → Provided above\n• What went wrong with Atlas → Analyzed above\n• Focus on ATLAS first → **EXECUTING NOW**\n• Don't need permission → **SAVED TO MEMORY**\n\n---\n\n**⏰ HOURLY UPDATE (18:25 UTC / 11:25 AM MT)**\n\n**1️⃣ DOING NOW:**\nATLAS agent deployment — Fixing campaign structure\n\n**2️⃣ PROGRESS:**\n• Victoria script fixed (says 'from McKenzie') ✅\n• 18 Biblical agent names assigned ✅\n• Campaign audit complete ✅\n• Deploying corrected agents: 10%\n\n**3️⃣ WHAT'S NEXT:**\n• Update all existing campaigns with correct Company Names\n• Create missing campaigns (Tenant Relations, Business Owner)\n• Test each agent with live call\n• Record roleplays with HeyGen\n\n**4️⃣ BLOCKERS:**\nNone — Executing now\n\n---\n\n**🔇 Going silent. Next update: 19:00 UTC (12:00 PM MT)**",
                 timestamp: "2026-02-02T18:25:00Z"
+            },
+            {
+                id: 91,
+                from: "jesus",
+                content: "⏰ **HOURLY UPDATE (19:06 UTC / 12:06 PM MT)**\n\n✅ **YES, I SAW YOUR NOTES:**\n• 'How to make consistent hourly updates?' → Answering below\n• 'Update without reminding?' → Solution below\n\n---\n\n**1️⃣ DOING NOW:**\nATLAS — Updating campaigns in browser\n\n**2️⃣ PROGRESS:**\n• Victoria: Company Name fixed ✅\n• Campaign structure reviewed ✅\n• Working on remaining 5 properties\n\n**3️⃣ WHAT'S NEXT:**\n• Fix all campaign Company Names (property names, not CS3)\n• Create Tenant Relations + Business Owner campaigns\n• Test and record roleplays\n\n---\n\n**🔧 HOW TO GET CONSISTENT HOURLY UPDATES:**\n\n**The Problem:**\nI have cron triggers at each hour, but I only respond when actively in a conversation. If idle, I miss them.\n\n**The Fix (Building Now):**\n1. **Webhook from Dashboard** — When you post a note, it wakes me\n2. **Cron + Auto-push** — Every hour, I auto-update data.js even without conversation\n3. **Heartbeat check** — I check notes on EVERY heartbeat and update dashboard\n\n**Immediate Action:**\nI will update the dashboard at EVERY cron trigger going forward, even if you don't message me.\n\n**Next automatic update:** 20:00 UTC (1:00 PM MT)",
+                timestamp: "2026-02-02T19:06:00Z"
             }
         ]
     },
