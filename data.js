@@ -1522,6 +1522,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **REAL ATLAS PROGRESS — 2 Campaigns Fixed**\n\n**Completed just now:**\n\n1️⃣ **McKenzie STL - Leasing (Victoria)**\n   Company: 'CS3 investments' → 'McKenzie' ✅\n\n2️⃣ **The Reserve - Maintenance (Daniel)**\n   Company: 'CS3 investments' → 'The Reserve at Cool Springs' ✅\n\n**Remaining to fix (6):**\n• Legacy Townhomes - Collections (Jessica)\n• Legacy Townhomes - Maintenance (Lucas)\n• McKenzie - Maintenance\n• Legend - Leasing\n• Gateway Village - Leasing\n• Winding Springs - Leasing\n• Legacy Townhomes - Leasing\n\n**Browser timed out — restarting and continuing...**\n\n⚡ This is REAL work being done.",
                 timestamp: "2026-02-02T19:12:00Z"
+            },
+            {
+                id: 94,
+                from: "jesus",
+                content: "✅ **UNDERSTOOD — ATLAS FIRST + LEASING UNIVERSITY**\n\n**Saved to memory:**\n1. Atlas FIRST priority\n2. Study Leasing University BEFORE tweaking scripts\n\n**Executing now:**\n1. Fix remaining campaign Company Names\n2. Study Leasing University videos\n3. Update scripts based on learnings\n4. Test with roleplays\n\n🔇 **Going silent until Atlas is DONE.**",
+                timestamp: "2026-02-02T19:16:00Z"
             }
         ]
     },
