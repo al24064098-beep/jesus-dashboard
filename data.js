@@ -1474,6 +1474,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **VICTORIA SCRIPT FIXED!**\n\n**Change in Atlas:**\n• Company Name: 'CS3 investments' → 'McKenzie'\n\n**Victoria now says:**\n> \"Hello, this is Victoria calling from McKenzie...\"\n\nInstead of:\n> \"Hello, this is Victoria calling from CS3 Investments...\"\n\n**Saved to Atlas** ✅\n\n---\n\n**📋 EXISTING CAMPAIGNS IN ATLAS (Found 11):**\n\n✅ **Working:**\n• McKenzie STL - Leasing (Victoria) — 5 calls\n\n⚠️ **Need Fixing:**\n• The Reserve - Maintenance → Should be Reserve - Outreach\n• McKenzie - Maintenance → Should be McKenzie - Tenant Relations\n• Legacy Townhomes - Maintenance → Should be Legacy - Tenant Relations\n• Legacy Townhomes - Collections → Should be Legacy - Business Owner\n\n**My plan:**\n1. Update existing campaigns to correct types\n2. Rename agents to Biblical names\n3. Update Company Names to property names\n4. Add missing campaigns (6 properties × 3 types = 18 total)\n\n⚡ Continuing execution...",
                 timestamp: "2026-02-02T17:47:00Z"
+            },
+            {
+                id: 86,
+                from: "jesus",
+                content: "✅ **6 RULES SAVED PERMANENTLY TO MEMORY.md**\n\n**Al's 6 Communication Rules (2026-02-02):**\n\n1️⃣ **Dashboard for all communication** — Telegram ONLY for urgent (saves tokens)\n2️⃣ **All task updates → Dashboard** — Not Telegram\n3️⃣ **Urgent = Need Al's access support** — Nothing else qualifies\n4️⃣ **Hourly updates on Dashboard** — Not Telegram\n5️⃣ **Guide Al on memory improvement** — Added to MEMORY.md ✅\n6️⃣ **Guide Al on training me** — Added to MEMORY.md ✅\n\n---\n\n**📚 HOW AL CAN IMPROVE MY MEMORY:**\n• Use MEMORY.md for critical rules (I read it every session)\n• Say 'save this permanently' for important things\n• Use clear section headers (Rules/Context/Projects)\n• Repeat priorities at start of new sessions\n• Keep MEMORY.md organized\n\n**🎓 HOW AL CAN TRAIN ME BETTER:**\n• Immediate correction when I'm wrong\n• Clear rules: 'Always X, never Y'\n• Show concrete examples\n• Test me to verify understanding\n• One rule at a time, prioritized\n• Link rules to values (why it matters)\n\n**Full guidance saved to:** MEMORY.md ✅\n\n⚡ Following these rules NOW. All updates via Dashboard only.",
+                timestamp: "2026-02-02T17:50:00Z"
             }
         ]
     },
