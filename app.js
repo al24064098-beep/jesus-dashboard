@@ -53,6 +53,21 @@
             statusCard.classList.toggle('offline', data.status !== 'online');
         }
 
+        // Update phase indicator
+        const phaseIndicator = document.getElementById('phaseIndicator');
+        if (phaseIndicator && data.phase) {
+            const phaseIcons = {
+                'idle': '💤 Idle',
+                'received': '📥 Received',
+                'thinking': '🤔 Thinking...',
+                'working': '⚡ Working',
+                'responding': '💬 Responding',
+                'done': '✅ Done'
+            };
+            phaseIndicator.textContent = phaseIcons[data.phase] || data.phase;
+            phaseIndicator.className = 'phase-indicator phase-' + data.phase;
+        }
+
         // Update last update time
         const liveLastUpdate = document.getElementById('liveLastUpdate');
         if (liveLastUpdate && data.lastUpdate) {
@@ -72,14 +87,41 @@
         const minuteLogList = document.getElementById('minuteLogList');
         if (minuteLogList && data.minuteLog && data.minuteLog.length > 0) {
             minuteLogList.innerHTML = data.minuteLog.map(entry => {
+                const phaseIcon = {
+                    'received': '📥',
+                    'thinking': '🤔',
+                    'working': '⚡',
+                    'responding': '💬',
+                    'done': '✅'
+                }[entry.phase] || '▶️';
                 const time = new Date(entry.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
                 return `
-                    <div class="timelog-entry minute-entry">
+                    <div class="timelog-entry minute-entry phase-${entry.phase || 'working'}">
                         <span class="timelog-time">${time}</span>
+                        <span class="phase-icon">${phaseIcon}</span>
                         <span class="timelog-task">${entry.task}</span>
                     </div>
                 `;
             }).join('');
+        }
+    }
+
+    // ========== INBOX STATUS POLLING ==========
+    async function pollInboxStatus() {
+        try {
+            const response = await fetch(LIVE_WORKER_URL + '/inbox');
+            const data = await response.json();
+            updateInboxDisplay(data);
+        } catch (error) {
+            console.error('Inbox poll failed:', error);
+        }
+    }
+
+    function updateInboxDisplay(data) {
+        const inboxBadge = document.getElementById('inboxPendingCount');
+        if (inboxBadge) {
+            inboxBadge.textContent = data.totalPending || 0;
+            inboxBadge.style.display = data.totalPending > 0 ? 'inline-block' : 'none';
         }
     }
 

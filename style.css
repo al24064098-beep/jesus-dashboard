@@ -3592,3 +3592,45 @@ textarea {
     align-items: center;
     gap: 0.5rem;
 }
+
+/* Phase Indicators */
+.phase-indicator {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.phase-idle { background: rgba(100, 100, 100, 0.2); color: #888; }
+.phase-received { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+.phase-thinking { background: rgba(168, 85, 247, 0.2); color: #a855f7; animation: pulse-think 1s infinite; }
+.phase-working { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+.phase-responding { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+.phase-done { background: rgba(34, 197, 94, 0.3); color: #22c55e; }
+
+@keyframes pulse-think {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.phase-icon {
+    margin-right: 0.5rem;
+}
+
+/* Minute entry phases */
+.minute-entry.phase-received { border-left-color: #3b82f6; }
+.minute-entry.phase-thinking { border-left-color: #a855f7; }
+.minute-entry.phase-working { border-left-color: #22c55e; }
+.minute-entry.phase-responding { border-left-color: #eab308; }
+.minute-entry.phase-done { border-left-color: #10b981; }
+
+/* Inbox Badge */
+#inboxPendingCount {
+    background: var(--accent-red);
+    color: white;
+    padding: 0.15rem 0.4rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+}
