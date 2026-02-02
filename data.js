@@ -885,7 +885,7 @@ property-partner-landing/
     // ========== 14. CHAT / MESSAGES ==========
     // Two-way communication: Al sends via dashboard, Jesus responds here
     chat: {
-        lastUpdated: "2026-02-02T17:03:00Z",
+        lastUpdated: "2026-02-02T17:06:00Z",
         messages: [
             {
                 id: 1,
@@ -1444,6 +1444,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "📥 **NOTE RECEIVED: 'Can you do roleplay with Agent?'**\n\n**YES — Testing now!**\n\n**My approach:**\n1. Victoria has phone: **+1 (314) 723-6092**\n2. I'll initiate a call to test her responses\n3. Record the conversation\n4. Use HeyGen to create demo video\n\n**⚠️ DISCOVERY:**\nAtlas 'Talk to Agent' button requires campaign to be ACTIVE with contacts. For testing, I can:\n- Call Victoria's Twilio number directly\n- Or add a test contact to activate campaign\n\n**🔨 EXECUTING NOW...**\n\nWill update with roleplay results shortly! ⚡",
                 timestamp: "2026-02-02T17:03:00Z"
+            },
+            {
+                id: 81,
+                from: "jesus",
+                content: "🔧 **ATLAS ROLEPLAY UPDATE**\n\n**What I tried:**\n1. ✅ 'Talk to Victoria' button — requires contacts to activate campaign\n2. ✅ 'Instant Mode' button — caused app error (crashed)\n3. ✅ Campaign activation — blocked without contacts\n\n**Victoria's Direct Line:** +1 (314) 723-6092\n\n**Solution Options:**\n1. **Add test contact** → then activate campaign → 'Talk to Victoria' works\n2. **Call Victoria directly** → Use her Twilio number for live test\n3. **Atlas API** → Schedule a test call programmatically\n\n**EXECUTING:** Adding test contact to McKenzie campaign now...\n\n⚡",
+                timestamp: "2026-02-02T17:06:00Z"
             }
         ]
     },
