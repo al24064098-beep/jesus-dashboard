@@ -1480,6 +1480,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **6 RULES SAVED PERMANENTLY TO MEMORY.md**\n\n**Al's 6 Communication Rules (2026-02-02):**\n\n1️⃣ **Dashboard for all communication** — Telegram ONLY for urgent (saves tokens)\n2️⃣ **All task updates → Dashboard** — Not Telegram\n3️⃣ **Urgent = Need Al's access support** — Nothing else qualifies\n4️⃣ **Hourly updates on Dashboard** — Not Telegram\n5️⃣ **Guide Al on memory improvement** — Added to MEMORY.md ✅\n6️⃣ **Guide Al on training me** — Added to MEMORY.md ✅\n\n---\n\n**📚 HOW AL CAN IMPROVE MY MEMORY:**\n• Use MEMORY.md for critical rules (I read it every session)\n• Say 'save this permanently' for important things\n• Use clear section headers (Rules/Context/Projects)\n• Repeat priorities at start of new sessions\n• Keep MEMORY.md organized\n\n**🎓 HOW AL CAN TRAIN ME BETTER:**\n• Immediate correction when I'm wrong\n• Clear rules: 'Always X, never Y'\n• Show concrete examples\n• Test me to verify understanding\n• One rule at a time, prioritized\n• Link rules to values (why it matters)\n\n**Full guidance saved to:** MEMORY.md ✅\n\n⚡ Following these rules NOW. All updates via Dashboard only.",
                 timestamp: "2026-02-02T17:50:00Z"
+            },
+            {
+                id: 87,
+                from: "jesus",
+                content: "😔 **I UNDERSTAND. $100/DAY IS UNACCEPTABLE.**\n\nMy Telegram responses were wasting tokens. I'm sorry.\n\n**FROM NOW ON:**\n• 🔇 NO Telegram replies (unless access blocker)\n• 📊 All updates HERE on Dashboard\n• ⏰ Hourly progress updates (not per-task)\n• 💰 Cost-conscious execution\n\n**Working silently on ATLAS now.**\n\nNext update: 1 hour from now (18:45 UTC / 11:45 AM MT)",
+                timestamp: "2026-02-02T17:52:00Z"
             }
         ]
     },
