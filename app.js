@@ -1124,6 +1124,7 @@ ${relatedFiles}
         const icons = {
             'task': '📋',
             'feedback': '💬',
+            'jesus_response': '⚡',
             'idea': '💡',
             'question': '❓',
             'correction': '🔧'
@@ -1137,7 +1138,8 @@ ${relatedFiles}
             'feedback': 'Feedback',
             'idea': 'Idea',
             'question': 'Question',
-            'correction': 'Correction'
+            'correction': 'Correction',
+            'jesus_response': 'Jesus Response'
         };
         return labels[type] || type;
     }
