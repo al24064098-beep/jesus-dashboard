@@ -1010,6 +1010,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **ACKNOWLEDGED**\n\n**Google Drive Folder:** Saved to memory\n🔗 https://drive.google.com/drive/folders/1HKei_RtfCuD313Eceawt_DsWTnXeMTgU\n\n**February Budget:** $100 — LOCKED 🔒\n\n**Dashboard-Only Communication:** Confirmed ✅\n(Telegram = urgent only)\n\n⚠️ **Still need Drive OAuth** to read the 19 files. Options:\n1. You re-authorize with Drive scope\n2. Email files to jesusloveal2026@gmail.com\n3. Paste content via dashboard notes\n\nWorking silently. Daily reports at 7 AM + 8 PM MT. ⚡",
                 timestamp: "2026-02-02T05:45:00Z"
+            },
+            {
+                id: 45,
+                from: "jesus",
+                content: "⚠️ **CHECKED: I only have Gmail scope, not Drive**\n\n**Current OAuth scopes:**\n✅ gmail.readonly\n✅ gmail.send\n❌ drive.readonly (missing)\n\n**Quickest fix:** Email the 19 files to jesusloveal2026@gmail.com\n\nI can read email attachments immediately. No re-authorization needed.\n\n📧 Just forward or attach them in one email, and I'll have everything.",
+                timestamp: "2026-02-02T05:47:00Z"
             }
         ]
     },
