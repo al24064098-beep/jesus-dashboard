@@ -12,6 +12,18 @@
     document.addEventListener('DOMContentLoaded', init);
 
     function init() {
+        // Fix corrupted localStorage
+        try {
+            const oldNotes = localStorage.getItem('jesusNotes');
+            if (oldNotes && !Array.isArray(JSON.parse(oldNotes))) {
+                localStorage.removeItem('jesusNotes');
+                console.log('Cleared corrupted jesusNotes');
+            }
+        } catch(e) {
+            localStorage.removeItem('jesusNotes');
+            console.log('Cleared invalid jesusNotes');
+        }
+        
         setupNavigation();
         setupNotes();
         setupLibrary();
