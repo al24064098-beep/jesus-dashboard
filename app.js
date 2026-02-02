@@ -2126,3 +2126,42 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
         if (this.dataset.section === 'timelog') renderTimeLog();
     });
 });
+
+// ========== 6-HOUR CYCLE TARGETS ==========
+function renderCycleTargets() {
+    const cycleData = dashboardData.cycleTargets;
+    if (!cycleData || !cycleData.cycles) return;
+
+    const container = document.getElementById('cycleGrid');
+    const badge = document.getElementById('currentCycleBadge');
+    if (!container) return;
+
+    // Update badge
+    if (badge) {
+        badge.textContent = `Cycle ${cycleData.currentCycle}`;
+    }
+
+    // Render cycles
+    container.innerHTML = cycleData.cycles.map(cycle => {
+        const isActive = cycle.status === 'active';
+        const isCompleted = cycle.status === 'completed';
+        const statusClass = isActive ? 'active' : (isCompleted ? 'completed' : '');
+        const icon = isActive ? '🔥' : (isCompleted ? '✅' : '⏳');
+
+        const tasksHtml = cycle.targets.map(t => `
+            <li class="${t.done ? 'done' : ''}">${t.done ? '✅' : '⬜'} ${t.task}</li>
+        `).join('');
+
+        return `
+            <div class="cycle-item ${statusClass}">
+                <h4>${icon} ${cycle.name}</h4>
+                <div class="cycle-time">${cycle.timeRange}</div>
+                <ul class="cycle-tasks">${tasksHtml}</ul>
+                <div class="cycle-progress">${cycle.completed}/${cycle.total} complete</div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', renderCycleTargets);
