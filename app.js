@@ -780,19 +780,11 @@ ${relatedFiles}
     const FILES_URL = WORKER_URL + '/files';
     
     async function loadLibrary() {
-        // Load from Cloudflare KV + local data.js
-        try {
-            const response = await fetch(FILES_URL);
-            const cloudFiles = await response.json();
-            const localFiles = dashboardData.library || [];
-            const allFiles = [...(cloudFiles.files || []), ...localFiles];
-            renderLibrary(allFiles);
-            setupLibraryFilters(allFiles);
-        } catch (e) {
-            console.error('Error loading library:', e);
-            renderLibrary(dashboardData.library || []);
-            setupLibraryFilters(dashboardData.library || []);
-        }
+        // Load from data.js library array
+        const library = dashboardData.library || [];
+        console.log('Loading library with', library.length, 'items');
+        renderLibrary(library);
+        setupLibraryFilters(library);
     }
 
     function setupLibrary() {
