@@ -1074,18 +1074,20 @@ ${relatedFiles}
         updateNotesBadge();
     }
 
-    function loadNotes() {
-        // Merge localStorage notes with data.js notes
-        const localNotes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
-        const dataNotes = dashboardData.notes || [];
-
-        // Combine, preferring local storage (it's more up-to-date)
-        const allNotes = [...localNotes];
-        dataNotes.forEach(dn => {
-            if (!allNotes.find(n => n.id === dn.id)) {
-                allNotes.push(dn);
+    async function loadNotes() {
+        // Fetch notes from Cloudflare Worker (real-time)
+        let allNotes = [];
+        try {
+            const response = await fetch(WORKER_URL);
+            if (response.ok) {
+                const data = await response.json();
+                allNotes = data.notes || [];
             }
-        });
+        } catch (e) {
+            console.error('Failed to fetch notes from worker:', e);
+            // Fallback to localStorage
+            allNotes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
+        }
 
         const listEl = document.getElementById('notesList');
 
