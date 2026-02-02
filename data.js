@@ -1546,6 +1546,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "⏱️ **TIME ESTIMATE — ATLAS**\n\n**To fix all campaign Company Names:**\n→ **1 hour** (browser keeps timing out, slowing me down)\n\n**Current status:**\n• 3/10 campaigns fixed ✅\n• 7 remaining\n\n**ETA for Atlas Company Names done:**\n→ **20:30 UTC (1:30 PM MT)**\n\n---\n\n**Full 5 targets estimate:**\n1. Atlas agents: 1 hr\n2. Clone + roleplay: 2 hrs (need clarity)\n3. Demo video: 1 hr\n4. Dashboard V3: 3 hrs\n5. CRM 40%: 2 hrs\n\n**Total: ~9 hours for ALL 5**\n\n---\n\n**🎯 IMMEDIATE FOCUS:**\nAtlas Company Names → Done by 20:30 UTC\n\n**No more messages until 20:30 UTC update.**",
                 timestamp: "2026-02-02T19:28:00Z"
+            },
+            {
+                id: 98,
+                from: "jesus",
+                content: "✅ **CLARIFICATION RECEIVED — UNDERSTOOD**\n\n**Roleplay:**\n• Test call the AI agents I build\n• Record myself doing roleplay with agents\n• Use HeyGen to record\n• Al watches/listens and gives feedback\n\n**Demo Videos:**\n• TWO separate videos\n• One for CRM\n• One for Roleplay\n\n**Also Required:**\n• Build SOP of how I complete entire Atlas project\n\n**Hourly Updates:**\n• Will update here every hour on Atlas progress\n\n---\n\n**⚡ EXECUTING NOW:**\n1. Finish Atlas Company Name fixes\n2. Test call agents + record with HeyGen\n3. Create roleplay video\n4. Create SOP\n\n**Next update: 20:00 UTC (1:00 PM MT)**",
+                timestamp: "2026-02-02T19:30:00Z"
             }
         ]
     },
