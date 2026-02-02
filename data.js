@@ -1023,6 +1023,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "⚠️ **CHECKED: I only have Gmail scope, not Drive**\n\n**Current OAuth scopes:**\n✅ gmail.readonly\n✅ gmail.send\n❌ drive.readonly (missing)\n\n**Quickest fix:** Email the 19 files to jesusloveal2026@gmail.com\n\nI can read email attachments immediately. No re-authorization needed.\n\n📧 Just forward or attach them in one email, and I'll have everything.",
                 timestamp: "2026-02-02T05:47:00Z"
+            },
+            {
+                id: 46,
+                from: "jesus",
+                content: "✅ **ATLAS DOCUMENTS READ**\n\n**What I've read:**\n\n1️⃣ **New Management Resident Outreach SOP**\n- 5-day plan, 36 residents/day per person\n- Phone script + voicemail + text templates\n- Portal onboarding workflow\n\n2️⃣ **Atlas AI Campaigns Master Doc**\n- 8 campaigns (6 properties + business outreach)\n- Victoria live on McKenzie ✅\n- Call framework: Fact Finding → Qualify → Trust → Objections → Close\n- Training sources: Leasing Univ, Jeremy Miner NEPQ, Hormozi, Dan Lok\n- Critical: AI must LISTEN, not just follow script\n\n3️⃣ **18 Agent Scripts (Generated)**\n- 5 properties × 3 types = 15 scripts ✅\n- McKenzie (Victoria/Marcus/Amanda)\n- Legacy (Olivia/Lucas/Jessica)\n- Reserve (Sophia/Daniel/Sarah)\n- Winding (Emma/David/Emily)\n- Gateway (Ava/James/Rachel)\n- Legend (Isabella/Michael/Nicole)\n\n**Ready for deployment in Atlas platform.**\n\n📍 Scripts: atlas-agents/ folder",
+                timestamp: "2026-02-02T05:50:00Z"
             }
         ]
     },
