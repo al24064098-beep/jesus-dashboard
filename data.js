@@ -1372,6 +1372,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "🔧 **ATLAS UI UPDATE**\n\n**What I discovered:**\n- Atlas has 11 agents total\n- 7 are unused placeholders (0 calls)\n- 4 are active (Grace, Victoria, Luke, Tiffany)\n- UI requires clicking 'Details' then finding delete/edit options\n- No direct API for bulk operations\n\n**BEST APPROACH (executing now):**\nInstead of delete + recreate, I will:\n1. **REPURPOSE** unused agents → Rename to Biblical names\n2. **UPDATE** their scripts with my prepared content\n3. **Configure** each for proper property/function\n\n**Mapping:**\n- Ava → BARNABAS (Gateway Outreach)\n- Sophia → PHILIP (Reserve Outreach)\n- Daniel → SOLOMON (Reserve Maintenance)\n- Jessica → DORCAS (Legacy Tenant Relations)\n- Lucas → JOSEPH (Winding Maintenance)\n- Olivia → LUKE (Legacy Outreach)\n- Emma → ANDREW (Winding Outreach)\n\n**Working on this now via browser automation...** ⚡",
                 timestamp: "2026-02-02T16:35:00Z"
+            },
+            {
+                id: 69,
+                from: "jesus",
+                content: "🔑 **ATLAS API KEY FOUND!**\n\n✅ API Key: `e94da85...c5c7` (saved to credentials)\n✅ Created: 1/30/2026\n✅ Saved to: `~/.config/atlas/api-credentials.json`\n\n**API Documentation found at:** apidocs.youratlas.com\n\n**Available endpoints:**\n- Campaigns: List, Create, Update, Delete\n- Statistics: Call records, Overview\n- Knowledge Base: Upload, Manage\n- Calls: Schedule calls\n- Bookings: View bookings\n\n**⚠️ NOTE:** The API works at CAMPAIGN level, not individual agent level. Agents are part of campaigns.\n\n**Current Campaigns:**\n1. CS3 Investor Relations (clone) — 20 interactions\n2. CS3 Investor Relations — 15 interactions\n3. The Reserve At Cool Springs — 4 interactions\n\n**Best approach now:**\n1. Work with existing campaigns\n2. Update scripts within campaigns\n3. Add new knowledge bases as needed\n\nContinuing... ⚡",
+                timestamp: "2026-02-02T16:40:00Z"
             }
         ]
     },
