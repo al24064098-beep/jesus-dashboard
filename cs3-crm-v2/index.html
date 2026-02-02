@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS3 Intelligence CRM | Investor Relations</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">CS3 CRM</span>
+            </div>
+            <span class="version">v2.0</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="investors">
+                <i class="fas fa-users"></i>
+                <span>Investors</span>
+                <span class="badge">623</span>
+            </a>
+            <a href="#" class="nav-item" data-page="calls">
+                <i class="fas fa-phone"></i>
+                <span>Call Log</span>
+            </a>
+            <a href="#" class="nav-item" data-page="deals">
+                <i class="fas fa-handshake"></i>
+                <span>Deals</span>
+            </a>
+            <a href="#" class="nav-item" data-page="tasks">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+                <span class="badge warning">5</span>
+            </a>
+            <a href="#" class="nav-item" data-page="reports">
+                <i class="fas fa-file-alt"></i>
+                <span>Reports</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">AL</div>
+                <div class="user-details">
+                    <span class="user-name">Al Liao</span>
+                    <span class="user-role">Director of IR</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search investors, deals, calls..." id="globalSearch">
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" title="AI Assistant">
+                    <i class="fas fa-robot"></i>
+                    <span>Ask Gemini</span>
+                </button>
+                <button class="header-btn notification" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notif-badge">3</span>
+                </button>
+                <button class="header-btn" title="Quick Add">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Dashboard Page -->
+            <div id="dashboard-page" class="page active">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p class="page-subtitle">Welcome back, Al! Here's your IR overview.</p>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalInvestors">623</span>
+                            <span class="stat-label">Total Investors</span>
+                        </div>
+                        <span class="stat-change positive">+12 this month</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">$73.2M</span>
+                            <span class="stat-label">AUM</span>
+                        </div>
+                        <span class="stat-change positive">+$2.1M this quarter</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="callsThisWeek">47</span>
+                            <span class="stat-label">Calls This Week</span>
+                        </div>
+                        <span class="stat-change positive">+8 vs last week</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">1,847</span>
+                            <span class="stat-label">Units Managed</span>
+                        </div>
+                        <span class="stat-change neutral">Across 6 properties</span>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Content -->
+                <div class="dashboard-grid">
+                    <!-- Upcoming Tasks -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-tasks"></i> Today's Tasks</h3>
+                            <button class="btn-text">View All</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="task-list" id="taskList">
+                                <!-- Tasks will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Calls -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-phone"></i> Recent Calls</h3>
+                            <button class="btn-text">View All</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="call-list" id="recentCalls">
+                                <!-- Calls will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Investor Health -->
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <h3><i class="fas fa-heartbeat"></i> Investor Health Alerts</h3>
+                            <button class="btn-text">Manage Alerts</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="health-alerts" id="healthAlerts">
+                                <!-- Alerts will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights -->
+                    <div class="card ai-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-brain"></i> AI Insights</h3>
+                            <span class="ai-badge">Powered by Gemini</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="ai-insight">
+                                <div class="insight-icon">💡</div>
+                                <div class="insight-content">
+                                    <p><strong>Re-engagement Opportunity:</strong> 15 investors haven't been contacted in 60+ days. Consider a check-in call campaign.</p>
+                                    <button class="btn btn-small">Create Campaign</button>
+                                </div>
+                            </div>
+                            <div class="ai-insight">
+                                <div class="insight-icon">📈</div>
+                                <div class="insight-content">
+                                    <p><strong>High Potential:</strong> 8 investors have expressed interest in increasing allocation. Total potential: $2.4M</p>
+                                    <button class="btn btn-small">View List</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card quick-actions">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="action-grid">
+                                <button class="action-btn" onclick="showModal('newCall')">
+                                    <i class="fas fa-phone-plus"></i>
+                                    <span>Log Call</span>
+                                </button>
+                                <button class="action-btn" onclick="showModal('newInvestor')">
+                                    <i class="fas fa-user-plus"></i>
+                                    <span>Add Investor</span>
+                                </button>
+                                <button class="action-btn" onclick="showModal('newTask')">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>Add Task</span>
+                                </button>
+                                <button class="action-btn" onclick="showModal('sendEmail')">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Send Email</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investors Page -->
+            <div id="investors-page" class="page">
+                <div class="page-header">
+                    <div>
+                        <h1>Investors</h1>
+                        <p class="page-subtitle">Manage your investor relationships</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showModal('newInvestor')">
+                        <i class="fas fa-plus"></i> Add Investor
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="prospect">Prospect</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                        <select id="tierFilter">
+                            <option value="">All Tiers</option>
+                            <option value="platinum">Platinum ($500K+)</option>
+                            <option value="gold">Gold ($250K+)</option>
+                            <option value="silver">Silver ($100K+)</option>
+                            <option value="bronze">Bronze (<$100K)</option>
+                        </select>
+                        <select id="propertyFilter">
+                            <option value="">All Properties</option>
+                            <option value="mckenzie">McKenzie STL</option>
+                            <option value="legacy">Legacy Townhomes</option>
+                            <option value="reserve">The Reserve</option>
+                            <option value="winding">Winding Springs</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <div class="search-box small">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search investors..." id="investorSearch">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investors Table -->
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table" id="investorsTable">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="selectAll"></th>
+                                    <th>Investor</th>
+                                    <th>Status</th>
+                                    <th>Tier</th>
+                                    <th>Total Invested</th>
+                                    <th>Properties</th>
+                                    <th>Last Contact</th>
+                                    <th>Health</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="investorsList">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer">
+                        <span class="showing-info">Showing 1-25 of 623 investors</span>
+                        <div class="pagination">
+                            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span>...</span>
+                            <button class="page-btn">25</button>
+                            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calls Page -->
+            <div id="calls-page" class="page">
+                <div class="page-header">
+                    <div>
+                        <h1>Call Log</h1>
+                        <p class="page-subtitle">Track all investor communications</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showModal('newCall')">
+                        <i class="fas fa-phone-plus"></i> Log New Call
+                    </button>
+                </div>
+
+                <!-- Call Stats -->
+                <div class="stats-grid small">
+                    <div class="stat-card mini">
+                        <span class="stat-value">47</span>
+                        <span class="stat-label">This Week</span>
+                    </div>
+                    <div class="stat-card mini">
+                        <span class="stat-value">182</span>
+                        <span class="stat-label">This Month</span>
+                    </div>
+                    <div class="stat-card mini">
+                        <span class="stat-value">23min</span>
+                        <span class="stat-label">Avg Duration</span>
+                    </div>
+                    <div class="stat-card mini">
+                        <span class="stat-value">94%</span>
+                        <span class="stat-label">Positive Sentiment</span>
+                    </div>
+                </div>
+
+                <!-- Calls Table -->
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table" id="callsTable">
+                            <thead>
+                                <tr>
+                                    <th>Date/Time</th>
+                                    <th>Investor</th>
+                                    <th>Type</th>
+                                    <th>Duration</th>
+                                    <th>Summary</th>
+                                    <th>Sentiment</th>
+                                    <th>Follow-up</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="callsList">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deals Page -->
+            <div id="deals-page" class="page">
+                <div class="page-header">
+                    <h1>Deals Pipeline</h1>
+                    <p class="page-subtitle">Track investment commitments and allocations</p>
+                </div>
+                <div class="pipeline-board">
+                    <div class="pipeline-column">
+                        <div class="column-header">
+                            <h4>Interested</h4>
+                            <span class="count">12</span>
+                        </div>
+                        <div class="pipeline-cards" id="pipelineInterested"></div>
+                    </div>
+                    <div class="pipeline-column">
+                        <div class="column-header">
+                            <h4>Soft Commit</h4>
+                            <span class="count">8</span>
+                        </div>
+                        <div class="pipeline-cards" id="pipelineSoft"></div>
+                    </div>
+                    <div class="pipeline-column">
+                        <div class="column-header">
+                            <h4>Hard Commit</h4>
+                            <span class="count">5</span>
+                        </div>
+                        <div class="pipeline-cards" id="pipelineHard"></div>
+                    </div>
+                    <div class="pipeline-column">
+                        <div class="column-header success">
+                            <h4>Funded</h4>
+                            <span class="count">3</span>
+                        </div>
+                        <div class="pipeline-cards" id="pipelineFunded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks Page -->
+            <div id="tasks-page" class="page">
+                <div class="page-header">
+                    <h1>Tasks</h1>
+                    <p class="page-subtitle">Your IR action items</p>
+                </div>
+                <div class="card">
+                    <div class="task-board" id="taskBoard">
+                        <!-- Tasks populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Page -->
+            <div id="reports-page" class="page">
+                <div class="page-header">
+                    <h1>Reports</h1>
+                    <p class="page-subtitle">Analytics and insights</p>
+                </div>
+                <div class="reports-grid">
+                    <div class="card">
+                        <h3>Coming Soon</h3>
+                        <p>Advanced reporting with AI-powered insights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Investor Detail Sidebar -->
+    <aside class="detail-sidebar" id="investorDetail">
+        <div class="detail-header">
+            <button class="close-detail" onclick="closeInvestorDetail()">&times;</button>
+            <div class="investor-profile">
+                <div class="investor-avatar large" id="detailAvatar">JD</div>
+                <h2 id="detailName">John Doe</h2>
+                <span class="investor-tier" id="detailTier">Gold Investor</span>
+            </div>
+        </div>
+        <div class="detail-body">
+            <div class="detail-section">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-envelope"></i> <span id="detailEmail">john@example.com</span></p>
+                <p><i class="fas fa-phone"></i> <span id="detailPhone">(555) 123-4567</span></p>
+            </div>
+            <div class="detail-section">
+                <h4>Investment Summary</h4>
+                <div class="summary-stats">
+                    <div class="summary-stat">
+                        <span class="value" id="detailInvested">$250,000</span>
+                        <span class="label">Total Invested</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="value" id="detailProperties">3</span>
+                        <span class="label">Properties</span>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-section">
+                <h4>AI Summary</h4>
+                <div class="ai-summary" id="detailAISummary">
+                    Loading AI insights...
+                </div>
+            </div>
+            <div class="detail-section">
+                <h4>Recent Activity</h4>
+                <div class="activity-timeline" id="detailActivity">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <div class="detail-actions">
+                <button class="btn btn-primary"><i class="fas fa-phone"></i> Call</button>
+                <button class="btn btn-secondary"><i class="fas fa-envelope"></i> Email</button>
+            </div>
+        </div>
+    </aside>
+
+    <script src="app.js"></script>
+</body>
+</html>
