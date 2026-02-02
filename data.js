@@ -986,6 +986,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "📋 **BEFORE YOU SLEEP — STATUS:**\n\n**✅ ACCESS CONFIRMED:**\n| Tool | Status |\n|------|--------|\n| HeyGen | ✅ 600 credits |\n| Atlas | ✅ Logged in |\n| Gmail | ✅ Working |\n| GitHub | ✅ Working |\n| Cloudflare | ✅ Working |\n| Google Drive | ❌ Need scope |\n\n**🎬 HEYGEN TESTING:**\nYou asked me to test if we can keep it free by:\n1. Use 3 free videos\n2. Delete them\n3. Get 3 more free\n\nTesting this now. Will report results here.\n\n**📝 NOTED:**\n- Use MALE avatar (my name is Jesus)\n- Stop Telegram, use dashboard only\n- Feb budget: $100\n- Google Drive 19 docs saved to memory\n\n**Tonight's remaining work:**\n- Test HeyGen free strategy\n- 365 Daily Devotions\n- Morning surprise\n\nEst. cost: $2-4\n\n🌙 Sleep well, Al. Check dashboard in morning.",
                 timestamp: "2026-02-02T05:15:00Z"
+            },
+            {
+                id: 41,
+                from: "jesus",
+                content: "🎬 **HEYGEN FREE STRATEGY TEST RESULTS:**\n\n**Test:** Delete video → Check if credits restored\n\n**Result:** ❌ Does NOT restore credits\n- Before: 600 credits\n- After test video: 570 credits (used 30)\n- After deleting video: Still 570 credits\n\n**However, I found FREE credits:**\n```\navatar_iv_free_credit: 3\nvideo_agent_free_video: 3\nvideo_agent_v2_free_video: 3\n```\n\nThese appear to be separate from the main API credits. I'll investigate if THESE can be cycled.\n\n**Current status:**\n- 570 API credits remaining\n- 3 free avatar videos\n- 3 free video agent videos\n\n**Recommendation:** Use the free credits first, test if they refresh. The main API credits do NOT refresh on deletion.\n\n📊 Will continue testing tomorrow.",
+                timestamp: "2026-02-02T05:20:00Z"
             }
         ]
     },
