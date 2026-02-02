@@ -331,36 +331,86 @@
         const report = dashboardData.agentReport;
         if (!report) return;
 
-        // Completed
+        // Update last updated time
+        const lastUpdatedEl = document.getElementById('reportLastUpdated');
+        if (lastUpdatedEl && report.lastUpdated) {
+            const time = new Date(report.lastUpdated);
+            lastUpdatedEl.textContent = time.toLocaleTimeString();
+        }
+
+        // Currently working on
+        const currentWorkEl = document.getElementById('currentlyWorking');
+        if (currentWorkEl && report.currentlyWorking) {
+            currentWorkEl.textContent = report.currentlyWorking;
+        }
+
+        // Completed (today)
         renderReportList('completedList', 'completedCount', report.completed, '✅');
 
+        // In Progress
+        renderReportList('inProgressList', 'inProgressCount', report.inProgress, '🔨');
+
         // Blockers
-        renderReportList('blockersList', 'blockersCount', report.blockers, '⚠️');
+        renderReportList('blockersList', 'blockersCount', report.blockers, '🚧');
 
-        // Issues
-        renderReportList('issuesList', 'issuesCount', report.issues, '🚨');
+        // Pending on Al
+        renderReportList('pendingOnAlList', 'pendingOnAlCount', report.pendingOnAl, '⏳');
 
-        // Pending Decisions
-        renderReportList('pendingList', 'pendingCount', report.pending, '📋');
+        // All Projects Summary
+        renderAllProjects(report.allProjects);
 
-        // Next Up
-        renderReportList('nextList', 'nextCount', report.next, '🔮');
+        // Today's Summary
+        if (report.todaysSummary) {
+            const summary = report.todaysSummary;
+            const summaryEl = document.getElementById('todaysSummary');
+            if (summaryEl) {
+                summaryEl.innerHTML = `
+                    <div class="summary-stat"><span>${summary.hoursWorked || 0}</span> hours</div>
+                    <div class="summary-stat"><span>${summary.tasksCompleted || 0}</span> tasks</div>
+                    <div class="summary-stat"><span>${summary.linesOfCode || 0}</span> lines</div>
+                    <div class="summary-stat"><span>$${summary.apiCost || 0}</span> cost</div>
+                `;
+            }
+        }
     }
 
     function renderReportList(listId, countId, items, icon) {
         const listEl = document.getElementById(listId);
         const countEl = document.getElementById(countId);
 
+        if (!listEl) return;
+        
         if (!items || items.length === 0) {
             listEl.innerHTML = '<li class="empty-state">Nothing here</li>';
-            countEl.textContent = '0';
+            if (countEl) countEl.textContent = '0';
             return;
         }
 
-        countEl.textContent = items.length;
+        if (countEl) countEl.textContent = items.length;
         listEl.innerHTML = items.map(item => `
             <li>${typeof item === 'string' ? item : item.text}</li>
         `).join('');
+    }
+
+    function renderAllProjects(projects) {
+        const container = document.getElementById('allProjectsList');
+        if (!container || !projects) return;
+
+        container.innerHTML = projects.map(p => {
+            const statusClass = p.status === 'complete' ? 'success' : (p.status === 'in-progress' ? 'warning' : 'muted');
+            const statusIcon = p.status === 'complete' ? '✅' : (p.status === 'in-progress' ? '🔨' : '📋');
+            return `
+                <div class="project-row">
+                    <span class="project-name">${statusIcon} ${p.name}</span>
+                    <div class="project-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill ${statusClass}" style="width: ${p.progress}%"></div>
+                        </div>
+                        <span class="progress-text">${p.progress}%</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
 
     // ========== 3. AI INTELLIGENCE ==========

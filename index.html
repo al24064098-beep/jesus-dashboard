@@ -473,16 +473,34 @@
         <section id="report" class="content-section">
             <div class="section-header">
                 <h2>📊 Agent Report</h2>
-                <p class="section-desc">Daily standup — what I finished, what I need, what's next.</p>
-                <span class="update-indicator">🔄 Updates continuously</span>
+                <p class="section-desc">Real-time status — what I'm doing, what's done, what needs your input. Last update: <span id="reportLastUpdated">--</span></p>
+            </div>
+
+            <!-- Currently Working On -->
+            <div class="card highlight-card">
+                <div class="card-header">
+                    <span class="card-icon">🔥</span>
+                    <h3>Currently Working On</h3>
+                </div>
+                <div class="card-content">
+                    <div class="current-work" id="currentlyWorking">Loading...</div>
+                </div>
+            </div>
+
+            <!-- Today's Summary -->
+            <div class="summary-bar" id="todaysSummary">
+                <div class="summary-stat"><span>0</span> hours</div>
+                <div class="summary-stat"><span>0</span> tasks</div>
+                <div class="summary-stat"><span>0</span> lines</div>
+                <div class="summary-stat"><span>$0</span> cost</div>
             </div>
             
             <div class="report-grid">
-                <!-- Completed -->
+                <!-- Completed Today -->
                 <div class="card status-card completed">
                     <div class="card-header">
                         <span class="card-icon">✅</span>
-                        <h3>Completed</h3>
+                        <h3>Completed Today</h3>
                         <span class="count" id="completedCount">0</span>
                     </div>
                     <div class="card-body">
@@ -490,10 +508,22 @@
                     </div>
                 </div>
                 
+                <!-- In Progress -->
+                <div class="card status-card in-progress">
+                    <div class="card-header">
+                        <span class="card-icon">🔨</span>
+                        <h3>In Progress</h3>
+                        <span class="count" id="inProgressCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="report-list" id="inProgressList"></ul>
+                    </div>
+                </div>
+                
                 <!-- Blockers -->
                 <div class="card status-card blockers">
                     <div class="card-header">
-                        <span class="card-icon">⚠️</span>
+                        <span class="card-icon">🚧</span>
                         <h3>Blockers</h3>
                         <span class="count" id="blockersCount">0</span>
                     </div>
@@ -502,39 +532,28 @@
                     </div>
                 </div>
                 
-                <!-- Issues -->
-                <div class="card status-card issues">
+                <!-- Pending on Al -->
+                <div class="card status-card pending-al">
                     <div class="card-header">
-                        <span class="card-icon">🚨</span>
-                        <h3>Issues</h3>
-                        <span class="count" id="issuesCount">0</span>
+                        <span class="card-icon">⏳</span>
+                        <h3>Pending on Al</h3>
+                        <span class="count" id="pendingOnAlCount">0</span>
                     </div>
                     <div class="card-body">
-                        <ul class="report-list" id="issuesList"></ul>
+                        <ul class="report-list" id="pendingOnAlList"></ul>
                     </div>
                 </div>
-                
-                <!-- Pending Decisions -->
-                <div class="card status-card pending">
-                    <div class="card-header">
-                        <span class="card-icon">📋</span>
-                        <h3>Pending Decisions</h3>
-                        <span class="count" id="pendingCount">0</span>
-                    </div>
-                    <div class="card-body">
-                        <ul class="report-list" id="pendingList"></ul>
-                    </div>
+            </div>
+
+            <!-- All Projects Overview -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📋</span>
+                    <h3>All Projects</h3>
                 </div>
-                
-                <!-- Next Up -->
-                <div class="card status-card next-up">
-                    <div class="card-header">
-                        <span class="card-icon">🔮</span>
-                        <h3>Next Up</h3>
-                        <span class="count" id="nextCount">0</span>
-                    </div>
-                    <div class="card-body">
-                        <ul class="report-list" id="nextList"></ul>
+                <div class="card-content">
+                    <div class="projects-list" id="allProjectsList">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </div>
