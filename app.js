@@ -603,8 +603,11 @@ ${relatedFiles}
 
     // ========== 6. LIBRARY ==========
     function loadLibrary() {
-        // Load from localStorage or data
-        let library = JSON.parse(localStorage.getItem('jesusLibrary')) || dashboardData.library || [];
+        // Load from data.js only - NO localStorage (was causing quota issues)
+        // Clear any old localStorage data
+        try { localStorage.removeItem('jesusLibrary'); } catch(e) {}
+        
+        let library = dashboardData.library || [];
         renderLibrary(library);
         setupLibraryFilters(library);
     }
@@ -613,7 +616,12 @@ ${relatedFiles}
         const uploadZone = document.getElementById('uploadZone');
         const fileInput = document.getElementById('fileUpload');
 
-        // Drag and drop
+        // Show info message on click instead of file upload
+        const showUploadInfo = () => {
+            alert('📤 To share files with Jesus:\n\n1. Send via Telegram (attach file)\n2. Share Google Drive link via Notes\n3. Paste content directly in Notes\n\nJesus will add received files to the library.');
+        };
+
+        // Drag and drop - show info
         uploadZone.addEventListener('dragover', (e) => {
             e.preventDefault();
             uploadZone.classList.add('dragover');
@@ -626,36 +634,17 @@ ${relatedFiles}
         uploadZone.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadZone.classList.remove('dragover');
-            handleFiles(e.dataTransfer.files);
+            showUploadInfo();
         });
 
-        // Click to upload
-        uploadZone.addEventListener('click', () => fileInput.click());
-        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+        // Click to show info
+        uploadZone.addEventListener('click', showUploadInfo);
+        fileInput.addEventListener('change', showUploadInfo);
     }
 
+    // Files are now managed through data.js, not localStorage uploads
     function handleFiles(files) {
-        const library = JSON.parse(localStorage.getItem('jesusLibrary')) || [];
-
-        Array.from(files).forEach(file => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const newFile = {
-                    id: Date.now() + Math.random(),
-                    name: file.name,
-                    type: file.type,
-                    size: file.size,
-                    folder: 'all',
-                    uploadedAt: new Date().toISOString(),
-                    data: e.target.result
-                };
-
-                library.push(newFile);
-                localStorage.setItem('jesusLibrary', JSON.stringify(library));
-                renderLibrary(library);
-            };
-            reader.readAsDataURL(file);
-        });
+        alert('📤 To share files with Jesus:\n\n1. Send via Telegram (attach file)\n2. Share Google Drive link via Notes\n3. Paste content directly in Notes\n\nJesus will add received files to the library.');
     }
 
     function renderLibrary(items) {

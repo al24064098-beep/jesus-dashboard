@@ -24,7 +24,7 @@ const scriptures = [
 
 // ========== MAIN DASHBOARD DATA ==========
 const dashboardData = {
-    lastUpdated: "2026-02-02T03:21:00Z",
+    lastUpdated: "2026-02-02T03:45:00Z",
 
     // ========== 1. DAILY SURPRISE ==========
     dailySurprise: {
@@ -435,7 +435,58 @@ property-partner-landing/
     ],
 
     // ========== 6. LIBRARY ==========
-    library: [],
+    library: [
+        {
+            id: 1,
+            name: "CS3 IR Operating Platform.md",
+            type: "text/markdown",
+            size: 15000,
+            folder: "sops",
+            uploadedAt: "2026-02-01T00:00:00Z",
+            description: "Complete IR process documentation - investor pipeline, compliance, KPIs",
+            location: "memory/CS3-IR-OPERATING-PLATFORM.md"
+        },
+        {
+            id: 2,
+            name: "AL Master System.md",
+            type: "text/markdown", 
+            size: 25000,
+            folder: "reference",
+            uploadedAt: "2026-01-31T00:00:00Z",
+            description: "Al's complete Life Operating System - 8 documents",
+            location: "memory/AL-MASTER-SYSTEM.md"
+        },
+        {
+            id: 3,
+            name: "CRM Requirements.md",
+            type: "text/markdown",
+            size: 8000,
+            folder: "sops",
+            uploadedAt: "2026-02-02T00:39:00Z",
+            description: "Complete CS3 AI Intelligence CRM blueprint",
+            location: "memory/2026-02-02.md"
+        },
+        {
+            id: 4,
+            name: "Dashboard V3 Requirements.md",
+            type: "text/markdown",
+            size: 6200,
+            folder: "sops",
+            uploadedAt: "2026-02-02T02:05:00Z",
+            description: "12 features for live dashboard - presence, inbox, projects, etc.",
+            location: "memory/DASHBOARD-V3-REQUIREMENTS.md"
+        },
+        {
+            id: 5,
+            name: "Newsletter Ecosystem Spec.md",
+            type: "text/markdown",
+            size: 12000,
+            folder: "reference",
+            uploadedAt: "2026-02-01T00:00:00Z",
+            description: "Property Partner + AL Newsletter + CS3 Newsletter ecosystem",
+            location: "memory/CS3-NEWSLETTER-ECOSYSTEM.md"
+        }
+    ],
 
     // ========== 7. NOTES ==========
     notes: [],
