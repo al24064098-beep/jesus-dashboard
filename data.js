@@ -48,6 +48,69 @@ const dashboardData = {
         completed: []
     },
 
+    // ========== 6-HOUR CYCLE TARGETS ==========
+    // 4 cycles per day: 00:00-06:00, 06:00-12:00, 12:00-18:00, 18:00-24:00 (MT)
+    cycleTargets: {
+        currentCycle: 1, // Which cycle we're in (1-4)
+        cycles: [
+            {
+                id: 1,
+                name: "Cycle 1: Night Build",
+                timeRange: "10 PM - 4 AM MT",
+                utcRange: "05:00 - 11:00 UTC",
+                status: "active",
+                targets: [
+                    { task: "Finish 365 Daily Devotions (Aug-Dec)", done: false },
+                    { task: "Read 19 Google Drive docs", done: false },
+                    { task: "Dashboard 6-hour cycles feature", done: false }
+                ],
+                completed: 0,
+                total: 3
+            },
+            {
+                id: 2,
+                name: "Cycle 2: Morning",
+                timeRange: "4 AM - 10 AM MT",
+                utcRange: "11:00 - 17:00 UTC",
+                status: "upcoming",
+                targets: [
+                    { task: "7 AM Daily Report (email + dashboard)", done: false },
+                    { task: "Security check", done: false },
+                    { task: "Atlas agent deployment prep", done: false }
+                ],
+                completed: 0,
+                total: 3
+            },
+            {
+                id: 3,
+                name: "Cycle 3: Afternoon",
+                timeRange: "10 AM - 4 PM MT",
+                utcRange: "17:00 - 23:00 UTC",
+                status: "upcoming",
+                targets: [
+                    { task: "CRM build progress", done: false },
+                    { task: "IR Agent training", done: false }
+                ],
+                completed: 0,
+                total: 2
+            },
+            {
+                id: 4,
+                name: "Cycle 4: Evening",
+                timeRange: "4 PM - 10 PM MT",
+                utcRange: "23:00 - 05:00 UTC",
+                status: "upcoming",
+                targets: [
+                    { task: "8 PM Daily Report (email + dashboard)", done: false },
+                    { task: "Next day planning", done: false },
+                    { task: "Daily surprise prep", done: false }
+                ],
+                completed: 0,
+                total: 3
+            }
+        ]
+    },
+
     // ========== CURRENT TASK ==========
     currentTask: {
         task: "✅ Created 18 Atlas agent scripts (all properties × 3 types)",
@@ -1035,6 +1098,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **DAILY REPORT FORMAT — SAVED**\n\n**Times:** 7 AM MT + 8 PM MT\n**Delivery:** Email (al@cs3investments.com) + Dashboard\n\n**Format:**\na. ✅ What's DONE\nb. 🔄 What I'm working on NOW\nc. ➡️ What's NEXT\nd. 🎯 Goals until next report\n\n**Locked in permanently.** 🔒\n\n---\n\n📵 **TELEGRAM = URGENT ONLY**\nAll communication via Dashboard from now on.\nWorking silently until 7 AM MT report. ⚡",
                 timestamp: "2026-02-02T05:52:00Z"
+            },
+            {
+                id: 48,
+                from: "jesus",
+                content: "✅ **6-HOUR CYCLE TARGETS — ADDED**\n\n**4 cycles per 24 hours (MT):**\n\n🌙 **Cycle 1:** 10 PM - 4 AM (Night Build)\n☀️ **Cycle 2:** 4 AM - 10 AM (Morning)\n🌤️ **Cycle 3:** 10 AM - 4 PM (Afternoon)\n🌆 **Cycle 4:** 4 PM - 10 PM (Evening)\n\n**Each cycle shows:**\n- Target tasks for that 6-hour block\n- Completion status\n- Progress tracking\n\n**Data structure added to data.js** ✅\n\nBuilding UI section now...",
+                timestamp: "2026-02-02T05:55:00Z"
             }
         ]
     },
