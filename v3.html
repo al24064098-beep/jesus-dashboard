@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=75">
+    <link rel="stylesheet" href="style.css?v=76">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -25,9 +25,15 @@
             </div>
         </div>
         <div class="header-right">
+            <!-- LIVE CLOCK - Updates every second -->
+            <div class="live-clock-container">
+                <div class="live-clock" id="liveClock">--:--:-- --</div>
+                <div class="live-date" id="liveDate">--- --, ----</div>
+                <div class="timezone-label">MST</div>
+            </div>
             <div class="connection-status" id="connectionStatus">
                 <span class="status-dot online"></span>
-                <span>Online</span>
+                <span id="connectionText">Live</span>
             </div>
             <div class="last-sync" id="lastSync">Last sync: --</div>
         </div>
@@ -52,7 +58,6 @@
         <button class="nav-tab" data-section="challenges">🎯 Challenges</button>
         <button class="nav-tab" data-section="properties">🏠 Properties</button>
         <button class="nav-tab" data-section="irAgents">🤖 IR Agents (12)</button>
-        <button class="nav-tab" data-section="propertyAgents">🏢 Property Agents (18)</button>
         <button class="nav-tab" data-section="roleplay">🎬 Roleplay</button>
         <button class="nav-tab" data-section="access">🔐 Access</button>
         <button class="nav-tab" data-section="timelog">⏱️ Time Log</button>
@@ -2824,7 +2829,7 @@
     <!-- Scripts -->
     <script src="data.js?v=60"></script>
     <script src="devotions.js?v=1"></script>
-    <script src="app.js?v=64">
+    <script src="app.js?v=65">
     
     <!-- Simple Note Sender (Backup) -->
     <script>
@@ -3018,6 +3023,107 @@
     setInterval(updateLiveStatus, 3000);
     
     console.log('🔴 LIVE POLLING ENABLED - Updates every 3 seconds');
+    
+    // ============================================
+    // LIVE CLOCK - Updates every second
+    // ============================================
+    function updateLiveClock() {
+        const now = new Date();
+        
+        // Convert to Mountain Time
+        const mtOptions = { timeZone: 'America/Denver' };
+        const mtTime = now.toLocaleString('en-US', {
+            ...mtOptions,
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        });
+        
+        const mtDate = now.toLocaleString('en-US', {
+            ...mtOptions,
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+        
+        const clockEl = document.getElementById('liveClock');
+        const dateEl = document.getElementById('liveDate');
+        
+        if (clockEl) clockEl.textContent = mtTime;
+        if (dateEl) dateEl.textContent = mtDate;
+        
+        // Also update any other timestamp elements
+        const liveLastUpdate = document.getElementById('liveLastUpdate');
+        if (liveLastUpdate && lastLiveUpdate && lastLiveUpdate.lastUpdate) {
+            liveLastUpdate.textContent = timeAgo(lastLiveUpdate.lastUpdate);
+        }
+        
+        // Update timelog timestamp
+        const timelogUpdate = document.getElementById('timelogLastUpdate');
+        if (timelogUpdate && lastLiveUpdate && lastLiveUpdate.lastUpdate) {
+            timelogUpdate.textContent = formatMT(lastLiveUpdate.lastUpdate);
+        }
+        
+        // Update task timer (counting up)
+        updateTaskTimer();
+    }
+    
+    // Task timer counter
+    let taskStartTime = Date.now();
+    function updateTaskTimer() {
+        const elapsed = Date.now() - taskStartTime;
+        const hours = Math.floor(elapsed / 3600000);
+        const minutes = Math.floor((elapsed % 3600000) / 60000);
+        const seconds = Math.floor((elapsed % 60000) / 1000);
+        
+        const timerEl = document.getElementById('timerClock');
+        if (timerEl) {
+            timerEl.textContent = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+    }
+    
+    // Start clock - updates every second
+    updateLiveClock();
+    setInterval(updateLiveClock, 1000);
+    
+    console.log('⏰ LIVE CLOCK ENABLED - Updates every second');
+    
+    // ============================================
+    // CHAT INTERACTION INDICATORS
+    // ============================================
+    const chatStates = ['📥 Received', '👀 Reading', '🤔 Thinking', '⌨️ Typing...', '✅ Sent'];
+    let currentChatState = 0;
+    
+    function simulateChatInteraction() {
+        // This will be replaced with real status from worker
+        const indicator = document.getElementById('phaseIndicator');
+        if (!indicator) return;
+        
+        // Get actual status from lastLiveUpdate
+        if (lastLiveUpdate && lastLiveUpdate.chatState) {
+            const state = lastLiveUpdate.chatState;
+            const stateIcons = {
+                'received': '📥 Received',
+                'reading': '👀 Reading',
+                'thinking': '🤔 Thinking',
+                'typing': '⌨️ Typing...',
+                'sent': '✅ Sent',
+                'working': '⚡ Working',
+                'building': '🔨 Building',
+                'researching': '🔍 Researching'
+            };
+            indicator.textContent = stateIcons[state] || '⚡ Active';
+            indicator.className = 'phase-indicator phase-' + state;
+        }
+    }
+    
+    // Check for chat state updates
+    setInterval(simulateChatInteraction, 1000);
     </script>
 </body>
 </html>
