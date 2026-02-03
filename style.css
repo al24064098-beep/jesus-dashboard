@@ -7109,3 +7109,78 @@ textarea {
     0%, 100% { box-shadow: 0 0 0 0 rgba(50,205,50,0.7); }
     70% { box-shadow: 0 0 0 8px rgba(50,205,50,0); }
 }
+
+/* Dynamic Calendar Grid */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.devotion-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: rgba(255,255,255,0.05);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.calendar-cell:hover:not(.empty) {
+    transform: scale(1.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.calendar-cell.empty {
+    background: transparent;
+    cursor: default;
+}
+
+.calendar-cell.sent {
+    background: rgba(50,205,50,0.2);
+    color: #32cd32;
+}
+
+.calendar-cell.today {
+    background: linear-gradient(135deg, #00d4ff, #8a2be2);
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(0,212,255,0.5);
+    animation: todayPulse 2s infinite;
+}
+
+.calendar-cell.scheduled {
+    background: rgba(0,212,255,0.2);
+    color: #00d4ff;
+}
+
+.calendar-cell.pending {
+    background: rgba(255,165,0,0.15);
+    color: #ffa500;
+}
+
+@keyframes todayPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(0,212,255,0.5); }
+    50% { box-shadow: 0 0 25px rgba(0,212,255,0.8); }
+}
