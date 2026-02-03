@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=72">
+    <link rel="stylesheet" href="style.css?v=73">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -2084,6 +2084,55 @@
             <div class="section-header">
                 <h2>💰 Project Proposals & Budget</h2>
                 <p class="section-desc">Every project needs cost estimate + Al approval before building.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3 WOW #1: Budget Health Indicator -->
+            <div class="budget-health-card">
+                <div class="health-header">
+                    <span class="health-icon">📊</span>
+                    <h3>February Budget Health</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="budget-meter">
+                    <div class="meter-bar">
+                        <div class="meter-fill danger" style="width: 289%;"></div>
+                        <div class="meter-target" style="left: 100%;"></div>
+                    </div>
+                    <div class="meter-labels">
+                        <span>$0</span>
+                        <span class="budget-target">Budget: $100</span>
+                        <span>$289 spent</span>
+                    </div>
+                </div>
+                <div class="budget-alert danger">
+                    ⚠️ OVER BUDGET by $189 — Minimize API calls!
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: ROI Calculator -->
+            <div class="roi-calculator-card">
+                <div class="roi-header">
+                    <span class="roi-icon">💰</span>
+                    <h3>Project ROI Calculator</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="roi-display">
+                    <div class="roi-stat">
+                        <span class="roi-value">$100</span>
+                        <span class="roi-label">Total Spent</span>
+                    </div>
+                    <div class="roi-arrow">→</div>
+                    <div class="roi-stat">
+                        <span class="roi-value">$750K</span>
+                        <span class="roi-label">Projected Value</span>
+                    </div>
+                    <div class="roi-arrow">=</div>
+                    <div class="roi-stat highlight">
+                        <span class="roi-value">7,500x</span>
+                        <span class="roi-label">ROI</span>
+                    </div>
+                </div>
             </div>
             
             <!-- Budget Overview -->
@@ -2226,6 +2275,48 @@
             <div class="section-header">
                 <h2>🏠 CS3 Properties</h2>
                 <p class="section-desc">All CS3 properties with research status, Atlas agents, and Property Partner pages.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3 WOW #1: Portfolio Overview -->
+            <div class="portfolio-overview-card">
+                <div class="portfolio-header">
+                    <span class="portfolio-icon">🏢</span>
+                    <h3>Portfolio Overview</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat">
+                        <span class="portfolio-value">~1,800</span>
+                        <span class="portfolio-label">Total Units</span>
+                    </div>
+                    <div class="portfolio-stat">
+                        <span class="portfolio-value">$73M</span>
+                        <span class="portfolio-label">AUM</span>
+                    </div>
+                    <div class="portfolio-stat">
+                        <span class="portfolio-value">6</span>
+                        <span class="portfolio-label">Properties</span>
+                    </div>
+                    <div class="portfolio-stat">
+                        <span class="portfolio-value">4</span>
+                        <span class="portfolio-label">States</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Quick Property Actions -->
+            <div class="property-actions-card">
+                <div class="actions-header">
+                    <span class="actions-icon">⚡</span>
+                    <h3>Quick Actions</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="property-action-buttons">
+                    <button class="prop-action-btn" onclick="viewAllAtlasAgents()">🤖 View All Atlas Agents</button>
+                    <button class="prop-action-btn" onclick="deployPartnerPages()">🌐 Deploy Partner Pages</button>
+                    <button class="prop-action-btn" onclick="runPropertyAudit()">📋 Run Property Audit</button>
+                </div>
             </div>
             
             <!-- Properties Summary -->

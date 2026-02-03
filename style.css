@@ -6558,3 +6558,216 @@ textarea {
     border-color: #6366f1;
     background: rgba(99, 102, 241, 0.1);
 }
+
+/* ========== V3 Proposals Styles ========== */
+.budget-health-card {
+    background: linear-gradient(135deg, #450a0a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ef4444;
+}
+
+.health-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.health-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.budget-meter {
+    margin-bottom: 15px;
+}
+
+.meter-bar {
+    height: 20px;
+    background: #1e293b;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s;
+}
+
+.meter-fill.ok { background: #10b981; }
+.meter-fill.warning { background: #f59e0b; }
+.meter-fill.danger { background: #ef4444; }
+
+.meter-target {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #fff;
+}
+
+.meter-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.budget-target {
+    font-weight: bold;
+    color: #fff;
+}
+
+.budget-alert {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.budget-alert.ok { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.budget-alert.warning { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+.budget-alert.danger { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+.roi-calculator-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+.roi-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.roi-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.roi-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.roi-stat {
+    text-align: center;
+    padding: 15px 20px;
+    background: #0f172a;
+    border-radius: 10px;
+}
+
+.roi-stat.highlight {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.roi-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.roi-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.roi-stat.highlight .roi-label {
+    color: rgba(255,255,255,0.8);
+}
+
+.roi-arrow {
+    font-size: 1.5rem;
+    color: #6366f1;
+}
+
+/* ========== V3 Properties Styles ========== */
+.portfolio-overview-card {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #6366f1;
+}
+
+.portfolio-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.portfolio-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.portfolio-stats {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.portfolio-stat {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.portfolio-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.portfolio-label {
+    font-size: 0.75rem;
+    color: #a5b4fc;
+}
+
+.property-actions-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+.property-action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.prop-action-btn {
+    padding: 12px 20px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.prop-action-btn:hover {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
