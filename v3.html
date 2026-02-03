@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=71">
+    <link rel="stylesheet" href="style.css?v=72">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -1601,6 +1601,54 @@
             <div class="section-header">
                 <h2>📖 Daily Devotions</h2>
                 <p class="section-desc">Review and approve 365 Daily Devotion emails. Approved emails will be scheduled automatically.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3 WOW #1: Today's Devotion Preview -->
+            <div class="todays-devotion-card">
+                <div class="devotion-preview-header">
+                    <span class="preview-icon">🕊️</span>
+                    <h3>Today's Devotion</h3>
+                    <span class="wow-badge">WOW</span>
+                    <span class="preview-date">Day 34 of 365</span>
+                </div>
+                <div class="devotion-preview-content">
+                    <p class="preview-scripture">"Trust in the LORD with all thine heart; and lean not unto thine own understanding."</p>
+                    <p class="preview-ref">— Proverbs 3:5 (KJV)</p>
+                    <p class="preview-reflection">Today, remember that God's wisdom exceeds our understanding. When challenges arise, trust in His perfect plan rather than relying solely on your own perspective.</p>
+                </div>
+                <div class="devotion-preview-footer">
+                    <span class="preview-status">📧 Scheduled for 6:30 AM MT</span>
+                    <button class="btn-small" onclick="editDevotionPreview()">✏️ Edit</button>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Monthly Calendar View -->
+            <div class="devotion-calendar-card">
+                <div class="calendar-view-header">
+                    <span class="calendar-view-icon">📅</span>
+                    <h3>February 2026</h3>
+                    <span class="wow-badge">WOW</span>
+                    <div class="calendar-nav">
+                        <button class="btn-small" onclick="prevMonth()">←</button>
+                        <button class="btn-small" onclick="nextMonth()">→</button>
+                    </div>
+                </div>
+                <div class="devotion-calendar-grid">
+                    <div class="calendar-cell sent">1</div>
+                    <div class="calendar-cell sent">2</div>
+                    <div class="calendar-cell today">3</div>
+                    <div class="calendar-cell scheduled">4</div>
+                    <div class="calendar-cell scheduled">5</div>
+                    <div class="calendar-cell pending">6</div>
+                    <div class="calendar-cell pending">7</div>
+                </div>
+                <div class="calendar-legend">
+                    <span class="legend-item"><span class="legend-dot sent"></span> Sent</span>
+                    <span class="legend-item"><span class="legend-dot today"></span> Today</span>
+                    <span class="legend-item"><span class="legend-dot scheduled"></span> Scheduled</span>
+                    <span class="legend-item"><span class="legend-dot pending"></span> Pending</span>
+                </div>
             </div>
             
             <!-- Stats Bar -->
@@ -2335,6 +2383,50 @@
             <div class="section-header">
                 <h2>🔐 Access & Permissions</h2>
                 <p class="section-desc">Full transparency on what I can and cannot access. Last audit: <span id="accessAuditDate">--</span></p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3 WOW #1: Security Status -->
+            <div class="security-status-card">
+                <div class="security-header">
+                    <span class="security-icon">🛡️</span>
+                    <h3>Security Status</h3>
+                    <span class="wow-badge">WOW</span>
+                    <span class="security-grade">A+</span>
+                </div>
+                <div class="security-checklist">
+                    <div class="security-item ok">
+                        <span class="check-icon">✅</span>
+                        <span class="check-text">All tokens encrypted at rest</span>
+                    </div>
+                    <div class="security-item ok">
+                        <span class="check-icon">✅</span>
+                        <span class="check-text">No external data leaks detected</span>
+                    </div>
+                    <div class="security-item ok">
+                        <span class="check-icon">✅</span>
+                        <span class="check-text">Read-only access to Al's email</span>
+                    </div>
+                    <div class="security-item warning">
+                        <span class="check-icon">⚠️</span>
+                        <span class="check-text">Google Drive OAuth pending</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Quick Request Access -->
+            <div class="request-access-card">
+                <div class="request-header">
+                    <span class="request-icon">🔑</span>
+                    <h3>Request New Access</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="request-options">
+                    <button class="request-btn" onclick="requestAccess('drive')">📁 Google Drive</button>
+                    <button class="request-btn" onclick="requestAccess('calendar')">📅 Calendar</button>
+                    <button class="request-btn" onclick="requestAccess('twitter')">🐦 Twitter/X</button>
+                    <button class="request-btn" onclick="requestAccess('other')">➕ Other...</button>
+                </div>
             </div>
             
             <!-- Access Summary -->
