@@ -6051,3 +6051,273 @@ textarea {
     flex-grow: 1;
     font-size: 0.9rem;
 }
+
+/* ========== V3 Vault Styles ========== */
+.recent-builds-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+.builds-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.builds-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.builds-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.builds-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: #334155;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    background: #6366f1;
+    border-radius: 50%;
+    position: absolute;
+    left: -18px;
+}
+
+.timeline-date {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    min-width: 60px;
+}
+
+.timeline-name {
+    font-weight: 500;
+}
+
+.vault-quick-access {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+.quick-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.quick-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.quick-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.vault-quick-btn {
+    padding: 12px 20px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.vault-quick-btn:hover {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* ========== V3 Time Log Styles ========== */
+.session-stats-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.session-stat {
+    flex: 1;
+    min-width: 100px;
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #334155;
+}
+
+.session-stat .stat-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.session-stat .stat-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.session-stat .stat-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 3px;
+}
+
+.activity-heatmap-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+.heatmap-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.heatmap-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.heatmap-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.heatmap-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.hour-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    width: 40px;
+}
+
+.hour-block {
+    width: 30px;
+    height: 30px;
+    background: #1e293b;
+    border-radius: 5px;
+    border: 1px solid #334155;
+}
+
+.hour-block.low { background: #3b82f6; }
+.hour-block.medium { background: #f59e0b; }
+.hour-block.high { background: #10b981; }
+.hour-block.active { 
+    background: #ef4444; 
+    animation: pulse 1s infinite;
+}
+
+.heatmap-legend {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.legend-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.legend-box.low { background: #3b82f6; }
+.legend-box.medium { background: #f59e0b; }
+.legend-box.high { background: #10b981; }
+.legend-box.active { background: #ef4444; }
+
+.task-timer-card {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #6366f1;
+    text-align: center;
+}
+
+.timer-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.timer-header h3 {
+    margin: 0;
+}
+
+.timer-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer-task {
+    font-size: 1rem;
+    color: #94a3b8;
+}
+
+.timer-clock {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: monospace;
+    color: #10b981;
+}
+
+.timer-estimate {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
