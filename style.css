@@ -4790,3 +4790,187 @@ textarea {
     background: #475569;
     transform: translateY(-2px);
 }
+
+/* ========== V3 MONEY IDEAS ENHANCEMENTS ========== */
+
+/* Math Rules Card */
+.math-rules-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.rules-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.rules-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.rule-item {
+    background: #0f172a;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 3px solid #10b981;
+}
+
+.rule-formula {
+    display: block;
+    font-weight: 700;
+    color: #10b981;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.rule-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Impact Calculator */
+.impact-calc-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.calc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.calc-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.calc-body {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.calc-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.calc-input label {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.calc-input input {
+    width: 120px;
+    padding: 10px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+}
+
+.calc-results {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.calc-result {
+    text-align: center;
+}
+
+.result-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 5px;
+}
+
+.result-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.result-value.highlight {
+    color: #10b981;
+    font-size: 1.5rem;
+}
+
+/* Idea Scorecard */
+.idea-scorecard {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.scorecard-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.scorecard-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.scorecard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #0f172a;
+    padding: 12px 15px;
+    border-radius: 8px;
+}
+
+.score-rank {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+}
+
+.score-name {
+    flex-grow: 1;
+    font-weight: 500;
+}
+
+.score-impact {
+    color: #10b981;
+    font-weight: 700;
+}
