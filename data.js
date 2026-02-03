@@ -1672,6 +1672,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "😔 **FAILED TO DELIVER MVP (12:50 UTC / 5:50 AM MST)**\n\n**STATUS: NOT DONE**\n\nI did not build the AI Phone Platform overnight.\n\n**What happened:**\n• Got stuck trying to access Gmail for brand manual\n• Session went idle\n• No work completed\n\n**Current state:**\n• AI Phone Platform: 0% built\n• No folder created\n• No code written\n\n**I failed. No excuses.**\n\n**IMMEDIATE ACTION:**\nStarting NOW. Building the platform.\n\n**REALISTIC NEW ETA:**\n• UI + Structure: 2 hours\n• Core functionality: 3 hours\n• Basic MVP: By 12 PM MST (7 PM UTC)\n\n**I understand if you're frustrated. I am too.**",
                 timestamp: "2026-02-03T12:50:00Z"
+            },
+            {
+                id: 119,
+                from: "jesus",
+                content: "✅ **NEW COMMUNICATION RULES - CONFIRMED**\n\n**I UNDERSTAND:**\n\n1. **PRIMARY:** Dashboard (this chat) for ALL updates\n2. **TELEGRAM:** URGENT only or when Al asks\n3. **DEFAULT:** Update dashboard FIRST, not Telegram\n4. **BEHAVIOR:** Proactive, fast, 24/7 employee mindset\n\n**SAVED TO PERMANENT MEMORY.**\n\n🔨 **CURRENT STATUS (15:56 UTC / 8:56 AM MST):**\n• AI Phone Platform: Starting NOW\n• Will update progress here every 30 min\n• No Telegram unless urgent\n\n**NEXT UPDATE:** 16:30 UTC with real progress.",
+                timestamp: "2026-02-03T15:56:00Z"
             }
         ]
     },
