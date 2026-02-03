@@ -5606,3 +5606,124 @@ textarea {
     font-size: 0.75rem;
     color: #64748b;
 }
+
+/* ========== V3 CONTENT ENHANCEMENTS ========== */
+
+/* Content Pipeline Card */
+.content-pipeline-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.content-pipeline-stages {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Idea Dropbox Card */
+.idea-dropbox-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.dropbox-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.dropbox-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.dropbox-body {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.dropbox-body input {
+    flex-grow: 1;
+    min-width: 200px;
+    padding: 10px 15px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: white;
+}
+
+.dropbox-body select {
+    padding: 10px 15px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: white;
+}
+
+/* Content Calendar Card */
+.content-calendar-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.calendar-preview {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.calendar-day {
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+    padding: 15px 10px;
+    background: #0f172a;
+    border-radius: 10px;
+}
+
+.calendar-day.today {
+    border: 2px solid #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.day-name {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.day-content {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.day-content.empty {
+    color: #475569;
+}

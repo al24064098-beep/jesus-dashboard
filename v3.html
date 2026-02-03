@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=68">
+    <link rel="stylesheet" href="style.css?v=69">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -1247,6 +1247,97 @@
             <div class="section-header">
                 <h2>📰 Content & Newsletters</h2>
                 <p class="section-desc">Review copy, approve posts, track published content.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3: Content Pipeline -->
+            <div class="content-pipeline-card">
+                <div class="pipeline-header">
+                    <span class="pipeline-icon">📈</span>
+                    <h3>Content Pipeline</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="content-pipeline-stages">
+                    <div class="pipeline-stage">
+                        <div class="stage-count" id="ideasCount">5</div>
+                        <div class="stage-label">💡 Ideas</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage">
+                        <div class="stage-count" id="draftsCount">2</div>
+                        <div class="stage-label">✏️ Draft</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage active">
+                        <div class="stage-count" id="reviewCount">1</div>
+                        <div class="stage-label">👀 Review</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage">
+                        <div class="stage-count" id="approvedCount">0</div>
+                        <div class="stage-label">✅ Approved</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage">
+                        <div class="stage-count" id="scheduledCount">0</div>
+                        <div class="stage-label">📅 Scheduled</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage completed">
+                        <div class="stage-count" id="postedCount">3</div>
+                        <div class="stage-label">🚀 Posted</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #1: Quick Idea Drop Box -->
+            <div class="idea-dropbox-card">
+                <div class="dropbox-header">
+                    <span class="dropbox-icon">💡</span>
+                    <h3>Quick Idea Drop Box</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="dropbox-body">
+                    <input type="text" id="quickIdeaInput" placeholder="Drop a content idea here...">
+                    <select id="quickIdeaType">
+                        <option value="newsletter">📧 Newsletter</option>
+                        <option value="linkedin">💼 LinkedIn</option>
+                        <option value="twitter">🐦 Twitter/X</option>
+                        <option value="blog">📝 Blog</option>
+                    </select>
+                    <button class="btn-primary" onclick="addQuickIdea()">Add Idea</button>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Content Calendar Preview -->
+            <div class="content-calendar-card">
+                <div class="calendar-header">
+                    <span class="calendar-icon">📅</span>
+                    <h3>This Week's Content</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="calendar-preview">
+                    <div class="calendar-day">
+                        <span class="day-name">Mon</span>
+                        <span class="day-content">Newsletter Draft</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="day-name">Tue</span>
+                        <span class="day-content empty">—</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="day-name">Wed</span>
+                        <span class="day-content">LinkedIn Post</span>
+                    </div>
+                    <div class="calendar-day today">
+                        <span class="day-name">Thu</span>
+                        <span class="day-content">Review Day</span>
+                    </div>
+                    <div class="calendar-day">
+                        <span class="day-name">Fri</span>
+                        <span class="day-content empty">—</span>
+                    </div>
+                </div>
             </div>
             
             <!-- Pending Approval -->
