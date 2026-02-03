@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=65">
+    <link rel="stylesheet" href="style.css?v=66">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -1355,6 +1355,93 @@
             <div class="section-header">
                 <h2>🖥️ System Health</h2>
                 <p class="section-desc">24/7 monitoring of operational status.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3: System Status Overview -->
+            <div class="system-overview-card">
+                <div class="overview-header">
+                    <span class="overview-icon">🔋</span>
+                    <h3>System Status</h3>
+                    <span class="status-badge online">ALL SYSTEMS OPERATIONAL</span>
+                </div>
+                <div class="overview-body">
+                    <div class="system-item online">
+                        <span class="system-dot"></span>
+                        <span class="system-name">OpenClaw Gateway</span>
+                        <span class="system-status">Online</span>
+                    </div>
+                    <div class="system-item online">
+                        <span class="system-dot"></span>
+                        <span class="system-name">Telegram Bot</span>
+                        <span class="system-status">Connected</span>
+                    </div>
+                    <div class="system-item online">
+                        <span class="system-dot"></span>
+                        <span class="system-name">Dashboard Sync</span>
+                        <span class="system-status">Active</span>
+                    </div>
+                    <div class="system-item warning">
+                        <span class="system-dot"></span>
+                        <span class="system-name">Gmail API</span>
+                        <span class="system-status">Token Refresh Needed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #1: Error Log -->
+            <div class="error-log-card">
+                <div class="error-header">
+                    <span class="error-icon">⚠️</span>
+                    <h3>Recent Errors (Last 24h)</h3>
+                    <span class="wow-badge">WOW</span>
+                    <span class="error-count" id="errorCount">2</span>
+                </div>
+                <div class="error-list">
+                    <div class="error-item">
+                        <span class="error-time">17:45 UTC</span>
+                        <span class="error-msg">Browser service timeout - Google Drive access failed</span>
+                    </div>
+                    <div class="error-item">
+                        <span class="error-time">05:08 UTC</span>
+                        <span class="error-msg">Gmail token expired - jesusloveal2026@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Integration Health -->
+            <div class="integration-health-card">
+                <div class="integration-header">
+                    <span class="integration-icon">🔗</span>
+                    <h3>Integration Health</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="integration-grid">
+                    <div class="integration-item">
+                        <span class="int-icon">📧</span>
+                        <span class="int-name">Gmail</span>
+                        <span class="int-status warning">⚠️</span>
+                        <span class="int-last">Last: 5h ago</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="int-icon">☁️</span>
+                        <span class="int-name">Cloudflare</span>
+                        <span class="int-status online">✅</span>
+                        <span class="int-last">Last: 2m ago</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="int-icon">🐙</span>
+                        <span class="int-name">GitHub</span>
+                        <span class="int-status online">✅</span>
+                        <span class="int-last">Last: 1m ago</span>
+                    </div>
+                    <div class="integration-item">
+                        <span class="int-icon">🎬</span>
+                        <span class="int-name">HeyGen</span>
+                        <span class="int-status online">✅</span>
+                        <span class="int-last">570 credits</span>
+                    </div>
+                </div>
             </div>
             
             <div class="health-grid">
