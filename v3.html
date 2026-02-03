@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=74">
+    <link rel="stylesheet" href="style.css?v=75">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -2879,6 +2879,145 @@
             }
         }
     }
+    </script>
+    
+    <!-- LIVE STATUS POLLING -->
+    <script>
+    const LIVE_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev/live';
+    let lastLiveUpdate = null;
+    
+    // Format time ago
+    function timeAgo(dateStr) {
+        const now = new Date();
+        const then = new Date(dateStr);
+        const seconds = Math.floor((now - then) / 1000);
+        
+        if (seconds < 60) return seconds + 's ago';
+        if (seconds < 3600) return Math.floor(seconds / 60) + 'm ago';
+        if (seconds < 86400) return Math.floor(seconds / 3600) + 'h ago';
+        return Math.floor(seconds / 86400) + 'd ago';
+    }
+    
+    // Format to Mountain Time
+    function formatMT(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleString('en-US', { 
+            timeZone: 'America/Denver',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        }) + ' MT';
+    }
+    
+    // Update live status elements
+    async function updateLiveStatus() {
+        try {
+            const response = await fetch(LIVE_URL);
+            const data = await response.json();
+            
+            if (data.error) {
+                console.error('Live status error:', data.error);
+                return;
+            }
+            
+            lastLiveUpdate = data;
+            
+            // Update AI Alive indicator (in Overview)
+            const aiAliveEl = document.querySelector('.focus-header .live-indicator');
+            if (aiAliveEl) {
+                aiAliveEl.innerHTML = '<span class="pulse-dot"></span> LIVE';
+            }
+            
+            // Update Last Sync
+            const lastSyncEl = document.getElementById('lastSync');
+            if (lastSyncEl && data.lastUpdate) {
+                lastSyncEl.textContent = 'Last sync: ' + timeAgo(data.lastUpdate);
+            }
+            
+            // Update header last sync
+            const headerSync = document.querySelector('.last-sync');
+            if (headerSync && data.lastUpdate) {
+                headerSync.textContent = 'Last sync: ' + formatMT(data.lastUpdate);
+            }
+            
+            // Update Current Task in Time Log
+            const currentTaskEl = document.getElementById('currentTask');
+            if (currentTaskEl && data.currentTask) {
+                currentTaskEl.textContent = data.currentTask;
+            }
+            
+            // Update Mode
+            const modeEl = document.getElementById('phaseIndicator');
+            if (modeEl && data.mode) {
+                const modeEmoji = {
+                    'Building': '⚡',
+                    'Thinking': '🤔',
+                    'Researching': '🔍',
+                    'Waiting': '⏳',
+                    'Chatting': '💬'
+                };
+                modeEl.textContent = (modeEmoji[data.mode] || '🔄') + ' ' + data.mode;
+            }
+            
+            // Update Today's Focus
+            if (data.todaysFocus && data.todaysFocus.length) {
+                const focusList = document.getElementById('todaysFocusList');
+                if (focusList) {
+                    focusList.innerHTML = data.todaysFocus.map((item, idx) => {
+                        const statusClass = item.status === 'complete' ? 'complete' : 
+                                          item.status === 'working' ? 'working' : '';
+                        const statusIcon = item.status === 'complete' ? '✅' : 
+                                          item.status === 'working' ? '🔨' : '⏳';
+                        return '<div class="focus-item ' + statusClass + '">' +
+                            '<span class="focus-num">' + item.num + '</span>' +
+                            '<span class="focus-text">' + item.text + '</span>' +
+                            '<span class="focus-status">' + statusIcon + ' ' + (item.status || 'pending') + '</span>' +
+                            '</div>';
+                    }).join('');
+                }
+            }
+            
+            // Update Productivity Score
+            if (data.productivity) {
+                const scoreEl = document.querySelector('.score-circle .score-value');
+                if (scoreEl) {
+                    scoreEl.textContent = data.productivity.score + '%';
+                }
+                
+                // Update time breakdowns
+                const buildingEl = document.querySelector('[data-metric="building"]');
+                const chattingEl = document.querySelector('[data-metric="chatting"]');
+                const researchEl = document.querySelector('[data-metric="research"]');
+                
+                if (buildingEl) buildingEl.textContent = data.productivity.building + 'h';
+                if (chattingEl) chattingEl.textContent = data.productivity.chatting + 'h';
+                if (researchEl) researchEl.textContent = data.productivity.research + 'h';
+            }
+            
+            // Update connection status
+            const connStatus = document.getElementById('connectionStatus');
+            if (connStatus) {
+                connStatus.innerHTML = '<span class="status-dot online"></span><span>Live</span>';
+            }
+            
+            console.log('Live status updated:', timeAgo(data.lastUpdate));
+            
+        } catch (e) {
+            console.error('Failed to fetch live status:', e);
+            const connStatus = document.getElementById('connectionStatus');
+            if (connStatus) {
+                connStatus.innerHTML = '<span class="status-dot offline"></span><span>Offline</span>';
+            }
+        }
+    }
+    
+    // Start polling every 3 seconds
+    updateLiveStatus();
+    setInterval(updateLiveStatus, 3000);
+    
+    console.log('🔴 LIVE POLLING ENABLED - Updates every 3 seconds');
     </script>
 </body>
 </html>
