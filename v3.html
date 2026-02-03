@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=78">
+    <link rel="stylesheet" href="style.css?v=79">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -896,32 +896,57 @@
         <!-- 3. AI INTELLIGENCE -->
         <section id="intelligence" class="content-section">
             <div class="section-header">
-                <h2>🧠 AI Intelligence</h2>
-                <p class="section-desc">Daily research digest — AI news, trends, and how we apply them.</p>
+                <h2>🧠 AI Intelligence & CEO Briefing</h2>
+                <p class="section-desc">Your 1-hour daily briefing — Ready by 6:30 AM MT</p>
                 <span class="v3-badge">V3</span>
             </div>
             
-            <!-- V3: Intelligence Categories -->
+            <!-- Briefing Status Bar -->
+            <div class="briefing-status-bar">
+                <div class="status-item ready">
+                    <span class="status-icon">✅</span>
+                    <span class="status-text">Today's Briefing Ready</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">⏰</span>
+                    <span class="status-text">Updated: <span id="briefingTime">6:30 AM MT</span></span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">📚</span>
+                    <span class="status-text"><span id="articleCount">15</span> Articles Today</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">⏱️</span>
+                    <span class="status-text">~<span id="readTime">45</span> min read</span>
+                </div>
+            </div>
+            
+            <!-- V3: Intelligence Categories (Expanded for Al's needs) -->
             <div class="intel-categories-bar">
+                <div class="intel-category active">
+                    <span class="cat-icon">🏢</span>
+                    <span class="cat-name">Multifamily</span>
+                    <span class="cat-count" id="multifamilyCount">5</span>
+                </div>
+                <div class="intel-category">
+                    <span class="cat-icon">💰</span>
+                    <span class="cat-name">Capital Markets</span>
+                    <span class="cat-count" id="capitalCount">3</span>
+                </div>
+                <div class="intel-category">
+                    <span class="cat-icon">📊</span>
+                    <span class="cat-name">Interest Rates</span>
+                    <span class="cat-count" id="ratesCount">2</span>
+                </div>
+                <div class="intel-category">
+                    <span class="cat-icon">🌐</span>
+                    <span class="cat-name">Macro/Global</span>
+                    <span class="cat-count" id="macroCount">3</span>
+                </div>
                 <div class="intel-category">
                     <span class="cat-icon">🤖</span>
-                    <span class="cat-name">AI Industry</span>
-                    <span class="cat-count" id="aiNewsCount">0</span>
-                </div>
-                <div class="intel-category">
-                    <span class="cat-icon">🏠</span>
-                    <span class="cat-name">Real Estate</span>
-                    <span class="cat-count" id="reNewsCount">0</span>
-                </div>
-                <div class="intel-category">
-                    <span class="cat-icon">📈</span>
-                    <span class="cat-name">Economy</span>
-                    <span class="cat-count" id="econNewsCount">0</span>
-                </div>
-                <div class="intel-category">
-                    <span class="cat-icon">🌍</span>
-                    <span class="cat-name">Global</span>
-                    <span class="cat-count" id="globalNewsCount">0</span>
+                    <span class="cat-name">AI/Tech</span>
+                    <span class="cat-count" id="aiNewsCount">2</span>
                 </div>
             </div>
             

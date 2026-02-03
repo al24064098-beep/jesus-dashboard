@@ -7341,3 +7341,83 @@ textarea {
     background: rgba(0,0,0,0.2);
     border-top: 1px solid rgba(255,255,255,0.1);
 }
+
+/* Briefing Status Bar */
+.briefing-status-bar {
+    display: flex;
+    gap: 20px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(138,43,226,0.1));
+    border-radius: 12px;
+    border: 1px solid rgba(0,212,255,0.3);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.briefing-status-bar .status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.briefing-status-bar .status-item.ready .status-icon {
+    color: #32cd32;
+}
+
+.briefing-status-bar .status-text {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.intel-categories-bar {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.intel-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 18px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.intel-category:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+.intel-category.active {
+    background: rgba(0,212,255,0.15);
+    border-color: rgba(0,212,255,0.5);
+}
+
+.intel-category .cat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.intel-category .cat-name {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.intel-category .cat-count {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #00d4ff;
+}
+
+.intel-category.active .cat-name,
+.intel-category.active .cat-count {
+    color: #00d4ff;
+}
