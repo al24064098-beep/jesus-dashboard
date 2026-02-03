@@ -5474,3 +5474,135 @@ textarea {
     height: 18px;
     accent-color: #10b981;
 }
+
+/* ========== V3 LIBRARY ENHANCEMENTS ========== */
+
+/* Library Stats Bar */
+.library-stats-bar {
+    display: flex;
+    gap: 20px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.library-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.library-stat .stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #10b981;
+}
+
+.library-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Recommended Reading Card */
+.recommended-reading-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.reading-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.reading-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.reading-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reading-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: #0f172a;
+    border-radius: 8px;
+}
+
+.reading-priority {
+    font-size: 0.9rem;
+}
+
+.reading-name {
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.reading-reason {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Upload Receipt Card */
+.upload-receipt-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.receipt-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.receipt-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.receipt-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.receipt-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    background: #0f172a;
+    border-radius: 8px;
+}
+
+.receipt-file {
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.receipt-status {
+    color: #10b981;
+    font-size: 0.85rem;
+}
+
+.receipt-time {
+    font-size: 0.75rem;
+    color: #64748b;
+}
