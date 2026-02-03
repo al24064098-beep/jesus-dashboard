@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=64">
+    <link rel="stylesheet" href="style.css?v=65">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -1423,6 +1423,93 @@
             <div class="section-header">
                 <h2>📈 Metrics</h2>
                 <p class="section-desc">Performance tracking — how well I'm doing as Al's AI employee.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3: Cost Tracking Alert -->
+            <div class="cost-alert-card" id="costAlertCard">
+                <div class="alert-header danger">
+                    <span class="alert-icon">💸</span>
+                    <h3>API Cost Alert</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="cost-body">
+                    <div class="cost-visual">
+                        <div class="cost-bar">
+                            <div class="cost-fill" id="costFill" style="width: 289%"></div>
+                            <div class="cost-target" style="left: 100%"></div>
+                        </div>
+                        <div class="cost-labels">
+                            <span>$0</span>
+                            <span class="target-label">$100 budget</span>
+                            <span id="currentCost">$289</span>
+                        </div>
+                    </div>
+                    <div class="cost-stats">
+                        <div class="cost-stat">
+                            <span class="stat-value danger" id="costSpent">$289.32</span>
+                            <span class="stat-label">Spent (Feb)</span>
+                        </div>
+                        <div class="cost-stat">
+                            <span class="stat-value" id="costBudget">$100</span>
+                            <span class="stat-label">Budget</span>
+                        </div>
+                        <div class="cost-stat">
+                            <span class="stat-value danger" id="costOver">-$189.32</span>
+                            <span class="stat-label">Over Budget</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #1: Velocity Tracker -->
+            <div class="velocity-card">
+                <div class="velocity-header">
+                    <span class="velocity-icon">⚡</span>
+                    <h3>Task Velocity</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="velocity-body">
+                    <div class="velocity-stat">
+                        <span class="velocity-number" id="tasksPerDay">2.3</span>
+                        <span class="velocity-label">Tasks/Day (avg)</span>
+                    </div>
+                    <div class="velocity-stat">
+                        <span class="velocity-number" id="cycleTime">4.2h</span>
+                        <span class="velocity-label">Avg Cycle Time</span>
+                    </div>
+                    <div class="velocity-stat">
+                        <span class="velocity-number" id="completionRate">65%</span>
+                        <span class="velocity-label">Completion Rate</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Project Status Counts -->
+            <div class="status-counts-card">
+                <div class="counts-header">
+                    <span class="counts-icon">📊</span>
+                    <h3>Project Status</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="counts-grid">
+                    <div class="count-item pending">
+                        <span class="count-number" id="pendingCount">8</span>
+                        <span class="count-label">Pending</span>
+                    </div>
+                    <div class="count-item progress">
+                        <span class="count-number" id="inProgressCount2">3</span>
+                        <span class="count-label">In Progress</span>
+                    </div>
+                    <div class="count-item launched">
+                        <span class="count-number" id="launchedCount">2</span>
+                        <span class="count-label">Launched</span>
+                    </div>
+                    <div class="count-item completed">
+                        <span class="count-number" id="completedCount2">5</span>
+                        <span class="count-label">Completed</span>
+                    </div>
+                </div>
             </div>
             
             <!-- Work Output -->
