@@ -725,6 +725,283 @@
         </div>
     </aside>
 
+    <!-- Voice Input Floating Button -->
+    <button class="voice-fab" onclick="toggleVoiceInput()" title="Voice Input">
+        <i class="fas fa-microphone"></i>
+    </button>
+
+    <!-- Voice Input Modal -->
+    <div class="voice-modal" id="voiceModal">
+        <div class="voice-modal-content">
+            <button class="voice-close" onclick="closeVoiceModal()">&times;</button>
+            <div class="voice-header">
+                <h3>🎤 Voice Input</h3>
+                <p>Speak naturally — AI will transcribe, summarize, and update CRM</p>
+            </div>
+            <div class="voice-body">
+                <div class="voice-status" id="voiceStatus">
+                    <div class="voice-animation">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <p>Tap to start speaking...</p>
+                </div>
+                <div class="voice-transcript" id="voiceTranscript">
+                    <!-- Transcript appears here -->
+                </div>
+                <div class="voice-actions">
+                    <button class="btn btn-primary voice-btn" onclick="startVoiceInput()">
+                        <i class="fas fa-microphone"></i> Start Recording
+                    </button>
+                    <button class="btn btn-secondary" onclick="processVoiceNote()">
+                        <i class="fas fa-brain"></i> Process with AI
+                    </button>
+                </div>
+            </div>
+            <div class="voice-suggestions">
+                <p class="suggestion-label">Try saying:</p>
+                <div class="suggestion-chips">
+                    <span class="chip">"Log call with Michael Chen about Q1 distributions"</span>
+                    <span class="chip">"Add task: Follow up with prospects next week"</span>
+                    <span class="chip">"What's the status of David Thompson?"</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Collaboration Sidebar -->
+    <aside class="team-sidebar" id="teamSidebar">
+        <div class="team-header">
+            <h3><i class="fas fa-users"></i> Team</h3>
+            <button class="team-toggle" onclick="toggleTeamSidebar()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="team-members">
+            <div class="team-member online">
+                <div class="member-avatar">AL</div>
+                <div class="member-info">
+                    <span class="member-name">Al Liao</span>
+                    <span class="member-status">Director of IR</span>
+                </div>
+                <span class="status-dot online"></span>
+            </div>
+            <div class="team-member offline">
+                <div class="member-avatar">JE</div>
+                <div class="member-info">
+                    <span class="member-name">Jesus ⚡</span>
+                    <span class="member-status">AI Assistant</span>
+                </div>
+                <span class="status-dot online"></span>
+            </div>
+        </div>
+        <div class="team-activity">
+            <h4>Recent Activity</h4>
+            <div class="activity-item">
+                <span class="activity-time">2m ago</span>
+                <span class="activity-text">Al viewed Michael Chen profile</span>
+            </div>
+            <div class="activity-item">
+                <span class="activity-time">15m ago</span>
+                <span class="activity-text">Jesus ⚡ generated investor report</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Google Voice Integration Button (in header) -->
+    <style>
+        /* Voice FAB */
+        .voice-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #8a2be2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,212,255,0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .voice-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0,212,255,0.6);
+        }
+        
+        /* Voice Modal */
+        .voice-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+        .voice-modal.active { display: flex; }
+        .voice-modal-content {
+            background: #1e1e2e;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        .voice-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .voice-header { text-align: center; margin-bottom: 20px; }
+        .voice-header h3 { color: #00d4ff; margin-bottom: 5px; }
+        .voice-header p { color: #888; font-size: 0.9rem; }
+        .voice-status {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,212,255,0.1);
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .voice-animation {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        .voice-animation span {
+            width: 6px;
+            height: 30px;
+            background: #00d4ff;
+            border-radius: 3px;
+            animation: voiceWave 1s ease-in-out infinite;
+        }
+        .voice-animation span:nth-child(2) { animation-delay: 0.1s; }
+        .voice-animation span:nth-child(3) { animation-delay: 0.2s; }
+        .voice-animation span:nth-child(4) { animation-delay: 0.3s; }
+        .voice-animation span:nth-child(5) { animation-delay: 0.4s; }
+        @keyframes voiceWave {
+            0%, 100% { height: 10px; }
+            50% { height: 40px; }
+        }
+        .voice-actions { display: flex; gap: 10px; margin-bottom: 20px; }
+        .voice-actions .btn { flex: 1; }
+        .voice-btn.recording { background: #dc3545; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .voice-suggestions { text-align: center; }
+        .suggestion-label { color: #666; font-size: 0.8rem; margin-bottom: 10px; }
+        .suggestion-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .chip {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+        
+        /* Team Sidebar */
+        .team-sidebar {
+            position: fixed;
+            right: -250px;
+            top: 60px;
+            width: 250px;
+            height: calc(100vh - 60px);
+            background: #1a1a2e;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            z-index: 100;
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+        .team-sidebar.open { right: 0; }
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .team-header h3 { color: #fff; margin: 0; }
+        .team-toggle {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+        }
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.05);
+        }
+        .team-member .member-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #8a2be2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .team-member .member-info { flex: 1; }
+        .team-member .member-name { display: block; font-weight: 500; }
+        .team-member .member-status { font-size: 0.75rem; color: #888; }
+        .status-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .status-dot.online { background: #32cd32; }
+        .status-dot.offline { background: #888; }
+        .team-activity { margin-top: 20px; }
+        .team-activity h4 { color: #888; font-size: 0.85rem; margin-bottom: 10px; }
+        .team-activity .activity-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+        }
+        .team-activity .activity-time { color: #666; display: block; margin-bottom: 3px; }
+        .team-activity .activity-text { color: #aaa; }
+    </style>
+
+    <script>
+        // Voice Modal Functions
+        function toggleVoiceInput() {
+            document.getElementById('voiceModal').classList.toggle('active');
+        }
+        function closeVoiceModal() {
+            document.getElementById('voiceModal').classList.remove('active');
+        }
+        let isRecording = false;
+        function startVoiceInput() {
+            const btn = document.querySelector('.voice-btn');
+            if (!isRecording) {
+                isRecording = true;
+                btn.innerHTML = '<i class="fas fa-stop"></i> Stop Recording';
+                btn.classList.add('recording');
+                // Web Speech API would go here
+            } else {
+                isRecording = false;
+                btn.innerHTML = '<i class="fas fa-microphone"></i> Start Recording';
+                btn.classList.remove('recording');
+            }
+        }
+        function processVoiceNote() {
+            alert('AI processing voice note... (Gemini integration)');
+        }
+        
+        // Team Sidebar
+        function toggleTeamSidebar() {
+            document.getElementById('teamSidebar').classList.toggle('open');
+        }
+    </script>
+
     <script src="app.js"></script>
 </body>
 </html>
