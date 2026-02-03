@@ -7184,3 +7184,160 @@ textarea {
     0%, 100% { box-shadow: 0 0 15px rgba(0,212,255,0.5); }
     50% { box-shadow: 0 0 25px rgba(0,212,255,0.8); }
 }
+
+/* Personalized Devotion Email Preview */
+.recipient-tabs {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.recipient-tab {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.recipient-tab:hover {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.recipient-tab.active {
+    background: linear-gradient(135deg, #00d4ff, #8a2be2);
+    color: white;
+}
+
+.email-preview-container {
+    padding: 20px;
+    background: #1e1e2e;
+    border-radius: 0 0 12px 12px;
+}
+
+.email-preview {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #333;
+}
+
+.email-header-preview {
+    background: #f5f5f5;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+}
+
+.email-header-preview span {
+    display: block;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.email-header-preview .email-from {
+    color: #333;
+    font-weight: 600;
+}
+
+.email-header-preview .email-subject {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.email-body-preview {
+    padding: 25px;
+    line-height: 1.7;
+}
+
+.email-greeting {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.email-encouragement {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.email-scripture-box {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #f59e0b;
+    margin: 20px 0;
+}
+
+.email-scripture {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #78350f;
+    margin-bottom: 10px;
+}
+
+.email-ref {
+    color: #92400e;
+    font-weight: 600;
+    text-align: right;
+}
+
+.email-reflection {
+    background: #f0f9ff;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.email-reflection h4 {
+    color: #0369a1;
+    margin-bottom: 10px;
+}
+
+.email-reflection p {
+    color: #334155;
+}
+
+.email-closing {
+    font-size: 1.05rem;
+    color: #dc2626;
+    font-weight: 500;
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.email-signature {
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+.email-signature strong {
+    color: #8a2be2;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.devotion-preview-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}

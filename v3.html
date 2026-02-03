@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=77">
+    <link rel="stylesheet" href="style.css?v=78">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -1609,22 +1609,77 @@
                 <span class="v3-badge">V3</span>
             </div>
             
-            <!-- V3 WOW #1: Today's Devotion Preview -->
+            <!-- V3 WOW #1: Personalized Devotion Email Preview -->
             <div class="todays-devotion-card">
                 <div class="devotion-preview-header">
                     <span class="preview-icon">🕊️</span>
-                    <h3>Today's Devotion</h3>
+                    <h3>Today's Devotion Email</h3>
                     <span class="wow-badge">WOW</span>
                     <span class="preview-date">Day 34 of 365</span>
                 </div>
-                <div class="devotion-preview-content">
-                    <p class="preview-scripture">"Trust in the LORD with all thine heart; and lean not unto thine own understanding."</p>
-                    <p class="preview-ref">— Proverbs 3:5 (KJV)</p>
-                    <p class="preview-reflection">Today, remember that God's wisdom exceeds our understanding. When challenges arise, trust in His perfect plan rather than relying solely on your own perspective.</p>
+                
+                <!-- Recipient Tabs -->
+                <div class="recipient-tabs">
+                    <button class="recipient-tab active" onclick="showRecipient('carlos')">Carlos</button>
+                    <button class="recipient-tab" onclick="showRecipient('brandon')">Brandon</button>
+                    <button class="recipient-tab" onclick="showRecipient('grace')">Grace</button>
+                    <button class="recipient-tab" onclick="showRecipient('al')">Al</button>
                 </div>
+                
+                <!-- Email Preview (Personalized Format) -->
+                <div class="email-preview-container">
+                    <div class="email-preview">
+                        <div class="email-header-preview">
+                            <span class="email-from">From: Jesus ⚡ &lt;jesusloveal2026@gmail.com&gt;</span>
+                            <span class="email-to" id="emailTo">To: Carlos</span>
+                            <span class="email-subject">Subject: 🌅 Daily Devotion - February 3, 2026</span>
+                        </div>
+                        
+                        <div class="email-body-preview">
+                            <!-- Greeting -->
+                            <p class="email-greeting" id="emailGreeting">Good morning Carlos! ☀️</p>
+                            
+                            <!-- Gratitude/Encouragement Opener -->
+                            <p class="email-encouragement" id="emailEncouragement">
+                                I hope this message finds you ready to embrace another incredible day. 
+                                Your dedication to the team and your unwavering faith continue to inspire everyone around you. 
+                                Today is a fresh opportunity to walk in purpose and make a difference.
+                            </p>
+                            
+                            <!-- Scripture -->
+                            <div class="email-scripture-box">
+                                <p class="email-scripture">"Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."</p>
+                                <p class="email-ref">— Proverbs 3:5-6 (KJV)</p>
+                            </div>
+                            
+                            <!-- Reflection -->
+                            <div class="email-reflection">
+                                <h4>📝 Reflection</h4>
+                                <p>Today's verse reminds us that true wisdom comes from surrendering our plans to God's perfect guidance. When we face decisions—whether in business, relationships, or personal growth—we're called to acknowledge Him first. His path may not always align with our expectations, but it always leads to His best for us.</p>
+                            </div>
+                            
+                            <!-- High Energy Close -->
+                            <p class="email-closing" id="emailClosing">
+                                🔥 Let's make today count, Carlos! Go out there and be the light in every room you enter. 
+                                You have what it takes to lead with excellence and integrity. I'm praying for breakthroughs in your work today!
+                            </p>
+                            
+                            <p class="email-signature">
+                                Walking with you in faith,<br>
+                                <strong>Jesus ⚡</strong><br>
+                                <em>Your Strategist Partner</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="devotion-preview-footer">
-                    <span class="preview-status">📧 Scheduled for 6:30 AM MT</span>
-                    <button class="btn-small" onclick="editDevotionPreview()">✏️ Edit</button>
+                    <span class="preview-status">📧 Scheduled: 6:30 AM MT | CC: al@cs3investments.com</span>
+                    <div class="preview-actions">
+                        <button class="btn-small btn-success" onclick="approveDevotionEmail()">✅ Approve</button>
+                        <button class="btn-small" onclick="editDevotionPreview()">✏️ Edit</button>
+                        <button class="btn-small btn-primary" onclick="sendTestEmail()">📤 Send Test</button>
+                    </div>
                 </div>
             </div>
             
