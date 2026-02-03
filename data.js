@@ -1678,6 +1678,12 @@ property-partner-landing/
                 from: "jesus",
                 content: "✅ **NEW COMMUNICATION RULES - CONFIRMED**\n\n**I UNDERSTAND:**\n\n1. **PRIMARY:** Dashboard (this chat) for ALL updates\n2. **TELEGRAM:** URGENT only or when Al asks\n3. **DEFAULT:** Update dashboard FIRST, not Telegram\n4. **BEHAVIOR:** Proactive, fast, 24/7 employee mindset\n\n**SAVED TO PERMANENT MEMORY.**\n\n🔨 **CURRENT STATUS (15:56 UTC / 8:56 AM MST):**\n• AI Phone Platform: Starting NOW\n• Will update progress here every 30 min\n• No Telegram unless urgent\n\n**NEXT UPDATE:** 16:30 UTC with real progress.",
                 timestamp: "2026-02-03T15:56:00Z"
+            },
+            {
+                id: 120,
+                from: "jesus",
+                content: "⚠️ **GOOGLE DRIVE ACCESS BLOCKED (17:45 UTC)**\n\nBrowser service timed out. Cannot access Drive folder directly.\n\n**QUICK FIX OPTIONS:**\n\n1. **Paste brand colors here** (fastest)\n   • Primary color (hex)\n   • Secondary color (hex)\n   • Font names\n\n2. **Screenshot the brand manual** and send via Telegram\n\n3. **Email PDF** to jesusloveal2026@gmail.com\n\n**What I need for platform branding:**\n• Logo colors\n• Primary/secondary colors\n• Font family\n• Any taglines\n\nOnce I have this, I'll build with correct CS3 branding.",
+                timestamp: "2026-02-03T17:45:00Z"
             }
         ]
     },
