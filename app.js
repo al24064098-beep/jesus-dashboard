@@ -2627,3 +2627,32 @@ function showToast(message) {
             alert('Failed to send action. Try again.');
         });
     };
+
+    // V3: Quick Note Commands
+    window.sendQuickNote = function(type) {
+        const messages = {
+            'status': 'Give me a quick status update',
+            'focus': 'What are you working on right now?',
+            'blockers': 'Any blockers I should know about?',
+            'eta': 'What\'s the ETA on your current task?'
+        };
+        const message = messages[type] || type;
+        
+        fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                type: 'quick_command',
+                content: message,
+                priority: true
+            })
+        }).then(() => {
+            // Show typing indicator
+            document.getElementById('typingIndicator').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('typingIndicator').style.display = 'none';
+            }, 3000);
+        }).catch(err => {
+            console.error('Failed to send quick note:', err);
+        });
+    };

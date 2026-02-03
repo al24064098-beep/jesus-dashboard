@@ -4622,3 +4622,171 @@ textarea {
     color: #475569;
     font-size: 1.2rem;
 }
+
+/* ========== V3 NOTES ENHANCEMENTS ========== */
+
+/* Communication Status Bar */
+.comm-status-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.comm-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-icon {
+    font-size: 0.8rem;
+}
+
+.last-seen {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin-left: auto;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #10b981;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.typing-dots span {
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) { animation-delay: 0s; }
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing-bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+.typing-text {
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* Delivery Status Card */
+.delivery-status-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.delivery-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.delivery-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.delivery-legend {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.delivery-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.check.single {
+    color: #94a3b8;
+}
+
+.check.double {
+    color: #3b82f6;
+}
+
+.check.read {
+    color: #10b981;
+}
+
+.check.done {
+    color: #10b981;
+}
+
+.status-dot.working {
+    width: 8px;
+    height: 8px;
+    background: #f59e0b;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+/* Quick Reply Card */
+.quick-reply-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.quick-reply-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.quick-reply-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.quick-reply-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.quick-btn {
+    padding: 10px 16px;
+    background: #334155;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quick-btn:hover {
+    background: #475569;
+    transform: translateY(-2px);
+}
