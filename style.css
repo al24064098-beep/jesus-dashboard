@@ -6771,3 +6771,199 @@ textarea {
     border-color: #6366f1;
     background: rgba(99, 102, 241, 0.1);
 }
+
+/* ========== V3 IR Agents Styles ========== */
+.agent-leaderboard-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+.leaderboard-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.leaderboard-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    background: #0f172a;
+    border-radius: 10px;
+    border: 1px solid #334155;
+}
+
+.leaderboard-item .rank {
+    width: 30px;
+    height: 30px;
+    background: #6366f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.leaderboard-item .agent-name {
+    flex-grow: 1;
+    font-weight: 600;
+}
+
+.leaderboard-item .agent-calls {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.leaderboard-item .agent-score {
+    color: #10b981;
+    font-weight: bold;
+}
+
+/* ========== V3 Property Agents Styles ========== */
+.biblical-names-card {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #6366f1;
+}
+
+.names-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.names-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.names-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.names-category {
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.names-category h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    color: #a5b4fc;
+}
+
+.name-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #6366f1;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    margin: 3px;
+    font-weight: 600;
+}
+
+/* ========== V3 Roleplay Styles ========== */
+.recording-stats-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+.rec-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.rec-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.rec-stats {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.rec-stat {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+    padding: 15px;
+    background: #0f172a;
+    border-radius: 10px;
+}
+
+.rec-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.rec-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+.quick-record-card {
+    background: linear-gradient(135deg, #450a0a 0%, #1e293b 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ef4444;
+}
+
+.qr-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.qr-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.qr-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.qr-options select {
+    flex: 1;
+    min-width: 200px;
+}
+
+.record-btn {
+    background: #ef4444 !important;
+    animation: pulse 2s infinite;
+}
