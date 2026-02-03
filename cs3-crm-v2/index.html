@@ -46,6 +46,18 @@
                 <i class="fas fa-file-alt"></i>
                 <span>Reports</span>
             </a>
+            <a href="#" class="nav-item" data-page="sops">
+                <i class="fas fa-book"></i>
+                <span>SOPs & Playbooks</span>
+            </a>
+            <a href="#" class="nav-item" data-page="integrations">
+                <i class="fab fa-google"></i>
+                <span>Integrations</span>
+            </a>
+            <a href="#" class="nav-item" data-page="team">
+                <i class="fas fa-users-cog"></i>
+                <span>Team</span>
+            </a>
         </nav>
         
         <div class="sidebar-footer">
@@ -657,6 +669,275 @@
                                 </div>
                             </div>
                             <button class="btn btn-text full-width">View All 15 →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOPs & Playbooks Page -->
+        <div id="sops-page" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>SOPs & Playbooks</h1>
+                    <p class="page-subtitle">CS3 Investor Relations Standard Operating Procedures</p>
+                </div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create SOP
+                </button>
+            </div>
+
+            <div class="sop-categories">
+                <div class="sop-category active">
+                    <i class="fas fa-phone"></i>
+                    <span>Call Scripts</span>
+                    <span class="count">8</span>
+                </div>
+                <div class="sop-category">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email Templates</span>
+                    <span class="count">12</span>
+                </div>
+                <div class="sop-category">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Onboarding</span>
+                    <span class="count">5</span>
+                </div>
+                <div class="sop-category">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Reporting</span>
+                    <span class="count">4</span>
+                </div>
+            </div>
+
+            <div class="sop-list">
+                <div class="sop-item">
+                    <div class="sop-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="sop-info">
+                        <h4>New Investor Welcome Call Script</h4>
+                        <p>Standard script for welcoming new investors within 24 hours of funding</p>
+                        <span class="sop-meta">Last updated: Jan 28, 2026 • Used 47 times</span>
+                    </div>
+                    <div class="sop-actions">
+                        <button class="btn btn-small">View</button>
+                        <button class="btn btn-small btn-text">Edit</button>
+                    </div>
+                </div>
+                <div class="sop-item">
+                    <div class="sop-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="sop-info">
+                        <h4>60-Day Re-engagement Call Script</h4>
+                        <p>Script for reconnecting with investors who haven't been contacted in 60+ days</p>
+                        <span class="sop-meta">Last updated: Jan 15, 2026 • Used 23 times</span>
+                    </div>
+                    <div class="sop-actions">
+                        <button class="btn btn-small">View</button>
+                        <button class="btn btn-small btn-text">Edit</button>
+                    </div>
+                </div>
+                <div class="sop-item">
+                    <div class="sop-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="sop-info">
+                        <h4>Distribution Q&A Call Script</h4>
+                        <p>Handling common questions about quarterly distributions</p>
+                        <span class="sop-meta">Last updated: Feb 1, 2026 • Used 89 times</span>
+                    </div>
+                    <div class="sop-actions">
+                        <button class="btn btn-small">View</button>
+                        <button class="btn btn-small btn-text">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrations Page -->
+        <div id="integrations-page" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>Google AI Integrations</h1>
+                    <p class="page-subtitle">Connect your Google services for AI-powered automation</p>
+                </div>
+            </div>
+
+            <div class="integrations-grid">
+                <div class="integration-card connected">
+                    <div class="integration-icon google-voice">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="integration-info">
+                        <h4>Google Voice</h4>
+                        <p>Make and receive calls directly from CRM</p>
+                        <span class="integration-status connected"><i class="fas fa-check-circle"></i> Connected</span>
+                    </div>
+                    <button class="btn btn-small">Configure</button>
+                </div>
+
+                <div class="integration-card connected">
+                    <div class="integration-icon gemini">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="integration-info">
+                        <h4>Google Gemini AI</h4>
+                        <p>AI-powered insights, summaries, and drafts</p>
+                        <span class="integration-status connected"><i class="fas fa-check-circle"></i> Connected</span>
+                    </div>
+                    <button class="btn btn-small">Configure</button>
+                </div>
+
+                <div class="integration-card">
+                    <div class="integration-icon notebooklm">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="integration-info">
+                        <h4>NotebookLM</h4>
+                        <p>AI knowledge base for investor documents</p>
+                        <span class="integration-status"><i class="fas fa-plug"></i> Not Connected</span>
+                    </div>
+                    <button class="btn btn-small btn-primary">Connect</button>
+                </div>
+
+                <div class="integration-card connected">
+                    <div class="integration-icon gmail">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="integration-info">
+                        <h4>Gmail</h4>
+                        <p>Sync emails and track investor communications</p>
+                        <span class="integration-status connected"><i class="fas fa-check-circle"></i> Connected</span>
+                    </div>
+                    <button class="btn btn-small">Configure</button>
+                </div>
+
+                <div class="integration-card connected">
+                    <div class="integration-icon calendar">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="integration-info">
+                        <h4>Google Calendar</h4>
+                        <p>Sync meetings and schedule follow-ups</p>
+                        <span class="integration-status connected"><i class="fas fa-check-circle"></i> Connected</span>
+                    </div>
+                    <button class="btn btn-small">Configure</button>
+                </div>
+
+                <div class="integration-card">
+                    <div class="integration-icon meet">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="integration-info">
+                        <h4>Google Meet</h4>
+                        <p>Auto-transcribe meetings and extract insights</p>
+                        <span class="integration-status"><i class="fas fa-plug"></i> Not Connected</span>
+                    </div>
+                    <button class="btn btn-small btn-primary">Connect</button>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-robot"></i> AI Automation Status</h3>
+                </div>
+                <div class="card-body">
+                    <div class="automation-list">
+                        <div class="automation-item active">
+                            <span class="automation-status"><i class="fas fa-check-circle"></i></span>
+                            <span class="automation-name">Auto-generate call summaries</span>
+                            <span class="automation-count">147 this month</span>
+                        </div>
+                        <div class="automation-item active">
+                            <span class="automation-status"><i class="fas fa-check-circle"></i></span>
+                            <span class="automation-name">Draft follow-up emails</span>
+                            <span class="automation-count">89 this month</span>
+                        </div>
+                        <div class="automation-item active">
+                            <span class="automation-status"><i class="fas fa-check-circle"></i></span>
+                            <span class="automation-name">Investor sentiment analysis</span>
+                            <span class="automation-count">623 analyzed</span>
+                        </div>
+                        <div class="automation-item">
+                            <span class="automation-status inactive"><i class="fas fa-circle"></i></span>
+                            <span class="automation-name">Meeting transcript ingestion</span>
+                            <span class="automation-count">Pending setup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Page -->
+        <div id="team-page" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>Team Management</h1>
+                    <p class="page-subtitle">Manage your IR team and AI assistants</p>
+                </div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Invite Member
+                </button>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member-card owner">
+                    <div class="member-avatar-large">AL</div>
+                    <h4>Al Liao</h4>
+                    <span class="member-role">Director of IR</span>
+                    <span class="member-status online">● Online</span>
+                    <div class="member-stats">
+                        <div class="stat">
+                            <span class="value">623</span>
+                            <span class="label">Investors</span>
+                        </div>
+                        <div class="stat">
+                            <span class="value">47</span>
+                            <span class="label">Calls/Week</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member-card ai">
+                    <div class="member-avatar-large ai">⚡</div>
+                    <h4>Jesus ⚡</h4>
+                    <span class="member-role">AI Strategist Partner</span>
+                    <span class="member-status online">● Always Online</span>
+                    <div class="member-stats">
+                        <div class="stat">
+                            <span class="value">24/7</span>
+                            <span class="label">Available</span>
+                        </div>
+                        <div class="stat">
+                            <span class="value">∞</span>
+                            <span class="label">Capacity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-history"></i> Team Activity</h3>
+                </div>
+                <div class="card-body">
+                    <div class="activity-feed">
+                        <div class="activity-item">
+                            <span class="activity-avatar">AL</span>
+                            <div class="activity-content">
+                                <p><strong>Al Liao</strong> called Michael Chen</p>
+                                <span class="activity-time">5 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-avatar ai">⚡</span>
+                            <div class="activity-content">
+                                <p><strong>Jesus ⚡</strong> generated investor report</p>
+                                <span class="activity-time">15 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-avatar">AL</span>
+                            <div class="activity-content">
+                                <p><strong>Al Liao</strong> updated investor tier for Sarah Johnson</p>
+                                <span class="activity-time">1 hour ago</span>
+                            </div>
                         </div>
                     </div>
                 </div>
