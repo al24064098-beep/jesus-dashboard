@@ -411,6 +411,55 @@ function showModal(type) {
                 </form>
             `;
             break;
+            
+        case 'sendEmail':
+            modalTitle.textContent = '✉️ Compose Email';
+            modalBody.innerHTML = `
+                <form onsubmit="sendEmailMessage(event)">
+                    <div class="form-group">
+                        <label>To</label>
+                        <select id="emailTo" required>
+                            <option value="">Select investor...</option>
+                            ${sampleInvestors.map(inv => `<option value="${inv.email}">${inv.name} (${inv.email})</option>`).join('')}
+                            <option value="all-platinum">All Platinum Investors (5)</option>
+                            <option value="all-gold">All Gold Investors (12)</option>
+                            <option value="all-active">All Active Investors (523)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Template (AI-Powered)</label>
+                        <select id="emailTemplate" onchange="loadEmailTemplate()">
+                            <option value="">Start from scratch...</option>
+                            <option value="quarterly">📊 Quarterly Update</option>
+                            <option value="welcome">👋 Welcome New Investor</option>
+                            <option value="distribution">💰 Distribution Notice</option>
+                            <option value="checkin">📞 Check-in Follow-up</option>
+                            <option value="opportunity">🏠 New Investment Opportunity</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="emailSubject" placeholder="Email subject..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="emailBody" rows="8" placeholder="Write your message or select a template..." required></textarea>
+                    </div>
+                    <div class="form-group ai-enhance">
+                        <button type="button" class="btn btn-secondary" onclick="enhanceWithAI()">
+                            <i class="fas fa-magic"></i> Enhance with AI
+                        </button>
+                        <span class="ai-hint">Let Gemini improve your message</span>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn" onclick="saveDraft()">Save Draft</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Email
+                        </button>
+                    </div>
+                </form>
+            `;
+            break;
     }
     
     document.getElementById('modalOverlay').classList.add('active');
@@ -441,6 +490,152 @@ function saveInvestor(e) {
 function saveTask(e) {
     e.preventDefault();
     alert('Task created successfully! (Demo - would save to database)');
+    closeModal();
+}
+
+// ========== EMAIL FUNCTIONS ==========
+const emailTemplates = {
+    quarterly: {
+        subject: 'Q1 2026 Portfolio Update - CS3 Investments',
+        body: `Dear [Investor Name],
+
+I hope this message finds you well. I'm excited to share our Q1 2026 portfolio performance update with you.
+
+**Key Highlights:**
+• Portfolio occupancy remains strong at 94.5%
+• NOI increased 8.2% year-over-year
+• Distributions processed on schedule
+
+Our properties continue to perform exceptionally well, and we remain committed to delivering strong, consistent returns for our investors.
+
+I'd love to schedule a brief call to discuss your investment and answer any questions you may have.
+
+Best regards,
+Al Liao
+Director of Investor Relations
+CS3 Investments`
+    },
+    welcome: {
+        subject: 'Welcome to the CS3 Investments Family! 🎉',
+        body: `Dear [Investor Name],
+
+Welcome to CS3 Investments! We're thrilled to have you as part of our investor family.
+
+Your investment has been successfully processed, and you're now an owner in [Property Name]. Here's what happens next:
+
+1. **Investor Portal Access** - You'll receive login credentials within 24 hours
+2. **Distribution Schedule** - Quarterly distributions, typically within 30 days of quarter-end
+3. **Monthly Updates** - Expect property performance updates via email
+
+If you have any questions, please don't hesitate to reach out. I'm here to help!
+
+Warm regards,
+Al Liao
+Director of Investor Relations
+CS3 Investments`
+    },
+    distribution: {
+        subject: 'Your Q4 2025 Distribution Has Been Processed 💰',
+        body: `Dear [Investor Name],
+
+Great news! Your Q4 2025 distribution has been processed and should arrive in your bank account within 3-5 business days.
+
+**Distribution Details:**
+• Amount: $[Amount]
+• Property: [Property Name]
+• Period: Q4 2025
+• Payment Method: ACH Transfer
+
+Thank you for your continued trust in CS3 Investments. We're committed to delivering consistent returns and exceptional service.
+
+Best regards,
+Al Liao
+Director of Investor Relations
+CS3 Investments`
+    },
+    checkin: {
+        subject: 'Quick Check-in - How Can We Serve You Better?',
+        body: `Dear [Investor Name],
+
+I hope you're doing well! I wanted to reach out personally to check in and see how things are going.
+
+A few things I'd love to discuss:
+• Your experience with CS3 Investments so far
+• Any questions about your current investments
+• Upcoming opportunities that might interest you
+
+Would you have 15-20 minutes this week for a quick call? I'm available:
+• [Day/Time Option 1]
+• [Day/Time Option 2]
+
+Looking forward to connecting!
+
+Warm regards,
+Al Liao
+Director of Investor Relations
+CS3 Investments`
+    },
+    opportunity: {
+        subject: 'Exclusive: New Investment Opportunity - [Property Name]',
+        body: `Dear [Investor Name],
+
+As a valued CS3 investor, I wanted to give you early access to our newest opportunity.
+
+**[Property Name] - Quick Overview:**
+• Location: [City, State]
+• Units: [Number] multifamily units
+• Target Returns: [X]% CoC, [Y]% IRR
+• Minimum Investment: $50,000
+
+This property fits perfectly with our value-add strategy, and we're excited about its potential.
+
+Want to learn more? Reply to this email or schedule a call at [Link].
+
+Investment closes: [Date]
+
+Best regards,
+Al Liao
+Director of Investor Relations
+CS3 Investments`
+    }
+};
+
+function loadEmailTemplate() {
+    const template = document.getElementById('emailTemplate').value;
+    if (template && emailTemplates[template]) {
+        document.getElementById('emailSubject').value = emailTemplates[template].subject;
+        document.getElementById('emailBody').value = emailTemplates[template].body;
+    }
+}
+
+function enhanceWithAI() {
+    const body = document.getElementById('emailBody');
+    const currentText = body.value;
+    
+    if (!currentText.trim()) {
+        alert('Please write some content first for AI to enhance.');
+        return;
+    }
+    
+    // Simulate AI enhancement
+    alert('🤖 AI is enhancing your message...');
+    
+    setTimeout(() => {
+        // Add AI-enhanced version
+        body.value = currentText + '\n\n---\n[AI Enhanced: Added personalization, improved tone, and optimized for engagement]';
+    }, 1000);
+}
+
+function saveDraft() {
+    alert('📝 Draft saved! You can find it in your Drafts folder.');
+}
+
+function sendEmailMessage(e) {
+    e.preventDefault();
+    const to = document.getElementById('emailTo').value;
+    const subject = document.getElementById('emailSubject').value;
+    
+    alert(`✅ Email sent successfully!\n\nTo: ${to}\nSubject: ${subject}\n\n(Demo - would send via Gmail API)`);
     closeModal();
 }
 
