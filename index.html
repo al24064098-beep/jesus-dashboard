@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=61">
+    <link rel="stylesheet" href="style.css?v=62">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -663,6 +663,44 @@
             <div class="section-header">
                 <h2>📊 Agent Report</h2>
                 <p class="section-desc">Real-time status — what I'm doing, what's done, what needs your input. Last update: <span id="reportLastUpdated">--</span></p>
+                <span class="v3-badge">V3</span>
+            </div>
+
+            <!-- V3: Live Status Indicator -->
+            <div class="live-status-bar">
+                <div class="status-indicator online">
+                    <span class="status-dot"></span>
+                    <span class="status-text">AI Active</span>
+                </div>
+                <div class="update-frequency">
+                    <span>🔄</span>
+                    <span>Updates every <strong>30s</strong></span>
+                </div>
+                <div class="session-time">
+                    <span>⏱️</span>
+                    <span>Session: <strong id="sessionDuration">0h 15m</strong></span>
+                </div>
+            </div>
+
+            <!-- V3 WOW #1: Work Mode Indicator -->
+            <div class="work-mode-card">
+                <div class="mode-header">
+                    <span class="mode-icon">🎯</span>
+                    <h3>Current Mode</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="mode-display">
+                    <div class="mode-active" id="currentWorkMode">
+                        <span class="mode-emoji">⚡</span>
+                        <span class="mode-name">BUILDING</span>
+                    </div>
+                    <div class="mode-options">
+                        <span class="mode-option" data-mode="building">⚡ Building</span>
+                        <span class="mode-option" data-mode="thinking">🤔 Thinking</span>
+                        <span class="mode-option" data-mode="researching">🔍 Researching</span>
+                        <span class="mode-option" data-mode="waiting">⏳ Waiting</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Currently Working On -->
@@ -673,6 +711,41 @@
                 </div>
                 <div class="card-content">
                     <div class="current-work" id="currentlyWorking">Loading...</div>
+                    <div class="work-meta">
+                        <span>Started: <span id="workStartTime">--</span></span>
+                        <span>ETA: <span id="workEta">--</span></span>
+                        <span>Progress: <span id="workProgress">--</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Project Pipeline -->
+            <div class="project-pipeline">
+                <div class="pipeline-header">
+                    <span class="pipeline-icon">📈</span>
+                    <h3>Project Pipeline</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="pipeline-stages">
+                    <div class="pipeline-stage">
+                        <div class="stage-count" id="pipelinePlanned">3</div>
+                        <div class="stage-label">Planned</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage active">
+                        <div class="stage-count" id="pipelineInProgress">2</div>
+                        <div class="stage-label">In Progress</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage">
+                        <div class="stage-count" id="pipelineReview">1</div>
+                        <div class="stage-label">Review</div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage completed">
+                        <div class="stage-count" id="pipelineCompleted">5</div>
+                        <div class="stage-label">Completed</div>
+                    </div>
                 </div>
             </div>
 
