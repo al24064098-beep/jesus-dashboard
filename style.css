@@ -5344,3 +5344,133 @@ textarea {
     font-size: 0.75rem;
     color: #64748b;
 }
+
+/* ========== V3 CHALLENGES ENHANCEMENTS ========== */
+
+/* Challenge Stats Bar */
+.challenge-stats-bar {
+    display: flex;
+    gap: 20px;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.challenge-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.challenge-stat .stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #10b981;
+}
+
+.challenge-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Challenge Workflow Card */
+.challenge-workflow-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.workflow-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.workflow-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.workflow-stages {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.workflow-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 15px 20px;
+    background: #0f172a;
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+.workflow-stage.active {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8);
+    border: 2px solid #3b82f6;
+}
+
+.stage-icon {
+    font-size: 1.5rem;
+}
+
+.stage-name {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.workflow-arrow {
+    color: #475569;
+    font-size: 1.2rem;
+}
+
+/* Solution Notify Card */
+.solution-notify-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.notify-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.notify-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.notify-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notify-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.notify-toggle input {
+    width: 18px;
+    height: 18px;
+    accent-color: #10b981;
+}

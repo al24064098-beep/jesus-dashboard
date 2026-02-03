@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=66">
+    <link rel="stylesheet" href="style.css?v=67">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -1734,6 +1734,80 @@
             <div class="section-header">
                 <h2>🎯 AL Current Challenges</h2>
                 <p class="section-desc">List your challenges here. Jesus checks daily and builds solutions.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3: Challenge Stats -->
+            <div class="challenge-stats-bar">
+                <div class="challenge-stat">
+                    <span class="stat-icon">📋</span>
+                    <span class="stat-value" id="openChallengesCount">3</span>
+                    <span class="stat-label">Open</span>
+                </div>
+                <div class="challenge-stat">
+                    <span class="stat-icon">🔨</span>
+                    <span class="stat-value" id="inProgressChallengesCount">1</span>
+                    <span class="stat-label">In Progress</span>
+                </div>
+                <div class="challenge-stat">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-value" id="solvedChallengesCount">2</span>
+                    <span class="stat-label">Solved</span>
+                </div>
+                <div class="challenge-stat">
+                    <span class="stat-icon">⏱️</span>
+                    <span class="stat-value" id="avgResolutionTime">2.3d</span>
+                    <span class="stat-label">Avg Resolution</span>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #1: Challenge Workflow -->
+            <div class="challenge-workflow-card">
+                <div class="workflow-header">
+                    <span class="workflow-icon">🔄</span>
+                    <h3>Challenge Workflow</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="workflow-stages">
+                    <div class="workflow-stage">
+                        <span class="stage-icon">📝</span>
+                        <span class="stage-name">Submitted</span>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-stage">
+                        <span class="stage-icon">👀</span>
+                        <span class="stage-name">Reviewed</span>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-stage active">
+                        <span class="stage-icon">🔨</span>
+                        <span class="stage-name">Working</span>
+                    </div>
+                    <div class="workflow-arrow">→</div>
+                    <div class="workflow-stage">
+                        <span class="stage-icon">✅</span>
+                        <span class="stage-name">Solved</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Solution Notifications -->
+            <div class="solution-notify-card">
+                <div class="notify-header">
+                    <span class="notify-icon">🔔</span>
+                    <h3>Notifications</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="notify-settings">
+                    <label class="notify-toggle">
+                        <input type="checkbox" checked>
+                        <span>Notify when solution proposed</span>
+                    </label>
+                    <label class="notify-toggle">
+                        <input type="checkbox" checked>
+                        <span>Notify when status changes</span>
+                    </label>
+                </div>
             </div>
             
             <!-- Add Challenge Form -->
