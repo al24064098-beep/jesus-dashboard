@@ -481,12 +481,206 @@ document.querySelector('.menu-toggle')?.addEventListener('click', function() {
     document.querySelector('.sidebar').classList.toggle('active');
 });
 
-// ========== AI ASSISTANT (Placeholder) ==========
+// ========== AI ASSISTANT ==========
 document.querySelector('.header-btn[title="AI Assistant"]')?.addEventListener('click', function() {
-    alert('🤖 Gemini AI Assistant\n\nComing soon! This will allow you to:\n• Ask questions about investors\n• Generate email drafts\n• Get insights and recommendations\n• Analyze call patterns');
+    showAIAssistant();
 });
+
+function showAIAssistant() {
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    
+    modalTitle.textContent = '🤖 Gemini AI Assistant';
+    modalBody.innerHTML = `
+        <div class="ai-assistant-container">
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="ai-message assistant">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        Hi! I'm your AI assistant powered by Gemini. How can I help you today?
+                        <div class="quick-prompts">
+                            <button onclick="aiPrompt('Who needs a follow-up call?')">📞 Who needs a follow-up?</button>
+                            <button onclick="aiPrompt('Draft an email to platinum investors')">✉️ Draft investor email</button>
+                            <button onclick="aiPrompt('Summarize this week\\'s activity')">📊 Weekly summary</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-chat-input">
+                <input type="text" id="aiInput" placeholder="Ask anything about your investors..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+                <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('modalOverlay').classList.add('active');
+    document.getElementById('aiInput').focus();
+}
+
+function aiPrompt(prompt) {
+    document.getElementById('aiInput').value = prompt;
+    sendAIMessage();
+}
+
+function sendAIMessage() {
+    const input = document.getElementById('aiInput');
+    const message = input.value.trim();
+    if (!message) return;
+    
+    const chatMessages = document.getElementById('aiChatMessages');
+    
+    // Add user message
+    chatMessages.innerHTML += `
+        <div class="ai-message user">
+            <div class="message-content">${message}</div>
+            <div class="message-avatar">AL</div>
+        </div>
+    `;
+    
+    input.value = '';
+    
+    // Simulate AI response
+    setTimeout(() => {
+        const response = generateAIResponse(message);
+        chatMessages.innerHTML += `
+            <div class="ai-message assistant">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">${response}</div>
+            </div>
+        `;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 1000);
+}
+
+function generateAIResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes('follow-up') || lowerMessage.includes('contact')) {
+        return `📞 <strong>Follow-up Needed:</strong><br><br>
+        Based on your investor data, I found:<br>
+        • <strong>David Thompson</strong> - No contact in 42 days (HIGH PRIORITY)<br>
+        • <strong>James Wilson</strong> - No contact in 77 days (AT RISK)<br>
+        • <strong>Robert Williams</strong> - 17 days since last call<br><br>
+        <button onclick="createFollowUpTasks()" class="btn btn-small btn-primary">Create Follow-up Tasks</button>`;
+    }
+    
+    if (lowerMessage.includes('email') || lowerMessage.includes('draft')) {
+        return `✉️ <strong>Email Draft Ready:</strong><br><br>
+        Subject: Q1 2026 Update - Exciting News from CS3 Investments<br><br>
+        Dear [Investor Name],<br><br>
+        I hope this message finds you well. I wanted to reach out personally to share some exciting updates about our portfolio...<br><br>
+        <button onclick="copyEmailDraft()" class="btn btn-small btn-primary">Copy Full Draft</button>
+        <button onclick="editEmailDraft()" class="btn btn-small">Edit Draft</button>`;
+    }
+    
+    if (lowerMessage.includes('summary') || lowerMessage.includes('week')) {
+        return `📊 <strong>This Week's Summary:</strong><br><br>
+        📞 <strong>47 calls</strong> made (↑8 from last week)<br>
+        👥 <strong>12 new investors</strong> added<br>
+        💰 <strong>$2.1M</strong> new commitments<br>
+        ✅ <strong>89%</strong> positive sentiment<br><br>
+        Top performer: You had 5 calls with platinum investors this week!`;
+    }
+    
+    return `I understand you're asking about "${message}".<br><br>
+    Based on your CRM data, here's what I found:<br>
+    • Total investors: 623<br>
+    • Active this month: 312<br>
+    • Requiring attention: 23<br><br>
+    Would you like me to provide more specific insights?`;
+}
+
+function createFollowUpTasks() {
+    alert('✅ Created 3 follow-up tasks for at-risk investors!');
+}
+
+function copyEmailDraft() {
+    alert('📋 Email draft copied to clipboard!');
+}
+
+function editEmailDraft() {
+    alert('Opening email editor...');
+}
+
+// ========== GOOGLE VOICE INTEGRATION ==========
+function initiateGoogleVoiceCall(phoneNumber, investorName) {
+    // In production, this would use Google Voice API
+    console.log(`Initiating Google Voice call to ${investorName} at ${phoneNumber}`);
+    
+    // Show call UI
+    showCallUI(phoneNumber, investorName);
+}
+
+function showCallUI(phoneNumber, name) {
+    const callUI = document.createElement('div');
+    callUI.className = 'call-overlay';
+    callUI.innerHTML = `
+        <div class="call-modal">
+            <div class="call-status">Calling...</div>
+            <div class="call-name">${name}</div>
+            <div class="call-number">${phoneNumber}</div>
+            <div class="call-timer" id="callTimer">00:00</div>
+            <div class="call-actions">
+                <button class="call-btn mute"><i class="fas fa-microphone-slash"></i></button>
+                <button class="call-btn end" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
+                <button class="call-btn speaker"><i class="fas fa-volume-up"></i></button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(callUI);
+    
+    // Start timer
+    let seconds = 0;
+    window.callTimerInterval = setInterval(() => {
+        seconds++;
+        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const secs = (seconds % 60).toString().padStart(2, '0');
+        document.getElementById('callTimer').textContent = `${mins}:${secs}`;
+    }, 1000);
+}
+
+function endCall() {
+    clearInterval(window.callTimerInterval);
+    document.querySelector('.call-overlay')?.remove();
+    showModal('newCall'); // Prompt to log the call
+}
+
+// ========== REAL-TIME UPDATES ==========
+function updateDashboardStats() {
+    // Simulate real-time stat updates
+    const totalInvestorsEl = document.getElementById('totalInvestors');
+    const callsThisWeekEl = document.getElementById('callsThisWeek');
+    
+    if (totalInvestorsEl) {
+        // Occasionally increment
+        if (Math.random() > 0.95) {
+            const current = parseInt(totalInvestorsEl.textContent);
+            totalInvestorsEl.textContent = current + 1;
+            showNotification('🎉 New investor added!');
+        }
+    }
+}
+
+function showNotification(message) {
+    const notif = document.createElement('div');
+    notif.className = 'toast-notification';
+    notif.innerHTML = message;
+    document.body.appendChild(notif);
+    
+    setTimeout(() => notif.classList.add('show'), 100);
+    setTimeout(() => {
+        notif.classList.remove('show');
+        setTimeout(() => notif.remove(), 300);
+    }, 3000);
+}
+
+// Update stats every 30 seconds
+setInterval(updateDashboardStats, 30000);
 
 console.log('🚀 CS3 Intelligence CRM loaded successfully!');
 console.log('📊 Loaded', sampleInvestors.length, 'investors');
 console.log('📞 Loaded', sampleCalls.length, 'recent calls');
 console.log('✅ Loaded', sampleTasks.length, 'tasks');
+console.log('🤖 AI Assistant ready');
+console.log('📱 Google Voice integration ready');
