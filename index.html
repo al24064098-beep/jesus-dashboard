@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesus Dashboard V3 ⚡ | AI Agent Management Platform</title>
-    <link rel="stylesheet" href="style.css?v=60">
+    <link rel="stylesheet" href="style.css?v=61">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a1a2e">
@@ -443,6 +443,70 @@
             <div class="section-header">
                 <h2>🔒 Promises & Accountability</h2>
                 <p class="section-desc">What I said I would do. Overdue items block everything else.</p>
+                <span class="v3-badge">V3</span>
+            </div>
+            
+            <!-- V3: Promise Progress Summary -->
+            <div class="promise-progress-summary">
+                <div class="progress-card">
+                    <span class="progress-icon">📅</span>
+                    <div class="progress-info">
+                        <span class="progress-label">Today</span>
+                        <div class="progress-bar-mini"><div class="progress-fill" style="width: 15%"></div></div>
+                        <span class="progress-text" id="todayProgress">1/8 done</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <span class="progress-icon">📆</span>
+                    <div class="progress-info">
+                        <span class="progress-label">This Week</span>
+                        <div class="progress-bar-mini"><div class="progress-fill" style="width: 10%"></div></div>
+                        <span class="progress-text" id="weekProgress">1/12 done</span>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <span class="progress-icon">📊</span>
+                    <div class="progress-info">
+                        <span class="progress-label">This Month</span>
+                        <div class="progress-bar-mini"><div class="progress-fill" style="width: 5%"></div></div>
+                        <span class="progress-text" id="monthProgress">2/30 done</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #1: At-Risk Promises Alert -->
+            <div class="at-risk-alert" id="atRiskSection">
+                <div class="alert-header">
+                    <span class="alert-icon">⚠️</span>
+                    <h3>At-Risk Promises</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="alert-content">
+                    <div class="at-risk-item">
+                        <span class="risk-indicator high">HIGH</span>
+                        <span class="risk-name">AI Phone Platform MVP</span>
+                        <span class="risk-due">Due: TODAY - 0% done</span>
+                    </div>
+                    <div class="at-risk-item">
+                        <span class="risk-indicator high">HIGH</span>
+                        <span class="risk-name">Dashboard V3</span>
+                        <span class="risk-due">Due: TODAY - 15% done</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- V3 WOW #2: Promise Streak Tracker -->
+            <div class="streak-tracker">
+                <div class="streak-header">
+                    <span class="streak-icon">🔥</span>
+                    <h3>Promise Streak</h3>
+                    <span class="wow-badge">WOW</span>
+                </div>
+                <div class="streak-content">
+                    <div class="streak-number" id="currentStreak">0</div>
+                    <div class="streak-label">Days of keeping promises</div>
+                    <div class="streak-best">Best: <span id="bestStreak">0</span> days</div>
+                </div>
             </div>
             
             <!-- Current Task -->
