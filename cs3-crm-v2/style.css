@@ -1273,3 +1273,252 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ========== Reports Page Styles ========== */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.reports-grid .card.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Health Distribution */
+.health-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.health-bar-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 80px;
+    align-items: center;
+    gap: 15px;
+}
+
+.health-label {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.health-bar {
+    height: 24px;
+    background: #1e293b;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.health-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.5s ease;
+}
+
+.health-fill.excellent { background: linear-gradient(90deg, #10b981, #059669); }
+.health-fill.good { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+.health-fill.fair { background: linear-gradient(90deg, #f59e0b, #d97706); }
+.health-fill.risk { background: linear-gradient(90deg, #ef4444, #dc2626); }
+
+.health-count {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Activity Chart */
+.activity-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 200px;
+    padding: 20px 0;
+    border-bottom: 1px solid #334155;
+}
+
+.chart-bar {
+    width: 40px;
+    background: linear-gradient(180deg, #6366f1, #4f46e5);
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 5px;
+    transition: all 0.3s;
+}
+
+.chart-bar span {
+    font-size: 0.7rem;
+    color: #fff;
+    margin-bottom: -25px;
+}
+
+.chart-bar.active {
+    background: linear-gradient(180deg, #10b981, #059669);
+}
+
+.chart-bar:hover {
+    transform: scaleY(1.05);
+    opacity: 0.9;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.chart-legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Pre-Call Brief Generator */
+.precall-generator {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.generator-input {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.generator-input select {
+    flex: 1;
+    min-width: 250px;
+}
+
+.brief-output {
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 200px;
+}
+
+.brief-placeholder {
+    text-align: center;
+    color: #64748b;
+}
+
+.brief-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.brief-placeholder ul {
+    text-align: left;
+    max-width: 300px;
+    margin: 15px auto;
+}
+
+.brief-placeholder li {
+    margin: 8px 0;
+}
+
+/* Top Investors */
+.top-investors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.top-investor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: #0f172a;
+    border-radius: 10px;
+}
+
+.top-investor .rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background: #334155;
+}
+
+.top-investor .rank.gold { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+.top-investor .rank.silver { background: linear-gradient(135deg, #94a3b8, #64748b); color: #000; }
+.top-investor .rank.bronze { background: linear-gradient(135deg, #cd7f32, #b87333); color: #fff; }
+
+.top-investor .investor-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-investor .name {
+    font-weight: 500;
+}
+
+.top-investor .amount {
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* Re-engagement List */
+.reengage-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.reengage-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: #0f172a;
+    border-radius: 10px;
+    border-left: 3px solid #f59e0b;
+}
+
+.investor-mini {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.investor-mini .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.investor-mini .name {
+    font-weight: 500;
+    display: block;
+}
+
+.investor-mini .last-contact {
+    font-size: 0.75rem;
+    color: #f59e0b;
+}
+
+.btn.full-width {
+    width: 100%;
+    margin-top: 10px;
+}
