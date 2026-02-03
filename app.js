@@ -1094,7 +1094,14 @@ ${relatedFiles}
             const response = await fetch(WORKER_URL);
             if (response.ok) {
                 const data = await response.json();
-                allNotes = data.notes || [];
+                // Handle nested structure: data.notes.notes is the actual array
+                if (data.notes && Array.isArray(data.notes.notes)) {
+                    allNotes = data.notes.notes;
+                } else if (Array.isArray(data.notes)) {
+                    allNotes = data.notes;
+                } else {
+                    allNotes = [];
+                }
             }
         } catch (e) {
             console.error('Failed to fetch notes from worker:', e);
