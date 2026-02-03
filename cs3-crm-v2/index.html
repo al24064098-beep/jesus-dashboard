@@ -46,6 +46,10 @@
                 <i class="fas fa-file-alt"></i>
                 <span>Reports</span>
             </a>
+            <a href="#" class="nav-item" data-page="distributions">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Distributions</span>
+            </a>
             <a href="#" class="nav-item" data-page="sops">
                 <i class="fas fa-book"></i>
                 <span>SOPs & Playbooks</span>
@@ -669,6 +673,148 @@
                                 </div>
                             </div>
                             <button class="btn btn-text full-width">View All 15 →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distributions Page -->
+        <div id="distributions-page" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>Distributions</h1>
+                    <p class="page-subtitle">Track and manage investor distributions across all properties</p>
+                </div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Process New Distribution
+                </button>
+            </div>
+
+            <!-- Distribution Stats -->
+            <div class="stats-grid small">
+                <div class="stat-card mini">
+                    <span class="stat-value">$2.8M</span>
+                    <span class="stat-label">Q4 2025 Total</span>
+                </div>
+                <div class="stat-card mini">
+                    <span class="stat-value">623</span>
+                    <span class="stat-label">Investors Paid</span>
+                </div>
+                <div class="stat-card mini">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">On-Time Rate</span>
+                </div>
+                <div class="stat-card mini">
+                    <span class="stat-value">7.2%</span>
+                    <span class="stat-label">Avg. CoC Return</span>
+                </div>
+            </div>
+
+            <!-- Distribution Schedule -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-calendar-check"></i> Upcoming Distributions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="distribution-schedule">
+                        <div class="dist-item upcoming">
+                            <div class="dist-quarter">Q1 2026</div>
+                            <div class="dist-info">
+                                <span class="dist-date">Est. April 15, 2026</span>
+                                <span class="dist-amount">~$2.9M projected</span>
+                            </div>
+                            <span class="dist-status pending">Pending</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Distributions -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-history"></i> Distribution History</h3>
+                </div>
+                <div class="card-body">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Property</th>
+                                <th>Total Amount</th>
+                                <th>Investors</th>
+                                <th>Processed</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Q4 2025</td>
+                                <td>McKenzie STL</td>
+                                <td>$892,450</td>
+                                <td>187</td>
+                                <td>Jan 15, 2026</td>
+                                <td><span class="status-badge success">Complete</span></td>
+                            </tr>
+                            <tr>
+                                <td>Q4 2025</td>
+                                <td>Legacy Townhomes</td>
+                                <td>$654,230</td>
+                                <td>142</td>
+                                <td>Jan 15, 2026</td>
+                                <td><span class="status-badge success">Complete</span></td>
+                            </tr>
+                            <tr>
+                                <td>Q4 2025</td>
+                                <td>The Reserve</td>
+                                <td>$723,890</td>
+                                <td>156</td>
+                                <td>Jan 15, 2026</td>
+                                <td><span class="status-badge success">Complete</span></td>
+                            </tr>
+                            <tr>
+                                <td>Q4 2025</td>
+                                <td>Winding Springs</td>
+                                <td>$529,430</td>
+                                <td>138</td>
+                                <td>Jan 15, 2026</td>
+                                <td><span class="status-badge success">Complete</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- By Property View -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-building"></i> Distribution by Property (2025)</h3>
+                </div>
+                <div class="card-body">
+                    <div class="property-dist-grid">
+                        <div class="property-dist-card">
+                            <h4>McKenzie STL</h4>
+                            <div class="dist-total">$3.2M</div>
+                            <div class="dist-coc">8.1% CoC</div>
+                            <div class="dist-bar"><div class="dist-fill" style="width: 85%"></div></div>
+                        </div>
+                        <div class="property-dist-card">
+                            <h4>Legacy Townhomes</h4>
+                            <div class="dist-total">$2.4M</div>
+                            <div class="dist-coc">7.5% CoC</div>
+                            <div class="dist-bar"><div class="dist-fill" style="width: 78%"></div></div>
+                        </div>
+                        <div class="property-dist-card">
+                            <h4>The Reserve</h4>
+                            <div class="dist-total">$2.7M</div>
+                            <div class="dist-coc">7.8% CoC</div>
+                            <div class="dist-bar"><div class="dist-fill" style="width: 82%"></div></div>
+                        </div>
+                        <div class="property-dist-card">
+                            <h4>Winding Springs</h4>
+                            <div class="dist-total">$1.9M</div>
+                            <div class="dist-coc">6.9% CoC</div>
+                            <div class="dist-bar"><div class="dist-fill" style="width: 71%"></div></div>
                         </div>
                     </div>
                 </div>

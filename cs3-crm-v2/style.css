@@ -2135,3 +2135,111 @@ body {
     resize: vertical;
     min-height: 100px;
 }
+
+/* ========== Distributions Page ========== */
+.distribution-schedule {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dist-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--gray-100);
+    border-radius: 10px;
+    border-left: 4px solid var(--primary);
+}
+
+.dist-item.upcoming {
+    border-left-color: var(--warning);
+    background: linear-gradient(135deg, rgba(245,158,11,0.05), rgba(245,158,11,0.1));
+}
+
+.dist-quarter {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.dist-info {
+    flex: 1;
+}
+
+.dist-info span {
+    display: block;
+}
+
+.dist-date {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.dist-amount {
+    color: var(--gray-500);
+    font-size: 0.9rem;
+}
+
+.dist-status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.dist-status.pending {
+    background: rgba(245,158,11,0.2);
+    color: var(--warning);
+}
+
+.dist-status.complete {
+    background: rgba(16,185,129,0.2);
+    color: var(--success);
+}
+
+/* Property Distribution Grid */
+.property-dist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.property-dist-card {
+    background: var(--gray-100);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.property-dist-card h4 {
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.dist-total {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.dist-coc {
+    color: var(--success);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.dist-bar {
+    height: 8px;
+    background: var(--gray-300);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dist-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 4px;
+}
