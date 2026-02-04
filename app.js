@@ -2625,7 +2625,7 @@ window.startRecording = function() {
         alert('Please select an agent first');
         return;
     }
-    alert(`🔴 Recording feature coming soon!\\n\\nFor now, Jesus will record calls with ${agent} and upload to this dashboard.`);
+    alert('🔴 Recording feature coming soon!\n\nFor now, Jesus will record calls with ' + agent + ' and upload to this dashboard.');
 };
 
 // ========== TEAM MANAGEMENT ==========
@@ -2675,7 +2675,7 @@ window.sendTeamInvite = async function() {
         console.error('Failed to notify Jesus:', e);
     }
     
-    alert(`✅ Invitation sent to ${email}!\\n\\nJesus will set up their access.`);
+    alert('✅ Invitation sent to ' + email + '!\n\nJesus will set up their access.');
     document.getElementById('inviteEmail').value = '';
     renderTeamMembers();
 };
