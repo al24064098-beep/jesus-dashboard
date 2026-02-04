@@ -1938,12 +1938,15 @@ async function sendToCrmAi() {
     `;
     chatHistory.scrollTop = chatHistory.scrollHeight;
     
+    // Gather REAL CRM data to send to AI
+    const crmData = gatherCrmData();
+    
     try {
-        // Call CRM AI endpoint (with CS3 context)
+        // Call CRM AI endpoint with REAL data
         const response = await fetch('https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev/crm-ai', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message })
+            body: JSON.stringify({ message, crmData })
         });
         
         const data = await response.json();
@@ -2002,6 +2005,87 @@ function crmAiQuickAction(action) {
     }
     
     sendToCrmAi();
+}
+
+// Gather REAL data from CRM to send to AI
+function gatherCrmData() {
+    // Get investors data
+    const investors = CS3Data.investors || [];
+    const properties = CS3Data.properties || [];
+    const raiseInvestors = CS3Data.raiseInvestors || [];
+    
+    // Calculate real stats
+    const totalInvestors = investors.length;
+    const totalInvested = investors.reduce((sum, inv) => sum + (inv.totalInvested || 0), 0);
+    const avgInvestment = totalInvestors > 0 ? totalInvested / totalInvestors : 0;
+    
+    // Calculate tier breakdown
+    const tiers = {
+        firstTime: investors.filter(inv => (inv.dealCount || 1) === 1),
+        repeat: investors.filter(inv => (inv.dealCount || 1) >= 2 && (inv.dealCount || 1) <= 3),
+        loyal: investors.filter(inv => (inv.dealCount || 1) >= 4 && (inv.dealCount || 1) <= 5),
+        vip: investors.filter(inv => (inv.dealCount || 1) >= 6)
+    };
+    
+    // Get current raise data (Winding Springs)
+    const windingSprings = properties.find(p => p.id === 'winding-springs');
+    const raiseData = windingSprings?.raise || { goal: 0, committed: 0, collected: 0 };
+    
+    // Get partnership data from inputs if they exist
+    const aspireAmount = parseFloat(document.getElementById('aspireAmount')?.value?.replace(/[$,]/g, '') || 0);
+    const cs3Amount = parseFloat(document.getElementById('cs3Amount')?.value?.replace(/[$,]/g, '') || 0);
+    
+    // Build comprehensive data object
+    return {
+        overview: {
+            totalInvestors,
+            totalInvested,
+            avgInvestment,
+            totalUnits: properties.reduce((sum, p) => sum + (p.units || 0), 0),
+            totalProperties: properties.length
+        },
+        investors: investors.map(inv => ({
+            name: inv.name,
+            email: inv.email,
+            totalInvested: inv.totalInvested,
+            dealCount: inv.dealCount || inv.properties?.length || 1,
+            type: inv.type,
+            properties: inv.properties
+        })),
+        tiers: {
+            firstTime: { count: tiers.firstTime.length, capital: tiers.firstTime.reduce((s, i) => s + i.totalInvested, 0) },
+            repeat: { count: tiers.repeat.length, capital: tiers.repeat.reduce((s, i) => s + i.totalInvested, 0) },
+            loyal: { count: tiers.loyal.length, capital: tiers.loyal.reduce((s, i) => s + i.totalInvested, 0) },
+            vip: { count: tiers.vip.length, capital: tiers.vip.reduce((s, i) => s + i.totalInvested, 0) }
+        },
+        properties: properties.map(p => ({
+            name: p.name,
+            location: p.location,
+            units: p.units,
+            status: p.status,
+            aum: p.aum,
+            investors: p.investors,
+            coC: p.coC
+        })),
+        currentRaise: {
+            property: 'Winding Springs',
+            goal: raiseData.goal,
+            committed: raiseData.committed,
+            collected: raiseData.collected,
+            percentComplete: raiseData.goal > 0 ? ((raiseData.collected / raiseData.goal) * 100).toFixed(1) : 0,
+            investorsInRaise: raiseInvestors.length
+        },
+        partnership: {
+            aspire: aspireAmount,
+            cs3: cs3Amount,
+            total: aspireAmount + cs3Amount
+        },
+        referrals: {
+            total: ReferralsData?.stats?.total || 0,
+            converted: ReferralsData?.stats?.converted || 0,
+            capital: ReferralsData?.stats?.capital || 0
+        }
+    };
 }
 
 // ============================================
