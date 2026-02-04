@@ -189,17 +189,24 @@ const CS3Data = {
         }
     ],
     
+    // INVESTORS with source tracking (aspire vs cs3)
+    // source: 'aspire' = Aspire Community investor, 'cs3' = CS3 direct investor
     investors: [
-        { id: 1, name: 'Pacific Trust Fund', email: 'contact@pacifictrust.com', totalInvested: 2500000, properties: ['mckenzie', 'legacy', 'reserve', 'winding-springs', 'gateway-village', 'summit'], dealCount: 6, type: 'entity', status: 'active' },
-        { id: 2, name: 'Chen Family Office', email: 'investments@chenfamily.com', totalInvested: 1800000, properties: ['reserve', 'mckenzie', 'legacy', 'winding-springs', 'gateway-village', 'summit', 'oak-ridge'], dealCount: 7, type: 'entity', status: 'active' },
-        { id: 3, name: 'Smith Holdings LLC', email: 'john@smithholdings.com', totalInvested: 1200000, properties: ['legacy', 'reserve', 'mckenzie', 'winding-springs'], dealCount: 4, type: 'entity', status: 'active' },
-        { id: 4, name: 'Johnson Capital', email: 'mike@johnsoncap.com', totalInvested: 950000, properties: ['mckenzie', 'legacy', 'reserve'], dealCount: 3, type: 'cash', status: 'active' },
-        { id: 5, name: 'Williams Group', email: 'sarah@williamsgroup.com', totalInvested: 875000, properties: ['reserve', 'legacy'], dealCount: 2, type: 'sdira', status: 'active' },
-        { id: 6, name: 'Robert Chen', email: 'robert.chen@gmail.com', totalInvested: 500000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active' },
-        { id: 7, name: 'Maria Garcia', email: 'mgarcia@outlook.com', totalInvested: 350000, properties: ['winding-springs', 'legacy'], dealCount: 2, type: 'sdira', status: 'active' },
-        { id: 8, name: 'David Kim', email: 'dkim@techcorp.com', totalInvested: 250000, properties: ['winding-springs', 'reserve', 'mckenzie', 'legacy', 'gateway-village'], dealCount: 5, type: 'solo401k', status: 'active' },
-        { id: 9, name: 'Lisa Thompson', email: 'lisa.t@email.com', totalInvested: 200000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active' },
-        { id: 10, name: 'James Wilson', email: 'jwilson@business.com', totalInvested: 150000, properties: ['winding-springs', 'reserve', 'legacy'], dealCount: 3, type: 'cash', status: 'active' }
+        // ASPIRE COMMUNITY INVESTORS
+        { id: 1, name: 'Pacific Trust Fund', email: 'contact@pacifictrust.com', totalInvested: 2500000, properties: ['mckenzie', 'legacy', 'reserve', 'winding-springs'], dealCount: 4, type: 'entity', status: 'active', source: 'aspire' },
+        { id: 2, name: 'Chen Family Office', email: 'investments@chenfamily.com', totalInvested: 1800000, properties: ['reserve', 'mckenzie', 'legacy'], dealCount: 3, type: 'entity', status: 'active', source: 'aspire' },
+        { id: 3, name: 'Maria Garcia', email: 'mgarcia@outlook.com', totalInvested: 350000, properties: ['winding-springs', 'legacy'], dealCount: 2, type: 'sdira', status: 'active', source: 'aspire' },
+        { id: 4, name: 'David Kim', email: 'dkim@techcorp.com', totalInvested: 250000, properties: ['winding-springs', 'reserve'], dealCount: 2, type: 'solo401k', status: 'active', source: 'aspire' },
+        { id: 5, name: 'Sarah Miller', email: 'smiller@email.com', totalInvested: 300000, properties: ['winding-springs'], dealCount: 1, type: 'sdira', status: 'active', source: 'aspire' },
+        
+        // CS3 DIRECT INVESTORS
+        { id: 6, name: 'Smith Holdings LLC', email: 'john@smithholdings.com', totalInvested: 1200000, properties: ['legacy', 'reserve', 'mckenzie', 'winding-springs'], dealCount: 4, type: 'entity', status: 'active', source: 'cs3' },
+        { id: 7, name: 'Johnson Capital', email: 'mike@johnsoncap.com', totalInvested: 950000, properties: ['mckenzie', 'legacy', 'reserve'], dealCount: 3, type: 'cash', status: 'active', source: 'cs3' },
+        { id: 8, name: 'Williams Group', email: 'sarah@williamsgroup.com', totalInvested: 875000, properties: ['reserve', 'legacy'], dealCount: 2, type: 'sdira', status: 'active', source: 'cs3' },
+        { id: 9, name: 'Robert Chen', email: 'robert.chen@gmail.com', totalInvested: 500000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active', source: 'cs3' },
+        { id: 10, name: 'Lisa Thompson', email: 'lisa.t@email.com', totalInvested: 200000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active', source: 'cs3' },
+        { id: 11, name: 'James Wilson', email: 'jwilson@business.com', totalInvested: 150000, properties: ['winding-springs', 'reserve', 'legacy'], dealCount: 3, type: 'cash', status: 'active', source: 'cs3' },
+        { id: 12, name: 'Michael Brown', email: 'mbrown@corp.com', totalInvested: 400000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active', source: 'cs3' }
     ],
     
     raiseInvestors: [
@@ -2019,6 +2026,22 @@ function gatherCrmData() {
     const totalInvested = investors.reduce((sum, inv) => sum + (inv.totalInvested || 0), 0);
     const avgInvestment = totalInvestors > 0 ? totalInvested / totalInvestors : 0;
     
+    // ASPIRE vs CS3 breakdown
+    const aspireInvestors = investors.filter(inv => inv.source === 'aspire');
+    const cs3Investors = investors.filter(inv => inv.source === 'cs3');
+    
+    const aspireStats = {
+        count: aspireInvestors.length,
+        totalRaise: aspireInvestors.reduce((sum, inv) => sum + (inv.totalInvested || 0), 0),
+        avgInvestment: aspireInvestors.length > 0 ? aspireInvestors.reduce((sum, inv) => sum + (inv.totalInvested || 0), 0) / aspireInvestors.length : 0
+    };
+    
+    const cs3Stats = {
+        count: cs3Investors.length,
+        totalRaise: cs3Investors.reduce((sum, inv) => sum + (inv.totalInvested || 0), 0),
+        avgInvestment: cs3Investors.length > 0 ? cs3Investors.reduce((sum, inv) => sum + (inv.totalInvested || 0), 0) / cs3Investors.length : 0
+    };
+    
     // Calculate tier breakdown
     const tiers = {
         firstTime: investors.filter(inv => (inv.dealCount || 1) === 1),
@@ -2044,12 +2067,16 @@ function gatherCrmData() {
             totalUnits: properties.reduce((sum, p) => sum + (p.units || 0), 0),
             totalProperties: properties.length
         },
+        // ASPIRE vs CS3 Stats
+        aspireStats,
+        cs3Stats,
         investors: investors.map(inv => ({
             name: inv.name,
             email: inv.email,
             totalInvested: inv.totalInvested,
             dealCount: inv.dealCount || inv.properties?.length || 1,
             type: inv.type,
+            source: inv.source || 'cs3', // aspire or cs3
             properties: inv.properties
         })),
         tiers: {
