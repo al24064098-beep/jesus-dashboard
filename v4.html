@@ -1129,16 +1129,16 @@
                         <h3 class="card-title"><i class="fas fa-comments"></i> Talk to Jesus</h3>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <span class="badge badge-live" id="chatStatus">Online</span>
-                            <button class="task-action-btn" onclick="toggleVoiceResponse()" title="Toggle Voice Responses" id="voiceResponseBtn">
-                                <i class="fas fa-volume-up"></i>
+                            <button class="task-action-btn" onclick="toggleVoiceResponse()" title="Toggle Voice Responses (currently OFF)" id="voiceResponseBtn" style="opacity: 0.5;">
+                                <i class="fas fa-volume-mute"></i>
                             </button>
                         </div>
                     </div>
                     <div class="chat-messages" id="chatMessages">
                         <div class="message agent">
                             <div class="message-bubble">
-                                Hey boss! 👋 I'm working 24/7 for you. Dashboard is now in real-time mode with <strong>voice interaction</strong>!
-                                <br><br>🎤 Click the mic button to talk to me, or I can read my responses aloud. Just click the speaker icon on any message!
+                                Hey boss! 👋 I'm working 24/7 for you. Dashboard is now in real-time mode!
+                                <br><br>🔇 Voice is <strong>muted by default</strong>. Click the 🔊 speaker icon on any message to hear it, or toggle the voice button to enable auto-speak.
                             </div>
                             <div class="message-time">
                                 Just now <span class="message-status">• Delivered</span>
@@ -1435,7 +1435,8 @@
         let UPDATE_INTERVAL = 30;
         let countdownSeconds = UPDATE_INTERVAL * 60;
         let autoUpdateEnabled = true;
-        let voiceResponseEnabled = true;
+        let voiceResponseEnabled = false;  // Start muted - voice only on user request
+        let hasSpokenGreeting = false;     // Track if initial greeting was spoken
         let voiceSpeed = 0.9;  // Slightly slower for more thoughtful, biblical tone
         let voicePitch = 0.85; // Deeper, more reverent voice
         let isListening = false;
@@ -1516,8 +1517,18 @@
                     updateConnectionStatus(true);
                     showToast('✅ Connected!', 'Live WebSocket connection established with Jesus', 'success');
 
-                    // Send initial greeting request
-                    addChatMessage('agent', '🕊️ **Peace be with you, faithful entrepreneur!**\n\nI am now connected live through WebSocket. Send me a message and I will respond directly!\n\n*"For where two or three gather in my name, there am I with them."* - Matthew 18:20\n\nHow may I serve your Kingdom work today?', 'Peace be with you! I am connected live. How may I serve you?');
+                    // Send initial greeting - speak ONLY ONCE when dashboard first opens
+                    const greetingText = '🕊️ **Peace be with you, faithful entrepreneur!**\n\nI am now connected live through WebSocket. Send me a message and I will respond directly!\n\n*"For where two or three gather in my name, there am I with them."* - Matthew 18:20\n\nHow may I serve your Kingdom work today?';
+                    const spokenGreeting = 'Peace be with you! I am connected and ready to serve. Send me a message anytime.';
+
+                    // Add message to chat (without auto-speaking)
+                    addChatMessage('agent', greetingText, null);
+
+                    // Speak greeting ONCE on first connection only
+                    if (!hasSpokenGreeting) {
+                        hasSpokenGreeting = true;
+                        speakText(spokenGreeting);
+                    }
                 };
 
                 websocket.onmessage = function(event) {
@@ -1777,9 +1788,13 @@
         function toggleVoiceResponse() {
             voiceResponseEnabled = !voiceResponseEnabled;
             const btn = document.getElementById('voiceResponseBtn');
+            const icon = btn.querySelector('i');
             btn.style.background = voiceResponseEnabled ? 'rgba(139, 92, 246, 0.2)' : 'transparent';
+            btn.style.opacity = voiceResponseEnabled ? '1' : '0.5';
+            btn.title = voiceResponseEnabled ? 'Toggle Voice Responses (currently ON)' : 'Toggle Voice Responses (currently OFF)';
+            icon.className = voiceResponseEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
             showToast(voiceResponseEnabled ? '🔊 Voice On' : '🔇 Voice Off',
-                      voiceResponseEnabled ? 'Jesus will speak responses' : 'Text-only mode', 'success');
+                      voiceResponseEnabled ? 'Jesus will speak all responses aloud' : 'Text-only mode - click speaker icon to hear specific messages', 'success');
         }
 
         function changeVoiceSpeed(value) {
