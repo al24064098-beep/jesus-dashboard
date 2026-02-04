@@ -1751,3 +1751,77 @@ function populateInvestorDropdowns() {
         }
     });
 }
+
+// ============================================
+// GEMINI AI FUNCTIONS
+// ============================================
+
+function openGeminiChat() {
+    document.getElementById('geminiModal').style.display = 'flex';
+}
+
+function sendToGemini() {
+    const input = document.getElementById('geminiInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    const chatHistory = document.getElementById('geminiChatHistory');
+    
+    // Add user message
+    chatHistory.innerHTML += `
+        <div style="background: var(--cs3-teal); color: white; padding: 12px 16px; border-radius: 12px; margin-bottom: 12px; margin-left: 40px;">
+            ${message}
+        </div>
+    `;
+    
+    input.value = '';
+    
+    // Simulate AI response (in production, this would call Gemini API)
+    setTimeout(() => {
+        const responses = [
+            "Based on your investor data, I recommend focusing on the 15 investors who haven't been contacted in 60+ days. Would you like me to draft a re-engagement email template?",
+            "Looking at your pipeline, you have $2.1M in committed capital that hasn't been funded yet. I suggest prioritizing follow-ups with those investors.",
+            "Your current capital raise is at 68% of goal. Based on historical patterns, you might want to increase outreach to your referral network.",
+            "I've analyzed the sentiment from recent calls - 94% positive. Great work! The most common topics discussed were distribution timing and new opportunities."
+        ];
+        
+        const response = responses[Math.floor(Math.random() * responses.length)];
+        
+        chatHistory.innerHTML += `
+            <div class="ai-message" style="background: #f0f4f8; padding: 16px; border-radius: 12px; margin-bottom: 12px;">
+                <p>🤖 ${response}</p>
+            </div>
+        `;
+        
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }, 1000);
+    
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+}
+
+function geminiQuickAction(action) {
+    const input = document.getElementById('geminiInput');
+    
+    switch(action) {
+        case 'precall':
+            input.value = 'Generate a pre-call brief for my next scheduled investor call';
+            break;
+        case 'email':
+            input.value = 'Draft a follow-up email for an investor who expressed interest in Winding Springs';
+            break;
+        case 'insights':
+            input.value = 'What insights can you give me about my current investor pipeline?';
+            break;
+    }
+    
+    sendToGemini();
+}
+
+function createReengagementCampaign() {
+    alert('Creating re-engagement campaign for 15 dormant investors...\n\nThis would:\n1. Generate personalized email templates\n2. Schedule follow-up calls\n3. Track engagement metrics');
+}
+
+function viewHighPotential() {
+    alert('High Potential Investors:\n\n1. Pacific Trust Fund - Interested in +$500K\n2. Chen Family Office - Interested in +$300K\n3. Smith Holdings - Interested in +$400K\n4. Johnson Capital - Interested in +$250K\n...\n\nTotal Potential: $2.4M');
+}
