@@ -2194,26 +2194,72 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 });
 
 // ========== CHAT INTERFACE ==========
-function renderChat() {
-    const chat = dashboardData.chat;
-    if (!chat) return;
+// Chat endpoint for real-time messages
+const CHAT_WORKER_URL = 'https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev/chat';
+
+// Load chat from worker
+async function loadChatFromWorker() {
+    try {
+        const res = await fetch(CHAT_WORKER_URL);
+        const data = await res.json();
+        return data.messages || [];
+    } catch (e) {
+        console.error('Failed to load chat:', e);
+        return [];
+    }
+}
+
+// Send chat message to worker
+async function sendChatToWorker(text) {
+    try {
+        await fetch(CHAT_WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ from: 'al', text: text })
+        });
+        renderChat(); // Refresh chat
+    } catch (e) {
+        console.error('Failed to send chat:', e);
+    }
+}
+window.sendChatToWorker = sendChatToWorker;
+
+async function renderChat() {
+    const container = document.getElementById('chatMessages');
+    if (!container) return;
+
+    // Load messages from worker
+    const workerMessages = await loadChatFromWorker();
+    
+    // Also get local data.js messages as fallback
+    const chat = dashboardData.chat || {};
 
     // Update last update time
     const lastUpdate = document.getElementById('chatLastUpdate');
-    if (lastUpdate && chat.lastUpdated) {
-        const date = new Date(chat.lastUpdated);
-        lastUpdate.textContent = `Updated: ${date.toLocaleString()}`;
+    if (lastUpdate) {
+        lastUpdate.textContent = `Updated: ${new Date().toLocaleString()}`;
     }
 
     // Get localStorage notes (Al's messages)
     const localNotes = JSON.parse(localStorage.getItem('jesusNotes')) || [];
     const sentNotes = localNotes.filter(n => n.status === 'sent' || n.status === 'read');
 
-    // Combine Jesus's messages with Al's sent notes
+    // Combine all messages
     const allMessages = [];
 
-    // Add Jesus's messages from data.js
-    if (chat.messages) {
+    // Add worker messages (primary source)
+    workerMessages.forEach(msg => {
+        allMessages.push({
+            id: msg.id,
+            from: msg.from,
+            content: msg.text,
+            timestamp: msg.time,
+            sortTime: new Date(msg.time).getTime()
+        });
+    });
+
+    // Add Jesus's messages from data.js (fallback)
+    if (chat.messages && workerMessages.length === 0) {
         chat.messages.forEach(msg => {
             allMessages.push({
                 ...msg,
@@ -2224,21 +2270,20 @@ function renderChat() {
 
     // Add Al's sent notes as messages
     sentNotes.forEach(note => {
-        allMessages.push({
-            id: 'al-' + note.id,
-            from: 'al',
-            content: note.content,
-            timestamp: note.createdAt,
-            sortTime: new Date(note.createdAt).getTime()
-        });
+        // Avoid duplicates
+        if (!allMessages.find(m => m.content === note.content)) {
+            allMessages.push({
+                id: 'al-' + note.id,
+                from: 'al',
+                content: note.content,
+                timestamp: note.createdAt,
+                sortTime: new Date(note.createdAt).getTime()
+            });
+        }
     });
 
     // Sort by time
     allMessages.sort((a, b) => a.sortTime - b.sortTime);
-
-    // Render
-    const container = document.getElementById('chatMessages');
-    if (!container) return;
 
     if (allMessages.length === 0) {
         container.innerHTML = '<div class="empty-state"><p>No messages yet. Send a note to start chatting!</p></div>';
