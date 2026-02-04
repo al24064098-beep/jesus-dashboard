@@ -4,6 +4,106 @@
  */
 
 // ============================================
+// FIREBASE CONFIG (Replace with your config)
+// ============================================
+
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "cs3-crm.firebaseapp.com",
+    projectId: "cs3-crm",
+    storageBucket: "cs3-crm.appspot.com",
+    messagingSenderId: "000000000000",
+    appId: "1:000000000000:web:0000000000000000000000"
+};
+
+// Initialize Firebase (commented out until real config is added)
+// firebase.initializeApp(firebaseConfig);
+// const db = firebase.firestore();
+// const auth = firebase.auth();
+
+// ============================================
+// CURRENT USER (Will be set by auth)
+// ============================================
+
+let currentUser = {
+    id: 'al-liao',
+    name: 'Al Liao',
+    email: 'al@cs3investments.com',
+    role: 'Director of Investor Relations',
+    avatar: 'AL',
+    integrations: {
+        email: { connected: false, account: null },
+        telegram: { connected: false, account: null },
+        whatsapp: { connected: false, account: null },
+        zoom: { connected: false, account: null },
+        calendar: { connected: false, account: null },
+        ai: { connected: false, account: null },
+        voice: { connected: false, account: null }
+    }
+};
+
+// ============================================
+// TEAM DATA
+// ============================================
+
+const teamMembers = [
+    {
+        id: 'carlos-salguero',
+        name: 'Carlos Salguero',
+        email: 'carlos@cs3investments.com',
+        role: 'Founder & President',
+        avatar: 'CS',
+        integrations: { email: true, telegram: true, whatsapp: true, zoom: true, calendar: true, ai: true, voice: true },
+        stats: { calls: 45, emails: 120, investors: 85 }
+    },
+    {
+        id: 'al-liao',
+        name: 'Al Liao',
+        email: 'al@cs3investments.com',
+        role: 'Director of IR',
+        avatar: 'AL',
+        integrations: { email: true, telegram: true, whatsapp: false, zoom: true, calendar: true, ai: true, voice: true },
+        stats: { calls: 67, emails: 210, investors: 150 }
+    },
+    {
+        id: 'brandon-ford',
+        name: 'Brandon Ford',
+        email: 'brandon@cs3investments.com',
+        role: 'Finance Director',
+        avatar: 'BF',
+        integrations: { email: true, telegram: false, whatsapp: false, zoom: true, calendar: true, ai: false, voice: false },
+        stats: { calls: 12, emails: 89, investors: 0 }
+    },
+    {
+        id: 'grace-wilson',
+        name: 'Grace Wilson',
+        email: 'grace@cs3investments.com',
+        role: 'Asset Management',
+        avatar: 'GW',
+        integrations: { email: true, telegram: true, whatsapp: true, zoom: true, calendar: true, ai: true, voice: false },
+        stats: { calls: 28, emails: 156, investors: 45 }
+    },
+    {
+        id: 'eric-tung',
+        name: 'Eric Tung',
+        email: 'eric@cs3investments.com',
+        role: 'Project Director',
+        avatar: 'ET',
+        integrations: { email: true, telegram: false, whatsapp: false, zoom: true, calendar: true, ai: false, voice: false },
+        stats: { calls: 8, emails: 42, investors: 0 }
+    },
+    {
+        id: 'ricardo-salguero',
+        name: 'Ricardo Salguero',
+        email: 'ricardo@cs3investments.com',
+        role: 'Chief Marketing Officer',
+        avatar: 'RS',
+        integrations: { email: true, telegram: true, whatsapp: true, zoom: true, calendar: true, ai: true, voice: true },
+        stats: { calls: 22, emails: 178, investors: 30 }
+    }
+];
+
+// ============================================
 // DATA STORE (Will connect to Firestore)
 // ============================================
 
@@ -151,6 +251,12 @@ function loadPageData(page) {
             break;
         case 'pipeline':
             loadPipeline();
+            break;
+        case 'team':
+            loadTeamPage();
+            break;
+        case 'profile':
+            loadProfilePage();
             break;
     }
 }
@@ -532,3 +638,383 @@ window.addEventListener('click', function(e) {
         e.target.style.display = 'none';
     }
 });
+
+// ============================================
+// AUTHENTICATION
+// ============================================
+
+function handleLogin() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    if (!email || !password) {
+        alert('Please enter email and password');
+        return;
+    }
+    
+    // For demo, accept any email/password
+    // In production, this would use Firebase Auth
+    console.log('Login attempt:', email);
+    
+    // Find user by email or create demo user
+    const user = teamMembers.find(m => m.email === email) || {
+        name: email.split('@')[0],
+        email: email,
+        role: 'Team Member',
+        avatar: email.substring(0, 2).toUpperCase()
+    };
+    
+    currentUser = {
+        ...user,
+        integrations: user.integrations || {}
+    };
+    
+    // Hide login, show app
+    document.getElementById('loginPage').style.display = 'none';
+    document.querySelector('.app-container').style.display = 'flex';
+    
+    // Update UI with user info
+    updateUserUI();
+    loadDashboard();
+    
+    // Save to localStorage
+    localStorage.setItem('cs3_user', JSON.stringify(currentUser));
+}
+
+function handleGoogleLogin() {
+    // In production, this would use Firebase Google Auth
+    alert('Google Sign-In coming soon! For now, use email/password.');
+}
+
+function handleLogout() {
+    localStorage.removeItem('cs3_user');
+    currentUser = null;
+    document.getElementById('loginPage').style.display = 'flex';
+    document.querySelector('.app-container').style.display = 'none';
+}
+
+function checkAuth() {
+    const savedUser = localStorage.getItem('cs3_user');
+    if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        document.getElementById('loginPage').style.display = 'none';
+        document.querySelector('.app-container').style.display = 'flex';
+        updateUserUI();
+        return true;
+    }
+    return false;
+}
+
+function updateUserUI() {
+    // Update sidebar user info
+    const avatarEl = document.querySelector('.user-avatar');
+    const nameEl = document.querySelector('.user-name');
+    const roleEl = document.querySelector('.user-role');
+    
+    if (avatarEl && currentUser) {
+        avatarEl.textContent = currentUser.avatar || currentUser.name.substring(0, 2).toUpperCase();
+    }
+    if (nameEl && currentUser) {
+        nameEl.textContent = currentUser.name;
+    }
+    if (roleEl && currentUser) {
+        roleEl.textContent = currentUser.role;
+    }
+}
+
+// ============================================
+// TEAM PAGE
+// ============================================
+
+function loadTeamPage() {
+    const container = document.getElementById('teamGrid');
+    if (!container) return;
+    
+    // Update stats
+    document.getElementById('teamCount').textContent = teamMembers.length;
+    
+    const totalIntegrations = teamMembers.reduce((sum, m) => {
+        return sum + Object.values(m.integrations).filter(v => v === true).length;
+    }, 0);
+    document.getElementById('integrationsActive').textContent = totalIntegrations;
+    
+    container.innerHTML = teamMembers.map(member => {
+        const integrationIcons = [
+            { key: 'email', icon: 'fa-envelope', color: '#ea4335' },
+            { key: 'telegram', icon: 'fa-telegram', color: '#0088cc', brand: true },
+            { key: 'whatsapp', icon: 'fa-whatsapp', color: '#25d366', brand: true },
+            { key: 'zoom', icon: 'fa-video', color: '#2d8cff' },
+            { key: 'calendar', icon: 'fa-calendar', color: '#4285f4' },
+            { key: 'ai', icon: 'fa-robot', color: '#bca460' },
+            { key: 'voice', icon: 'fa-phone-alt', color: '#004f59' }
+        ];
+        
+        const badges = integrationIcons.map(int => {
+            const connected = member.integrations[int.key];
+            return `<span class="integration-badge ${connected ? 'connected' : 'disconnected'}">
+                <i class="${int.brand ? 'fab' : 'fas'} ${int.icon}" style="color: ${connected ? int.color : '#999'};"></i>
+            </span>`;
+        }).join('');
+        
+        return `
+            <div class="team-member-card">
+                <div class="team-member-header">
+                    <div class="team-member-avatar">${member.avatar}</div>
+                    <div class="team-member-info">
+                        <h4>${member.name}</h4>
+                        <p>${member.role}</p>
+                    </div>
+                </div>
+                <div class="team-member-body">
+                    <div class="team-member-integrations">
+                        ${badges}
+                    </div>
+                    <div class="team-member-stats">
+                        <div class="team-stat">
+                            <div class="team-stat-value">${member.stats.calls}</div>
+                            <div class="team-stat-label">Calls</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-value">${member.stats.emails}</div>
+                            <div class="team-stat-label">Emails</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-value">${member.stats.investors}</div>
+                            <div class="team-stat-label">Investors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function showInviteTeamModal() {
+    document.getElementById('inviteTeamModal').style.display = 'flex';
+}
+
+function sendTeamInvite() {
+    const name = document.getElementById('inviteName').value;
+    const email = document.getElementById('inviteEmail').value;
+    const role = document.getElementById('inviteRole').value;
+    
+    if (!name || !email) {
+        alert('Please fill in required fields');
+        return;
+    }
+    
+    // In production, this would send an actual invite
+    alert(`Invitation sent to ${name} (${email}) as ${role}`);
+    
+    closeModal('inviteTeamModal');
+    document.getElementById('inviteName').value = '';
+    document.getElementById('inviteEmail').value = '';
+}
+
+// ============================================
+// PROFILE PAGE
+// ============================================
+
+function loadProfilePage() {
+    if (!currentUser) return;
+    
+    document.getElementById('profileAvatar').textContent = currentUser.avatar || 'U';
+    document.getElementById('profileName').textContent = currentUser.name;
+    document.getElementById('profileRole').textContent = currentUser.role;
+    document.getElementById('profileEmail').textContent = currentUser.email;
+    
+    // Load integration statuses
+    const integrations = currentUser.integrations || {};
+    const intTypes = ['email', 'telegram', 'whatsapp', 'zoom', 'calendar', 'ai', 'voice'];
+    
+    intTypes.forEach(type => {
+        const item = document.getElementById(`int-${type}`);
+        if (item) {
+            const connected = integrations[type]?.connected || false;
+            const statusEl = item.querySelector('.integration-status');
+            const btn = item.querySelector('button');
+            
+            if (connected) {
+                item.classList.add('connected');
+                statusEl.className = 'integration-status connected';
+                statusEl.textContent = `Connected: ${integrations[type].account || 'Account'}`;
+                btn.textContent = 'Disconnect';
+                btn.className = 'btn btn-small btn-outline';
+                btn.onclick = () => disconnectIntegration(type);
+            } else {
+                item.classList.remove('connected');
+                statusEl.className = 'integration-status disconnected';
+                statusEl.textContent = 'Not connected';
+                btn.innerHTML = '<i class="fas fa-plug"></i> Connect';
+                btn.className = 'btn btn-small btn-primary';
+                btn.onclick = () => connectIntegration(type);
+            }
+        }
+    });
+}
+
+function showEditProfileModal() {
+    document.getElementById('editName').value = currentUser?.name || '';
+    document.getElementById('editPhone').value = currentUser?.phone || '';
+    document.getElementById('editRole').value = currentUser?.role || '';
+    document.getElementById('editProfileModal').style.display = 'flex';
+}
+
+function saveProfile() {
+    const name = document.getElementById('editName').value;
+    const phone = document.getElementById('editPhone').value;
+    
+    if (currentUser) {
+        currentUser.name = name;
+        currentUser.phone = phone;
+        currentUser.avatar = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        
+        localStorage.setItem('cs3_user', JSON.stringify(currentUser));
+        updateUserUI();
+        loadProfilePage();
+    }
+    
+    closeModal('editProfileModal');
+    alert('Profile updated!');
+}
+
+// ============================================
+// INTEGRATIONS
+// ============================================
+
+function connectIntegration(type) {
+    const titles = {
+        email: 'Connect Email (Gmail)',
+        telegram: 'Connect Telegram',
+        whatsapp: 'Connect WhatsApp',
+        zoom: 'Connect Zoom',
+        calendar: 'Connect Google Calendar',
+        ai: 'Connect AI Platform (Gemini)',
+        voice: 'Connect Google Voice'
+    };
+    
+    const bodies = {
+        email: `
+            <p style="margin-bottom: 20px;">Connect your Gmail account to send and receive emails directly from the CRM.</p>
+            <div class="form-group">
+                <label class="form-label">Gmail Address</label>
+                <input type="email" class="form-input" id="intEmail" placeholder="your@gmail.com">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="completeIntegration('email')">
+                <i class="fab fa-google"></i> Connect with Google
+            </button>
+        `,
+        telegram: `
+            <p style="margin-bottom: 20px;">Connect your Telegram to receive notifications and send messages.</p>
+            <div class="form-group">
+                <label class="form-label">Telegram Username</label>
+                <input type="text" class="form-input" id="intTelegram" placeholder="@username">
+            </div>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">
+                You'll receive a verification code via Telegram bot.
+            </p>
+            <button class="btn btn-primary" style="width: 100%;" onclick="completeIntegration('telegram')">
+                <i class="fab fa-telegram"></i> Connect Telegram
+            </button>
+        `,
+        whatsapp: `
+            <p style="margin-bottom: 20px;">Connect WhatsApp Business for investor messaging.</p>
+            <div class="form-group">
+                <label class="form-label">WhatsApp Phone Number</label>
+                <input type="tel" class="form-input" id="intWhatsapp" placeholder="+1 (555) 123-4567">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="completeIntegration('whatsapp')">
+                <i class="fab fa-whatsapp"></i> Connect WhatsApp
+            </button>
+        `,
+        zoom: `
+            <p style="margin-bottom: 20px;">Connect Zoom to schedule and track investor meetings.</p>
+            <button class="btn btn-primary" style="width: 100%;" onclick="completeIntegration('zoom')">
+                <i class="fas fa-video"></i> Connect with Zoom
+            </button>
+        `,
+        calendar: `
+            <p style="margin-bottom: 20px;">Sync your Google Calendar to track meetings and follow-ups.</p>
+            <button class="btn btn-primary" style="width: 100%;" onclick="completeIntegration('calendar')">
+                <i class="fab fa-google"></i> Connect Google Calendar
+            </button>
+        `,
+        ai: `
+            <p style="margin-bottom: 20px;">Connect Google Gemini AI for intelligent insights and automation.</p>
+            <div class="form-group">
+                <label class="form-label">API Key (optional)</label>
+                <input type="password" class="form-input" id="intAiKey" placeholder="Your Gemini API key">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="completeIntegration('ai')">
+                <i class="fas fa-robot"></i> Connect AI Platform
+            </button>
+        `,
+        voice: `
+            <p style="margin-bottom: 20px;">Connect Google Voice for call tracking and recording.</p>
+            <div class="form-group">
+                <label class="form-label">Google Voice Number</label>
+                <input type="tel" class="form-input" id="intVoice" placeholder="+1 (555) 123-4567">
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="completeIntegration('voice')">
+                <i class="fas fa-phone-alt"></i> Connect Google Voice
+            </button>
+        `
+    };
+    
+    document.getElementById('connectModalTitle').textContent = titles[type] || 'Connect Integration';
+    document.getElementById('connectModalBody').innerHTML = bodies[type] || '<p>Integration not available</p>';
+    document.getElementById('connectModalBody').dataset.type = type;
+    document.getElementById('connectIntegrationModal').style.display = 'flex';
+}
+
+function completeIntegration(type) {
+    // Get any input values based on type
+    let account = '';
+    
+    switch(type) {
+        case 'email':
+            account = document.getElementById('intEmail')?.value || 'Gmail';
+            break;
+        case 'telegram':
+            account = document.getElementById('intTelegram')?.value || '@user';
+            break;
+        case 'whatsapp':
+            account = document.getElementById('intWhatsapp')?.value || 'WhatsApp';
+            break;
+        case 'voice':
+            account = document.getElementById('intVoice')?.value || 'Voice';
+            break;
+        default:
+            account = 'Connected';
+    }
+    
+    // Update user integrations
+    if (!currentUser.integrations) {
+        currentUser.integrations = {};
+    }
+    
+    currentUser.integrations[type] = {
+        connected: true,
+        account: account,
+        connectedAt: new Date().toISOString()
+    };
+    
+    // Save to localStorage
+    localStorage.setItem('cs3_user', JSON.stringify(currentUser));
+    
+    // Close modal and refresh
+    closeModal('connectIntegrationModal');
+    loadProfilePage();
+    
+    alert(`${type.charAt(0).toUpperCase() + type.slice(1)} connected successfully!`);
+}
+
+function disconnectIntegration(type) {
+    if (confirm(`Disconnect ${type}?`)) {
+        if (currentUser.integrations) {
+            currentUser.integrations[type] = { connected: false, account: null };
+            localStorage.setItem('cs3_user', JSON.stringify(currentUser));
+            loadProfilePage();
+        }
+    }
+}

@@ -75,6 +75,18 @@
                         <span class="badge">5</span>
                     </a>
                 </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Team</div>
+                    <a href="#" class="nav-item" data-page="team">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Team Members</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="profile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>My Profile</span>
+                    </a>
+                </div>
             </nav>
             
             <div class="sidebar-footer">
@@ -492,8 +504,281 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- TEAM PAGE -->
+                <div id="team-page" class="page">
+                    <div class="page-header">
+                        <div>
+                            <h1>Team Members</h1>
+                            <p class="page-subtitle">Manage your CS3 IR team and their integrations</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="showInviteTeamModal()">
+                            <i class="fas fa-user-plus"></i> Invite Team Member
+                        </button>
+                    </div>
+                    
+                    <!-- Team Stats -->
+                    <div class="stats-grid" style="margin-bottom: 30px;">
+                        <div class="stat-card">
+                            <div class="stat-icon teal"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="teamCount">6</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon success"><i class="fas fa-plug"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="integrationsActive">18</span>
+                                <span class="stat-label">Active Integrations</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon gold"><i class="fas fa-phone"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">324</span>
+                                <span class="stat-label">Calls This Month</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Members Grid -->
+                    <div class="team-grid" id="teamGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- MY PROFILE PAGE -->
+                <div id="profile-page" class="page">
+                    <div class="page-header">
+                        <h1>My Profile</h1>
+                        <p class="page-subtitle">Manage your account and connected integrations</p>
+                    </div>
+                    
+                    <!-- Profile Card -->
+                    <div class="card" style="margin-bottom: 30px;">
+                        <div class="card-body">
+                            <div style="display: flex; gap: 30px; align-items: flex-start;">
+                                <div class="profile-avatar" id="profileAvatar">AL</div>
+                                <div style="flex: 1;">
+                                    <h2 id="profileName" style="margin-bottom: 4px;">Al Liao</h2>
+                                    <p id="profileRole" style="color: var(--text-secondary); margin-bottom: 16px;">Director of Investor Relations</p>
+                                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                        <div><i class="fas fa-envelope" style="color: var(--cs3-teal);"></i> <span id="profileEmail">al@cs3investments.com</span></div>
+                                        <div><i class="fas fa-phone" style="color: var(--cs3-teal);"></i> <span id="profilePhone">+1 (XXX) XXX-XXXX</span></div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline" onclick="showEditProfileModal()">
+                                    <i class="fas fa-edit"></i> Edit Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Connected Integrations -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-plug"></i> My Connected Integrations</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="integrations-grid" id="myIntegrations">
+                                <!-- Email Integration -->
+                                <div class="integration-item" id="int-email">
+                                    <div class="integration-icon" style="background: rgba(234,67,53,0.1); color: #ea4335;">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="integration-info">
+                                        <h4>Email (Gmail)</h4>
+                                        <p class="integration-status disconnected">Not connected</p>
+                                    </div>
+                                    <button class="btn btn-small btn-primary" onclick="connectIntegration('email')">Connect</button>
+                                </div>
+                                
+                                <!-- Telegram Integration -->
+                                <div class="integration-item" id="int-telegram">
+                                    <div class="integration-icon" style="background: rgba(0,136,204,0.1); color: #0088cc;">
+                                        <i class="fab fa-telegram"></i>
+                                    </div>
+                                    <div class="integration-info">
+                                        <h4>Telegram</h4>
+                                        <p class="integration-status disconnected">Not connected</p>
+                                    </div>
+                                    <button class="btn btn-small btn-primary" onclick="connectIntegration('telegram')">Connect</button>
+                                </div>
+                                
+                                <!-- WhatsApp Integration -->
+                                <div class="integration-item" id="int-whatsapp">
+                                    <div class="integration-icon" style="background: rgba(37,211,102,0.1); color: #25d366;">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div class="integration-info">
+                                        <h4>WhatsApp</h4>
+                                        <p class="integration-status disconnected">Not connected</p>
+                                    </div>
+                                    <button class="btn btn-small btn-primary" onclick="connectIntegration('whatsapp')">Connect</button>
+                                </div>
+                                
+                                <!-- Zoom Integration -->
+                                <div class="integration-item" id="int-zoom">
+                                    <div class="integration-icon" style="background: rgba(45,140,255,0.1); color: #2d8cff;">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div class="integration-info">
+                                        <h4>Zoom</h4>
+                                        <p class="integration-status disconnected">Not connected</p>
+                                    </div>
+                                    <button class="btn btn-small btn-primary" onclick="connectIntegration('zoom')">Connect</button>
+                                </div>
+                                
+                                <!-- Google Calendar -->
+                                <div class="integration-item" id="int-calendar">
+                                    <div class="integration-icon" style="background: rgba(66,133,244,0.1); color: #4285f4;">
+                                        <i class="fas fa-calendar"></i>
+                                    </div>
+                                    <div class="integration-info">
+                                        <h4>Google Calendar</h4>
+                                        <p class="integration-status disconnected">Not connected</p>
+                                    </div>
+                                    <button class="btn btn-small btn-primary" onclick="connectIntegration('calendar')">Connect</button>
+                                </div>
+                                
+                                <!-- AI Platform (Gemini) -->
+                                <div class="integration-item" id="int-ai">
+                                    <div class="integration-icon" style="background: rgba(188,164,96,0.15); color: var(--cs3-gold-dark);">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="integration-info">
+                                        <h4>AI Platform (Gemini)</h4>
+                                        <p class="integration-status disconnected">Not connected</p>
+                                    </div>
+                                    <button class="btn btn-small btn-primary" onclick="connectIntegration('ai')">Connect</button>
+                                </div>
+                                
+                                <!-- Google Voice -->
+                                <div class="integration-item" id="int-voice">
+                                    <div class="integration-icon" style="background: rgba(0,79,89,0.1); color: var(--cs3-teal);">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="integration-info">
+                                        <h4>Google Voice</h4>
+                                        <p class="integration-status disconnected">Not connected</p>
+                                    </div>
+                                    <button class="btn btn-small btn-primary" onclick="connectIntegration('voice')">Connect</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
+    </div>
+
+    <!-- Login Page (shown when not authenticated) -->
+    <div id="loginPage" class="login-page" style="display: none;">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <span class="login-logo">🏢</span>
+                    <h1>CS3 CRM</h1>
+                    <p>Sign in to your account</p>
+                </div>
+                <div class="login-body">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" id="loginEmail" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="loginPassword" placeholder="••••••••">
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="handleLogin()">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                    <div class="login-divider">
+                        <span>or continue with</span>
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%;" onclick="handleGoogleLogin()">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </button>
+                </div>
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="#" onclick="showSignupModal()">Contact Admin</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite Team Member Modal -->
+    <div id="inviteTeamModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Invite Team Member</h3>
+                <button onclick="closeModal('inviteTeamModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-input" id="inviteName" placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-input" id="inviteEmail" placeholder="john@cs3investments.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <select class="form-input" id="inviteRole">
+                        <option value="ir_associate">IR Associate</option>
+                        <option value="ir_manager">IR Manager</option>
+                        <option value="finance">Finance</option>
+                        <option value="operations">Operations</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="sendTeamInvite()">
+                    <i class="fas fa-paper-plane"></i> Send Invitation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button onclick="closeModal('editProfileModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" id="editName" value="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input type="tel" class="form-input" id="editPhone" placeholder="+1 (555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <input type="text" class="form-input" id="editRole" value="" readonly style="background: #f5f5f5;">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="saveProfile()">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Connect Integration Modal -->
+    <div id="connectIntegrationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="connectModalTitle">Connect Integration</h3>
+                <button onclick="closeModal('connectIntegrationModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="connectModalBody">
+                <!-- Dynamic content based on integration type -->
+            </div>
+        </div>
     </div>
 
     <!-- Add Investor Modal -->
