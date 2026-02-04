@@ -2515,6 +2515,157 @@ loadPageData = function(page) {
 document.addEventListener('DOMContentLoaded', loadSavedData);
 
 // ============================================
+// AGENT COMMAND CENTER FUNCTIONS
+// ============================================
+
+const AgentData = {
+    agents: [
+        { id: 'router', name: 'Router Agent', icon: '🧭', status: 'active', actions: 156, description: 'Routes tasks to specialized agents' },
+        { id: 'new-lead', name: 'New Lead Agent', icon: '🌱', status: 'active', actions: 12, description: 'Handles new investor inquiries' },
+        { id: 'outreach', name: 'Outreach Agent', icon: '📢', status: 'active', actions: 28, description: 'Proactive investor outreach' },
+        { id: 'call-prep', name: 'Call Prep Agent', icon: '📋', status: 'active', actions: 8, description: 'Generates pre-call briefs' },
+        { id: 'doc-shepherd', name: 'Doc Shepherd', icon: '📄', status: 'warning', actions: 15, description: 'Manages document collection' },
+        { id: 'funding-closer', name: 'Funding Closer', icon: '💰', status: 'warning', actions: 6, description: 'Closes committed investments' },
+        { id: 'investor-updates', name: 'Investor Updates', icon: '📊', status: 'active', actions: 45, description: 'Sends portfolio updates' },
+        { id: 'daily-report', name: 'Daily Report', icon: '📈', status: 'active', actions: 2, description: 'Generates executive reports' },
+        { id: 'exec-assistant', name: 'Exec Assistant', icon: '👔', status: 'active', actions: 18, description: 'Supports leadership team' },
+        { id: 'prospecting', name: 'Prospecting Agent', icon: '🎯', status: 'active', actions: 22, description: 'Finds new investors' },
+        { id: 'referral', name: 'Referral Agent', icon: '🤝', status: 'active', actions: 9, description: 'Manages referral program' },
+        { id: 'newsletter', name: 'Newsletter Agent', icon: '📰', status: 'active', actions: 4, description: 'Creates newsletters' }
+    ],
+    activityLog: []
+};
+
+function loadAgents() {
+    // Update stats
+    const active = AgentData.agents.filter(a => a.status === 'active').length;
+    const pending = AgentData.agents.filter(a => a.status === 'warning').length;
+    const totalActions = AgentData.agents.reduce((sum, a) => sum + a.actions, 0);
+    
+    document.getElementById('agentsActive').textContent = active;
+    document.getElementById('agentsPending').textContent = pending;
+    document.getElementById('agentsTodayActions').textContent = totalActions;
+}
+
+function triggerAgent(agentId) {
+    const agent = AgentData.agents.find(a => a.id === agentId);
+    if (!agent) return;
+    
+    // Show executing state
+    const card = document.querySelector(`.agent-card[data-agent="${agentId}"]`);
+    if (card) {
+        card.style.boxShadow = '0 0 20px rgba(255,161,0,0.5)';
+        setTimeout(() => card.style.boxShadow = '', 2000);
+    }
+    
+    // Simulate agent execution
+    const actions = {
+        'router': 'Analyzing incoming tasks and routing to appropriate agents...',
+        'new-lead': 'Sending welcome sequences to new leads...',
+        'outreach': 'Identifying dormant investors and initiating re-engagement...',
+        'call-prep': 'Generating pre-call briefs for upcoming meetings...',
+        'doc-shepherd': 'Sending W-9 and accreditation reminders...',
+        'funding-closer': 'Following up with committed but unfunded investors...',
+        'investor-updates': 'Preparing portfolio update emails...',
+        'daily-report': 'Generating executive daily report...',
+        'exec-assistant': 'Checking calendars and preparing materials...',
+        'prospecting': 'Researching potential new investors...',
+        'referral': 'Identifying investors for referral requests...',
+        'newsletter': 'Drafting next newsletter content...'
+    };
+    
+    alert(`${agent.icon} ${agent.name} Triggered!\n\n${actions[agentId]}\n\nThis will execute via the CRM AI backend.`);
+    
+    // Log activity
+    addAgentActivity(agent.icon, `${agent.name} was manually triggered`);
+}
+
+function viewAgentLog(agentId) {
+    const agent = AgentData.agents.find(a => a.id === agentId);
+    if (!agent) return;
+    
+    alert(`${agent.icon} ${agent.name} - Activity Log\n\n• Total actions: ${agent.actions}\n• Status: ${agent.status}\n• Description: ${agent.description}\n\nFull log would show recent executions, success rates, and errors.`);
+}
+
+function configureAgent(agentId) {
+    const agent = AgentData.agents.find(a => a.id === agentId);
+    if (!agent) return;
+    
+    alert(`⚙️ Configure ${agent.name}\n\nSettings:\n• Auto-trigger: ON\n• Schedule: Every 4 hours\n• Notifications: Email + Telegram\n• Max actions per day: 50\n\nFull configuration panel coming soon!`);
+}
+
+function refreshAgentStatus() {
+    alert('🔄 Refreshing all agent statuses...\n\nConnecting to agent backend to get real-time status.');
+    loadAgents();
+}
+
+function runAllAgents() {
+    alert('🚀 Running All Agents!\n\nThis will trigger all 12 agents in sequence:\n\n1. Router analyzes queue\n2. New Lead welcomes inquiries\n3. Outreach contacts dormant investors\n4. Call Prep generates briefs\n5. Doc Shepherd sends reminders\n6. Funding Closer follows up\n7. Investor Updates sends portfolio news\n8. Daily Report generates summary\n9. Exec Assistant prepares materials\n10. Prospecting researches leads\n11. Referral identifies opportunities\n12. Newsletter drafts content\n\nExecuting via CRM AI...');
+}
+
+function executeAgentCommand() {
+    const input = document.getElementById('agentCommand');
+    const command = input.value.trim();
+    
+    if (!command) {
+        alert('Please enter a command');
+        return;
+    }
+    
+    // Route to CRM AI
+    alert(`🤖 Executing Command:\n\n"${command}"\n\nRouting to appropriate agent via CRM AI...`);
+    
+    // Open CRM AI and send command
+    openCrmAiChat();
+    setTimeout(() => {
+        const crmInput = document.getElementById('crmAiInput');
+        if (crmInput) {
+            crmInput.value = command;
+            sendToCrmAi();
+        }
+    }, 500);
+    
+    input.value = '';
+}
+
+function quickAgentCommand(command) {
+    document.getElementById('agentCommand').value = command;
+    executeAgentCommand();
+}
+
+function addAgentActivity(icon, message) {
+    const log = document.getElementById('agentActivityLog');
+    if (!log) return;
+    
+    const entry = document.createElement('div');
+    entry.style.cssText = 'display: flex; gap: 12px; padding: 12px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 8px;';
+    entry.innerHTML = `
+        <span style="font-size: 20px;">${icon}</span>
+        <div style="flex: 1;">
+            <p style="margin: 0; font-weight: 500;">${message}</p>
+            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Just now</p>
+        </div>
+    `;
+    log.insertBefore(entry, log.firstChild);
+}
+
+function loadAgentActivity() {
+    alert('🔄 Loading latest agent activity from backend...');
+}
+
+// Update navigation to include agents page
+const originalLoadPageDataAgents = loadPageData;
+loadPageData = function(page) {
+    if (page === 'agents') {
+        loadAgents();
+    } else if (page === 'referrals') {
+        loadReferrals();
+    } else {
+        originalLoadPageDataAgents(page);
+    }
+};
+
+// ============================================
 // INVESTOR TIER FUNCTIONS
 // ============================================
 

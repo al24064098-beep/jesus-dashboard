@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CS3 CRM | Investor Relations</title>
-    <link rel="stylesheet" href="style.css?v=1770248556">
+    <link rel="stylesheet" href="style.css?v=1770248854">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -83,6 +83,15 @@
                         <i class="fas fa-tasks"></i>
                         <span>Tasks</span>
                         <span class="badge">5</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">AI Agents</div>
+                    <a href="#" class="nav-item" data-page="agents">
+                        <i class="fas fa-robot"></i>
+                        <span>Agent Command Center</span>
+                        <span class="badge success">12</span>
                     </a>
                 </div>
                 
@@ -1650,6 +1659,383 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- AGENT COMMAND CENTER PAGE -->
+                <div id="agents-page" class="page">
+                    <div class="page-header">
+                        <div>
+                            <h1>🤖 Agent Command Center</h1>
+                            <p class="page-subtitle">12 AI Agents working for CS3 Investor Relations</p>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-outline" onclick="refreshAgentStatus()">
+                                <i class="fas fa-sync-alt"></i> Refresh Status
+                            </button>
+                            <button class="btn btn-primary" onclick="runAllAgents()">
+                                <i class="fas fa-play"></i> Run All Agents
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agent Stats -->
+                    <div class="stats-grid" style="margin-bottom: 24px;">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <div class="stat-info" style="color: white;">
+                                <span class="stat-value" id="agentsActive">8</span>
+                                <span class="stat-label" style="color: rgba(255,255,255,0.9);">Active Agents</span>
+                            </div>
+                        </div>
+                        <div class="stat-card" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <div class="stat-info" style="color: white;">
+                                <span class="stat-value" id="agentsPending">3</span>
+                                <span class="stat-label" style="color: rgba(255,255,255,0.9);">Pending Tasks</span>
+                            </div>
+                        </div>
+                        <div class="stat-card" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <div class="stat-info" style="color: white;">
+                                <span class="stat-value" id="agentsTodayActions">47</span>
+                                <span class="stat-label" style="color: rgba(255,255,255,0.9);">Actions Today</span>
+                            </div>
+                        </div>
+                        <div class="stat-card" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                            <div class="stat-info" style="color: white;">
+                                <span class="stat-value" id="agentsAutomated">156</span>
+                                <span class="stat-label" style="color: rgba(255,255,255,0.9);">Automated This Week</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agent Cards Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                        <!-- Agent 0: Router -->
+                        <div class="card agent-card" data-agent="router">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #1C2E47, #2a4166); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🧭</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Router Agent</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Smart Task Routing</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Routes incoming tasks to the right specialized agent automatically.</p>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('router')"><i class="fas fa-play"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('router')"><i class="fas fa-history"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="configureAgent('router')"><i class="fas fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 1: New Lead -->
+                        <div class="card agent-card" data-agent="new-lead">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🌱</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">New Lead Agent</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Welcome & Qualify</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Handles new investor inquiries with personalized welcome sequences.</p>
+                                <div style="font-size: 12px; color: var(--cs3-gold); margin-bottom: 12px;">📊 12 leads processed today</div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('new-lead')"><i class="fas fa-play"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('new-lead')"><i class="fas fa-history"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="configureAgent('new-lead')"><i class="fas fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 2: Outreach -->
+                        <div class="card agent-card" data-agent="outreach">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📢</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Outreach Agent</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Proactive Contact</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Re-engages dormant investors and maintains regular touchpoints.</p>
+                                <div style="font-size: 12px; color: var(--cs3-gold); margin-bottom: 12px;">⚠️ 15 investors need outreach</div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-primary" onclick="triggerAgent('outreach')"><i class="fas fa-play"></i> Run Now</button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('outreach')"><i class="fas fa-history"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 3: Call Prep -->
+                        <div class="card agent-card" data-agent="call-prep">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📋</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Call Prep Agent</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Pre-Call Briefs</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Generates comprehensive pre-call briefs with investor history.</p>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('call-prep')"><i class="fas fa-play"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('call-prep')"><i class="fas fa-history"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="configureAgent('call-prep')"><i class="fas fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 4: Doc Shepherd -->
+                        <div class="card agent-card" data-agent="doc-shepherd">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📄</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Doc Shepherd</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Document Collection</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status warning">🟡 8 Pending</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Manages W-9 and accreditation document collection.</p>
+                                <div style="font-size: 12px; color: #ef4444; margin-bottom: 12px;">🔴 8 W-9s missing</div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-primary" onclick="triggerAgent('doc-shepherd')"><i class="fas fa-paper-plane"></i> Send Reminders</button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('doc-shepherd')"><i class="fas fa-history"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 5: Funding Closer -->
+                        <div class="card agent-card" data-agent="funding-closer">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">💰</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Funding Closer</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Close Commitments</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status warning">🟡 Action Needed</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Follows up with committed investors who haven't funded yet.</p>
+                                <div style="font-size: 12px; color: #ef4444; margin-bottom: 12px;">💵 $1.0M pending funding</div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-primary" onclick="triggerAgent('funding-closer')"><i class="fas fa-play"></i> Follow Up</button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('funding-closer')"><i class="fas fa-history"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 6: Investor Updates -->
+                        <div class="card agent-card" data-agent="investor-updates">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #06b6d4, #0891b2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📊</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Investor Updates</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Portfolio Updates</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Sends personalized portfolio updates and distribution notices.</p>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('investor-updates')"><i class="fas fa-play"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('investor-updates')"><i class="fas fa-history"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="configureAgent('investor-updates')"><i class="fas fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 7: Daily Report -->
+                        <div class="card agent-card" data-agent="daily-report">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #ec4899, #db2777); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📈</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Daily Report</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Executive Summary</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Generates daily executive reports for leadership team.</p>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">📅 Next report: 7:00 AM</div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('daily-report')"><i class="fas fa-file-alt"></i> Generate Now</button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('daily-report')"><i class="fas fa-history"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 8: Exec Assistant -->
+                        <div class="card agent-card" data-agent="exec-assistant">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #1C2E47, #2a4166); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">👔</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Exec Assistant</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Leadership Support</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Supports Carlos and Al with scheduling and preparation.</p>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('exec-assistant')"><i class="fas fa-play"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('exec-assistant')"><i class="fas fa-history"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="configureAgent('exec-assistant')"><i class="fas fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 9: Prospecting -->
+                        <div class="card agent-card" data-agent="prospecting">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #f97316, #ea580c); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🎯</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Prospecting Agent</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Find New Investors</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Identifies and researches potential new investors.</p>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('prospecting')"><i class="fas fa-play"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('prospecting')"><i class="fas fa-history"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="configureAgent('prospecting')"><i class="fas fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 10: Referral -->
+                        <div class="card agent-card" data-agent="referral">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #14b8a6, #0d9488); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🤝</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Referral Agent</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Grow Network</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Manages referral program and tracks warm introductions.</p>
+                                <div style="font-size: 12px; color: var(--cs3-gold); margin-bottom: 12px;">🎁 5 investors ready for referral ask</div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-primary" onclick="triggerAgent('referral')"><i class="fas fa-play"></i> Ask Now</button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('referral')"><i class="fas fa-history"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agent 11: Newsletter -->
+                        <div class="card agent-card" data-agent="newsletter">
+                            <div class="card-body">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                    <div style="display: flex; gap: 12px; align-items: center;">
+                                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #a855f7, #9333ea); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">📰</div>
+                                        <div>
+                                            <h3 style="margin: 0; font-size: 16px;">Newsletter Agent</h3>
+                                            <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">Content Creation</p>
+                                        </div>
+                                    </div>
+                                    <span class="agent-status active">🟢 Active</span>
+                                </div>
+                                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">Creates and distributes investor newsletters.</p>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">📅 Next newsletter: Feb 15</div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn btn-small btn-outline" onclick="triggerAgent('newsletter')"><i class="fas fa-edit"></i> Draft</button>
+                                    <button class="btn btn-small btn-outline" onclick="viewAgentLog('newsletter')"><i class="fas fa-history"></i></button>
+                                    <button class="btn btn-small btn-outline" onclick="configureAgent('newsletter')"><i class="fas fa-cog"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions Panel -->
+                    <div class="card" style="margin-top: 24px; background: linear-gradient(135deg, rgba(28,46,71,0.05), rgba(255,161,0,0.05));">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bolt" style="color: var(--cs3-gold);"></i> Quick Agent Commands</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="margin-bottom: 16px; color: var(--text-secondary);">Type a command or click a quick action:</p>
+                            <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                                <input type="text" id="agentCommand" class="form-input" placeholder="e.g., 'Follow up with all committed investors' or 'Prepare call brief for John Smith'" style="flex: 1;">
+                                <button class="btn btn-primary" onclick="executeAgentCommand()"><i class="fas fa-terminal"></i> Execute</button>
+                            </div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button class="btn btn-small btn-outline" onclick="quickAgentCommand('Prepare call briefs for today')">📋 Today's Call Briefs</button>
+                                <button class="btn btn-small btn-outline" onclick="quickAgentCommand('Follow up pending funding')">💰 Follow Up Funding</button>
+                                <button class="btn btn-small btn-outline" onclick="quickAgentCommand('Send W-9 reminders')">📄 W-9 Reminders</button>
+                                <button class="btn btn-small btn-outline" onclick="quickAgentCommand('Generate daily report')">📈 Daily Report</button>
+                                <button class="btn btn-small btn-outline" onclick="quickAgentCommand('Find dormant investors')">🔍 Find Dormant</button>
+                                <button class="btn btn-small btn-outline" onclick="quickAgentCommand('Ask for referrals')">🤝 Request Referrals</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Agent Activity -->
+                    <div class="card" style="margin-top: 24px;">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Recent Agent Activity</h3>
+                            <button class="btn btn-small btn-outline" onclick="loadAgentActivity()"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <div id="agentActivityLog">
+                                <div style="display: flex; gap: 12px; padding: 12px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 8px;">
+                                    <span style="font-size: 20px;">📋</span>
+                                    <div style="flex: 1;">
+                                        <p style="margin: 0; font-weight: 500;">Call Prep Agent prepared brief for Pacific Trust Fund</p>
+                                        <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">2 minutes ago</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 12px; padding: 12px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 8px;">
+                                    <span style="font-size: 20px;">📄</span>
+                                    <div style="flex: 1;">
+                                        <p style="margin: 0; font-weight: 500;">Doc Shepherd sent W-9 reminder to 3 investors</p>
+                                        <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">15 minutes ago</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 12px; padding: 12px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 8px;">
+                                    <span style="font-size: 20px;">💰</span>
+                                    <div style="flex: 1;">
+                                        <p style="margin: 0; font-weight: 500;">Funding Closer followed up with James Wilson - $150K pending</p>
+                                        <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">1 hour ago</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 12px; padding: 12px; background: var(--bg-primary); border-radius: 8px;">
+                                    <span style="font-size: 20px;">🌱</span>
+                                    <div style="flex: 1;">
+                                        <p style="margin: 0; font-weight: 500;">New Lead Agent welcomed 2 new investors</p>
+                                        <p style="margin: 0; font-size: 12px; color: var(--text-secondary);">3 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -2014,6 +2400,6 @@
         }
     </style>
 
-    <script src="app.js?v=1770248427"></script>
+    <script src="app.js?v=1770248854"></script>
 </body>
 </html>
