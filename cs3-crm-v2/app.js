@@ -1760,7 +1760,7 @@ function openGeminiChat() {
     document.getElementById('geminiModal').style.display = 'flex';
 }
 
-function sendToGemini() {
+async function sendToGemini() {
     const input = document.getElementById('geminiInput');
     const message = input.value.trim();
     
@@ -1777,25 +1777,56 @@ function sendToGemini() {
     
     input.value = '';
     
-    // Simulate AI response (in production, this would call Gemini API)
-    setTimeout(() => {
-        const responses = [
-            "Based on your investor data, I recommend focusing on the 15 investors who haven't been contacted in 60+ days. Would you like me to draft a re-engagement email template?",
-            "Looking at your pipeline, you have $2.1M in committed capital that hasn't been funded yet. I suggest prioritizing follow-ups with those investors.",
-            "Your current capital raise is at 68% of goal. Based on historical patterns, you might want to increase outreach to your referral network.",
-            "I've analyzed the sentiment from recent calls - 94% positive. Great work! The most common topics discussed were distribution timing and new opportunities."
-        ];
+    // Show loading indicator
+    const loadingId = 'loading-' + Date.now();
+    chatHistory.innerHTML += `
+        <div id="${loadingId}" style="background: #f0f4f8; padding: 16px; border-radius: 12px; margin-bottom: 12px;">
+            <p>🤖 <em>Thinking...</em></p>
+        </div>
+    `;
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+    
+    try {
+        // Call REAL Gemini API via Worker
+        const response = await fetch('https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev/gemini', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
         
-        const response = responses[Math.floor(Math.random() * responses.length)];
+        const data = await response.json();
         
+        // Remove loading indicator
+        document.getElementById(loadingId)?.remove();
+        
+        if (data.success && data.response) {
+            // Format the response (convert markdown-style formatting)
+            const formattedResponse = data.response
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+            
+            chatHistory.innerHTML += `
+                <div class="ai-message" style="background: linear-gradient(135deg, #f0f4f8, #e8f4f8); padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #4285f4;">
+                    <div style="font-size: 11px; color: #4285f4; margin-bottom: 8px; font-weight: 500;">✨ Gemini 1.5 Flash</div>
+                    <p style="margin: 0; line-height: 1.6;">${formattedResponse}</p>
+                </div>
+            `;
+        } else {
+            chatHistory.innerHTML += `
+                <div class="ai-message" style="background: #fef2f2; padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #ef4444;">
+                    <p>❌ Error: ${data.error || 'Failed to get response'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        document.getElementById(loadingId)?.remove();
         chatHistory.innerHTML += `
-            <div class="ai-message" style="background: #f0f4f8; padding: 16px; border-radius: 12px; margin-bottom: 12px;">
-                <p>🤖 ${response}</p>
+            <div class="ai-message" style="background: #fef2f2; padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #ef4444;">
+                <p>❌ Connection error: ${error.message}</p>
             </div>
         `;
-        
-        chatHistory.scrollTop = chatHistory.scrollHeight;
-    }, 1000);
+    }
     
     chatHistory.scrollTop = chatHistory.scrollHeight;
 }
