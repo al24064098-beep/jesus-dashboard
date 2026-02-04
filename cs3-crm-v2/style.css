@@ -1099,6 +1099,170 @@ body {
     color: #b45309;
 }
 
+/* Funnel Chart */
+.funnel-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.funnel-stage {
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+}
+
+.funnel-label { font-size: 14px; }
+.funnel-value { font-size: 18px; font-weight: 700; }
+
+/* Activity Chart */
+.activity-chart {
+    padding: 20px 0;
+}
+
+.chart-bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 150px;
+    gap: 8px;
+}
+
+.chart-bar-v {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.chart-bar-v .bar-fill {
+    width: 100%;
+    height: 100%;
+    background: var(--cs3-teal);
+    border-radius: 6px 6px 0 0;
+    transition: all 0.3s ease;
+}
+
+.chart-bar-v.active .bar-fill {
+    background: var(--cs3-gold);
+}
+
+.chart-bar-v span {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+/* Health Distribution */
+.health-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.health-bar-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 80px;
+    gap: 12px;
+    align-items: center;
+}
+
+.health-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.health-count {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+}
+
+/* Task Item */
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--cs3-teal);
+    transition: var(--transition);
+}
+
+.task-item:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.task-item.overdue {
+    border-left-color: var(--danger);
+    background: rgba(239,68,68,0.05);
+}
+
+.task-item.completed {
+    border-left-color: var(--success);
+    opacity: 0.7;
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+}
+
+.task-checkbox {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.task-content {
+    flex: 1;
+}
+
+.task-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.task-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Communication Item */
+.comm-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.comm-type-badge.call { background: rgba(0,79,89,0.1); color: var(--cs3-teal); }
+.comm-type-badge.email { background: rgba(188,164,96,0.15); color: var(--cs3-gold-dark); }
+.comm-type-badge.meeting { background: rgba(48,69,91,0.1); color: var(--cs3-navy); }
+
+/* Textarea */
+textarea.form-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .sidebar {

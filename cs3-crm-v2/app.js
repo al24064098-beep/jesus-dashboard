@@ -261,6 +261,18 @@ function loadPageData(page) {
         case 'compliance':
             loadCompliancePage();
             break;
+        case 'communications':
+            loadCommunications();
+            break;
+        case 'distributions':
+            loadDistributions();
+            break;
+        case 'reports':
+            loadReports();
+            break;
+        case 'tasks':
+            loadTasks();
+            break;
     }
 }
 
@@ -1291,4 +1303,451 @@ function viewAccred(id) {
     if (item) {
         alert(`Accreditation for ${item.name}\nMethod: ${item.method}\nVerified: ${item.verifiedDate}\nExpires: ${item.expiryDate}`);
     }
+}
+
+// ============================================
+// COMMUNICATIONS DATA & FUNCTIONS
+// ============================================
+
+const communicationsData = [
+    { id: 1, date: '2026-02-04 14:30', type: 'call', investor: 'Pacific Trust Fund', subject: 'Q4 Distribution follow-up', duration: 23, sentiment: 'positive', followup: '2026-02-11' },
+    { id: 2, date: '2026-02-04 11:00', type: 'email', investor: 'Chen Family Office', subject: 'Winding Springs Investment Update', duration: null, sentiment: 'positive', followup: null },
+    { id: 3, date: '2026-02-03 16:45', type: 'call', investor: 'Smith Holdings LLC', subject: 'New opportunity discussion', duration: 45, sentiment: 'positive', followup: '2026-02-10' },
+    { id: 4, date: '2026-02-03 10:00', type: 'meeting', investor: 'Johnson Capital', subject: 'Portfolio review meeting', duration: 60, sentiment: 'neutral', followup: '2026-02-17' },
+    { id: 5, date: '2026-02-02 15:30', type: 'call', investor: 'Williams Group', subject: 'Accreditation renewal', duration: 12, sentiment: 'positive', followup: null },
+    { id: 6, date: '2026-02-02 09:00', type: 'email', investor: 'Robert Chen', subject: 'Welcome to CS3!', duration: null, sentiment: 'positive', followup: '2026-02-09' },
+    { id: 7, date: '2026-02-01 14:00', type: 'call', investor: 'Maria Garcia', subject: 'SDIRA funding questions', duration: 18, sentiment: 'neutral', followup: '2026-02-08' },
+    { id: 8, date: '2026-02-01 11:30', type: 'email', investor: 'David Kim', subject: 'Solo 401k documentation', duration: null, sentiment: 'positive', followup: null }
+];
+
+function loadCommunications(filter = 'all') {
+    const container = document.getElementById('communicationsList');
+    if (!container) return;
+    
+    let data = communicationsData;
+    if (filter !== 'all') {
+        data = data.filter(c => c.type === filter);
+    }
+    
+    const typeBadges = {
+        'call': '<span class="comm-type-badge call">📞 Call</span>',
+        'email': '<span class="comm-type-badge email">📧 Email</span>',
+        'meeting': '<span class="comm-type-badge meeting">🎥 Meeting</span>'
+    };
+    
+    const sentimentIcons = {
+        'positive': '😊',
+        'neutral': '😐',
+        'negative': '😟'
+    };
+    
+    container.innerHTML = data.map(comm => `
+        <tr>
+            <td>${comm.date}</td>
+            <td>${typeBadges[comm.type]}</td>
+            <td><strong>${comm.investor}</strong></td>
+            <td>${comm.subject}</td>
+            <td>${comm.duration ? comm.duration + ' min' : '-'}</td>
+            <td>${sentimentIcons[comm.sentiment]} ${comm.sentiment}</td>
+            <td>${comm.followup || '-'}</td>
+            <td>
+                <button class="btn btn-small btn-outline" onclick="viewCommunication(${comm.id})">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function showCommTab(tab) {
+    document.querySelectorAll('.comm-tab').forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline');
+    });
+    document.querySelector(`.comm-tab[data-tab="${tab}"]`).classList.remove('btn-outline');
+    document.querySelector(`.comm-tab[data-tab="${tab}"]`).classList.add('btn-primary');
+    
+    const filter = tab === 'calls' ? 'call' : tab === 'emails' ? 'email' : tab === 'meetings' ? 'meeting' : 'all';
+    loadCommunications(filter);
+}
+
+function showLogCallModal() {
+    populateInvestorDropdowns();
+    document.getElementById('logCallModal').style.display = 'flex';
+}
+
+function showComposeEmailModal() {
+    populateInvestorDropdowns();
+    document.getElementById('composeEmailModal').style.display = 'flex';
+}
+
+function saveCall() {
+    const investor = document.getElementById('callInvestor').value;
+    const type = document.getElementById('callType').value;
+    const duration = document.getElementById('callDuration').value;
+    const summary = document.getElementById('callSummary').value;
+    const sentiment = document.getElementById('callSentiment').value;
+    const followup = document.getElementById('callFollowup').value;
+    
+    if (!investor) {
+        alert('Please select an investor');
+        return;
+    }
+    
+    const newCall = {
+        id: communicationsData.length + 1,
+        date: new Date().toISOString().slice(0, 16).replace('T', ' '),
+        type: 'call',
+        investor: investor,
+        subject: type + ' call',
+        duration: parseInt(duration),
+        sentiment: sentiment,
+        followup: followup || null
+    };
+    
+    communicationsData.unshift(newCall);
+    closeModal('logCallModal');
+    loadCommunications();
+    alert('Call logged successfully!');
+}
+
+function sendEmail() {
+    const to = document.getElementById('emailTo').value;
+    const subject = document.getElementById('emailSubject').value;
+    const body = document.getElementById('emailBody').value;
+    
+    if (!to || !subject || !body) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    const newEmail = {
+        id: communicationsData.length + 1,
+        date: new Date().toISOString().slice(0, 16).replace('T', ' '),
+        type: 'email',
+        investor: to,
+        subject: subject,
+        duration: null,
+        sentiment: 'positive',
+        followup: null
+    };
+    
+    communicationsData.unshift(newEmail);
+    closeModal('composeEmailModal');
+    loadCommunications();
+    alert('Email sent successfully!');
+}
+
+function viewCommunication(id) {
+    const comm = communicationsData.find(c => c.id === id);
+    if (comm) {
+        alert(`${comm.type.toUpperCase()}: ${comm.investor}\n\nDate: ${comm.date}\nSubject: ${comm.subject}\nDuration: ${comm.duration || 'N/A'}\nSentiment: ${comm.sentiment}\nFollow-up: ${comm.followup || 'None'}`);
+    }
+}
+
+function filterCommunications() {
+    // Implement search and filter
+    loadCommunications();
+}
+
+// ============================================
+// DISTRIBUTIONS DATA & FUNCTIONS
+// ============================================
+
+const distributionsData = [
+    { id: 1, period: 'Q4 2025', property: 'mckenzie', propertyName: 'McKenzie STL', amount: 892450, investors: 187, date: '2026-01-15', coc: 8.1, status: 'complete' },
+    { id: 2, period: 'Q4 2025', property: 'legacy', propertyName: 'Legacy Townhomes', amount: 654230, investors: 142, date: '2026-01-15', coc: 7.5, status: 'complete' },
+    { id: 3, period: 'Q4 2025', property: 'reserve', propertyName: 'The Reserve', amount: 723890, investors: 156, date: '2026-01-15', coc: 7.8, status: 'complete' },
+    { id: 4, period: 'Q4 2025', property: 'winding-springs', propertyName: 'Winding Springs', amount: 529430, investors: 138, date: '2026-01-15', coc: 6.9, status: 'complete' },
+    { id: 5, period: 'Q3 2025', property: 'mckenzie', propertyName: 'McKenzie STL', amount: 856320, investors: 185, date: '2025-10-15', coc: 7.9, status: 'complete' },
+    { id: 6, period: 'Q3 2025', property: 'legacy', propertyName: 'Legacy Townhomes', amount: 621450, investors: 140, date: '2025-10-15', coc: 7.3, status: 'complete' }
+];
+
+function loadDistributions(propertyFilter = 'all') {
+    const container = document.getElementById('distributionsList');
+    if (!container) return;
+    
+    let data = distributionsData;
+    if (propertyFilter !== 'all') {
+        data = data.filter(d => d.property === propertyFilter);
+    }
+    
+    container.innerHTML = data.map(dist => `
+        <tr>
+            <td>${dist.period}</td>
+            <td>${dist.propertyName}</td>
+            <td><strong>${formatCurrency(dist.amount)}</strong></td>
+            <td>${dist.investors}</td>
+            <td>${dist.date}</td>
+            <td>${dist.coc}%</td>
+            <td><span class="status-badge active">✅ Complete</span></td>
+            <td>
+                <button class="btn btn-small btn-outline" onclick="viewDistribution(${dist.id})">
+                    <i class="fas fa-eye"></i> View
+                </button>
+            </td>
+        </tr>
+    `).join('');
+    
+    // Load property performance cards
+    loadPropertyDistributions();
+}
+
+function loadPropertyDistributions() {
+    const container = document.getElementById('propertyDistributions');
+    if (!container) return;
+    
+    const properties = ['mckenzie', 'legacy', 'reserve', 'winding-springs'];
+    const totals = {};
+    
+    properties.forEach(prop => {
+        const propDists = distributionsData.filter(d => d.property === prop);
+        totals[prop] = propDists.reduce((sum, d) => sum + d.amount, 0);
+    });
+    
+    const maxTotal = Math.max(...Object.values(totals));
+    
+    container.innerHTML = CS3Data.properties.filter(p => ['mckenzie', 'legacy', 'reserve', 'winding-springs'].includes(p.id)).map(prop => `
+        <div class="card" style="padding: 20px;">
+            <h4 style="margin-bottom: 12px;">${prop.name}</h4>
+            <div style="font-size: 28px; font-weight: 700; color: var(--cs3-teal); margin-bottom: 4px;">${formatCurrency(totals[prop.id] || 0)}</div>
+            <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">${prop.coC}% CoC</div>
+            <div class="chart-bar-h">
+                <div class="chart-fill-h success" style="width: ${((totals[prop.id] || 0) / maxTotal * 100)}%;"></div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function filterDistributions() {
+    const filter = document.getElementById('distPropertyFilter').value;
+    loadDistributions(filter);
+}
+
+function viewDistribution(id) {
+    const dist = distributionsData.find(d => d.id === id);
+    if (dist) {
+        alert(`Distribution: ${dist.period} - ${dist.propertyName}\n\nAmount: ${formatCurrency(dist.amount)}\nInvestors: ${dist.investors}\nCoC: ${dist.coc}%\nProcessed: ${dist.date}`);
+    }
+}
+
+function showProcessDistributionModal() {
+    alert('Distribution processing coming soon!');
+}
+
+// ============================================
+// TASKS DATA & FUNCTIONS
+// ============================================
+
+const tasksData = [
+    { id: 1, title: 'Follow up with Pacific Trust Fund', investor: 'Pacific Trust Fund', type: 'call', priority: 'high', dueDate: '2026-02-04', status: 'pending', notes: 'Discuss Q1 investment plans' },
+    { id: 2, title: 'Send Winding Springs update to Chen Family', investor: 'Chen Family Office', type: 'email', priority: 'medium', dueDate: '2026-02-05', status: 'pending', notes: '' },
+    { id: 3, title: 'Review Smith Holdings subscription docs', investor: 'Smith Holdings LLC', type: 'document', priority: 'high', dueDate: '2026-02-03', status: 'overdue', notes: 'Check entity structure' },
+    { id: 4, title: 'Schedule meeting with Johnson Capital', investor: 'Johnson Capital', type: 'meeting', priority: 'medium', dueDate: '2026-02-06', status: 'pending', notes: '' },
+    { id: 5, title: 'Collect W-9 from Robert Chen', investor: 'Robert Chen', type: 'document', priority: 'high', dueDate: '2026-02-02', status: 'overdue', notes: 'Sent 2 reminders already' },
+    { id: 6, title: 'Send welcome email to Maria Garcia', investor: 'Maria Garcia', type: 'email', priority: 'low', dueDate: '2026-02-04', status: 'completed', notes: '' },
+    { id: 7, title: 'Prepare pre-call brief for Williams Group', investor: 'Williams Group', type: 'other', priority: 'medium', dueDate: '2026-02-07', status: 'pending', notes: '' },
+    { id: 8, title: 'Process Lisa Thompson accreditation renewal', investor: 'Lisa Thompson', type: 'document', priority: 'high', dueDate: '2026-02-03', status: 'overdue', notes: 'Expiring in 2 weeks' }
+];
+
+function loadTasks(filter = 'all') {
+    const container = document.getElementById('tasksList');
+    if (!container) return;
+    
+    const today = new Date().toISOString().split('T')[0];
+    const weekFromNow = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    
+    let data = tasksData;
+    
+    switch(filter) {
+        case 'overdue':
+            data = data.filter(t => t.status === 'overdue' || (t.status === 'pending' && t.dueDate < today));
+            break;
+        case 'today':
+            data = data.filter(t => t.dueDate === today && t.status !== 'completed');
+            break;
+        case 'week':
+            data = data.filter(t => t.dueDate <= weekFromNow && t.status !== 'completed');
+            break;
+        case 'completed':
+            data = data.filter(t => t.status === 'completed');
+            break;
+    }
+    
+    const typeIcons = {
+        'call': '📞',
+        'email': '📧',
+        'meeting': '🎥',
+        'document': '📄',
+        'other': '📌'
+    };
+    
+    const priorityColors = {
+        'high': 'var(--danger)',
+        'medium': 'var(--warning)',
+        'low': 'var(--success)'
+    };
+    
+    container.innerHTML = data.length === 0 ? '<p style="color: var(--text-secondary); text-align: center; padding: 40px;">No tasks found</p>' : data.map(task => {
+        const isOverdue = task.status === 'overdue' || (task.status === 'pending' && task.dueDate < today);
+        const isCompleted = task.status === 'completed';
+        
+        return `
+            <div class="task-item ${isOverdue ? 'overdue' : ''} ${isCompleted ? 'completed' : ''}">
+                <input type="checkbox" class="task-checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleTask(${task.id})">
+                <div class="task-content">
+                    <div class="task-title">${task.title}</div>
+                    <div class="task-meta">
+                        <span>${typeIcons[task.type]} ${task.type}</span>
+                        <span style="color: ${priorityColors[task.priority]};">● ${task.priority}</span>
+                        <span>📅 ${task.dueDate}</span>
+                        ${task.investor ? `<span>👤 ${task.investor}</span>` : ''}
+                    </div>
+                </div>
+                <div class="task-actions">
+                    <button class="btn btn-small btn-outline" onclick="editTask(${task.id})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-small btn-outline" onclick="deleteTask(${task.id})" style="color: var(--danger);">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    // Update stats
+    updateTaskStats();
+}
+
+function updateTaskStats() {
+    const today = new Date().toISOString().split('T')[0];
+    const weekFromNow = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    
+    const overdue = tasksData.filter(t => t.status === 'overdue' || (t.status === 'pending' && t.dueDate < today)).length;
+    const dueToday = tasksData.filter(t => t.dueDate === today && t.status !== 'completed').length;
+    const dueWeek = tasksData.filter(t => t.dueDate <= weekFromNow && t.status !== 'completed').length;
+    const completed = tasksData.filter(t => t.status === 'completed').length;
+    
+    document.getElementById('taskOverdue').textContent = overdue;
+    document.getElementById('taskToday').textContent = dueToday;
+    document.getElementById('taskWeek').textContent = dueWeek;
+    document.getElementById('taskCompleted').textContent = completed;
+}
+
+function filterTasks(filter) {
+    document.querySelectorAll('.task-filter').forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline');
+    });
+    document.querySelector(`.task-filter[data-filter="${filter}"]`).classList.remove('btn-outline');
+    document.querySelector(`.task-filter[data-filter="${filter}"]`).classList.add('btn-primary');
+    
+    loadTasks(filter);
+}
+
+function showAddTaskModal() {
+    populateInvestorDropdowns();
+    document.getElementById('taskDueDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('addTaskModal').style.display = 'flex';
+}
+
+function saveTask() {
+    const title = document.getElementById('taskTitle').value;
+    const investor = document.getElementById('taskInvestor').value;
+    const type = document.getElementById('taskType').value;
+    const priority = document.getElementById('taskPriority').value;
+    const dueDate = document.getElementById('taskDueDate').value;
+    const notes = document.getElementById('taskNotes').value;
+    
+    if (!title || !dueDate) {
+        alert('Please fill in required fields');
+        return;
+    }
+    
+    const newTask = {
+        id: tasksData.length + 1,
+        title: title,
+        investor: investor || null,
+        type: type,
+        priority: priority,
+        dueDate: dueDate,
+        status: 'pending',
+        notes: notes
+    };
+    
+    tasksData.unshift(newTask);
+    closeModal('addTaskModal');
+    loadTasks();
+    alert('Task added!');
+}
+
+function toggleTask(id) {
+    const task = tasksData.find(t => t.id === id);
+    if (task) {
+        task.status = task.status === 'completed' ? 'pending' : 'completed';
+        loadTasks();
+    }
+}
+
+function editTask(id) {
+    alert('Edit task coming soon!');
+}
+
+function deleteTask(id) {
+    if (confirm('Delete this task?')) {
+        const index = tasksData.findIndex(t => t.id === id);
+        if (index > -1) {
+            tasksData.splice(index, 1);
+            loadTasks();
+        }
+    }
+}
+
+// ============================================
+// REPORTS FUNCTIONS
+// ============================================
+
+function loadReports() {
+    loadTopInvestors();
+}
+
+function loadTopInvestors() {
+    const container = document.getElementById('topInvestorsList');
+    if (!container) return;
+    
+    const sorted = [...CS3Data.investors].sort((a, b) => b.totalInvested - a.totalInvested).slice(0, 5);
+    const medals = ['🥇', '🥈', '🥉', '4', '5'];
+    
+    container.innerHTML = sorted.map((inv, i) => `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 20px; width: 30px; text-align: center;">${medals[i]}</span>
+                <span style="font-weight: 500;">${inv.name}</span>
+            </div>
+            <span style="font-weight: 700; color: var(--cs3-teal);">${formatCurrency(inv.totalInvested)}</span>
+        </div>
+    `).join('');
+}
+
+function exportReport() {
+    alert('Report export coming soon!');
+}
+
+// ============================================
+// HELPER: Populate Investor Dropdowns
+// ============================================
+
+function populateInvestorDropdowns() {
+    const dropdowns = ['callInvestor', 'emailTo', 'taskInvestor'];
+    
+    dropdowns.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            const firstOption = el.options[0].outerHTML;
+            el.innerHTML = firstOption + CS3Data.investors.map(inv => 
+                `<option value="${inv.name}">${inv.name}</option>`
+            ).join('');
+        }
+    });
 }
