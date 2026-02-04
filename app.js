@@ -3224,26 +3224,70 @@ function showToast(message) {
 
 // ========== MISSING FUNCTIONS - ADDED FOR V3 ==========
 
-// Devotion recipient switching
+// Devotion recipient switching - UNIQUE content for each person
 window.showRecipient = function(name) {
     // Update active button
     document.querySelectorAll('.recipient-tab').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    if (event && event.target) event.target.classList.add('active');
     
-    // Update email preview
-    const recipients = {
-        carlos: { name: 'Carlos', greeting: 'Good morning Carlos! ☀️', closing: 'Let\'s make today count, Carlos!' },
-        brandon: { name: 'Brandon', greeting: 'Good morning Brandon! 🌟', closing: 'Go be great today, Brandon!' },
-        grace: { name: 'Grace', greeting: 'Good morning Grace! 💫', closing: 'Shine bright today, Grace!' },
-        al: { name: 'Al', greeting: 'Good morning Al! ⚡', closing: 'Lead with purpose today, Al!' }
+    // Unique devotions for each person
+    const devotions = {
+        carlos: {
+            name: 'Carlos',
+            greeting: 'Good morning Carlos! ☀️',
+            encouragement: 'I hope this message finds you ready to embrace another incredible day. Your dedication to the team and your unwavering faith continue to inspire everyone around you. Today is a fresh opportunity to walk in purpose and make a difference.',
+            scripture: '"Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."',
+            ref: '— Proverbs 3:5-6 (KJV)',
+            reflection: 'Today\'s verse reminds us that true wisdom comes from surrendering our plans to God\'s perfect guidance. When we face decisions—whether in business, relationships, or personal growth—we\'re called to acknowledge Him first.',
+            closing: '🔥 Let\'s make today count, Carlos! Go out there and be the light in every room you enter. You have what it takes to lead with excellence and integrity. I\'m praying for breakthroughs in your work today!'
+        },
+        brandon: {
+            name: 'Brandon',
+            greeting: 'Good morning Brandon! 🌟',
+            encouragement: 'Rise and shine! Your commitment to growth and excellence is truly remarkable. Every day you show up with integrity and heart. Today holds new opportunities to serve others and build something meaningful.',
+            scripture: '"For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future."',
+            ref: '— Jeremiah 29:11 (NIV)',
+            reflection: 'God has already prepared the path before you. Even when circumstances seem uncertain, His plans for your life are good. Trust that every step—even the challenging ones—is leading somewhere purposeful.',
+            closing: '💪 Brandon, you\'re built for this! Keep pushing forward with faith and courage. God\'s got amazing things in store for you. Make today unforgettable!'
+        },
+        grace: {
+            name: 'Grace',
+            greeting: 'Good morning Grace! 💫',
+            encouragement: 'What a blessing it is to start another day! Your kindness and compassion touch so many lives. You carry God\'s light wherever you go, and that makes all the difference.',
+            scripture: '"She is clothed with strength and dignity; she can laugh at the days to come. She speaks with wisdom, and faithful instruction is on her tongue."',
+            ref: '— Proverbs 31:25-26 (NIV)',
+            reflection: 'You embody strength and grace in everything you do. This verse celebrates the woman who leads with wisdom and walks confidently in her calling. That\'s who you are—equipped and empowered for great things.',
+            closing: '✨ Grace, shine bright today! Your presence is a gift to everyone around you. Walk in confidence knowing you are loved and purposed. Praying for joy and peace over your day!'
+        },
+        al: {
+            name: 'Al',
+            greeting: 'Good morning Al! ⚡',
+            encouragement: 'Leader, visionary, steward—today is yours to shape. Your faithfulness in stewarding what God has entrusted to you continues to multiply blessings for many. Keep building with purpose.',
+            scripture: '"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters, since you know that you will receive an inheritance from the Lord as a reward."',
+            ref: '— Colossians 3:23-24 (NIV)',
+            reflection: 'Every deal, every conversation, every decision is an act of worship when done unto the Lord. Your work has eternal significance. The excellence you pursue honors God and blesses countless families.',
+            closing: '🔥 Al, lead boldly today! You\'re building a legacy that glorifies God and serves others. I\'m with you every step. Let\'s make today extraordinary!'
+        }
     };
     
-    const r = recipients[name] || recipients.carlos;
+    const d = devotions[name] || devotions.carlos;
+    
+    // Update all elements
     const toEl = document.getElementById('emailTo');
     const greetingEl = document.getElementById('emailGreeting');
+    const encouragementEl = document.getElementById('emailEncouragement');
+    const scriptureEl = document.querySelector('.email-scripture');
+    const refEl = document.querySelector('.email-ref');
+    const reflectionEl = document.querySelector('.email-reflection p');
+    const closingEl = document.getElementById('emailClosing');
     
-    if (toEl) toEl.textContent = 'To: ' + r.name;
-    if (greetingEl) greetingEl.textContent = r.greeting;
+    if (toEl) toEl.textContent = 'To: ' + d.name;
+    if (greetingEl) greetingEl.textContent = d.greeting;
+    if (encouragementEl) encouragementEl.textContent = d.encouragement;
+    if (scriptureEl) scriptureEl.textContent = d.scripture;
+    if (refEl) refEl.textContent = d.ref;
+    if (reflectionEl) reflectionEl.textContent = d.reflection;
+    if (closingEl) closingEl.textContent = d.closing;
 };
 
 // Devotion modal functions
