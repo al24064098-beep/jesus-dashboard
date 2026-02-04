@@ -716,7 +716,8 @@ Simple. Clean. At-a-glance.
     <div class="toast" id="toast">Sent!</div>
 
     <script>
-        const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+        const WORKER_URL = 'https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev';
+        const CHAT_URL = WORKER_URL + '/chat';
 
         // Clock
         function updateClock() {
@@ -746,11 +747,10 @@ Simple. Clean. At-a-glance.
         // Load chat messages from worker
         async function loadChatMessages() {
             try {
-                const res = await fetch(WORKER_URL);
+                const res = await fetch(CHAT_URL);
                 const data = await res.json();
                 
-                // Get chat messages from worker data
-                const chatData = data.chat || [];
+                const chatData = data.messages || [];
                 const container = document.getElementById('chatMessages');
                 
                 if (chatData.length === 0) {
@@ -781,30 +781,12 @@ Simple. Clean. At-a-glance.
             if (!text) return;
             
             try {
-                // Get current chat data
-                const res = await fetch(WORKER_URL);
-                const data = await res.json();
-                const chatData = data.chat || [];
-                
-                // Add new message
-                chatData.push({
-                    id: Date.now(),
-                    from: 'al',
-                    text: text,
-                    time: new Date().toISOString()
-                });
-                
-                // Keep last 50 messages
-                const trimmed = chatData.slice(-50);
-                
-                // Save back to worker
-                await fetch(WORKER_URL, {
+                await fetch(CHAT_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        ...data,
-                        chat: trimmed,
-                        lastUpdated: new Date().toISOString()
+                        from: 'al',
+                        text: text
                     })
                 });
                 
