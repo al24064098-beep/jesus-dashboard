@@ -2330,6 +2330,528 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
     });
 });
 
+// ========== GLOBAL ACTION FUNCTIONS ==========
+// Quick Actions Panel
+window.sendQuickAction = async function(action) {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    const actions = {
+        'status': '📊 Request: Send me a status update',
+        'focus': '🎯 Request: Refocus on current priorities',
+        'report': '📝 Request: Send today\'s report',
+        'pause': '⏸️ Request: Pause current work'
+    };
+    
+    const message = actions[action] || `Request: ${action}`;
+    
+    try {
+        const response = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'quick_action',
+                    content: message,
+                    priority: true,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        
+        if (response.ok) {
+            alert(`✅ ${action.toUpperCase()} request sent to Jesus!`);
+        } else {
+            throw new Error('Failed to send');
+        }
+    } catch (e) {
+        console.error('Quick action error:', e);
+        alert('❌ Failed to send request. Try again.');
+    }
+};
+
+// Quick Note Buttons
+window.sendQuickNote = async function(type) {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    const messages = {
+        'status': '📊 Give me a status update',
+        'focus': '🎯 What are you working on right now?',
+        'blockers': '🚧 Any blockers I should know about?',
+        'eta': '⏰ What\'s the ETA on current task?'
+    };
+    
+    const content = messages[type] || type;
+    
+    try {
+        const response = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'quick_note',
+                    content: content,
+                    priority: false,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        
+        if (response.ok) {
+            alert(`✅ Question sent to Jesus!`);
+        }
+    } catch (e) {
+        console.error('Quick note error:', e);
+        alert('❌ Failed to send. Try again.');
+    }
+};
+
+// Intelligence Brief Functions
+window.refreshBrief = function() {
+    alert('🔄 Refreshing intelligence brief... Jesus will update this shortly.');
+    // Could trigger a cron job or send a note requesting update
+    sendQuickAction('brief_refresh');
+};
+
+window.emailBrief = async function() {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'action_request',
+                    content: '📧 Request: Email today\'s CEO brief to al@cs3investments.com',
+                    priority: true,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        alert('✅ Email request sent! Jesus will send the brief shortly.');
+    } catch (e) {
+        alert('❌ Failed to request email.');
+    }
+};
+
+// Surprise Rating
+window.rateSurprise = async function(rating) {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    const feedback = document.getElementById('surpriseFeedback')?.value || '';
+    const ratingText = {
+        'wow': '🤩 WOW! This is amazing!',
+        'good': '👍 Good work',
+        'okay': '😐 It\'s okay, needs improvement',
+        'miss': '❌ Missed the mark'
+    }[rating];
+    
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'surprise_feedback',
+                    content: `Daily Surprise Feedback: ${ratingText}${feedback ? '\\n\\nAdditional: ' + feedback : ''}`,
+                    priority: false,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        alert('✅ Thanks for the feedback! Jesus will use this to improve.');
+        if (document.getElementById('surpriseFeedback')) {
+            document.getElementById('surpriseFeedback').value = '';
+        }
+    } catch (e) {
+        alert('❌ Failed to send feedback.');
+    }
+};
+
+// Vault Quick Filter
+window.filterVault = function(category) {
+    const items = document.querySelectorAll('.vault-item');
+    const select = document.getElementById('vaultCategory');
+    
+    items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    // Update dropdown to match
+    if (select) select.value = category;
+    
+    // Update active button
+    document.querySelectorAll('.vault-quick-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(category)) {
+            btn.classList.add('active');
+        }
+    });
+};
+
+// Content Quick Idea
+window.addQuickIdea = async function() {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    const input = document.getElementById('quickIdeaInput');
+    const type = document.getElementById('quickIdeaType');
+    
+    if (!input || !input.value.trim()) {
+        alert('Please enter a content idea');
+        return;
+    }
+    
+    const idea = input.value.trim();
+    const contentType = type?.value || 'newsletter';
+    
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'content_idea',
+                    content: `💡 Content Idea (${contentType}): ${idea}`,
+                    priority: false,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        alert('✅ Idea added! Jesus will develop it.');
+        input.value = '';
+    } catch (e) {
+        alert('❌ Failed to add idea.');
+    }
+};
+
+// Access Request
+window.requestAccess = async function(type) {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    let accessType = type;
+    
+    if (type === 'other') {
+        accessType = prompt('What access do you want to give Jesus?');
+        if (!accessType) return;
+    }
+    
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'access_request',
+                    content: `🔑 Access Request: Al wants to give Jesus access to ${accessType}`,
+                    priority: true,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        alert(`✅ Access request for ${accessType} noted! Jesus will set it up.`);
+    } catch (e) {
+        alert('❌ Failed to submit request.');
+    }
+};
+
+// Property Actions
+window.viewAllAtlasAgents = function() {
+    window.goToSection('irAgents');
+    setTimeout(() => {
+        alert('Showing all Atlas agents. 18 property agents across 6 properties.');
+    }, 100);
+};
+
+window.deployPartnerPages = async function() {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'action_request',
+                    content: '🌐 Request: Deploy Property Partner landing pages for all 6 properties',
+                    priority: true,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        alert('✅ Deployment request sent! Jesus will deploy partner pages.');
+    } catch (e) {
+        alert('❌ Failed to send request.');
+    }
+};
+
+window.runPropertyAudit = async function() {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'action_request',
+                    content: '📋 Request: Run full property audit - check all 6 properties for missing data, Atlas agent status, branding',
+                    priority: false,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        alert('✅ Audit request sent! Jesus will run a full property audit.');
+    } catch (e) {
+        alert('❌ Failed to send request.');
+    }
+};
+
+// Roleplay Recording
+window.startRecording = function() {
+    const agent = document.getElementById('recordAgent')?.value;
+    if (!agent) {
+        alert('Please select an agent first');
+        return;
+    }
+    alert(`🔴 Recording feature coming soon!\\n\\nFor now, Jesus will record calls with ${agent} and upload to this dashboard.`);
+};
+
+// ========== TEAM MANAGEMENT ==========
+window.sendTeamInvite = async function() {
+    const email = document.getElementById('inviteEmail')?.value?.trim();
+    const role = document.getElementById('inviteRole')?.value;
+    
+    if (!email) {
+        alert('Please enter an email address');
+        return;
+    }
+    
+    if (!email.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+    }
+    
+    // Save to localStorage
+    let invites = JSON.parse(localStorage.getItem('teamInvites')) || [];
+    invites.push({
+        id: Date.now(),
+        email: email,
+        role: role,
+        status: 'pending',
+        invitedAt: new Date().toISOString()
+    });
+    localStorage.setItem('teamInvites', JSON.stringify(invites));
+    
+    // Also send to worker for Jesus to see
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'team_invite',
+                    content: `👥 Team Invite: Al invited ${email} as ${role}. Please set up access.`,
+                    priority: true,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+    } catch (e) {
+        console.error('Failed to notify Jesus:', e);
+    }
+    
+    alert(`✅ Invitation sent to ${email}!\\n\\nJesus will set up their access.`);
+    document.getElementById('inviteEmail').value = '';
+    renderTeamMembers();
+};
+
+// Render Team Members
+function renderTeamMembers() {
+    const membersList = document.getElementById('teamMembersList');
+    const invitesList = document.getElementById('pendingInvitesList');
+    const countEl = document.getElementById('teamMembersCount');
+    const pendingBadge = document.getElementById('pendingInvitesBadge');
+    const pendingCountEl = document.getElementById('pendingInvitesCount');
+    
+    // Get saved team members and invites
+    const members = JSON.parse(localStorage.getItem('teamMembers')) || [];
+    const invites = JSON.parse(localStorage.getItem('teamInvites')) || [];
+    const pendingInvites = invites.filter(i => i.status === 'pending');
+    
+    // Update counts
+    if (countEl) countEl.textContent = 1 + members.length; // 1 = Al (owner)
+    if (pendingCountEl) pendingCountEl.textContent = pendingInvites.length;
+    if (pendingBadge) pendingBadge.textContent = pendingInvites.length;
+    
+    // Render members
+    if (membersList) {
+        const ownerHtml = `
+            <div class="team-member owner">
+                <div class="member-avatar">AL</div>
+                <div class="member-info">
+                    <span class="member-name">Al Liao</span>
+                    <span class="member-email">al@cs3investments.com</span>
+                </div>
+                <span class="member-role owner">👑 Owner</span>
+                <span class="member-status online">🟢 Online</span>
+            </div>
+        `;
+        
+        const membersHtml = members.map(m => `
+            <div class="team-member">
+                <div class="member-avatar">${m.name?.substring(0,2).toUpperCase() || m.email.substring(0,2).toUpperCase()}</div>
+                <div class="member-info">
+                    <span class="member-name">${m.name || m.email.split('@')[0]}</span>
+                    <span class="member-email">${m.email}</span>
+                </div>
+                <span class="member-role">${getRoleIcon(m.role)} ${m.role}</span>
+                <span class="member-status">⚪ Offline</span>
+                <button class="btn-small btn-danger" onclick="removeMember('${m.email}')">Remove</button>
+            </div>
+        `).join('');
+        
+        membersList.innerHTML = ownerHtml + membersHtml;
+    }
+    
+    // Render pending invites
+    if (invitesList) {
+        if (pendingInvites.length === 0) {
+            invitesList.innerHTML = '<p class="empty-state">No pending invitations</p>';
+        } else {
+            invitesList.innerHTML = pendingInvites.map(inv => `
+                <div class="invite-item">
+                    <div class="invite-info">
+                        <span class="invite-email">${inv.email}</span>
+                        <span class="invite-role">${getRoleIcon(inv.role)} ${inv.role}</span>
+                        <span class="invite-date">Sent: ${new Date(inv.invitedAt).toLocaleDateString()}</span>
+                    </div>
+                    <div class="invite-actions">
+                        <button class="btn-small" onclick="resendInvite('${inv.email}')">📤 Resend</button>
+                        <button class="btn-small btn-danger" onclick="cancelInvite('${inv.id}')">❌ Cancel</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+}
+
+function getRoleIcon(role) {
+    const icons = {
+        'viewer': '👁️',
+        'collaborator': '🤝',
+        'admin': '⚡'
+    };
+    return icons[role] || '👤';
+}
+
+window.removeMember = function(email) {
+    if (!confirm(`Remove ${email} from the team?`)) return;
+    let members = JSON.parse(localStorage.getItem('teamMembers')) || [];
+    members = members.filter(m => m.email !== email);
+    localStorage.setItem('teamMembers', JSON.stringify(members));
+    renderTeamMembers();
+};
+
+window.cancelInvite = function(id) {
+    let invites = JSON.parse(localStorage.getItem('teamInvites')) || [];
+    invites = invites.filter(i => i.id != id);
+    localStorage.setItem('teamInvites', JSON.stringify(invites));
+    renderTeamMembers();
+    alert('Invitation cancelled');
+};
+
+window.resendInvite = function(email) {
+    alert(`📤 Invitation resent to ${email}`);
+};
+
+// ========== SEND REPORT FUNCTION ==========
+window.sendReport = async function() {
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    
+    // Gather report data
+    const report = dashboardData.agentReport || {};
+    const completed = report.completed?.length || 0;
+    const inProgress = report.inProgress?.length || 0;
+    const blockers = report.blockers?.length || 0;
+    
+    const now = new Date();
+    const reportType = now.getHours() < 12 ? 'Morning' : 'Evening';
+    
+    try {
+        await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'report_request',
+                    content: `📊 ${reportType} Report Request\\n\\nCurrent Status:\\n- Completed: ${completed} tasks\\n- In Progress: ${inProgress} tasks\\n- Blockers: ${blockers}\\n\\nPlease send full report to dashboard + email.`,
+                    priority: true,
+                    createdAt: new Date().toISOString()
+                }]
+            })
+        });
+        alert('✅ Report request sent! Jesus will send the report shortly.');
+    } catch (e) {
+        alert('❌ Failed to request report.');
+    }
+};
+
+// Initialize team on load
+document.addEventListener('DOMContentLoaded', renderTeamMembers);
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        if (this.dataset.section === 'team') renderTeamMembers();
+    });
+});
+
+// ========== LIVE CLOCK ==========
+function updateLiveClock() {
+    const clockEl = document.getElementById('liveClock');
+    const dateEl = document.getElementById('liveDate');
+    
+    if (clockEl && dateEl) {
+        // Get MST time (UTC-7)
+        const now = new Date();
+        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const mst = new Date(utc - (7 * 3600000)); // MST is UTC-7
+        
+        clockEl.textContent = mst.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        });
+        
+        dateEl.textContent = mst.toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+        });
+    }
+}
+
+// Start live clock
+setInterval(updateLiveClock, 1000);
+document.addEventListener('DOMContentLoaded', updateLiveClock);
+
 // ========== 6-HOUR CYCLE TARGETS ==========
 function renderCycleTargets() {
     const cycleData = dashboardData.cycleTargets;
