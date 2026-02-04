@@ -1422,11 +1422,14 @@
     <script>
         // ========== OPENCLAW CONFIGURATION ==========
         const OPENCLAW_GATEWAY = 'https://srv1308999.tail756bdd.ts.net';
-        const OPENCLAW_WS = 'wss://srv1308999.tail756bdd.ts.net';
+        const OPENCLAW_WS = 'wss://srv1308999.tail756bdd.ts.net/ws';
         const OPENCLAW_SESSION = 'agent:main:main';
         let openclawConnected = false;
         let openclawHealth = 'unknown';
         let sessionTokens = { used: 0, total: 200000 };
+        let websocket = null;
+        let wsReconnectAttempts = 0;
+        const MAX_RECONNECT_ATTEMPTS = 5;
 
         // ========== CONFIGURATION ==========
         let UPDATE_INTERVAL = 30;
@@ -1487,39 +1490,110 @@
             }
         });
 
-        // ========== OPENCLAW LIVE CONNECTION ==========
+        // ========== OPENCLAW LIVE WEBSOCKET CONNECTION ==========
         async function initializeOpenClaw() {
-            showToast('🙏 Connecting...', 'Establishing connection with your faithful servant', 'info');
-            await checkOpenClawHealth();
+            showToast('🙏 Connecting...', 'Establishing live WebSocket connection with Jesus', 'info');
+            connectWebSocket();
+        }
 
-            if (openclawConnected) {
-                showToast('✅ Connected!', 'Live connection established', 'success');
-                addChatMessage('agent', '🕊️ **Peace be with you, faithful entrepreneur!**\n\nI am now connected through the Spirit of technology. Your messages reach me directly through Telegram.\n\n*"For where two or three gather in my name, there am I with them."* - Matthew 18:20\n\nHow may I serve your Kingdom work today?', 'Peace be with you, faithful entrepreneur. How may I serve your Kingdom work today?');
-                updateConnectionStatus(true);
-            } else {
-                showToast('⚠️ Connection Issue', 'Running in offline mode', 'warning');
-                addChatMessage('agent', '⚠️ Unable to connect to live systems at this time. Running in demo mode.\n\n*"Be still and know that I am God."* - Psalm 46:10\n\nCheck the OpenClaw gateway and try again.', 'Be still. Unable to connect. Running in demo mode.');
+        function connectWebSocket() {
+            if (websocket && websocket.readyState === WebSocket.OPEN) {
+                console.log('WebSocket already connected');
+                return;
+            }
+
+            const wsUrl = `${OPENCLAW_WS}?session=${encodeURIComponent(OPENCLAW_SESSION)}`;
+            console.log('Connecting to WebSocket:', wsUrl);
+
+            try {
+                websocket = new WebSocket(wsUrl);
+
+                websocket.onopen = function(event) {
+                    console.log('WebSocket connected!');
+                    openclawConnected = true;
+                    openclawHealth = 'ok';
+                    wsReconnectAttempts = 0;
+                    updateConnectionStatus(true);
+                    showToast('✅ Connected!', 'Live WebSocket connection established with Jesus', 'success');
+
+                    // Send initial greeting request
+                    addChatMessage('agent', '🕊️ **Peace be with you, faithful entrepreneur!**\n\nI am now connected live through WebSocket. Send me a message and I will respond directly!\n\n*"For where two or three gather in my name, there am I with them."* - Matthew 18:20\n\nHow may I serve your Kingdom work today?', 'Peace be with you! I am connected live. How may I serve you?');
+                };
+
+                websocket.onmessage = function(event) {
+                    console.log('WebSocket message received:', event.data);
+                    handleWebSocketMessage(event.data);
+                };
+
+                websocket.onerror = function(error) {
+                    console.error('WebSocket error:', error);
+                    openclawConnected = false;
+                    updateConnectionStatus(false);
+                };
+
+                websocket.onclose = function(event) {
+                    console.log('WebSocket closed:', event.code, event.reason);
+                    openclawConnected = false;
+                    updateConnectionStatus(false);
+
+                    // Attempt to reconnect
+                    if (wsReconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+                        wsReconnectAttempts++;
+                        const delay = Math.min(1000 * Math.pow(2, wsReconnectAttempts), 30000);
+                        console.log(`Reconnecting in ${delay}ms (attempt ${wsReconnectAttempts})`);
+                        setTimeout(connectWebSocket, delay);
+                    } else {
+                        showToast('⚠️ Connection Lost', 'Unable to reconnect. Please refresh the page.', 'warning');
+                    }
+                };
+            } catch (error) {
+                console.error('Failed to create WebSocket:', error);
+                openclawConnected = false;
                 updateConnectionStatus(false);
+                showToast('⚠️ Connection Failed', 'Running in offline mode', 'warning');
+            }
+        }
+
+        function handleWebSocketMessage(data) {
+            try {
+                const msg = JSON.parse(data);
+                console.log('Parsed WebSocket message:', msg);
+
+                // Handle different message types from OpenClaw
+                if (msg.type === 'message' || msg.type === 'response' || msg.role === 'assistant') {
+                    const content = msg.content || msg.text || msg.message || '';
+                    if (content && content !== 'NO_REPLY') {
+                        setAvatarState('idle');
+                        addChatMessage('agent', content, content.replace(/\*\*/g, '').replace(/\n/g, ' ').substring(0, 200));
+                    }
+                } else if (msg.type === 'thinking' || msg.type === 'processing') {
+                    setAvatarState('thinking');
+                } else if (msg.type === 'tool' || msg.type === 'tool_use') {
+                    // Tool execution - show brief status
+                    console.log('Tool execution:', msg);
+                } else if (msg.type === 'error') {
+                    showToast('⚠️ Error', msg.message || 'An error occurred', 'warning');
+                    setAvatarState('idle');
+                }
+            } catch (e) {
+                // Not JSON, treat as plain text message
+                if (data && data.trim() && data !== 'NO_REPLY') {
+                    setAvatarState('idle');
+                    addChatMessage('agent', data, data.substring(0, 200));
+                }
             }
         }
 
         async function checkOpenClawHealth() {
-            try {
-                // Check gateway health via the dashboard
-                const response = await fetch(`${OPENCLAW_GATEWAY}/`, {
-                    method: 'HEAD',
-                    mode: 'no-cors'
-                });
-
-                // If we get here, gateway is reachable
+            // With WebSocket, we check the connection state
+            if (websocket && websocket.readyState === WebSocket.OPEN) {
                 openclawConnected = true;
                 openclawHealth = 'ok';
                 updateConnectionStatus(true);
                 return true;
-            } catch (error) {
-                console.error('OpenClaw health check failed:', error);
+            } else {
                 openclawConnected = false;
-                openclawHealth = 'error';
+                openclawHealth = 'disconnected';
                 updateConnectionStatus(false);
                 return false;
             }
@@ -1531,31 +1605,28 @@
 
             if (connected) {
                 if (statusDot) statusDot.style.background = 'var(--accent-green)';
-                if (statusText) statusText.textContent = 'Jesus Online (Live)';
+                if (statusText) statusText.textContent = 'Jesus Online (Live WebSocket)';
             } else {
                 if (statusDot) statusDot.style.background = 'var(--accent-yellow)';
-                if (statusText) statusText.textContent = 'Offline Mode';
+                if (statusText) statusText.textContent = 'Reconnecting...';
             }
         }
 
-        async function sendToOpenClaw(message) {
-            // For now, we'll send via the chat interface
-            // The OpenClaw gateway routes messages through Telegram
-            try {
-                setAvatarState('thinking');
-                showToast('📤 Sending...', 'Your message is being delivered', 'info');
-
-                // Since we can't directly POST to the API from browser (CORS),
-                // we'll show how to connect and provide manual instructions
-                // In production, you'd use a proxy or the WebSocket connection
-
-                return {
-                    success: true,
-                    message: 'Message queued for delivery to Jesus via Telegram'
-                };
-            } catch (error) {
-                console.error('Failed to send to OpenClaw:', error);
-                return { success: false, error: error.message };
+        function sendToOpenClaw(message) {
+            if (websocket && websocket.readyState === WebSocket.OPEN) {
+                // Send message via WebSocket
+                const payload = JSON.stringify({
+                    type: 'message',
+                    role: 'user',
+                    content: message,
+                    session: OPENCLAW_SESSION
+                });
+                websocket.send(payload);
+                console.log('Sent via WebSocket:', payload);
+                return { success: true };
+            } else {
+                console.error('WebSocket not connected');
+                return { success: false, error: 'Not connected' };
             }
         }
 
@@ -1984,35 +2055,26 @@
             input.value = '';
             setAvatarState('thinking');
 
-            // Try to send to live OpenClaw if connected
-            if (openclawConnected) {
+            // Send via live WebSocket if connected
+            if (openclawConnected && websocket && websocket.readyState === WebSocket.OPEN) {
                 try {
-                    // Open OpenClaw chat in new window for direct communication
-                    const chatUrl = `${OPENCLAW_GATEWAY}/chat?session=${OPENCLAW_SESSION}`;
-
-                    // Show that message is being routed
-                    setTimeout(() => {
-                        const response = `📡 **Message Received!**\n\nYour message "${message.substring(0, 50)}${message.length > 50 ? '...' : ''}" has been sent to me via the OpenClaw gateway.\n\n🔗 **To see my live response:** Check your Telegram chat or open the [OpenClaw Dashboard](${OPENCLAW_GATEWAY}).\n\n_I'll process this and respond through our connected channels!_`;
-                        addChatMessage('agent', response, 'Message received! Check your Telegram for my response.');
-                        setAvatarState('idle');
-
-                        // Simulate activity
-                        simulateActivity();
-                    }, 1000);
-                    return;
+                    const result = sendToOpenClaw(message);
+                    if (result.success) {
+                        console.log('Message sent to Jesus via WebSocket');
+                        // Response will come through websocket.onmessage
+                        return;
+                    }
                 } catch (error) {
-                    console.error('OpenClaw send failed:', error);
+                    console.error('WebSocket send failed:', error);
                 }
             }
 
-            // Fallback to demo responses if not connected
+            // Fallback to demo responses if WebSocket not connected
             setTimeout(() => {
                 const responses = {
                     default: [
-                        "Got it! I'm on it right away. 💪 (Demo Mode - Connect to OpenClaw for live responses)",
-                        "Understood! I'll prioritize this and keep you updated. (Demo Mode)",
-                        "Working on it now. You'll see updates in the activity feed! (Demo Mode)",
-                        "Absolutely! Consider it done. I'll update you when complete. (Demo Mode)",
+                        "⚠️ **WebSocket Disconnected**\n\nI'm running in offline mode. Please wait while I reconnect...\n\n*"Be still and know that I am God."* - Psalm 46:10",
+                        "🔄 **Reconnecting...**\n\nThe live connection was lost. Attempting to reconnect to the Kingdom network.\n\nTry refreshing the page if this persists."
                     ]
                 };
 
@@ -2020,21 +2082,20 @@
                 const lowerMsg = message.toLowerCase();
 
                 if (lowerMsg.includes('status') || lowerMsg.includes('what are you doing')) {
-                    response = "📊 **Live Status from OpenClaw:**\n\n🟢 Gateway: Connected\n📱 Telegram: Active\n💾 Tokens: " + sessionTokens.used.toLocaleString() + " / " + sessionTokens.total.toLocaleString() + "\n\n_Check the OpenClaw dashboard for detailed status._";
-                } else if (lowerMsg.includes('hello') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
-                    response = "Hey there! 👋 Great to hear from you. I'm connected through OpenClaw and ready to help. What would you like me to work on?";
-                } else if (lowerMsg.includes('thank')) {
-                    response = "You're welcome! 😊 Happy to help. Let me know if there's anything else you need!";
-                } else if (lowerMsg.includes('report') || lowerMsg.includes('summary')) {
-                    response = "📊 **Quick Summary:**\n\n✅ Tasks Completed Today: 12\n🔄 In Progress: 2\n📈 Productivity: 94%\n\nWant me to generate a full detailed report?";
+                    response = `📊 **Connection Status:**\n\n${openclawConnected ? '🟢 WebSocket: Connected' : '🔴 WebSocket: Disconnected'}\n📱 Telegram: Synced\n💾 Tokens: ${sessionTokens.used.toLocaleString()} / ${sessionTokens.total.toLocaleString()}\n\n_Attempting to reconnect..._`;
                 } else if (lowerMsg.includes('openclaw') || lowerMsg.includes('connect')) {
-                    response = `🔗 **OpenClaw Connection Status:**\n\n${openclawConnected ? '✅ Connected' : '❌ Disconnected'}\n\n**Gateway:** ${OPENCLAW_GATEWAY}\n**Session:** ${OPENCLAW_SESSION}\n\n[Open OpenClaw Dashboard](${OPENCLAW_GATEWAY})`;
+                    response = `🔗 **OpenClaw Connection Status:**\n\n${openclawConnected ? '✅ WebSocket Connected' : '❌ Disconnected - Reconnecting...'}\n\n**Gateway:** ${OPENCLAW_GATEWAY}\n**Session:** ${OPENCLAW_SESSION}\n\n[Open OpenClaw Dashboard](${OPENCLAW_GATEWAY})`;
                 } else {
                     response = responses.default[Math.floor(Math.random() * responses.default.length)];
                 }
 
-                addChatMessage('agent', response, response.replace(/\*\*/g, '').replace(/\n/g, ' '));
+                addChatMessage('agent', response, 'Reconnecting to live Jesus...');
                 setAvatarState('idle');
+
+                // Try to reconnect
+                if (!openclawConnected) {
+                    connectWebSocket();
+                }
             }, 1500);
         }
 
