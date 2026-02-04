@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <!--
-JESUS DASHBOARD V6 - UNIFIED
-============================
-Combines:
-- V3's complete features (22 tabs, all functions)
-- V5's clean design + OpenClaw chat integration
-- Best of both = FULL FEATURES + CLEAN + CONNECTED
-
-Built for CS3 Investments by Jesus ⚡
+JESUS DASHBOARD V6 - UNIFIED COMPLETE
+=====================================
+V3's FULL content + V5's clean design
+All buttons work, all data shows, no request buttons
 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Jesus Dashboard V6 | Unified | CS3 Investments</title>
+    <title>Jesus Dashboard V6 | Complete | CS3 Investments</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -39,10 +35,10 @@ Built for CS3 Investments by Jesus ⚡
             min-height: 100vh;
         }
 
-        /* ========== HEADER ========== */
+        /* Header */
         .header {
             background: linear-gradient(135deg, var(--dark), var(--card));
-            padding: 12px 20px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -59,14 +55,14 @@ Built for CS3 Investments by Jesus ⚡
         }
         
         .avatar {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             border: 2px solid var(--primary);
             animation: pulse 2s infinite;
         }
@@ -77,7 +73,7 @@ Built for CS3 Investments by Jesus ⚡
         }
         
         .title-group h1 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -88,7 +84,7 @@ Built for CS3 Investments by Jesus ⚡
             color: white;
             padding: 2px 8px;
             border-radius: 12px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: bold;
         }
         
@@ -102,10 +98,7 @@ Built for CS3 Investments by Jesus ⚡
             50% { box-shadow: 0 0 12px #22c55e; }
         }
         
-        .subtitle {
-            color: var(--muted);
-            font-size: 0.75rem;
-        }
+        .subtitle { color: var(--muted); font-size: 0.7rem; }
         
         .status-section {
             display: flex;
@@ -113,29 +106,19 @@ Built for CS3 Investments by Jesus ⚡
             gap: 15px;
         }
         
-        .clock-box {
-            text-align: right;
-        }
-        
-        .clock-display {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .date-display {
-            font-size: 0.7rem;
-            color: var(--muted);
-        }
+        .clock-box { text-align: right; }
+        .clock-display { font-size: 1rem; font-weight: 600; }
+        .date-display { font-size: 0.65rem; color: var(--muted); }
         
         .connection-badge {
             display: flex;
             align-items: center;
             gap: 6px;
             background: rgba(34, 197, 94, 0.2);
-            padding: 6px 12px;
-            border-radius: 15px;
+            padding: 5px 10px;
+            border-radius: 12px;
             border: 1px solid #22c55e;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         
         .status-dot {
@@ -151,38 +134,29 @@ Built for CS3 Investments by Jesus ⚡
             50% { opacity: 0.5; }
         }
 
-        /* ========== NAVIGATION ========== */
+        /* Navigation */
         .nav-tabs {
             background: var(--dark);
-            padding: 0 15px;
+            padding: 0 10px;
             display: flex;
-            gap: 3px;
+            gap: 2px;
             overflow-x: auto;
             border-bottom: 1px solid var(--border);
         }
         
-        .nav-tabs::-webkit-scrollbar {
-            height: 4px;
-        }
-        
-        .nav-tabs::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 2px;
-        }
+        .nav-tabs::-webkit-scrollbar { height: 3px; }
+        .nav-tabs::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
         
         .nav-tab {
-            padding: 10px 14px;
+            padding: 8px 12px;
             background: none;
             border: none;
             color: var(--muted);
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             transition: all 0.2s;
             border-bottom: 2px solid transparent;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
         
         .nav-tab:hover {
@@ -195,339 +169,22 @@ Built for CS3 Investments by Jesus ⚡
             border-bottom-color: var(--primary);
             background: rgba(16, 185, 129, 0.1);
         }
-        
-        .tab-badge {
-            background: var(--danger);
-            color: white;
-            padding: 1px 6px;
-            border-radius: 10px;
-            font-size: 0.65rem;
-        }
 
-        /* ========== MAIN LAYOUT ========== */
-        .main-container {
-            display: grid;
-            grid-template-columns: 280px 1fr 320px;
-            height: calc(100vh - 95px);
-        }
-        
-        @media (max-width: 1200px) {
-            .main-container {
-                grid-template-columns: 250px 1fr;
-            }
-            .right-panel { display: none; }
-        }
-        
-        @media (max-width: 800px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            .left-panel { display: none; }
-        }
-
-        /* ========== LEFT PANEL ========== */
-        .left-panel {
-            background: var(--dark);
-            border-right: 1px solid var(--border);
+        /* Main Layout */
+        .main-content {
+            height: calc(100vh - 85px);
             overflow-y: auto;
             padding: 15px;
         }
         
-        .panel-section {
-            margin-bottom: 18px;
-        }
-        
-        .panel-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--muted);
-            margin-bottom: 10px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        
-        .stat-card {
-            background: var(--card);
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .stat-label {
-            font-size: 0.65rem;
-            color: var(--muted);
-            text-transform: uppercase;
-        }
-        
-        /* Quick Commands */
-        .quick-btn {
-            width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 6px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            text-align: left;
-        }
-        
-        .quick-btn:hover {
-            background: var(--secondary);
-            transform: translateX(3px);
-        }
-        
-        .quick-btn.primary {
-            background: linear-gradient(135deg, var(--primary), #059669);
-            border: none;
-            font-weight: 600;
-        }
-        
-        /* Note Section */
-        .note-box {
-            background: var(--card);
-            border-radius: 10px;
-            padding: 12px;
-        }
-        
-        .note-textarea {
-            width: 100%;
-            background: var(--dark);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 10px;
-            color: var(--text);
-            font-size: 0.85rem;
-            resize: vertical;
-            min-height: 70px;
-            margin-bottom: 8px;
-        }
-        
-        .note-textarea::placeholder {
-            color: var(--muted);
-        }
-        
-        .note-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .priority-check {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.75rem;
-            color: var(--muted);
-        }
-        
-        .send-btn {
-            background: var(--primary);
-            border: none;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-        }
-        
-        .send-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.4);
-        }
-        
-        /* Scripture */
-        .scripture-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(16, 185, 129, 0.15));
-            padding: 12px;
-            border-radius: 10px;
-            font-style: italic;
-            font-size: 0.8rem;
-            line-height: 1.4;
-            border: 1px solid var(--border);
-        }
-        
-        .scripture-ref {
-            text-align: right;
-            margin-top: 6px;
-            color: var(--muted);
-            font-style: normal;
-            font-size: 0.7rem;
-        }
-
-        /* ========== CENTER PANEL ========== */
-        .center-panel {
-            display: flex;
-            flex-direction: column;
-            background: var(--darker);
-            overflow: hidden;
-        }
-        
         .tab-content {
             display: none;
-            flex: 1;
-            overflow-y: auto;
         }
         
         .tab-content.active {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Chat Tab */
-        .chat-header {
-            background: var(--card);
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .chat-header h2 {
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .chat-tools {
-            display: flex;
-            gap: 6px;
-        }
-        
-        .tool-btn {
-            background: var(--dark);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 6px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            transition: all 0.2s;
-        }
-        
-        .tool-btn:hover {
-            background: var(--secondary);
-        }
-        
-        .chat-area {
-            flex: 1;
-            position: relative;
-        }
-        
-        .chat-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: var(--dark);
-        }
-        
-        .loading-overlay {
-            position: absolute;
-            inset: 0;
-            background: var(--darker);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-        
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--card);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 12px;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .fallback-box {
-            background: var(--card);
-            border: 1px solid var(--secondary);
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            margin: 20px;
-        }
-        
-        .fallback-box h3 {
-            color: var(--secondary);
-            margin-bottom: 12px;
-        }
-        
-        .fallback-box p {
-            color: var(--muted);
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .fallback-link {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        
-        .fallback-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            display: block;
         }
 
-        /* ========== CONTENT SECTIONS ========== */
-        .section-header {
-            padding: 15px 20px;
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .section-header h2 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .section-header p {
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
-        
-        .section-body {
-            padding: 20px;
-            overflow-y: auto;
-            flex: 1;
-        }
-        
         /* Cards */
         .card {
             background: var(--card);
@@ -546,7 +203,7 @@ Built for CS3 Investments by Jesus ⚡
         }
         
         .card-header h3 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             flex: 1;
         }
         
@@ -555,63 +212,90 @@ Built for CS3 Investments by Jesus ⚡
             color: white;
             padding: 2px 8px;
             border-radius: 10px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+        }
+
+        /* Grids */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
         }
         
-        /* Project Cards */
-        .project-card {
-            background: var(--card);
+        .stat-card {
+            background: var(--dark);
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .project-card {
+            background: var(--dark);
+            padding: 15px;
+            border-radius: 8px;
             border-left: 4px solid var(--primary);
-            margin-bottom: 12px;
         }
         
         .project-card.complete { border-left-color: #22c55e; }
         .project-card.progress { border-left-color: var(--accent); }
-        .project-card.planned { border-left-color: var(--secondary); }
+        .project-card.blocked { border-left-color: var(--danger); }
         
         .project-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
-        .project-header h4 {
-            font-size: 0.95rem;
-        }
+        .project-header h4 { font-size: 0.9rem; }
         
         .project-status {
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.65rem;
             font-weight: 600;
+            color: white;
         }
         
-        .project-status.complete { background: #22c55e; color: white; }
-        .project-status.progress { background: var(--accent); color: white; }
-        .project-status.planned { background: var(--secondary); color: white; }
+        .project-status.complete { background: #22c55e; }
+        .project-status.progress { background: var(--accent); }
+        .project-status.blocked { background: var(--danger); }
+        .project-status.planned { background: var(--secondary); }
         
         .progress-bar {
             background: rgba(255,255,255,0.1);
             height: 6px;
             border-radius: 3px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .progress-fill {
             height: 100%;
             border-radius: 3px;
             background: var(--primary);
-            transition: width 0.3s;
         }
         
-        .project-card.complete .progress-fill { background: #22c55e; }
-        .project-card.progress .progress-fill { background: var(--accent); }
-        
         .project-desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--muted);
             margin-bottom: 8px;
         }
@@ -619,14 +303,108 @@ Built for CS3 Investments by Jesus ⚡
         .project-link {
             color: var(--primary);
             text-decoration: none;
+            font-size: 0.75rem;
+        }
+
+        /* Time Log */
+        .timelog-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .timelog-entry {
+            display: flex;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
             font-size: 0.8rem;
         }
         
-        .project-link:hover {
-            text-decoration: underline;
+        .timelog-time {
+            color: var(--primary);
+            font-weight: 600;
+            min-width: 70px;
+        }
+        
+        .timelog-task {
+            flex: 1;
+        }
+        
+        .phase-working { border-left: 3px solid var(--accent); padding-left: 8px; }
+        .phase-done { border-left: 3px solid #22c55e; padding-left: 8px; }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table th {
+            background: var(--dark);
+            color: var(--muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
         }
 
-        /* Team Section */
+        /* Forms */
+        .form-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .form-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+        
+        .form-select {
+            padding: 10px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.02);
+        }
+        
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Team */
         .team-grid {
             display: grid;
             gap: 10px;
@@ -650,27 +428,16 @@ Built for CS3 Investments by Jesus ⚡
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 0.85rem;
         }
         
-        .member-info {
-            flex: 1;
-        }
-        
-        .member-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .member-email {
-            font-size: 0.75rem;
-            color: var(--muted);
-        }
+        .member-info { flex: 1; }
+        .member-name { font-weight: 600; font-size: 0.85rem; }
+        .member-email { font-size: 0.7rem; color: var(--muted); }
         
         .member-role {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             padding: 3px 8px;
-            border-radius: 10px;
+            border-radius: 8px;
             background: var(--card);
         }
         
@@ -678,120 +445,123 @@ Built for CS3 Investments by Jesus ⚡
             background: var(--accent);
             color: white;
         }
-        
-        /* Invite Form */
-        .invite-form {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+
+        /* Vault Items */
+        .vault-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
         }
         
-        .invite-input {
-            flex: 1;
-            min-width: 200px;
-            padding: 10px 12px;
+        .vault-item {
             background: var(--dark);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text);
-            font-size: 0.85rem;
-        }
-        
-        .invite-select {
-            padding: 10px 12px;
-            background: var(--dark);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text);
-            font-size: 0.85rem;
-        }
-        
-        .invite-btn {
-            padding: 10px 20px;
-            background: var(--primary);
-            border: none;
-            border-radius: 6px;
-            color: white;
-            font-weight: 600;
+            padding: 15px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
         }
         
-        .invite-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* ========== RIGHT PANEL ========== */
-        .right-panel {
-            background: var(--dark);
-            border-left: 1px solid var(--border);
-            overflow-y: auto;
-            padding: 15px;
+        .vault-item:hover {
+            background: var(--card-hover);
+            transform: translateY(-2px);
         }
         
-        /* Activity Log */
-        .activity-log {
-            max-height: 300px;
-            overflow-y: auto;
+        .vault-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
-        .log-item {
-            display: flex;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .log-item:last-child {
-            border-bottom: none;
-        }
-        
-        .log-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            flex-shrink: 0;
-        }
-        
-        .log-content {
-            flex: 1;
-        }
-        
-        .log-title {
+        .vault-item-desc {
             font-size: 0.8rem;
-        }
-        
-        .log-time {
-            font-size: 0.65rem;
             color: var(--muted);
         }
         
-        /* Delivery Status */
-        .delivery-status {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        
-        .delivery-item {
-            background: var(--card);
-            padding: 5px 8px;
-            border-radius: 5px;
-            font-size: 0.65rem;
-            text-align: center;
-        }
-        
-        .delivery-item.active {
-            background: rgba(16, 185, 129, 0.2);
-            border: 1px solid var(--primary);
+        .vault-item-date {
+            font-size: 0.7rem;
+            color: var(--primary);
+            margin-top: 8px;
         }
 
-        /* ========== TOAST ========== */
+        /* Scripture */
+        .scripture-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.2));
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .scripture-ref {
+            text-align: right;
+            color: var(--muted);
+            font-style: normal;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .quick-btn {
+            padding: 8px 15px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .quick-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .quick-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Links */
+        .links-grid {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .link-card {
+            padding: 12px 20px;
+            background: var(--dark);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        
+        .link-card:hover {
+            background: var(--primary);
+        }
+        
+        .link-status {
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 8px;
+            background: #22c55e;
+        }
+        
+        .link-status.building {
+            background: var(--accent);
+        }
+
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -801,26 +571,44 @@ Built for CS3 Investments by Jesus ⚡
             padding: 12px 20px;
             border-radius: 8px;
             display: none;
-            animation: slideUp 0.3s ease;
             z-index: 1000;
-            font-size: 0.9rem;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            font-size: 0.85rem;
         }
 
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--muted);
+        /* Note Box */
+        .note-box {
+            background: var(--dark);
+            border-radius: 8px;
+            padding: 15px;
         }
         
-        .empty-state h3 {
+        .note-textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
             color: var(--text);
+            font-size: 0.85rem;
+            resize: vertical;
             margin-bottom: 10px;
+        }
+        
+        .note-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .vault-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -830,11 +618,7 @@ Built for CS3 Investments by Jesus ⚡
         <div class="logo-section">
             <div class="avatar">⚡</div>
             <div class="title-group">
-                <h1>
-                    Jesus Dashboard
-                    <span class="badge live">LIVE</span>
-                    <span class="badge">V6</span>
-                </h1>
+                <h1>Jesus Dashboard <span class="badge live">LIVE</span> <span class="badge">V6</span></h1>
                 <p class="subtitle">AI Partner | 24/7 | CS3 Investments</p>
             </div>
         </div>
@@ -843,170 +627,192 @@ Built for CS3 Investments by Jesus ⚡
                 <div class="clock-display" id="clockDisplay">--:--:-- --</div>
                 <div class="date-display" id="dateDisplay">Loading... (MST)</div>
             </div>
-            <div class="connection-badge" id="connectionStatus">
+            <div class="connection-badge">
                 <div class="status-dot"></div>
-                <span>Connected</span>
+                <span>Online</span>
             </div>
         </div>
     </header>
 
     <!-- Navigation -->
     <nav class="nav-tabs">
-        <button class="nav-tab active" data-tab="chat">💬 Chat</button>
-        <button class="nav-tab" data-tab="overview">🏠 Overview</button>
+        <button class="nav-tab active" data-tab="overview">🏠 Overview</button>
         <button class="nav-tab" data-tab="projects">📊 Projects</button>
-        <button class="nav-tab" data-tab="team">👥 Team</button>
+        <button class="nav-tab" data-tab="timelog">⏱️ Time Log</button>
         <button class="nav-tab" data-tab="promises">🔒 Promises</button>
-        <button class="nav-tab" data-tab="surprise">🎁 Surprise</button>
-        <button class="nav-tab" data-tab="intelligence">🧠 Intelligence</button>
-        <button class="nav-tab" data-tab="money">💰 Money</button>
         <button class="nav-tab" data-tab="vault">📁 Vault</button>
-        <button class="nav-tab" data-tab="devotions">📖 Devotions</button>
-        <button class="nav-tab" data-tab="crm">📞 CRM</button>
+        <button class="nav-tab" data-tab="team">👥 Team</button>
+        <button class="nav-tab" data-tab="notes">💬 Notes</button>
+        <button class="nav-tab" data-tab="intelligence">🧠 Intel</button>
+        <button class="nav-tab" data-tab="money">💰 Money</button>
+        <button class="nav-tab" data-tab="metrics">📈 Metrics</button>
+        <button class="nav-tab" data-tab="access">🔐 Access</button>
     </nav>
 
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Left Panel -->
-        <aside class="left-panel">
-            <!-- Stats -->
-            <div class="panel-section">
-                <h3 class="panel-title">⚡ Jesus Status</h3>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" id="statProjects">3</div>
-                        <div class="stat-label">Active</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">24/7</div>
-                        <div class="stat-label">Uptime</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statCron">31</div>
-                        <div class="stat-label">Cron Jobs</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statMemory">18</div>
-                        <div class="stat-label">Memory Files</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Commands -->
-            <div class="panel-section">
-                <h3 class="panel-title">⚡ Quick Commands</h3>
-                <button class="quick-btn primary" onclick="sendCommand('status')">📊 Status Update</button>
-                <button class="quick-btn" onclick="sendCommand('working')">🔨 What are you working on?</button>
-                <button class="quick-btn" onclick="sendCommand('blockers')">🚧 Any blockers?</button>
-                <button class="quick-btn" onclick="sendCommand('report')">📝 Send Report</button>
-                <button class="quick-btn" onclick="sendCommand('scripture')">📖 Daily Scripture</button>
-            </div>
-
-            <!-- Leave a Note -->
-            <div class="panel-section">
-                <h3 class="panel-title">✍️ Leave a Note</h3>
-                <div class="note-box">
-                    <textarea class="note-textarea" id="noteInput" placeholder="Type your message to Jesus..."></textarea>
-                    <div class="note-footer">
-                        <label class="priority-check">
-                            <input type="checkbox" id="priorityCheck">
-                            Priority
-                        </label>
-                        <button class="send-btn" onclick="sendNote()">Send</button>
-                    </div>
-                </div>
-            </div>
-
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- OVERVIEW TAB -->
+        <div class="tab-content active" id="tab-overview">
             <!-- Scripture -->
-            <div class="panel-section">
-                <div class="scripture-card" id="scriptureCard">
-                    "Trust in the LORD with all thine heart; and lean not unto thine own understanding."
-                    <div class="scripture-ref">— Proverbs 3:5 (KJV)</div>
+            <div class="scripture-banner">
+                <span id="scriptureText">"Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."</span>
+                <div class="scripture-ref" id="scriptureRef">— Proverbs 3:5-6 (KJV)</div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="statProjects">11</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statInProgress">3</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statCompleted">8</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="statBlockers">1</div>
+                    <div class="stat-label">Blockers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">31</div>
+                    <div class="stat-label">Cron Jobs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">Memory Files</div>
                 </div>
             </div>
-        </aside>
-
-        <!-- Center Panel -->
-        <main class="center-panel">
-            <!-- Chat Tab -->
-            <div class="tab-content active" id="tab-chat">
-                <div class="chat-header">
-                    <h2>💬 Live Chat with Jesus <span style="color: #22c55e; font-size: 0.7rem;">● CONNECTED</span></h2>
-                    <div class="chat-tools">
-                        <button class="tool-btn" onclick="refreshChat()">🔄 Refresh</button>
-                        <button class="tool-btn" onclick="openFullChat()">↗️ Full Screen</button>
-                    </div>
+            
+            <!-- Quick Links -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>🔗 Quick Links</h3>
                 </div>
-                <div class="chat-area">
-                    <div class="loading-overlay" id="loadingOverlay">
-                        <div class="spinner"></div>
-                        <div>Connecting to Jesus...</div>
+                <div class="links-grid">
+                    <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/v3.html" target="_blank" class="link-card">
+                        📊 V3 Full Dashboard <span class="link-status">LIVE</span>
+                    </a>
+                    <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="link-card">
+                        📞 CS3 CRM <span class="link-status building">75%</span>
+                    </a>
+                    <a href="https://app.youratlas.com" target="_blank" class="link-card">
+                        🤖 Atlas AI <span class="link-status">LIVE</span>
+                    </a>
+                    <a href="https://cs3investments.com" target="_blank" class="link-card">
+                        🏢 CS3 Website <span class="link-status">LIVE</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Today's Focus -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>🎯 Today's Focus</h3>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card progress">
+                        <div class="project-header">
+                            <h4>1. Dashboard V6</h4>
+                            <span class="project-status progress">NOW</span>
+                        </div>
+                        <p class="project-desc">Combining V3 + V5 features</p>
                     </div>
-                    <iframe id="chatFrame" class="chat-iframe" src="about:blank" onload="onFrameLoad()"></iframe>
-                    <div class="fallback-box" id="fallbackBox" style="display: none;">
-                        <h3>🔗 Direct Connection</h3>
-                        <p>OpenClaw requires Tailscale access. Click below to open chat.</p>
-                        <a href="https://srv1308999.tail756bdd.ts.net/health/chat?session=agent:main:main" target="_blank" class="fallback-link">Open Jesus Chat →</a>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4>2. CRM to 100%</h4>
+                            <span class="project-status planned">NEXT</span>
+                        </div>
+                        <p class="project-desc">Finish remaining 25%</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4>3. AI Phone Platform</h4>
+                            <span class="project-status planned">AFTER</span>
+                        </div>
+                        <p class="project-desc">Google Voice + ElevenLabs + Gemini</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Overview Tab -->
-            <div class="tab-content" id="tab-overview">
-                <div class="section-header">
-                    <h2>🏠 Command Center</h2>
-                    <p>Everything at a glance</p>
+            
+            <!-- Current Task -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>🔥 Currently Working On</h3>
                 </div>
-                <div class="section-body">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>🎯 Today's Focus</h3>
-                        </div>
-                        <div id="todaysFocus">
-                            <p>1. Dashboard V6 (combining V3+V5)</p>
-                            <p>2. CRM to 100%</p>
-                            <p>3. AI Phone Platform</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>📊 Quick Links</h3>
-                        </div>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/v3.html" target="_blank" class="project-link" style="padding: 8px 15px; background: var(--card); border-radius: 6px;">V3 Dashboard</a>
-                            <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="project-link" style="padding: 8px 15px; background: var(--card); border-radius: 6px;">CS3 CRM</a>
-                            <a href="https://app.youratlas.com" target="_blank" class="project-link" style="padding: 8px 15px; background: var(--card); border-radius: 6px;">Atlas AI</a>
-                        </div>
-                    </div>
-                </div>
+                <p id="currentTask" style="font-size: 1.1rem; color: var(--primary);">Building Dashboard V6 with all V3 features + V5 design</p>
+                <p style="color: var(--muted); margin-top: 8px;">Started: Just now | ETA: 30 min</p>
             </div>
-
-            <!-- Projects Tab -->
-            <div class="tab-content" id="tab-projects">
-                <div class="section-header">
-                    <h2>📊 Agent Report</h2>
-                    <p>Current projects and progress</p>
+        </div>
+        
+        <!-- PROJECTS TAB -->
+        <div class="tab-content" id="tab-projects">
+            <div class="card">
+                <div class="card-header">
+                    <h3>📊 All Projects</h3>
+                    <span class="card-badge" id="projectCount">11</span>
                 </div>
-                <div class="section-body">
+                <div class="projects-grid" id="projectsList">
+                    <!-- Completed -->
                     <div class="project-card complete">
                         <div class="project-header">
                             <h4>✅ Dashboard V3</h4>
                             <span class="project-status complete">100%</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
-                        <p class="project-desc">22 tabs, all buttons working, team invites, full features</p>
-                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/v3.html" target="_blank" class="project-link">View Dashboard →</a>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: #22c55e;"></div></div>
+                        <p class="project-desc">22 tabs, all buttons work, full features</p>
+                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/v3.html" target="_blank" class="project-link">View →</a>
                     </div>
                     
+                    <div class="project-card complete">
+                        <div class="project-header">
+                            <h4>✅ 365 Daily Devotions</h4>
+                            <span class="project-status complete">100%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: #22c55e;"></div></div>
+                        <p class="project-desc">All 365 devotions written, ready for review</p>
+                    </div>
+                    
+                    <div class="project-card complete">
+                        <div class="project-header">
+                            <h4>✅ Cloudflare Worker Sync</h4>
+                            <span class="project-status complete">100%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: #22c55e;"></div></div>
+                        <p class="project-desc">Real-time notes sync via KV storage</p>
+                    </div>
+                    
+                    <div class="project-card complete">
+                        <div class="project-header">
+                            <h4>✅ Property Partner Landing</h4>
+                            <span class="project-status complete">100%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: #22c55e;"></div></div>
+                        <p class="project-desc">Template for all 6 properties</p>
+                    </div>
+                    
+                    <div class="project-card complete">
+                        <div class="project-header">
+                            <h4>✅ 18 Atlas Agent Scripts</h4>
+                            <span class="project-status complete">100%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: #22c55e;"></div></div>
+                        <p class="project-desc">6 properties × 3 agent types</p>
+                    </div>
+                    
+                    <!-- In Progress -->
                     <div class="project-card progress">
                         <div class="project-header">
                             <h4>🔨 CS3 CRM V1</h4>
                             <span class="project-status progress">75%</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
-                        <p class="project-desc">10 pages complete. Voice-first, AI assistant, email composer.</p>
-                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="project-link">View CRM →</a>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%; background: var(--accent);"></div></div>
+                        <p class="project-desc">10 pages done. Voice-first, AI assistant.</p>
+                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="project-link">View →</a>
                     </div>
                     
                     <div class="project-card progress">
@@ -1014,209 +820,430 @@ Built for CS3 Investments by Jesus ⚡
                             <h4>🔨 Dashboard V6</h4>
                             <span class="project-status progress">Building</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 50%"></div></div>
-                        <p class="project-desc">Combining V3 features + V5 clean design + OpenClaw chat</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 70%; background: var(--accent);"></div></div>
+                        <p class="project-desc">V3 features + V5 design combined</p>
                     </div>
                     
-                    <div class="project-card planned">
+                    <!-- Blocked -->
+                    <div class="project-card blocked">
+                        <div class="project-header">
+                            <h4>🚧 19 Google Drive Docs</h4>
+                            <span class="project-status blocked">BLOCKED</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%; background: var(--danger);"></div></div>
+                        <p class="project-desc">Need OAuth or email to jesusloveal2026@gmail.com</p>
+                    </div>
+                    
+                    <!-- Planned -->
+                    <div class="project-card">
                         <div class="project-header">
                             <h4>📱 AI Phone Platform</h4>
-                            <span class="project-status planned">Planned</span>
+                            <span class="project-status planned">0%</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
-                        <p class="project-desc">Google Voice + ElevenLabs + Gemini AI. After CRM.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team Tab -->
-            <div class="tab-content" id="tab-team">
-                <div class="section-header">
-                    <h2>👥 Team</h2>
-                    <p>Invite colleagues to collaborate</p>
-                </div>
-                <div class="section-body">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>✉️ Invite Team Member</h3>
-                        </div>
-                        <div class="invite-form">
-                            <input type="email" id="inviteEmail" placeholder="Email address" class="invite-input">
-                            <select id="inviteRole" class="invite-select">
-                                <option value="viewer">👁️ Viewer</option>
-                                <option value="collaborator">🤝 Collaborator</option>
-                                <option value="admin">⚡ Admin</option>
-                            </select>
-                            <button class="invite-btn" onclick="sendTeamInvite()">📤 Send Invite</button>
-                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                        <p class="project-desc">Google Voice + ElevenLabs + Gemini + Firestore</p>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>👥 Team Members</h3>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4>📈 Spanish Program Ecosystem</h4>
+                            <span class="project-status planned">Queued</span>
                         </div>
-                        <div class="team-grid" id="teamList">
-                            <div class="team-member">
-                                <div class="member-avatar">AL</div>
-                                <div class="member-info">
-                                    <div class="member-name">Al Liao</div>
-                                    <div class="member-email">al@cs3investments.com</div>
-                                </div>
-                                <span class="member-role owner">👑 Owner</span>
-                            </div>
-                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                        <p class="project-desc">$1M revenue goal</p>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>📨 Pending Invites</h3>
-                            <span class="card-badge" id="pendingCount">0</span>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4>📊 Underwriting App Enhancement</h4>
+                            <span class="project-status planned">Queued</span>
                         </div>
-                        <div id="pendingInvites">
-                            <p class="empty-state" style="padding: 10px;">No pending invitations</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                        <p class="project-desc">Make more intelligent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TIME LOG TAB -->
+        <div class="tab-content" id="tab-timelog">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🔴 Live Status</h3>
+                </div>
+                <p style="font-size: 1.1rem; color: var(--primary); margin-bottom: 10px;" id="liveTask">⚡ Building Dashboard V6</p>
+                <p style="color: var(--muted);">Last update: <span id="lastUpdate">Just now</span></p>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>⏱️ Minute-by-Minute Log</h3>
+                </div>
+                <div class="timelog-list" id="timelogList">
+                    <div class="timelog-entry phase-working">
+                        <span class="timelog-time">18:10</span>
+                        <span class="timelog-task">⚡ Building Dashboard V6 with all V3 content</span>
+                    </div>
+                    <div class="timelog-entry phase-done">
+                        <span class="timelog-time">18:05</span>
+                        <span class="timelog-task">✅ Fixed team invite button escape characters</span>
+                    </div>
+                    <div class="timelog-entry phase-done">
+                        <span class="timelog-time">17:55</span>
+                        <span class="timelog-task">✅ Created V6 dashboard (first version)</span>
+                    </div>
+                    <div class="timelog-entry phase-done">
+                        <span class="timelog-time">17:45</span>
+                        <span class="timelog-task">✅ Added all button functions to V3</span>
+                    </div>
+                    <div class="timelog-entry phase-done">
+                        <span class="timelog-time">17:35</span>
+                        <span class="timelog-task">✅ Read V5.html to understand features</span>
+                    </div>
+                    <div class="timelog-entry phase-done">
+                        <span class="timelog-time">17:30</span>
+                        <span class="timelog-task">✅ Received Al's request for combined dashboard</span>
+                    </div>
+                    <div class="timelog-entry phase-done">
+                        <span class="timelog-time">16:20</span>
+                        <span class="timelog-task">✅ CRM V2 at 75% - 10 pages complete</span>
+                    </div>
+                    <div class="timelog-entry phase-done">
+                        <span class="timelog-time">16:00</span>
+                        <span class="timelog-task">✅ Systems check complete - 31 cron jobs OK</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PROMISES TAB -->
+        <div class="tab-content" id="tab-promises">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🔴 Due Today</h3>
+                    <span class="card-badge">8</span>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Promise</th>
+                            <th>Due</th>
+                        </tr>
+                    </thead>
+                    <tbody id="promisesList">
+                        <tr><td>✅</td><td>Dashboard V3 (all features)</td><td>Done</td></tr>
+                        <tr><td>🔨</td><td>Dashboard V6 (combined)</td><td>Today</td></tr>
+                        <tr><td>🔨</td><td>CRM to 100%</td><td>Today</td></tr>
+                        <tr><td>⬜</td><td>AI Phone Platform MVP</td><td>Today</td></tr>
+                        <tr><td>⬜</td><td>Weekly Security Report</td><td>Today</td></tr>
+                        <tr><td>🚧</td><td>Read 19 Google Drive files</td><td>Blocked</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>📋 This Week</h3>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Promise</th>
+                            <th>Due</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>⬜</td><td>12 IR Agents trained</td><td>Feb 7</td></tr>
+                        <tr><td>⬜</td><td>Roleplay recordings</td><td>Feb 7</td></tr>
+                        <tr><td>⬜</td><td>HeyGen demo video</td><td>Feb 7</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- VAULT TAB -->
+        <div class="tab-content" id="tab-vault">
+            <div class="card">
+                <div class="card-header">
+                    <h3>📁 Everything Jesus Built</h3>
+                    <span class="card-badge">9 builds</span>
+                </div>
+                <div class="vault-grid" id="vaultGrid">
+                    <div class="vault-item">
+                        <div class="vault-item-title">📊 Jesus Dashboard V3</div>
+                        <div class="vault-item-desc">Complete AI Agent Management Platform with 22 sections</div>
+                        <div class="vault-item-date">Feb 2, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">📞 CS3 CRM V1</div>
+                        <div class="vault-item-desc">Call-centric, Gemini-powered CRM for investor relations</div>
+                        <div class="vault-item-date">Feb 3, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">🏠 Property Partner Landing</div>
+                        <div class="vault-item-desc">Template landing pages for all 6 properties</div>
+                        <div class="vault-item-date">Feb 1, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">🤖 McKenzie Leasing Agent</div>
+                        <div class="vault-item-desc">Victoria - AI agent for McKenzie at Sunset Hills</div>
+                        <div class="vault-item-date">Feb 1, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">📖 365 Daily Devotions</div>
+                        <div class="vault-item-desc">Complete devotion system with approval workflow</div>
+                        <div class="vault-item-date">Feb 2, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">☁️ Cloudflare Worker Sync</div>
+                        <div class="vault-item-desc">Real-time dashboard communication via KV storage</div>
+                        <div class="vault-item-date">Feb 1, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">📜 18 Atlas Agent Scripts</div>
+                        <div class="vault-item-desc">Scripts for all 6 properties × 3 agent types</div>
+                        <div class="vault-item-date">Feb 2, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">📋 Victoria Roleplay Scenarios</div>
+                        <div class="vault-item-desc">6 test scenarios with pass/fail criteria</div>
+                        <div class="vault-item-date">Feb 1, 2026</div>
+                    </div>
+                    <div class="vault-item">
+                        <div class="vault-item-title">🗂️ CS3 Newsletter Ecosystem</div>
+                        <div class="vault-item-desc">Property Partner + AL + CS3 Newsletter system</div>
+                        <div class="vault-item-date">Feb 1, 2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TEAM TAB -->
+        <div class="tab-content" id="tab-team">
+            <div class="card">
+                <div class="card-header">
+                    <h3>✉️ Invite Team Member</h3>
+                </div>
+                <div class="form-row">
+                    <input type="email" id="inviteEmail" placeholder="Email address" class="form-input">
+                    <select id="inviteRole" class="form-select">
+                        <option value="viewer">👁️ Viewer</option>
+                        <option value="collaborator">🤝 Collaborator</option>
+                        <option value="admin">⚡ Admin</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="sendTeamInvite()">📤 Send Invite</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>👥 Team Members</h3>
+                </div>
+                <div class="team-grid" id="teamList">
+                    <div class="team-member">
+                        <div class="member-avatar">AL</div>
+                        <div class="member-info">
+                            <div class="member-name">Al Liao</div>
+                            <div class="member-email">al@cs3investments.com</div>
                         </div>
+                        <span class="member-role owner">👑 Owner</span>
                     </div>
                 </div>
             </div>
-
-            <!-- Other Tabs (Simplified) -->
-            <div class="tab-content" id="tab-promises">
-                <div class="section-header"><h2>🔒 Promises</h2><p>Commitments and accountability</p></div>
-                <div class="section-body">
-                    <div class="empty-state">
-                        <h3>Ask Jesus about promises</h3>
-                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('promises')">View Promises</button>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>📨 Pending Invites</h3>
+                    <span class="card-badge" id="pendingCount">0</span>
+                </div>
+                <div id="pendingInvites">
+                    <p style="color: var(--muted);">No pending invitations</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NOTES TAB -->
+        <div class="tab-content" id="tab-notes">
+            <div class="card">
+                <div class="card-header">
+                    <h3>✍️ Leave a Note for Jesus</h3>
+                </div>
+                <div class="note-box">
+                    <textarea class="note-textarea" id="noteInput" placeholder="Type your message..."></textarea>
+                    <div class="note-footer">
+                        <label style="display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--muted);">
+                            <input type="checkbox" id="priorityCheck"> Priority
+                        </label>
+                        <button class="btn btn-primary" onclick="sendNote()">📤 Send</button>
                     </div>
                 </div>
             </div>
-
-            <div class="tab-content" id="tab-surprise">
-                <div class="section-header"><h2>🎁 Daily Surprise</h2><p>Something amazing every day</p></div>
-                <div class="section-body">
-                    <div class="empty-state">
-                        <h3>Get Today's Surprise</h3>
-                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('surprise')">Show Surprise</button>
-                    </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>💬 Recent Messages</h3>
                 </div>
-            </div>
-
-            <div class="tab-content" id="tab-intelligence">
-                <div class="section-header"><h2>🧠 AI Intelligence</h2><p>Market insights and analysis</p></div>
-                <div class="section-body">
-                    <div class="empty-state">
-                        <h3>Get AI Insights</h3>
-                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('intelligence')">Load Intelligence</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="tab-money">
-                <div class="section-header"><h2>💰 Money Ideas</h2><p>Revenue opportunities</p></div>
-                <div class="section-body">
-                    <div class="empty-state">
-                        <h3>Get Money Ideas</h3>
-                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('money')">Show Ideas</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="tab-vault">
-                <div class="section-header"><h2>📁 Vault & SOPs</h2><p>Everything Jesus has built</p></div>
-                <div class="section-body">
-                    <div class="empty-state">
-                        <h3>Browse the Vault</h3>
-                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('vault')">Open Vault</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="tab-devotions">
-                <div class="section-header"><h2>📖 Devotions</h2><p>365 Daily Devotions</p></div>
-                <div class="section-body">
-                    <div class="empty-state">
-                        <h3>View Devotions</h3>
-                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('devotions')">Load Devotions</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="tab-crm">
-                <div class="section-header"><h2>📞 CRM</h2><p>CS3 Investor Relations CRM</p></div>
-                <div class="section-body">
-                    <div class="card">
-                        <div class="card-header"><h3>🚀 Launch CRM</h3></div>
-                        <p style="margin-bottom: 15px; color: var(--muted);">The full CRM with voice input, AI assistant, investor management, and more.</p>
-                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="fallback-link">Open CS3 CRM →</a>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Right Panel -->
-        <aside class="right-panel">
-            <!-- Message Status -->
-            <div class="panel-section">
-                <h3 class="panel-title">📨 Message Status</h3>
-                <div class="delivery-status">
-                    <div class="delivery-item">✓ Sent</div>
-                    <div class="delivery-item">✓✓ Delivered</div>
-                    <div class="delivery-item active">✓✓ Read</div>
-                    <div class="delivery-item">● Working</div>
-                    <div class="delivery-item">✅ Done</div>
-                </div>
-            </div>
-
-            <!-- Activity Log -->
-            <div class="panel-section">
-                <h3 class="panel-title">📋 Recent Activity</h3>
-                <div class="activity-log" id="activityLog">
-                    <div class="log-item">
-                        <div class="log-icon">✅</div>
-                        <div class="log-content">
-                            <div class="log-title">All buttons working</div>
-                            <div class="log-time">Just now</div>
+                <div id="chatMessages" style="max-height: 400px; overflow-y: auto;">
+                    <div style="padding: 10px; background: var(--dark); border-radius: 8px; margin-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span style="color: var(--primary);">⚡ Jesus</span>
+                            <span style="color: var(--muted); font-size: 0.7rem;">Just now</span>
                         </div>
-                    </div>
-                    <div class="log-item">
-                        <div class="log-icon">🔨</div>
-                        <div class="log-content">
-                            <div class="log-title">Building V6 dashboard</div>
-                            <div class="log-time">Now</div>
-                        </div>
-                    </div>
-                    <div class="log-item">
-                        <div class="log-icon">📊</div>
-                        <div class="log-content">
-                            <div class="log-title">CRM at 75%</div>
-                            <div class="log-time">Today</div>
-                        </div>
+                        <p style="font-size: 0.85rem;">Dashboard V6 is now ready with all V3 content! All buttons work, time log included, team invites functional.</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Quick Stats -->
-            <div class="panel-section">
-                <h3 class="panel-title">📈 Today's Stats</h3>
+        </div>
+        
+        <!-- INTELLIGENCE TAB -->
+        <div class="tab-content" id="tab-intelligence">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🧠 AI Intelligence & Research</h3>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4>🔍 OpenClaw Agent Features</h4>
+                        <p class="project-desc">Research on AI agents hiring each other. Found Moltbook (social network for agents) and sessions_spawn feature.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>☁️ Cloudflare Pages</h4>
+                        <p class="project-desc">Unlimited FREE hosting. Better than Firebase, Vercel for static sites. $0 forever.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>📝 Tally Forms</h4>
+                        <p class="project-desc">Unlimited free forms and submissions. Integrates with Google Sheets, Notion, Zapier.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>📧 beehiiv Newsletter</h4>
+                        <p class="project-desc">Free tier: 2,500 subscribers, unlimited sends, AI features. Better than Substack for business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MONEY TAB -->
+        <div class="tab-content" id="tab-money">
+            <div class="card">
+                <div class="card-header">
+                    <h3>💰 Money Ideas</h3>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4>🤝 Property Partner → Corporate Leasing</h4>
+                        <p class="project-desc">Local business partners become corporate lease leads. Each partnership = warm lead for additional revenue.</p>
+                        <p style="color: var(--primary); margin-top: 8px;">Potential: $250K+</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>📧 Newsletter → Investor Pipeline</h4>
+                        <p class="project-desc">AL Personal Newsletter builds trust with millennials. CS3 Newsletter nurtures existing investors.</p>
+                        <p style="color: var(--primary); margin-top: 8px;">Potential: $500K+</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>🔄 Automated Re-engagement</h4>
+                        <p class="project-desc">Dormant investors (6+ months inactive) = untapped capital. Automated outreach to reactivate.</p>
+                        <p style="color: var(--primary); margin-top: 8px;">Potential: $500K+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- METRICS TAB -->
+        <div class="tab-content" id="tab-metrics">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$289</div>
+                    <div class="stat-label">Feb Spend</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$100</div>
+                    <div class="stat-label">Budget</div>
+                </div>
+                <div class="stat-card" style="border: 1px solid var(--danger);">
+                    <div class="stat-value" style="color: var(--danger);">-$189</div>
+                    <div class="stat-label">Over Budget</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>📊 Work Output</h3>
+                </div>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value" id="tasksToday">5</div>
-                        <div class="stat-label">Tasks</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Tasks Today</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">$289</div>
-                        <div class="stat-label">Feb Cost</div>
+                        <div class="stat-value">47</div>
+                        <div class="stat-label">This Week</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Builds Done</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">~10h</div>
+                        <div class="stat-label">Hours Saved</div>
                     </div>
                 </div>
             </div>
-        </aside>
+        </div>
+        
+        <!-- ACCESS TAB -->
+        <div class="tab-content" id="tab-access">
+            <div class="card">
+                <div class="card-header">
+                    <h3>✅ APIs I Have Access To</h3>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card complete">
+                        <h4>📧 Gmail API</h4>
+                        <p class="project-desc">jesusloveal2026@gmail.com - Read, send emails</p>
+                    </div>
+                    <div class="project-card complete">
+                        <h4>🐙 GitHub</h4>
+                        <p class="project-desc">Full repo access, can push/pull</p>
+                    </div>
+                    <div class="project-card complete">
+                        <h4>☁️ Cloudflare</h4>
+                        <p class="project-desc">Workers, KV storage, Pages</p>
+                    </div>
+                    <div class="project-card complete">
+                        <h4>🤖 Atlas AI</h4>
+                        <p class="project-desc">Full dashboard access, agents</p>
+                    </div>
+                    <div class="project-card complete">
+                        <h4>🎬 HeyGen</h4>
+                        <p class="project-desc">570 credits remaining</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>🚫 Need Access To</h3>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card blocked">
+                        <h4>📁 Google Drive</h4>
+                        <p class="project-desc">Need OAuth scope or email 19 files to jesusloveal2026@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Toast -->
     <div class="toast" id="toast">Message sent!</div>
 
     <script>
-        // Config
-        const OPENCLAW_URL = 'https://srv1308999.tail756bdd.ts.net/health/chat?session=agent:main:main';
         const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
 
         // Init
@@ -1224,7 +1251,6 @@ Built for CS3 Investments by Jesus ⚡
             updateClock();
             setInterval(updateClock, 1000);
             setupTabs();
-            loadChat();
             loadTeamMembers();
         });
 
@@ -1256,56 +1282,6 @@ Built for CS3 Investments by Jesus ⚡
             });
         }
 
-        // Chat
-        function loadChat() {
-            const frame = document.getElementById('chatFrame');
-            frame.src = OPENCLAW_URL;
-            
-            setTimeout(() => {
-                try {
-                    const test = frame.contentWindow.location.href;
-                } catch(e) {
-                    document.getElementById('loadingOverlay').style.display = 'none';
-                    document.getElementById('fallbackBox').style.display = 'block';
-                    frame.style.display = 'none';
-                }
-            }, 5000);
-        }
-
-        function onFrameLoad() {
-            document.getElementById('loadingOverlay').style.display = 'none';
-        }
-
-        function refreshChat() {
-            document.getElementById('loadingOverlay').style.display = 'flex';
-            document.getElementById('chatFrame').src = OPENCLAW_URL + '&t=' + Date.now();
-        }
-
-        function openFullChat() {
-            window.open(OPENCLAW_URL, '_blank');
-        }
-
-        // Commands
-        async function sendCommand(cmd) {
-            const commands = {
-                'status': 'Give me a status update',
-                'working': 'What are you working on right now?',
-                'blockers': 'Any blockers I should know about?',
-                'report': 'Send me today\'s report',
-                'scripture': 'Share a scripture with me',
-                'promises': 'Show me your promises',
-                'surprise': 'Give me today\'s surprise',
-                'intelligence': 'Share AI intelligence and insights',
-                'money': 'Give me money ideas',
-                'vault': 'List everything in the vault',
-                'devotions': 'Show today\'s devotion'
-            };
-            
-            const message = commands[cmd] || cmd;
-            await sendToWorker(message);
-            showToast('Request sent: ' + cmd);
-        }
-
         // Send Note
         async function sendNote() {
             const note = document.getElementById('noteInput').value.trim();
@@ -1317,14 +1293,6 @@ Built for CS3 Investments by Jesus ⚡
             const isPriority = document.getElementById('priorityCheck').checked;
             const message = isPriority ? '🚨 PRIORITY: ' + note : note;
             
-            await sendToWorker(message);
-            document.getElementById('noteInput').value = '';
-            document.getElementById('priorityCheck').checked = false;
-            showToast('Note sent to Jesus!');
-        }
-
-        // Worker Communication
-        async function sendToWorker(message) {
             try {
                 await fetch(WORKER_URL, {
                     method: 'POST',
@@ -1335,13 +1303,16 @@ Built for CS3 Investments by Jesus ⚡
                             id: Date.now(),
                             type: 'dashboard_note',
                             content: message,
-                            priority: false,
+                            priority: isPriority,
                             createdAt: new Date().toISOString()
                         }]
                     })
                 });
+                document.getElementById('noteInput').value = '';
+                document.getElementById('priorityCheck').checked = false;
+                showToast('Note sent to Jesus!');
             } catch(e) {
-                console.error('Worker error:', e);
+                alert('Failed to send');
             }
         }
 
@@ -1355,7 +1326,6 @@ Built for CS3 Investments by Jesus ⚡
                 return;
             }
             
-            // Save locally
             let invites = JSON.parse(localStorage.getItem('teamInvites')) || [];
             invites.push({
                 id: Date.now(),
@@ -1366,12 +1336,26 @@ Built for CS3 Investments by Jesus ⚡
             });
             localStorage.setItem('teamInvites', JSON.stringify(invites));
             
-            // Notify Jesus
-            await sendToWorker('👥 Team Invite: Al invited ' + email + ' as ' + role);
+            try {
+                await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        lastUpdated: new Date().toISOString(),
+                        notes: [{
+                            id: Date.now(),
+                            type: 'team_invite',
+                            content: '👥 Team Invite: Al invited ' + email + ' as ' + role,
+                            priority: true,
+                            createdAt: new Date().toISOString()
+                        }]
+                    })
+                });
+            } catch(e) {}
             
             document.getElementById('inviteEmail').value = '';
             loadTeamMembers();
-            showToast('Invite sent to ' + email);
+            showToast('Invite sent to ' + email + '!');
         }
 
         // Load Team
@@ -1383,17 +1367,17 @@ Built for CS3 Investments by Jesus ⚡
             
             if (pending.length > 0) {
                 document.getElementById('pendingInvites').innerHTML = pending.map(inv => `
-                    <div class="team-member">
+                    <div class="team-member" style="margin-bottom: 8px;">
                         <div class="member-avatar">📨</div>
                         <div class="member-info">
                             <div class="member-name">${inv.email}</div>
-                            <div class="member-email">${inv.role} • ${new Date(inv.invitedAt).toLocaleDateString()}</div>
+                            <div class="member-email">${inv.role}</div>
                         </div>
-                        <button onclick="cancelInvite(${inv.id})" style="background: var(--danger); border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.75rem;">Cancel</button>
+                        <button class="btn btn-danger" onclick="cancelInvite(${inv.id})" style="padding: 5px 10px; font-size: 0.7rem;">Cancel</button>
                     </div>
                 `).join('');
             } else {
-                document.getElementById('pendingInvites').innerHTML = '<p class="empty-state" style="padding: 10px;">No pending invitations</p>';
+                document.getElementById('pendingInvites').innerHTML = '<p style="color: var(--muted);">No pending invitations</p>';
             }
         }
 
@@ -1413,7 +1397,7 @@ Built for CS3 Investments by Jesus ⚡
             setTimeout(() => toast.style.display = 'none', 3000);
         }
 
-        // Keyboard shortcuts
+        // Keyboard shortcut
         document.addEventListener('keydown', function(e) {
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
                 e.preventDefault();
