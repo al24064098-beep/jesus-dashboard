@@ -2115,6 +2115,25 @@ property-partner-landing/
                 credentials: "Configured in OpenClaw",
                 canDo: ["Text generation", "Analysis", "Embeddings"],
                 limitations: []
+            },
+            {
+                name: "Google Drive",
+                status: "active",
+                description: "Access to Al's shared folder (19 documents)",
+                credentials: "Browser access confirmed",
+                canDo: ["Read shared files", "Read brand manual", "Access training docs"],
+                limitations: ["Read-only browser access"],
+                addedDate: "2026-02-02"
+            },
+            {
+                name: "Gmail SMTP",
+                status: "needs_refresh",
+                account: "jesusloveal2026@gmail.com",
+                description: "Send emails from my account",
+                credentials: "~/.config/email/credentials.json",
+                canDo: ["Send emails", "Team invites", "Notifications"],
+                limitations: ["App password expired - needs refresh"],
+                addedDate: "2026-01-31"
             }
         ],
         
@@ -2181,8 +2200,9 @@ property-partner-landing/
             },
             {
                 name: "Al's Google Drive",
-                why: "Security - personal files",
-                wouldNeed: "Google Drive API OAuth"
+                why: "HAVE ACCESS via browser - 19 files shared",
+                status: "active",
+                note: "Browser access confirmed 2026-02-02. Can read shared folder."
             },
             {
                 name: "InvestNext",
