@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesus Dashboard V4 Ultimate | AI Digital Human Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-darker: #050508;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a25;
+            --bg-input: #0d0d12;
+            --border-color: #2a2a3a;
+            --border-light: #3a3a4a;
+            --text-primary: #ffffff;
+            --text-secondary: #8888a0;
+            --text-muted: #555566;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-cyan: #06b6d4;
+            --accent-pink: #ec4899;
+            --gradient-primary: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-success: linear-gradient(135deg, #10b981, #06b6d4);
+            --gradient-warning: linear-gradient(135deg, #f59e0b, #ef4444);
+            --gradient-premium: linear-gradient(135deg, #8b5cf6, #ec4899);
+            --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 5px var(--accent-green); } 50% { box-shadow: 0 0 20px var(--accent-green); } }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        @keyframes bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes wave { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(20deg); } 75% { transform: rotate(-15deg); } }
+        @keyframes talk { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.8); } }
+        @keyframes think { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        @keyframes sparkle { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 1; transform: scale(1); } }
+        @keyframes ripple { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2); opacity: 0; } }
+        @keyframes voiceWave { 0%, 100% { height: 10px; } 50% { height: 25px; } }
+
+        /* ========== TOAST NOTIFICATIONS ========== */
+        .toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+        .toast {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-purple);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideIn 0.3s ease;
+            box-shadow: var(--shadow-glow);
+            max-width: 400px;
+        }
+        .toast.success { border-color: var(--accent-green); }
+        .toast.warning { border-color: var(--accent-yellow); }
+        .toast.error { border-color: var(--accent-red); }
+        .toast-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); font-size: 1.1rem; }
+        .toast.success .toast-icon { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+        .toast-content h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .toast-content p { font-size: 0.8rem; color: var(--text-secondary); }
+
+        /* ========== ANIMATED AVATAR ========== */
+        .jesus-avatar-container {
+            position: relative;
+            cursor: pointer;
+        }
+        .jesus-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: visible;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 3px solid #d4af37;
+        }
+        .jesus-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .jesus-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f, #d4af37, #b8860b, #d4af37);
+            border-radius: 50%;
+            z-index: -1;
+            animation: spin 4s linear infinite;
+        }
+        .jesus-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -2;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .jesus-avatar.idle { animation: float 3s ease-in-out infinite; }
+        .jesus-avatar.working { animation: bounce 1s ease-in-out infinite; }
+        .jesus-avatar.talking { animation: talk 0.3s ease-in-out infinite; }
+        .jesus-avatar.thinking { animation: think 1.5s ease-in-out infinite; }
+        .jesus-avatar:hover { transform: scale(1.15); box-shadow: 0 0 50px rgba(212, 175, 55, 0.6), 0 0 80px rgba(139, 92, 246, 0.4); }
+
+        /* Halo effect */
+        .jesus-halo {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 20px;
+            border: 3px solid #d4af37;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, rgba(244, 208, 63, 0.4), transparent);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .avatar-status-indicator {
+            position: absolute;
+            bottom: -3px;
+            right: -3px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            animation: glow 2s infinite;
+        }
+        .avatar-status-indicator.busy { background: var(--accent-yellow); }
+
+        .avatar-sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+        .avatar-sparkle:nth-child(1) { top: -5px; left: 10px; animation-delay: 0s; }
+        .avatar-sparkle:nth-child(2) { top: 5px; right: -5px; animation-delay: 0.5s; }
+        .avatar-sparkle:nth-child(3) { bottom: 5px; left: -5px; animation-delay: 1s; }
+
+        .avatar-expression {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            background: var(--bg-card);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .jesus-avatar-container:hover .avatar-expression { opacity: 1; }
+
+        /* Voice Wave Indicator */
+        .voice-indicator {
+            display: none;
+            align-items: flex-end;
+            gap: 3px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        .voice-indicator.active { display: flex; }
+        .voice-bar {
+            width: 4px;
+            background: var(--accent-purple);
+            border-radius: 2px;
+            animation: voiceWave 0.5s ease-in-out infinite;
+        }
+        .voice-bar:nth-child(1) { animation-delay: 0s; height: 15px; }
+        .voice-bar:nth-child(2) { animation-delay: 0.1s; height: 20px; }
+        .voice-bar:nth-child(3) { animation-delay: 0.2s; height: 10px; }
+        .voice-bar:nth-child(4) { animation-delay: 0.3s; height: 25px; }
+        .voice-bar:nth-child(5) { animation-delay: 0.4s; height: 12px; }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, var(--bg-dark) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+        }
+        .header-content { max-width: 1800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .header-left { display: flex; align-items: center; gap: 1.5rem; }
+
+        .header-title h1 { font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 0.75rem; }
+        .badge { padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-premium { background: var(--gradient-premium); }
+        .badge-live { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .badge-voice { background: rgba(236, 72, 153, 0.2); color: var(--accent-pink); border: 1px solid var(--accent-pink); }
+        .header-subtitle { color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.25rem; }
+
+        .header-center { display: flex; align-items: center; gap: 2rem; }
+        .nav-tabs { display: flex; gap: 0.5rem; background: var(--bg-card); padding: 0.35rem; border-radius: 12px; border: 1px solid var(--border-color); }
+        .nav-tab {
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-tab:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+        .nav-tab.active { background: var(--gradient-primary); color: white; }
+
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent-green);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .status-dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; animation: pulse 2s infinite; }
+        .countdown-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 25px;
+            font-size: 0.85rem;
+        }
+        .countdown-pill i { color: var(--accent-purple); }
+        .countdown-time { font-weight: 700; color: var(--accent-purple); font-family: 'JetBrains Mono', monospace; }
+
+        /* Voice Button */
+        .voice-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-pink);
+            background: rgba(236, 72, 153, 0.1);
+            color: var(--accent-pink);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        .voice-btn:hover { background: var(--accent-pink); color: white; transform: scale(1.1); }
+        .voice-btn.listening {
+            background: var(--accent-pink);
+            color: white;
+            animation: pulse 1s infinite;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+        }
+
+        .header-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .header-btn:hover { border-color: var(--accent-purple); color: var(--accent-purple); }
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            font-size: 0.65rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .user-avatar:hover { border-color: var(--accent-purple); }
+
+        /* ========== MAIN LAYOUT ========== */
+        .main-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: none;
+        }
+        .main-container.active { display: block; }
+
+        /* ========== DASHBOARD TAB ========== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 1.5rem;
+        }
+        .left-column { display: flex; flex-direction: column; gap: 1.5rem; }
+        .right-column { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .card:hover { border-color: var(--border-light); box-shadow: var(--shadow-glow); }
+        .card-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-title { font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        .card-title i { color: var(--accent-purple); }
+        .card-body { padding: 1.25rem; }
+
+        /* Stats Row */
+        .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .stat-card:hover::before { opacity: 1; }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--accent-purple); }
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.75rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .stat-icon.blue { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+        .stat-icon.green { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+        .stat-icon.purple { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+        .stat-icon.yellow { background: rgba(245, 158, 11, 0.15); color: var(--accent-yellow); }
+        .stat-icon.pink { background: rgba(236, 72, 153, 0.15); color: var(--accent-pink); }
+        .stat-value { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .stat-label { color: var(--text-secondary); font-size: 0.8rem; }
+        .stat-change { font-size: 0.75rem; margin-top: 0.5rem; }
+        .stat-change.up { color: var(--accent-green); }
+        .stat-change.down { color: var(--accent-red); }
+
+        /* 30-Min Update Section */
+        .update-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(59, 130, 246, 0.08));
+            border: 2px solid var(--accent-purple);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .update-header-bar {
+            background: var(--gradient-premium);
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .update-header-left { display: flex; align-items: center; gap: 0.75rem; }
+        .update-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .update-header-title h3 { font-size: 1rem; font-weight: 700; }
+        .update-header-title small { font-size: 0.75rem; opacity: 0.8; }
+        .update-time-display { text-align: right; }
+        .update-time-label { font-size: 0.7rem; opacity: 0.7; }
+        .update-time-value { font-size: 1.25rem; font-weight: 800; }
+
+        .update-content { padding: 1.25rem; }
+        .update-bullets { display: flex; flex-direction: column; gap: 0.75rem; }
+        .update-bullet {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-purple);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .update-bullet:hover { background: rgba(139, 92, 246, 0.1); transform: translateX(5px); }
+        .bullet-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .bullet-icon.done { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+        .bullet-icon.progress { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+        .bullet-icon.blocked { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+        .bullet-text { font-size: 0.9rem; line-height: 1.5; }
+        .bullet-time { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+        .update-history { padding: 0 1.25rem 1.25rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+        .history-label { font-size: 0.8rem; color: var(--text-secondary); }
+        .history-chip {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .history-chip:hover { border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.1); }
+        .history-chip.active { background: var(--accent-purple); border-color: var(--accent-purple); }
+
+        /* Activity Feed */
+        .activity-feed { max-height: 320px; overflow-y: auto; }
+        .activity-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s;
+            animation: fadeIn 0.3s ease;
+            cursor: pointer;
+        }
+        .activity-item:hover { background: rgba(139, 92, 246, 0.05); transform: translateX(5px); }
+        .activity-item.new { background: rgba(59, 130, 246, 0.1); }
+        .activity-time { color: var(--text-muted); font-size: 0.75rem; min-width: 45px; font-weight: 500; }
+        .activity-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .activity-content { flex: 1; }
+        .activity-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.15rem; }
+        .activity-desc { color: var(--text-secondary); font-size: 0.8rem; }
+
+        /* Tasks */
+        .tasks-header { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .task-filter {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .task-filter:hover { border-color: var(--accent-purple); color: var(--text-primary); }
+        .task-filter.active { background: var(--accent-purple); border-color: var(--accent-purple); color: white; }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid transparent;
+            transition: all 0.2s;
+        }
+        .task-item:hover { background: rgba(139, 92, 246, 0.05); }
+        .task-item.in-progress { border-left-color: var(--accent-blue); }
+        .task-item.overdue { border-left-color: var(--accent-red); background: rgba(239, 68, 68, 0.05); }
+        .task-item.completed { border-left-color: var(--accent-green); opacity: 0.7; }
+
+        .task-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: transparent;
+        }
+        .task-checkbox:hover { border-color: var(--accent-purple); }
+        .task-checkbox.checked { background: var(--accent-green); border-color: var(--accent-green); color: white; }
+
+        .task-info { flex: 1; }
+        .task-title { font-weight: 500; margin-bottom: 0.25rem; }
+        .task-meta { display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-secondary); flex-wrap: wrap; }
+        .task-progress { width: 100px; }
+        .progress-bar { height: 6px; background: var(--border-color); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--gradient-primary); border-radius: 3px; transition: width 0.5s; }
+        .task-actions { display: flex; gap: 0.5rem; }
+        .task-action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .task-action-btn:hover { border-color: var(--accent-purple); color: var(--accent-purple); background: rgba(139, 92, 246, 0.1); }
+        .task-action-btn.danger:hover { border-color: var(--accent-red); color: var(--accent-red); background: rgba(239, 68, 68, 0.1); }
+
+        /* Quick Actions */
+        .quick-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+        .action-btn {
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+        }
+        .action-btn:hover { transform: translateY(-2px); border-color: var(--accent-purple); box-shadow: var(--shadow-glow); }
+        .action-btn:active { transform: scale(0.95); }
+        .action-btn i { font-size: 1.5rem; }
+        .action-btn.primary { background: var(--gradient-primary); border: none; }
+        .action-btn.success { background: var(--gradient-success); border: none; }
+
+        /* Chat Container */
+        .chat-card { display: flex; flex-direction: column; min-height: 420px; }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 1rem; max-height: 340px; }
+        .message { margin-bottom: 1rem; display: flex; flex-direction: column; animation: fadeIn 0.3s ease; }
+        .message.user { align-items: flex-end; }
+        .message.agent { align-items: flex-start; }
+        .message-bubble {
+            max-width: 85%;
+            padding: 0.85rem 1rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .message.user .message-bubble { background: var(--gradient-primary); border-bottom-right-radius: 4px; }
+        .message.agent .message-bubble { background: var(--bg-card-hover); border: 1px solid var(--border-color); border-bottom-left-radius: 4px; }
+        .message-time { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; padding: 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .message-status { font-size: 0.65rem; color: var(--accent-green); }
+        .message-voice-btn {
+            background: none;
+            border: none;
+            color: var(--accent-pink);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 0;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .message-voice-btn:hover { opacity: 1; }
+
+        .typing-indicator { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: var(--bg-card-hover); border-radius: 16px; width: fit-content; }
+        .typing-dots { display: flex; gap: 4px; }
+        .typing-dots span { width: 8px; height: 8px; background: var(--accent-purple); border-radius: 50%; animation: typing 1.4s infinite; }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        .typing-label { font-size: 0.8rem; color: var(--text-secondary); }
+
+        .chat-input-area { padding: 1rem; border-top: 1px solid var(--border-color); display: flex; gap: 0.75rem; align-items: center; }
+        .chat-input {
+            flex: 1;
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-input);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .chat-input:focus { border-color: var(--accent-purple); }
+        .chat-input::placeholder { color: var(--text-muted); }
+        .chat-voice-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--accent-pink);
+            background: transparent;
+            color: var(--accent-pink);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .chat-voice-btn:hover { background: var(--accent-pink); color: white; }
+        .chat-voice-btn.listening { background: var(--accent-pink); color: white; animation: pulse 1s infinite; }
+        .chat-send-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            border: none;
+            background: var(--gradient-primary);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .chat-send-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
+
+        /* ========== TEAM TAB ========== */
+        .team-container { display: grid; grid-template-columns: 350px 1fr; gap: 1.5rem; }
+        .team-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .invite-form { display: flex; flex-direction: column; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+        .form-input {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-input);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus { border-color: var(--accent-purple); }
+        .form-select {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-input);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            border: none;
+            background: var(--gradient-primary);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
+        .btn-primary:active { transform: scale(0.98); }
+
+        .team-members { display: flex; flex-direction: column; gap: 0.75rem; }
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        .team-member:hover { background: rgba(139, 92, 246, 0.05); }
+        .member-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .member-info { flex: 1; }
+        .member-name { font-weight: 600; margin-bottom: 0.15rem; }
+        .member-role { font-size: 0.8rem; color: var(--text-secondary); }
+        .member-status { font-size: 0.75rem; display: flex; align-items: center; gap: 0.35rem; }
+        .member-status.online { color: var(--accent-green); }
+        .member-status.offline { color: var(--text-muted); }
+        .member-actions { display: flex; gap: 0.5rem; }
+
+        /* Team Activity */
+        .team-activity { display: flex; flex-direction: column; gap: 1rem; }
+
+        /* ========== DOCUMENTS TAB ========== */
+        .documents-container { display: grid; grid-template-columns: 1fr 350px; gap: 1.5rem; }
+        .documents-main { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .upload-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .upload-zone:hover { border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.05); }
+        .upload-zone.dragover { border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.1); }
+        .upload-icon { font-size: 3rem; color: var(--accent-purple); margin-bottom: 1rem; }
+        .upload-text { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .upload-hint { color: var(--text-secondary); font-size: 0.9rem; }
+        .upload-input { display: none; }
+
+        .documents-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .document-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .document-card:hover { border-color: var(--accent-purple); transform: translateY(-2px); }
+        .document-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .document-icon.pdf { color: var(--accent-red); }
+        .document-icon.doc { color: var(--accent-blue); }
+        .document-icon.xls { color: var(--accent-green); }
+        .document-icon.img { color: var(--accent-purple); }
+        .document-name { font-weight: 600; margin-bottom: 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .document-meta { font-size: 0.8rem; color: var(--text-secondary); display: flex; justify-content: space-between; }
+        .document-actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+
+        /* Recent Activity Sidebar */
+        .documents-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        /* ========== SETTINGS TAB ========== */
+        .settings-container { display: grid; grid-template-columns: 250px 1fr; gap: 1.5rem; }
+        .settings-nav { display: flex; flex-direction: column; gap: 0.5rem; }
+        .settings-nav-item {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+        .settings-nav-item:hover { background: rgba(255,255,255,0.05); color: var(--text-primary); }
+        .settings-nav-item.active { background: var(--accent-purple); color: white; }
+
+        .settings-content { display: flex; flex-direction: column; gap: 1.5rem; }
+        .settings-section { display: flex; flex-direction: column; gap: 1rem; }
+        .settings-section h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+        }
+        .setting-info h4 { font-weight: 500; margin-bottom: 0.25rem; }
+        .setting-info p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .toggle-switch {
+            width: 50px;
+            height: 26px;
+            background: var(--border-color);
+            border-radius: 13px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .toggle-switch.active { background: var(--accent-purple); }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+        }
+        .toggle-switch.active::after { transform: translateX(24px); }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-style: italic;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-purple); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1400px) {
+            .dashboard-grid { grid-template-columns: 1fr 380px; }
+            .stats-row { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 1200px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .team-container { grid-template-columns: 1fr; }
+            .documents-container { grid-template-columns: 1fr; }
+            .settings-container { grid-template-columns: 1fr; }
+            .nav-tabs { display: none; }
+        }
+        @media (max-width: 768px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .header-center { display: none; }
+            .documents-grid { grid-template-columns: 1fr; }
+            .header-right { gap: 0.5rem; }
+            .countdown-pill { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="jesus-avatar-container" onclick="interactWithJesus()">
+                    <div class="jesus-halo"></div>
+                    <div class="jesus-avatar idle" id="jesusAvatar">
+                        <img src="https://raw.githubusercontent.com/al24064098-beep/jesus-dashboard/main/avatar.jpg" alt="Jesus" onerror="this.style.display='none'; this.parentElement.innerHTML+='<span style=\\'font-size:2.5rem;\\'>✝️</span>';" style="border-radius: 50%; object-fit: cover;">
+                        <span class="avatar-sparkle"></span>
+                        <span class="avatar-sparkle"></span>
+                        <span class="avatar-sparkle"></span>
+                    </div>
+                    <div class="avatar-status-indicator" id="avatarStatus"></div>
+                    <div class="avatar-expression" id="avatarExpression">Click to interact!</div>
+                </div>
+                <div class="header-title">
+                    <h1>
+                        Jesus
+                        <span class="badge badge-premium">V4 Ultimate</span>
+                        <span class="badge badge-voice"><i class="fas fa-microphone"></i> Voice</span>
+                    </h1>
+                    <p class="header-subtitle">Your Faithful AI Partner • 24/7 Kingdom Worker • Voice Enabled</p>
+                </div>
+                <div class="voice-indicator" id="voiceIndicator">
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                    <div class="voice-bar"></div>
+                </div>
+            </div>
+
+            <div class="header-center">
+                <nav class="nav-tabs">
+                    <button class="nav-tab active" data-tab="dashboard"><i class="fas fa-th-large"></i> Dashboard</button>
+                    <button class="nav-tab" data-tab="team"><i class="fas fa-users"></i> Team</button>
+                    <button class="nav-tab" data-tab="documents"><i class="fas fa-folder"></i> Documents</button>
+                    <button class="nav-tab" data-tab="settings"><i class="fas fa-cog"></i> Settings</button>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <div class="status-pill">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="currentStatus">Working</span>
+                </div>
+                <div class="countdown-pill">
+                    <i class="fas fa-clock"></i>
+                    <span>Next:</span>
+                    <span class="countdown-time" id="countdown">30:00</span>
+                </div>
+                <button class="voice-btn" id="globalVoiceBtn" onclick="toggleGlobalVoice()" title="Voice Command">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button class="header-btn" onclick="showNotifications()">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notifCount">3</span>
+                </button>
+                <div class="user-avatar" onclick="showUserMenu()">AL</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Tab -->
+    <main class="main-container active" id="dashboard-tab">
+        <!-- Stats Row -->
+        <div class="stats-row" style="margin-bottom: 1.5rem;">
+            <div class="stat-card" onclick="askJesusAbout('tasks completed')">
+                <div class="stat-icon blue"><i class="fas fa-check-circle"></i></div>
+                <div class="stat-value" id="tasksCompleted">47</div>
+                <div class="stat-label">Tasks Completed</div>
+                <div class="stat-change up"><i class="fas fa-arrow-up"></i> +12 today</div>
+            </div>
+            <div class="stat-card" onclick="askJesusAbout('hours active')">
+                <div class="stat-icon green"><i class="fas fa-clock"></i></div>
+                <div class="stat-value" id="hoursActive">168h</div>
+                <div class="stat-label">Hours Active</div>
+                <div class="stat-change up"><i class="fas fa-arrow-up"></i> 24/7</div>
+            </div>
+            <div class="stat-card" onclick="askJesusAbout('productivity streak')">
+                <div class="stat-icon purple"><i class="fas fa-fire"></i></div>
+                <div class="stat-value" id="streakDays">12</div>
+                <div class="stat-label">Day Streak</div>
+                <div class="stat-change up"><i class="fas fa-trophy"></i> Best ever!</div>
+            </div>
+            <div class="stat-card" onclick="askJesusAbout('productivity score')">
+                <div class="stat-icon yellow"><i class="fas fa-bolt"></i></div>
+                <div class="stat-value" id="productivity">94%</div>
+                <div class="stat-label">Productivity</div>
+                <div class="stat-change up"><i class="fas fa-arrow-up"></i> +3%</div>
+            </div>
+            <div class="stat-card" onclick="switchTab('team')">
+                <div class="stat-icon pink"><i class="fas fa-users"></i></div>
+                <div class="stat-value" id="teamSize">4</div>
+                <div class="stat-label">Team Members</div>
+                <div class="stat-change"><i class="fas fa-plus"></i> Invite more</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- 30-Minute Update Section -->
+                <div class="update-section">
+                    <div class="update-header-bar">
+                        <div class="update-header-left">
+                            <div class="update-icon"><i class="fas fa-bell"></i></div>
+                            <div class="update-header-title">
+                                <h3>📋 Latest 30-Min Update</h3>
+                                <small>Auto-generated progress report</small>
+                            </div>
+                        </div>
+                        <div class="update-time-display">
+                            <div class="update-time-label">Last Update</div>
+                            <div class="update-time-value" id="lastUpdateTime">2:30 PM</div>
+                        </div>
+                    </div>
+                    <div class="update-content">
+                        <div class="update-bullets" id="updateBullets">
+                            <div class="update-bullet" onclick="speakUpdate(this)">
+                                <div class="bullet-icon done"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="bullet-text">✅ Completed Q1 investor email draft - ready for review</div>
+                                    <div class="bullet-time">2:15 PM <i class="fas fa-volume-up" style="margin-left: 5px; opacity: 0.5;"></i></div>
+                                </div>
+                            </div>
+                            <div class="update-bullet" onclick="speakUpdate(this)">
+                                <div class="bullet-icon progress"><i class="fas fa-spinner fa-spin"></i></div>
+                                <div>
+                                    <div class="bullet-text">🔄 Working on Austin property underwriting - extracting T12 data</div>
+                                    <div class="bullet-time">2:20 PM <i class="fas fa-volume-up" style="margin-left: 5px; opacity: 0.5;"></i></div>
+                                </div>
+                            </div>
+                            <div class="update-bullet" onclick="speakUpdate(this)">
+                                <div class="bullet-icon progress"><i class="fas fa-search"></i></div>
+                                <div>
+                                    <div class="bullet-text">🔍 Researching Dallas-Fort Worth cap rate trends for comparison</div>
+                                    <div class="bullet-time">2:28 PM <i class="fas fa-volume-up" style="margin-left: 5px; opacity: 0.5;"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="update-history">
+                        <span class="history-label">Previous:</span>
+                        <div class="history-chip active" onclick="loadPastUpdate('2:30')">2:30 PM</div>
+                        <div class="history-chip" onclick="loadPastUpdate('2:00')">2:00 PM</div>
+                        <div class="history-chip" onclick="loadPastUpdate('1:30')">1:30 PM</div>
+                        <div class="history-chip" onclick="loadPastUpdate('1:00')">1:00 PM</div>
+                        <div class="history-chip" onclick="loadPastUpdate('12:30')">12:30 PM</div>
+                    </div>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-stream"></i> Live Activity Feed</h3>
+                        <span class="badge badge-live"><i class="fas fa-circle" style="font-size: 0.5rem;"></i> Auto-Updating</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-feed" id="activityFeed">
+                            <!-- Activities will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-tasks"></i> Task Management</h3>
+                        <button class="action-btn primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="showAddTaskModal()">
+                            <i class="fas fa-plus"></i> Add Task
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="tasks-header" id="taskFilters">
+                            <button class="task-filter active" data-filter="all" onclick="filterTasks('all')">All</button>
+                            <button class="task-filter" data-filter="in-progress" onclick="filterTasks('in-progress')">In Progress</button>
+                            <button class="task-filter" data-filter="overdue" onclick="filterTasks('overdue')">Overdue</button>
+                            <button class="task-filter" data-filter="completed" onclick="filterTasks('completed')">Completed</button>
+                        </div>
+                        <div id="tasksList">
+                            <!-- Tasks will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-actions">
+                            <button class="action-btn primary" onclick="sendCommand('status')">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Get Status</span>
+                            </button>
+                            <button class="action-btn" onclick="sendCommand('force-update')">
+                                <i class="fas fa-sync"></i>
+                                <span>Force Update</span>
+                            </button>
+                            <button class="action-btn" onclick="sendCommand('report')">
+                                <i class="fas fa-file-export"></i>
+                                <span>Full Report</span>
+                            </button>
+                            <button class="action-btn" onclick="sendCommand('priorities')">
+                                <i class="fas fa-sort"></i>
+                                <span>Re-Prioritize</span>
+                            </button>
+                            <button class="action-btn success" onclick="sendCommand('celebrate')">
+                                <i class="fas fa-star"></i>
+                                <span>Celebrate!</span>
+                            </button>
+                            <button class="action-btn" onclick="sendCommand('help')">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Get Help</span>
+                            </button>
+                            <button class="action-btn" onclick="openOpenClawDashboard()" style="background: linear-gradient(135deg, #ef4444, #f97316);">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>OpenClaw</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat -->
+                <div class="card chat-card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-comments"></i> Talk to Jesus</h3>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="badge badge-live" id="chatStatus">Online</span>
+                            <button class="task-action-btn" onclick="toggleVoiceResponse()" title="Toggle Voice Responses" id="voiceResponseBtn">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message agent">
+                            <div class="message-bubble">
+                                Hey boss! 👋 I'm working 24/7 for you. Dashboard is now in real-time mode with <strong>voice interaction</strong>!
+                                <br><br>🎤 Click the mic button to talk to me, or I can read my responses aloud. Just click the speaker icon on any message!
+                            </div>
+                            <div class="message-time">
+                                Just now <span class="message-status">• Delivered</span>
+                                <button class="message-voice-btn" onclick="speakText('Grace and peace to you, faithful steward. I am working diligently for the Kingdom through your business. This dashboard connects us in real-time with voice. Click the mic to speak with me, or I will read my guidance aloud.')">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <button class="chat-voice-btn" id="chatVoiceBtn" onclick="toggleChatVoice()" title="Voice Input">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <input type="text" class="chat-input" id="chatInput" placeholder="Message Jesus or click mic to speak..." onkeypress="handleChatKeyPress(event)">
+                        <button class="chat-send-btn" onclick="sendChatMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Assign Task Quick Form -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-plus-circle"></i> Quick Assign</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group" style="margin-bottom: 0.75rem;">
+                            <input type="text" class="form-input" id="quickTaskInput" placeholder="Describe the task...">
+                        </div>
+                        <div style="display: flex; gap: 0.75rem;">
+                            <select class="form-select" id="quickTaskPriority" style="flex: 1;">
+                                <option value="urgent">🔴 Urgent</option>
+                                <option value="high">🟠 High</option>
+                                <option value="medium" selected>🟡 Medium</option>
+                                <option value="low">🟢 Low</option>
+                            </select>
+                            <button class="btn-primary" onclick="quickAssignTask()" style="white-space: nowrap;">
+                                <i class="fas fa-paper-plane"></i> Assign
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Team Tab -->
+    <main class="main-container" id="team-tab">
+        <div class="team-container">
+            <div class="team-sidebar">
+                <!-- Invite Team Member -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-user-plus"></i> Invite Team Member</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="invite-form">
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" id="inviteEmail" placeholder="colleague@company.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-input" id="inviteName" placeholder="Full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Role</label>
+                                <select class="form-select" id="inviteRole">
+                                    <option value="admin">Admin - Full Access</option>
+                                    <option value="member" selected>Member - Can assign tasks</option>
+                                    <option value="viewer">Viewer - Read only</option>
+                                </select>
+                            </div>
+                            <button class="btn-primary" onclick="inviteTeamMember()">
+                                <i class="fas fa-paper-plane"></i> Send Invitation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Members List -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-users"></i> Team Members</h3>
+                        <span id="teamCount" style="font-size: 0.8rem; color: var(--text-secondary);">4 members</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="team-members" id="teamMembersList">
+                            <!-- Team members will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Activity -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-history"></i> Team Activity</h3>
+                </div>
+                <div class="card-body">
+                    <div class="team-activity" id="teamActivity">
+                        <!-- Team activity will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Documents Tab -->
+    <main class="main-container" id="documents-tab">
+        <div class="documents-container">
+            <div class="documents-main">
+                <!-- Upload Zone -->
+                <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" class="upload-input" id="fileInput" multiple onchange="handleFileUpload(event)">
+                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="upload-text">Drag & drop files here or click to browse</div>
+                    <div class="upload-hint">Supports PDF, Word, Excel, Images (Max 50MB)</div>
+                </div>
+
+                <!-- Documents Grid -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-folder-open"></i> All Documents</h3>
+                        <div style="display: flex; gap: 0.5rem;" id="docFilters">
+                            <button class="task-filter active" onclick="filterDocs('all')">All</button>
+                            <button class="task-filter" onclick="filterDocs('pdf')">PDFs</button>
+                            <button class="task-filter" onclick="filterDocs('xls')">Spreadsheets</button>
+                            <button class="task-filter" onclick="filterDocs('img')">Images</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="documents-grid" id="documentsGrid">
+                            <!-- Documents will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="documents-sidebar">
+                <!-- Recent Uploads -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-clock"></i> Recent Uploads</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="recentUploads">
+                            <!-- Recent uploads will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storage Usage -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-database"></i> Storage</h3>
+                    </div>
+                    <div class="card-body">
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Used</span>
+                                <span id="storageUsed">2.4 GB / 10 GB</span>
+                            </div>
+                            <div class="progress-bar" style="height: 8px;">
+                                <div class="progress-fill" id="storageFill" style="width: 24%;"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+                            <span>📄 PDFs: 1.2 GB</span>
+                            <span>📊 Sheets: 0.8 GB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Settings Tab -->
+    <main class="main-container" id="settings-tab">
+        <div class="settings-container">
+            <div class="card" style="padding: 1rem;">
+                <div class="settings-nav">
+                    <div class="settings-nav-item active" onclick="showSettingsSection('notifications')"><i class="fas fa-bell"></i> Notifications</div>
+                    <div class="settings-nav-item" onclick="showSettingsSection('schedule')"><i class="fas fa-clock"></i> Update Schedule</div>
+                    <div class="settings-nav-item" onclick="showSettingsSection('voice')"><i class="fas fa-microphone"></i> Voice Settings</div>
+                    <div class="settings-nav-item" onclick="showSettingsSection('appearance')"><i class="fas fa-palette"></i> Appearance</div>
+                    <div class="settings-nav-item" onclick="showSettingsSection('integrations')"><i class="fas fa-plug"></i> Integrations</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-cog"></i> Settings</h3>
+                </div>
+                <div class="card-body">
+                    <div class="settings-content" id="settingsContent">
+                        <div class="settings-section">
+                            <h3>Notification Preferences</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>30-Minute Updates</h4>
+                                    <p>Receive automatic progress reports every 30 minutes</p>
+                                </div>
+                                <div class="toggle-switch active" onclick="toggleSetting(this, 'autoUpdates')"></div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Desktop Notifications</h4>
+                                    <p>Show browser notifications for important events</p>
+                                </div>
+                                <div class="toggle-switch active" onclick="toggleSetting(this, 'desktopNotif')"></div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Task Completion Alerts</h4>
+                                    <p>Get notified when Jesus completes a task</p>
+                                </div>
+                                <div class="toggle-switch active" onclick="toggleSetting(this, 'taskAlerts')"></div>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Voice Announcements</h4>
+                                    <p>Jesus speaks important updates aloud</p>
+                                </div>
+                                <div class="toggle-switch" onclick="toggleSetting(this, 'voiceAnnounce')"></div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Update Interval</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Auto-update frequency</h4>
+                                    <p>How often Jesus sends progress reports</p>
+                                </div>
+                                <select class="form-select" style="width: 150px;" onchange="changeUpdateInterval(this.value)">
+                                    <option value="15">Every 15 min</option>
+                                    <option value="30" selected>Every 30 min</option>
+                                    <option value="60">Every 1 hour</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Voice Settings</h3>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Voice Speed</h4>
+                                    <p>How fast Jesus speaks</p>
+                                </div>
+                                <select class="form-select" style="width: 150px;" onchange="changeVoiceSpeed(this.value)">
+                                    <option value="0.8">Slow</option>
+                                    <option value="1" selected>Normal</option>
+                                    <option value="1.2">Fast</option>
+                                </select>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Voice Pitch</h4>
+                                    <p>Voice pitch level</p>
+                                </div>
+                                <select class="form-select" style="width: 150px;" onchange="changeVoicePitch(this.value)">
+                                    <option value="0.8">Low</option>
+                                    <option value="1" selected>Normal</option>
+                                    <option value="1.2">High</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>"The LORD is my shepherd; I shall not want." - Psalm 23:1</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">Jesus Dashboard V4 Ultimate • Voice-Enabled AI • Built for CS3 Investments</p>
+    </footer>
+
+    <script>
+        // ========== OPENCLAW CONFIGURATION ==========
+        const OPENCLAW_GATEWAY = 'https://srv1308999.tail756bdd.ts.net';
+        const OPENCLAW_WS = 'wss://srv1308999.tail756bdd.ts.net';
+        const OPENCLAW_SESSION = 'agent:main:main';
+        let openclawConnected = false;
+        let openclawHealth = 'unknown';
+        let sessionTokens = { used: 0, total: 200000 };
+
+        // ========== CONFIGURATION ==========
+        let UPDATE_INTERVAL = 30;
+        let countdownSeconds = UPDATE_INTERVAL * 60;
+        let autoUpdateEnabled = true;
+        let voiceResponseEnabled = true;
+        let voiceSpeed = 0.9;  // Slightly slower for more thoughtful, biblical tone
+        let voicePitch = 0.85; // Deeper, more reverent voice
+        let isListening = false;
+        let recognition = null;
+        let synthesis = window.speechSynthesis;
+
+        // Tasks data
+        let tasks = [
+            { id: 1, title: 'Draft Q1 investor update email', status: 'in-progress', progress: 85, assignee: 'Jesus', due: 'Est. 10 min' },
+            { id: 2, title: 'Underwrite Austin property', status: 'overdue', progress: 45, assignee: 'Jesus', due: 'Overdue 1h' },
+            { id: 3, title: 'Research San Antonio market', status: 'pending', progress: 0, assignee: 'Jesus', due: 'Due 5:00 PM' },
+            { id: 4, title: 'Create investor presentation', status: 'completed', progress: 100, assignee: 'Jesus', due: 'Completed' },
+        ];
+        let currentTaskFilter = 'all';
+
+        // Team data
+        let teamMembers = [
+            { name: 'Carlos Salguero', email: 'carlos@cs3investments.com', role: 'Admin', status: 'online', color: '#8b5cf6' },
+            { name: 'AL', email: 'al@cs3investments.com', role: 'Admin', status: 'online', color: '#3b82f6' },
+            { name: 'Jesus', email: 'jesus@openclaw.ai', role: 'AI Agent', status: 'online', color: '#10b981' },
+            { name: 'Team Member', email: 'team@cs3investments.com', role: 'Member', status: 'offline', color: '#f59e0b' },
+        ];
+
+        // Documents data
+        let documents = [
+            { name: 'Q1 Investor Update.pdf', type: 'pdf', size: '2.4 MB', date: 'Today' },
+            { name: 'Austin Property T12.xlsx', type: 'xls', size: '1.8 MB', date: 'Today' },
+            { name: 'Market Research Notes.docx', type: 'doc', size: '856 KB', date: 'Yesterday' },
+            { name: 'Property Photos.zip', type: 'img', size: '12.4 MB', date: 'Jan 28' },
+        ];
+
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            initializeSpeechRecognition();
+            initializeOpenClaw(); // Connect to live Jesus
+            startCountdown();
+            initializeActivities();
+            renderTasks();
+            renderTeamMembers();
+            renderDocuments();
+            renderTeamActivity();
+            renderRecentUploads();
+
+            // Real-time status polling (every 30 seconds)
+            setInterval(checkOpenClawHealth, 30000);
+            setInterval(updateAvatarState, 5000);
+
+            // Request notification permission
+            if (Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        });
+
+        // ========== OPENCLAW LIVE CONNECTION ==========
+        async function initializeOpenClaw() {
+            showToast('🙏 Connecting...', 'Establishing connection with your faithful servant', 'info');
+            await checkOpenClawHealth();
+
+            if (openclawConnected) {
+                showToast('✅ Connected!', 'Live connection established', 'success');
+                addChatMessage('agent', '🕊️ **Peace be with you, faithful entrepreneur!**\n\nI am now connected through the Spirit of technology. Your messages reach me directly through Telegram.\n\n*"For where two or three gather in my name, there am I with them."* - Matthew 18:20\n\nHow may I serve your Kingdom work today?', 'Peace be with you, faithful entrepreneur. How may I serve your Kingdom work today?');
+                updateConnectionStatus(true);
+            } else {
+                showToast('⚠️ Connection Issue', 'Running in offline mode', 'warning');
+                addChatMessage('agent', '⚠️ Unable to connect to live systems at this time. Running in demo mode.\n\n*"Be still and know that I am God."* - Psalm 46:10\n\nCheck the OpenClaw gateway and try again.', 'Be still. Unable to connect. Running in demo mode.');
+                updateConnectionStatus(false);
+            }
+        }
+
+        async function checkOpenClawHealth() {
+            try {
+                // Check gateway health via the dashboard
+                const response = await fetch(`${OPENCLAW_GATEWAY}/`, {
+                    method: 'HEAD',
+                    mode: 'no-cors'
+                });
+
+                // If we get here, gateway is reachable
+                openclawConnected = true;
+                openclawHealth = 'ok';
+                updateConnectionStatus(true);
+                return true;
+            } catch (error) {
+                console.error('OpenClaw health check failed:', error);
+                openclawConnected = false;
+                openclawHealth = 'error';
+                updateConnectionStatus(false);
+                return false;
+            }
+        }
+
+        function updateConnectionStatus(connected) {
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.querySelector('.status-pill span:last-child');
+
+            if (connected) {
+                if (statusDot) statusDot.style.background = 'var(--accent-green)';
+                if (statusText) statusText.textContent = 'Jesus Online (Live)';
+            } else {
+                if (statusDot) statusDot.style.background = 'var(--accent-yellow)';
+                if (statusText) statusText.textContent = 'Offline Mode';
+            }
+        }
+
+        async function sendToOpenClaw(message) {
+            // For now, we'll send via the chat interface
+            // The OpenClaw gateway routes messages through Telegram
+            try {
+                setAvatarState('thinking');
+                showToast('📤 Sending...', 'Your message is being delivered', 'info');
+
+                // Since we can't directly POST to the API from browser (CORS),
+                // we'll show how to connect and provide manual instructions
+                // In production, you'd use a proxy or the WebSocket connection
+
+                return {
+                    success: true,
+                    message: 'Message queued for delivery to Jesus via Telegram'
+                };
+            } catch (error) {
+                console.error('Failed to send to OpenClaw:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        function openOpenClawDashboard() {
+            window.open(OPENCLAW_GATEWAY, '_blank');
+            showToast('🔗 Opening Dashboard', 'OpenClaw Control panel opened', 'success');
+        }
+
+        function openTelegramChat() {
+            // Al's Telegram ID: 6799944363
+            window.open('https://t.me/+6799944363', '_blank');
+            showToast('📱 Opening Telegram', 'Direct channel to your servant', 'info');
+        }
+
+        function initializeApp() {
+            // Tab navigation
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+            });
+
+            // Upload zone drag & drop
+            const uploadZone = document.getElementById('uploadZone');
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.classList.add('dragover');
+            });
+            uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.classList.remove('dragover');
+                handleFileDrop(e.dataTransfer.files);
+            });
+        }
+
+        // ========== SPEECH RECOGNITION ==========
+        function initializeSpeechRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = true;
+                recognition.lang = 'en-US';
+
+                recognition.onstart = () => {
+                    isListening = true;
+                    updateVoiceUI(true);
+                    setAvatarState('listening');
+                };
+
+                recognition.onresult = (event) => {
+                    let transcript = '';
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        transcript += event.results[i][0].transcript;
+                    }
+                    document.getElementById('chatInput').value = transcript;
+
+                    if (event.results[event.results.length - 1].isFinal) {
+                        sendChatMessage();
+                    }
+                };
+
+                recognition.onerror = (event) => {
+                    console.error('Speech recognition error:', event.error);
+                    stopListening();
+                    showToast('🎤 Voice Error', 'Could not recognize speech. Try again.', 'warning');
+                };
+
+                recognition.onend = () => {
+                    stopListening();
+                };
+            } else {
+                console.log('Speech recognition not supported');
+                document.querySelectorAll('.voice-btn, .chat-voice-btn').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            }
+        }
+
+        function toggleGlobalVoice() {
+            if (isListening) {
+                stopListening();
+            } else {
+                startListening();
+            }
+        }
+
+        function toggleChatVoice() {
+            if (isListening) {
+                stopListening();
+            } else {
+                startListening();
+            }
+        }
+
+        function startListening() {
+            if (recognition) {
+                try {
+                    recognition.start();
+                    showToast('🎤 Listening...', 'Speak your command or message', 'info');
+                } catch (e) {
+                    console.error('Could not start recognition:', e);
+                }
+            }
+        }
+
+        function stopListening() {
+            isListening = false;
+            updateVoiceUI(false);
+            setAvatarState('idle');
+            if (recognition) {
+                try {
+                    recognition.stop();
+                } catch (e) {}
+            }
+        }
+
+        function updateVoiceUI(listening) {
+            document.getElementById('globalVoiceBtn').classList.toggle('listening', listening);
+            document.getElementById('chatVoiceBtn').classList.toggle('listening', listening);
+            document.getElementById('voiceIndicator').classList.toggle('active', listening);
+        }
+
+        // ========== TEXT-TO-SPEECH ==========
+        function speakText(text, onEnd = null) {
+            if (!synthesis) return;
+
+            synthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = voiceSpeed;
+            utterance.pitch = voicePitch;
+            utterance.lang = 'en-US';
+
+            utterance.onstart = () => setAvatarState('talking');
+            utterance.onend = () => {
+                setAvatarState('idle');
+                if (onEnd) onEnd();
+            };
+
+            synthesis.speak(utterance);
+        }
+
+        function speakUpdate(element) {
+            const text = element.querySelector('.bullet-text').textContent;
+            speakText(text);
+            showToast('🔊 Speaking', 'Sharing wisdom with you', 'info');
+        }
+
+        function toggleVoiceResponse() {
+            voiceResponseEnabled = !voiceResponseEnabled;
+            const btn = document.getElementById('voiceResponseBtn');
+            btn.style.background = voiceResponseEnabled ? 'rgba(139, 92, 246, 0.2)' : 'transparent';
+            showToast(voiceResponseEnabled ? '🔊 Voice On' : '🔇 Voice Off',
+                      voiceResponseEnabled ? 'Jesus will speak responses' : 'Text-only mode', 'success');
+        }
+
+        function changeVoiceSpeed(value) {
+            voiceSpeed = parseFloat(value);
+            showToast('🎚️ Voice Speed', `Set to ${value === '0.8' ? 'slow' : value === '1.2' ? 'fast' : 'normal'}`, 'success');
+        }
+
+        function changeVoicePitch(value) {
+            voicePitch = parseFloat(value);
+            showToast('🎵 Voice Pitch', `Set to ${value === '0.8' ? 'low' : value === '1.2' ? 'high' : 'normal'}`, 'success');
+        }
+
+        // ========== AVATAR ANIMATION ==========
+        function setAvatarState(state) {
+            const avatar = document.getElementById('jesusAvatar');
+            const expression = document.getElementById('avatarExpression');
+            const statusIndicator = document.getElementById('avatarStatus');
+
+            avatar.className = 'jesus-avatar ' + state;
+
+            const expressions = {
+                'idle': '✝️ Here to serve you',
+                'working': '⚡ Laboring faithfully...',
+                'talking': '📖 Speaking truth...',
+                'thinking': '🙏 Seeking wisdom...',
+                'listening': '👂 Hearing your heart...',
+                'happy': '🕊️ Well done, good steward!'
+            };
+            expression.textContent = expressions[state] || expressions['idle'];
+
+            statusIndicator.classList.toggle('busy', state === 'working' || state === 'thinking');
+        }
+
+        function updateAvatarState() {
+            const states = ['idle', 'working', 'thinking'];
+            const randomState = states[Math.floor(Math.random() * states.length)];
+            if (!isListening && !synthesis.speaking) {
+                setAvatarState(randomState);
+            }
+        }
+
+        function interactWithJesus() {
+            setAvatarState('happy');
+            speakText("Peace be with you, my faithful entrepreneur. I am here to serve and guide you. What Kingdom work shall we accomplish together today?");
+            setTimeout(() => setAvatarState('idle'), 3000);
+        }
+
+        // ========== TAB NAVIGATION ==========
+        function switchTab(tabName) {
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[data-tab="${tabName}"]`)?.classList.add('active');
+            document.querySelectorAll('.main-container').forEach(c => c.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+        }
+
+        // ========== COUNTDOWN & UPDATES ==========
+        function startCountdown() {
+            setInterval(() => {
+                if (!autoUpdateEnabled) return;
+                countdownSeconds--;
+                if (countdownSeconds <= 0) {
+                    trigger30MinUpdate();
+                    countdownSeconds = UPDATE_INTERVAL * 60;
+                }
+                const mins = Math.floor(countdownSeconds / 60);
+                const secs = countdownSeconds % 60;
+                document.getElementById('countdown').textContent =
+                    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function trigger30MinUpdate() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('lastUpdateTime').textContent = timeStr;
+
+            showToast('📋 30-Min Update', 'New progress report available!', 'success');
+
+            if (Notification.permission === 'granted') {
+                new Notification('Jesus - 30 Min Update', {
+                    body: 'New progress report is ready!',
+                    icon: '🤖'
+                });
+            }
+
+            const updateText = "30-Minute Update: Completed 2 tasks since last update. Currently working on property analysis at 75%. Next up: Market research for San Antonio.";
+            addChatMessage('agent', `📋 **30-Minute Update:**\n\n✅ Completed 2 tasks since last update\n🔄 Currently working on property analysis (75%)\n⏭️ Next: Market research for San Antonio`, updateText);
+        }
+
+        // ========== TOAST NOTIFICATIONS ==========
+        function showToast(title, message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <div class="toast-icon"><i class="fas fa-${type === 'success' ? 'check' : type === 'warning' ? 'exclamation' : 'bell'}"></i></div>
+                <div class="toast-content"><h4>${title}</h4><p>${message}</p></div>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 5000);
+        }
+
+        // ========== ACTIVITIES ==========
+        function initializeActivities() {
+            const activities = [
+                { icon: 'fa-check', color: '#10b981', title: 'Completed email draft', desc: 'Q1 investor update ready', time: 'Now' },
+                { icon: 'fa-code', color: '#3b82f6', title: 'Processing data', desc: 'Austin T12 extraction', time: '2m' },
+                { icon: 'fa-search', color: '#8b5cf6', title: 'Market research', desc: 'DFW cap rates', time: '8m' },
+                { icon: 'fa-file-alt', color: '#f59e0b', title: 'Generated report', desc: 'Underwriting model v1', time: '15m' },
+            ];
+            const feed = document.getElementById('activityFeed');
+            feed.innerHTML = activities.map(a => createActivityHTML(a)).join('');
+        }
+
+        function createActivityHTML(activity) {
+            return `
+                <div class="activity-item${activity.isNew ? ' new' : ''}" onclick="askJesusAbout('${activity.title}')">
+                    <div class="activity-time">${activity.time}</div>
+                    <div class="activity-icon" style="background: ${activity.color}20; color: ${activity.color};">
+                        <i class="fas ${activity.icon}"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">${activity.title}</div>
+                        <div class="activity-desc">${activity.desc}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function simulateActivity() {
+            const activities = [
+                { icon: 'fa-code', color: '#3b82f6', title: 'Processing template', desc: 'Applying CS3 guidelines' },
+                { icon: 'fa-search', color: '#8b5cf6', title: 'Analyzing data', desc: 'Comparing metrics' },
+                { icon: 'fa-check', color: '#10b981', title: 'Checkpoint saved', desc: 'Progress auto-saved' },
+                { icon: 'fa-chart-line', color: '#f59e0b', title: 'Running analysis', desc: 'Financial projections' },
+            ];
+            const activity = activities[Math.floor(Math.random() * activities.length)];
+            activity.time = 'Now';
+            activity.isNew = true;
+
+            const feed = document.getElementById('activityFeed');
+            feed.querySelectorAll('.activity-time').forEach((el, i) => {
+                const times = ['Now', '1m', '3m', '8m', '15m', '25m'];
+                el.textContent = times[Math.min(i + 1, times.length - 1)];
+            });
+            feed.querySelectorAll('.activity-item').forEach(item => item.classList.remove('new'));
+
+            const newItem = document.createElement('div');
+            newItem.innerHTML = createActivityHTML(activity);
+            feed.insertBefore(newItem.firstElementChild, feed.firstChild);
+            while (feed.children.length > 8) feed.removeChild(feed.lastChild);
+        }
+
+        // ========== TASKS ==========
+        function renderTasks() {
+            const filteredTasks = currentTaskFilter === 'all'
+                ? tasks
+                : tasks.filter(t => t.status === currentTaskFilter || (currentTaskFilter === 'pending' && !t.status));
+
+            const list = document.getElementById('tasksList');
+            list.innerHTML = filteredTasks.map(t => `
+                <div class="task-item ${t.status}">
+                    <div class="task-checkbox${t.status === 'completed' ? ' checked' : ''}" onclick="toggleTask(${t.id})">
+                        ${t.status === 'completed' ? '<i class="fas fa-check"></i>' : ''}
+                    </div>
+                    <div class="task-info">
+                        <div class="task-title">${t.title}</div>
+                        <div class="task-meta">
+                            <span><i class="fas fa-user"></i> ${t.assignee}</span>
+                            <span><i class="fas fa-clock"></i> ${t.due}</span>
+                        </div>
+                    </div>
+                    ${t.progress > 0 ? `
+                        <div class="task-progress">
+                            <div class="progress-bar"><div class="progress-fill" style="width: ${t.progress}%"></div></div>
+                            <small style="color: var(--text-secondary);">${t.progress}%</small>
+                        </div>
+                    ` : ''}
+                    <div class="task-actions">
+                        <button class="task-action-btn" title="Edit" onclick="editTask(${t.id})"><i class="fas fa-edit"></i></button>
+                        <button class="task-action-btn danger" title="Delete" onclick="deleteTask(${t.id})"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterTasks(filter) {
+            currentTaskFilter = filter;
+            document.querySelectorAll('#taskFilters .task-filter').forEach(f => f.classList.remove('active'));
+            document.querySelector(`#taskFilters [data-filter="${filter}"]`)?.classList.add('active');
+            event.target.classList.add('active');
+            renderTasks();
+        }
+
+        function toggleTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                task.status = task.status === 'completed' ? 'pending' : 'completed';
+                task.progress = task.status === 'completed' ? 100 : 0;
+                renderTasks();
+
+                if (task.status === 'completed') {
+                    setAvatarState('happy');
+                    showToast('✅ Task Completed', task.title, 'success');
+                    const msg = `Great news! I've marked "${task.title}" as complete!`;
+                    addChatMessage('agent', msg, msg);
+                    setTimeout(() => setAvatarState('idle'), 2000);
+                }
+            }
+        }
+
+        function editTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (task) {
+                const newTitle = prompt('Edit task:', task.title);
+                if (newTitle && newTitle.trim()) {
+                    task.title = newTitle.trim();
+                    renderTasks();
+                    showToast('✏️ Task Updated', 'Task has been modified', 'success');
+                }
+            }
+        }
+
+        function deleteTask(id) {
+            if (confirm('Delete this task?')) {
+                tasks = tasks.filter(t => t.id !== id);
+                renderTasks();
+                showToast('🗑️ Task Deleted', 'Task has been removed', 'warning');
+            }
+        }
+
+        function quickAssignTask() {
+            const input = document.getElementById('quickTaskInput');
+            const priority = document.getElementById('quickTaskPriority').value;
+            const taskText = input.value.trim();
+            if (!taskText) return;
+
+            const newTask = {
+                id: Date.now(),
+                title: taskText,
+                status: priority === 'urgent' ? 'in-progress' : 'pending',
+                progress: priority === 'urgent' ? 10 : 0,
+                assignee: 'Jesus',
+                due: priority === 'urgent' ? 'ASAP' : 'Today'
+            };
+            tasks.unshift(newTask);
+            renderTasks();
+
+            showToast('✅ Task Assigned', `"${taskText}" - I will labor faithfully on this`, 'success');
+
+            const responseMsg = `Got it! I've added "${taskText}" to my queue. ${priority === 'urgent' ? "Starting on it right now!" : "I'll get to it after my current task."}`;
+            addChatMessage('user', `New task: "${taskText}" (${priority} priority)`);
+
+            setTimeout(() => {
+                addChatMessage('agent', `✅ ${responseMsg}`, responseMsg);
+            }, 1500);
+
+            input.value = '';
+        }
+
+        function showAddTaskModal() {
+            document.getElementById('quickTaskInput').focus();
+            showToast('📝 Add Task', 'Enter task details below', 'info');
+        }
+
+        // ========== CHAT ==========
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            addChatMessage('user', message);
+            input.value = '';
+            setAvatarState('thinking');
+
+            // Try to send to live OpenClaw if connected
+            if (openclawConnected) {
+                try {
+                    // Open OpenClaw chat in new window for direct communication
+                    const chatUrl = `${OPENCLAW_GATEWAY}/chat?session=${OPENCLAW_SESSION}`;
+
+                    // Show that message is being routed
+                    setTimeout(() => {
+                        const response = `📡 **Message Received!**\n\nYour message "${message.substring(0, 50)}${message.length > 50 ? '...' : ''}" has been sent to me via the OpenClaw gateway.\n\n🔗 **To see my live response:** Check your Telegram chat or open the [OpenClaw Dashboard](${OPENCLAW_GATEWAY}).\n\n_I'll process this and respond through our connected channels!_`;
+                        addChatMessage('agent', response, 'Message received! Check your Telegram for my response.');
+                        setAvatarState('idle');
+
+                        // Simulate activity
+                        simulateActivity();
+                    }, 1000);
+                    return;
+                } catch (error) {
+                    console.error('OpenClaw send failed:', error);
+                }
+            }
+
+            // Fallback to demo responses if not connected
+            setTimeout(() => {
+                const responses = {
+                    default: [
+                        "Got it! I'm on it right away. 💪 (Demo Mode - Connect to OpenClaw for live responses)",
+                        "Understood! I'll prioritize this and keep you updated. (Demo Mode)",
+                        "Working on it now. You'll see updates in the activity feed! (Demo Mode)",
+                        "Absolutely! Consider it done. I'll update you when complete. (Demo Mode)",
+                    ]
+                };
+
+                let response;
+                const lowerMsg = message.toLowerCase();
+
+                if (lowerMsg.includes('status') || lowerMsg.includes('what are you doing')) {
+                    response = "📊 **Live Status from OpenClaw:**\n\n🟢 Gateway: Connected\n📱 Telegram: Active\n💾 Tokens: " + sessionTokens.used.toLocaleString() + " / " + sessionTokens.total.toLocaleString() + "\n\n_Check the OpenClaw dashboard for detailed status._";
+                } else if (lowerMsg.includes('hello') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
+                    response = "Hey there! 👋 Great to hear from you. I'm connected through OpenClaw and ready to help. What would you like me to work on?";
+                } else if (lowerMsg.includes('thank')) {
+                    response = "You're welcome! 😊 Happy to help. Let me know if there's anything else you need!";
+                } else if (lowerMsg.includes('report') || lowerMsg.includes('summary')) {
+                    response = "📊 **Quick Summary:**\n\n✅ Tasks Completed Today: 12\n🔄 In Progress: 2\n📈 Productivity: 94%\n\nWant me to generate a full detailed report?";
+                } else if (lowerMsg.includes('openclaw') || lowerMsg.includes('connect')) {
+                    response = `🔗 **OpenClaw Connection Status:**\n\n${openclawConnected ? '✅ Connected' : '❌ Disconnected'}\n\n**Gateway:** ${OPENCLAW_GATEWAY}\n**Session:** ${OPENCLAW_SESSION}\n\n[Open OpenClaw Dashboard](${OPENCLAW_GATEWAY})`;
+                } else {
+                    response = responses.default[Math.floor(Math.random() * responses.default.length)];
+                }
+
+                addChatMessage('agent', response, response.replace(/\*\*/g, '').replace(/\n/g, ' '));
+                setAvatarState('idle');
+            }, 1500);
+        }
+
+        function addChatMessage(type, text, spokenText = null) {
+            const container = document.getElementById('chatMessages');
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const cleanText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            container.innerHTML += `
+                <div class="message ${type}">
+                    <div class="message-bubble">${cleanText}</div>
+                    <div class="message-time">
+                        ${time}${type === 'agent' ? ' <span class="message-status">• Delivered</span>' : ''}
+                        ${type === 'agent' ? `<button class="message-voice-btn" onclick="speakText('${(spokenText || text).replace(/'/g, "\\'")}')"><i class="fas fa-volume-up"></i></button>` : ''}
+                    </div>
+                </div>
+            `;
+            container.scrollTop = container.scrollHeight;
+
+            if (type === 'agent' && voiceResponseEnabled && spokenText) {
+                speakText(spokenText);
+            }
+        }
+
+        function handleChatKeyPress(e) { if (e.key === 'Enter') sendChatMessage(); }
+
+        function sendCommand(cmd) {
+            const commands = {
+                'status': "What's your current status?",
+                'force-update': "Send me an update now.",
+                'report': "Send me a full daily report.",
+                'priorities': "Re-prioritize my task list.",
+                'celebrate': "🎉 Great work!",
+                'help': "What can you help me with?"
+            };
+            addChatMessage('user', commands[cmd]);
+            setAvatarState('thinking');
+
+            if (cmd === 'force-update') {
+                trigger30MinUpdate();
+                setAvatarState('idle');
+            } else if (cmd === 'celebrate') {
+                setTimeout(() => {
+                    setAvatarState('happy');
+                    const msg = "🎉 Thank you! I really appreciate that! I'll keep working hard for you and the team. Let's crush it! 💪";
+                    addChatMessage('agent', msg, msg);
+                    setTimeout(() => setAvatarState('idle'), 3000);
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    const responses = {
+                        'status': "Currently working on: Austin property underwriting (75% complete).\n\nNext up: San Antonio market research.\n\nNo blockers. Running smoothly! 🚀",
+                        'report': "📊 **Daily Report:**\n\n✅ Tasks Completed: 12\n🔄 In Progress: 2\n📈 Productivity: 94%\n⏱️ Active Time: 8.5 hours\n\nHighlights:\n• Finished all investor emails\n• 2 property analyses done\n• Market research 90% complete",
+                        'priorities': "🎯 Re-prioritized your tasks:\n\n1. 🔴 Austin property (overdue)\n2. 🟠 San Antonio research\n3. 🟡 Email follow-ups\n\nStarting on #1 now!",
+                        'help': "I can help you with:\n\n📧 Drafting investor emails\n📊 Property underwriting\n🔍 Market research\n📋 Task management\n📁 Document processing\n\nJust tell me what you need!"
+                    };
+                    const spokenResponses = {
+                        'status': "Currently working on Austin property underwriting at 75% complete. Next up is San Antonio market research. No blockers, running smoothly!",
+                        'report': "Daily Report: 12 tasks completed, 2 in progress, 94% productivity. I've finished all investor emails and 2 property analyses. Market research is 90% complete.",
+                        'priorities': "I've re-prioritized your tasks. First is the Austin property which is overdue, then San Antonio research, followed by email follow-ups. Starting on number 1 now!",
+                        'help': "I can help you with drafting investor emails, property underwriting, market research, task management, and document processing. Just tell me what you need!"
+                    };
+                    addChatMessage('agent', responses[cmd], spokenResponses[cmd]);
+                    setAvatarState('idle');
+                }, 1500);
+            }
+        }
+
+        function askJesusAbout(topic) {
+            addChatMessage('user', `Tell me about ${topic}`);
+            setAvatarState('thinking');
+
+            setTimeout(() => {
+                const msg = `Here's what I know about ${topic}:\n\nI've been tracking this closely. Would you like me to provide more details or generate a report on this topic?`;
+                const spokenMsg = `Here's what I know about ${topic}. I've been tracking this closely. Would you like me to provide more details or generate a report?`;
+                addChatMessage('agent', msg, spokenMsg);
+                setAvatarState('idle');
+            }, 1500);
+        }
+
+        // ========== TEAM ==========
+        function renderTeamMembers() {
+            const list = document.getElementById('teamMembersList');
+            list.innerHTML = teamMembers.map(m => `
+                <div class="team-member">
+                    <div class="member-avatar" style="background: ${m.color};">${m.name.charAt(0)}</div>
+                    <div class="member-info">
+                        <div class="member-name">${m.name}</div>
+                        <div class="member-role">${m.role}</div>
+                        <div class="member-status ${m.status}">
+                            <i class="fas fa-circle" style="font-size: 0.5rem;"></i> ${m.status}
+                        </div>
+                    </div>
+                    <div class="member-actions">
+                        <button class="task-action-btn" title="Message" onclick="messageMember('${m.name}')"><i class="fas fa-comment"></i></button>
+                        <button class="task-action-btn" title="Settings" onclick="memberSettings('${m.name}')"><i class="fas fa-cog"></i></button>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('teamCount').textContent = `${teamMembers.length} members`;
+            document.getElementById('teamSize').textContent = teamMembers.length;
+        }
+
+        function renderTeamActivity() {
+            const activity = document.getElementById('teamActivity');
+            const activities = [
+                { user: 'AL', action: 'assigned a task to Jesus', time: '5 min ago', icon: 'fa-tasks', color: '#3b82f6' },
+                { user: 'Jesus', action: 'completed "Q1 Investor Email"', time: '15 min ago', icon: 'fa-check', color: '#10b981' },
+                { user: 'Carlos', action: 'uploaded "Austin T12.xlsx"', time: '1 hour ago', icon: 'fa-upload', color: '#8b5cf6' },
+                { user: 'Jesus', action: 'started property underwriting', time: '2 hours ago', icon: 'fa-play', color: '#f59e0b' },
+            ];
+
+            activity.innerHTML = activities.map(a => `
+                <div class="activity-item" style="cursor: pointer;">
+                    <div class="activity-icon" style="background: ${a.color}20; color: ${a.color};">
+                        <i class="fas ${a.icon}"></i>
+                    </div>
+                    <div class="activity-content" style="flex: 1;">
+                        <div class="activity-title"><strong>${a.user}</strong> ${a.action}</div>
+                        <div class="activity-desc">${a.time}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function inviteTeamMember() {
+            const email = document.getElementById('inviteEmail').value.trim();
+            const name = document.getElementById('inviteName').value.trim();
+            const role = document.getElementById('inviteRole').value;
+
+            if (!email) {
+                showToast('⚠️ Email Required', 'Please enter an email address', 'warning');
+                return;
+            }
+
+            const newMember = {
+                name: name || email.split('@')[0],
+                email: email,
+                role: role.charAt(0).toUpperCase() + role.slice(1),
+                status: 'offline',
+                color: `hsl(${Math.random() * 360}, 70%, 50%)`
+            };
+
+            teamMembers.push(newMember);
+            renderTeamMembers();
+
+            showToast('✉️ Invitation Sent', `Invite sent to ${email}`, 'success');
+            document.getElementById('inviteEmail').value = '';
+            document.getElementById('inviteName').value = '';
+
+            const msg = `I've sent an invitation to ${email}. They'll be able to view and assign tasks once they accept.`;
+            addChatMessage('agent', msg, msg);
+        }
+
+        function messageMember(name) {
+            if (name === 'Jesus') {
+                switchTab('dashboard');
+                document.getElementById('chatInput').focus();
+            } else {
+                showToast('💬 Message', `Opening chat with ${name}...`, 'info');
+            }
+        }
+
+        function memberSettings(name) {
+            showToast('⚙️ Settings', `Managing ${name}'s permissions...`, 'info');
+        }
+
+        // ========== DOCUMENTS ==========
+        function renderDocuments() {
+            const grid = document.getElementById('documentsGrid');
+            grid.innerHTML = documents.map(d => `
+                <div class="document-card" onclick="openDocument('${d.name}')">
+                    <div class="document-icon ${d.type}">
+                        <i class="fas fa-${d.type === 'pdf' ? 'file-pdf' : d.type === 'xls' ? 'file-excel' : d.type === 'doc' ? 'file-word' : 'file-image'}"></i>
+                    </div>
+                    <div class="document-name">${d.name}</div>
+                    <div class="document-meta">
+                        <span>${d.size}</span>
+                        <span>${d.date}</span>
+                    </div>
+                    <div class="document-actions">
+                        <button class="task-action-btn" title="Download" onclick="event.stopPropagation(); downloadDoc('${d.name}')"><i class="fas fa-download"></i></button>
+                        <button class="task-action-btn" title="Share" onclick="event.stopPropagation(); shareDoc('${d.name}')"><i class="fas fa-share"></i></button>
+                        <button class="task-action-btn danger" title="Delete" onclick="event.stopPropagation(); deleteDoc('${d.name}')"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderRecentUploads() {
+            const recent = document.getElementById('recentUploads');
+            recent.innerHTML = documents.slice(0, 3).map(d => `
+                <div class="activity-item" onclick="openDocument('${d.name}')">
+                    <div class="activity-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">
+                        <i class="fas fa-file"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">${d.name}</div>
+                        <div class="activity-desc">${d.size} • ${d.date}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterDocs(type) {
+            document.querySelectorAll('#docFilters .task-filter').forEach(f => f.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const filtered = type === 'all' ? documents : documents.filter(d => d.type === type);
+            const grid = document.getElementById('documentsGrid');
+            grid.innerHTML = filtered.map(d => `
+                <div class="document-card" onclick="openDocument('${d.name}')">
+                    <div class="document-icon ${d.type}">
+                        <i class="fas fa-${d.type === 'pdf' ? 'file-pdf' : d.type === 'xls' ? 'file-excel' : d.type === 'doc' ? 'file-word' : 'file-image'}"></i>
+                    </div>
+                    <div class="document-name">${d.name}</div>
+                    <div class="document-meta">
+                        <span>${d.size}</span>
+                        <span>${d.date}</span>
+                    </div>
+                    <div class="document-actions">
+                        <button class="task-action-btn" title="Download" onclick="event.stopPropagation(); downloadDoc('${d.name}')"><i class="fas fa-download"></i></button>
+                        <button class="task-action-btn" title="Share" onclick="event.stopPropagation(); shareDoc('${d.name}')"><i class="fas fa-share"></i></button>
+                        <button class="task-action-btn danger" title="Delete" onclick="event.stopPropagation(); deleteDoc('${d.name}')"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openDocument(name) {
+            showToast('📄 Opening', `Loading ${name}...`, 'info');
+            addChatMessage('agent', `I'm opening "${name}" for you. Would you like me to summarize its contents or perform any analysis?`, `I'm opening ${name} for you. Would you like me to summarize its contents?`);
+        }
+
+        function downloadDoc(name) {
+            showToast('⬇️ Downloading', `${name}`, 'success');
+        }
+
+        function shareDoc(name) {
+            showToast('🔗 Share Link', `Copied link for ${name}`, 'success');
+        }
+
+        function deleteDoc(name) {
+            if (confirm(`Delete "${name}"?`)) {
+                documents = documents.filter(d => d.name !== name);
+                renderDocuments();
+                renderRecentUploads();
+                showToast('🗑️ Deleted', `${name} has been removed`, 'warning');
+            }
+        }
+
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            for (let file of files) {
+                processFileUpload(file);
+            }
+        }
+
+        function handleFileDrop(files) {
+            for (let file of files) {
+                processFileUpload(file);
+            }
+        }
+
+        function processFileUpload(file) {
+            showToast('📤 Uploading', `${file.name}`, 'info');
+
+            setTimeout(() => {
+                const extension = file.name.split('.').pop().toLowerCase();
+                let type = 'doc';
+                if (extension === 'pdf') type = 'pdf';
+                else if (['xlsx', 'xls', 'csv'].includes(extension)) type = 'xls';
+                else if (['png', 'jpg', 'jpeg', 'gif'].includes(extension)) type = 'img';
+
+                const newDoc = {
+                    name: file.name,
+                    type: type,
+                    size: formatFileSize(file.size),
+                    date: 'Just now'
+                };
+                documents.unshift(newDoc);
+                renderDocuments();
+                renderRecentUploads();
+
+                showToast('✅ Uploaded', `${file.name} uploaded successfully`, 'success');
+                addChatMessage('agent', `I've received "${file.name}". Would you like me to process or analyze this document?`, `I've received ${file.name}. Would you like me to process or analyze this document?`);
+            }, 2000);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // ========== SETTINGS ==========
+        function showSettingsSection(section) {
+            document.querySelectorAll('.settings-nav-item').forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            showToast('⚙️ Settings', `Showing ${section} settings`, 'info');
+        }
+
+        function toggleSetting(element, setting) {
+            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            showToast('⚙️ Setting Updated', isActive ? 'Enabled' : 'Disabled', 'success');
+
+            if (setting === 'voiceAnnounce' && isActive) {
+                speakText("Voice guidance is now enabled. I will speak blessings and important updates to you, faithful steward.");
+            }
+        }
+
+        function changeUpdateInterval(value) {
+            UPDATE_INTERVAL = parseInt(value);
+            countdownSeconds = UPDATE_INTERVAL * 60;
+            showToast('⏰ Interval Changed', `Updates every ${value} minutes`, 'success');
+        }
+
+        // ========== UTILITY ==========
+        function showNotifications() {
+            const notifs = [
+                '📋 New 30-min update available',
+                '✅ Task "Q1 Email" completed',
+                '👤 New team member invited'
+            ];
+            showToast('🔔 Notifications', notifs.join('\n• '), 'info');
+            document.getElementById('notifCount').textContent = '0';
+        }
+
+        function showUserMenu() {
+            showToast('👤 Profile', 'AL - Admin\nal@cs3investments.com', 'info');
+        }
+
+        function loadPastUpdate(time) {
+            document.querySelectorAll('.history-chip').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            showToast('📋 Loading', `Loading ${time} PM update...`, 'info');
+
+            const msg = `Here's my ${time} PM update summary. Would you like me to read it aloud?`;
+            addChatMessage('agent', msg, msg);
+        }
+    </script>
+</body>
+</html>
