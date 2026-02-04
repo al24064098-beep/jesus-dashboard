@@ -2,16 +2,20 @@
 /* Following CS3 Brand Guidelines */
 
 :root {
-    /* CS3 Brand Colors */
-    --cs3-teal: #004f59;
-    --cs3-teal-light: #006770;
-    --cs3-teal-dark: #003d45;
-    --cs3-gold: #bca460;
-    --cs3-gold-light: #d4bc78;
-    --cs3-gold-dark: #9a8650;
-    --cs3-navy: #30455b;
-    --cs3-navy-light: #3d5670;
-    --cs3-navy-dark: #243446;
+    /* CS3 Official Brand Colors (from Brand Manual 2025) */
+    --cs3-navy: #1C2E47;           /* PRIMARY - Navy Blue */
+    --cs3-navy-light: #2a4166;
+    --cs3-navy-dark: #151f30;
+    --cs3-gold: #FFA100;           /* SECONDARY - Orange/Gold */
+    --cs3-gold-light: #ffb333;
+    --cs3-gold-dark: #cc8100;
+    --cs3-gray: #F4F4F4;           /* TERTIARY - Light Gray */
+    --cs3-black: #191919;          /* Black */
+    
+    /* Legacy aliases for compatibility */
+    --cs3-teal: #1C2E47;           /* Using navy as primary */
+    --cs3-teal-light: #2a4166;
+    --cs3-teal-dark: #151f30;
     
     /* UI Colors */
     --bg-primary: #f8f9fa;
