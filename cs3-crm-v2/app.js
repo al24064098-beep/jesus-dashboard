@@ -1858,6 +1858,153 @@ function viewHighPotential() {
 }
 
 // ============================================
+// CRM AI FUNCTIONS (CS3 Context-Aware)
+// ============================================
+
+function openCrmAiChat() {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('crmAiModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'crmAiModal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width: 700px; height: 80vh;">
+                <div class="modal-header" style="background: linear-gradient(135deg, #004f59, #00838f);">
+                    <h2 style="color: white;"><i class="fas fa-building"></i> CRM AI - CS3 Assistant</h2>
+                    <button class="close-btn" onclick="closeCrmAiChat()" style="color: white;">&times;</button>
+                </div>
+                <div class="modal-body" style="display: flex; flex-direction: column; height: calc(100% - 140px); padding: 0;">
+                    <div id="crmAiChatHistory" style="flex: 1; overflow-y: auto; padding: 20px;">
+                        <div style="background: linear-gradient(135deg, #e0f7fa, #b2ebf2); padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #004f59;">
+                            <p style="margin: 0;">👋 Hi! I'm your <strong>CS3 CRM AI</strong>. I know everything about your investors, properties, and capital raises. Ask me:</p>
+                            <ul style="margin: 10px 0 0 20px; padding: 0;">
+                                <li>Give me a summary of our investors</li>
+                                <li>How is the Winding Springs raise going?</li>
+                                <li>Who are our VIP investors?</li>
+                                <li>What's our repeat investor rate?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="padding: 16px; border-top: 1px solid #e5e7eb; background: #f9fafb;">
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="crmAiInput" class="form-input" placeholder="Ask about CS3 data..." style="flex: 1;" onkeypress="if(event.key==='Enter')sendToCrmAi()">
+                            <button class="btn btn-primary" onclick="sendToCrmAi()" style="background: linear-gradient(135deg, #004f59, #00838f);">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
+                            <button class="btn btn-small btn-outline" onclick="crmAiQuickAction('summary')">📊 Investor Summary</button>
+                            <button class="btn btn-small btn-outline" onclick="crmAiQuickAction('raise')">💰 Raise Status</button>
+                            <button class="btn btn-small btn-outline" onclick="crmAiQuickAction('vip')">👑 VIP Investors</button>
+                            <button class="btn btn-small btn-outline" onclick="crmAiQuickAction('metrics')">📈 Key Metrics</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    modal.style.display = 'flex';
+}
+
+function closeCrmAiChat() {
+    document.getElementById('crmAiModal').style.display = 'none';
+}
+
+async function sendToCrmAi() {
+    const input = document.getElementById('crmAiInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    const chatHistory = document.getElementById('crmAiChatHistory');
+    
+    // Add user message
+    chatHistory.innerHTML += `
+        <div style="background: #004f59; color: white; padding: 12px 16px; border-radius: 12px; margin-bottom: 12px; margin-left: 40px;">
+            ${message}
+        </div>
+    `;
+    
+    input.value = '';
+    
+    // Show loading indicator
+    const loadingId = 'crm-loading-' + Date.now();
+    chatHistory.innerHTML += `
+        <div id="${loadingId}" style="background: #e0f7fa; padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #004f59;">
+            <p>🏢 <em>Analyzing CS3 data...</em></p>
+        </div>
+    `;
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+    
+    try {
+        // Call CRM AI endpoint (with CS3 context)
+        const response = await fetch('https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev/crm-ai', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+        
+        const data = await response.json();
+        
+        // Remove loading indicator
+        document.getElementById(loadingId)?.remove();
+        
+        if (data.success && data.response) {
+            // Format the response
+            const formattedResponse = data.response
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+            
+            chatHistory.innerHTML += `
+                <div style="background: linear-gradient(135deg, #e0f7fa, #b2ebf2); padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #004f59;">
+                    <div style="font-size: 11px; color: #004f59; margin-bottom: 8px; font-weight: 500;">🏢 CS3 CRM AI</div>
+                    <p style="margin: 0; line-height: 1.6;">${formattedResponse}</p>
+                </div>
+            `;
+        } else {
+            chatHistory.innerHTML += `
+                <div style="background: #fef2f2; padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #ef4444;">
+                    <p>❌ Error: ${data.error || 'Failed to get response'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        document.getElementById(loadingId)?.remove();
+        chatHistory.innerHTML += `
+            <div style="background: #fef2f2; padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #ef4444;">
+                <p>❌ Connection error: ${error.message}</p>
+            </div>
+        `;
+    }
+    
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+}
+
+function crmAiQuickAction(action) {
+    const input = document.getElementById('crmAiInput');
+    
+    switch(action) {
+        case 'summary':
+            input.value = 'Give me a summary of our investors and their distribution across tiers';
+            break;
+        case 'raise':
+            input.value = 'How is the Winding Springs capital raise going? What percentage are we at?';
+            break;
+        case 'vip':
+            input.value = 'Who are our VIP investors and how much capital do they represent?';
+            break;
+        case 'metrics':
+            input.value = 'What are our key metrics? Average investment, repeat rate, referral conversions?';
+            break;
+    }
+    
+    sendToCrmAi();
+}
+
+// ============================================
 // PARTNERSHIP TRACKING (Aspire Community + CS3)
 // ============================================
 
