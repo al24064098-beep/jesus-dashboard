@@ -258,6 +258,9 @@ function loadPageData(page) {
         case 'profile':
             loadProfilePage();
             break;
+        case 'compliance':
+            loadCompliancePage();
+            break;
     }
 }
 
@@ -1016,5 +1019,276 @@ function disconnectIntegration(type) {
             localStorage.setItem('cs3_user', JSON.stringify(currentUser));
             loadProfilePage();
         }
+    }
+}
+
+// ============================================
+// COMPLIANCE DATA
+// ============================================
+
+const complianceData = {
+    w9: [
+        { id: 1, name: 'Pacific Trust Fund', email: 'contact@pacifictrust.com', properties: ['mckenzie', 'legacy'], status: 'collected', date: '2025-06-15' },
+        { id: 2, name: 'Chen Family Office', email: 'investments@chenfamily.com', properties: ['reserve', 'mckenzie'], status: 'collected', date: '2025-08-20' },
+        { id: 3, name: 'Smith Holdings LLC', email: 'john@smithholdings.com', properties: ['legacy', 'reserve'], status: 'collected', date: '2025-07-10' },
+        { id: 4, name: 'Johnson Capital', email: 'mike@johnsoncap.com', properties: ['mckenzie'], status: 'pending', date: null },
+        { id: 5, name: 'Williams Group', email: 'sarah@williamsgroup.com', properties: ['reserve'], status: 'collected', date: '2025-09-05' },
+        { id: 6, name: 'Robert Chen', email: 'robert.chen@gmail.com', properties: ['winding-springs'], status: 'pending', date: null },
+        { id: 7, name: 'Maria Garcia', email: 'mgarcia@outlook.com', properties: ['winding-springs'], status: 'collected', date: '2025-12-01' },
+        { id: 8, name: 'David Kim', email: 'dkim@techcorp.com', properties: ['winding-springs'], status: 'pending', date: null },
+        { id: 9, name: 'Lisa Thompson', email: 'lisa.t@email.com', properties: ['winding-springs'], status: 'collected', date: '2025-11-28' },
+        { id: 10, name: 'James Wilson', email: 'jwilson@business.com', properties: ['winding-springs'], status: 'pending', date: null }
+    ],
+    accreditation: [
+        { id: 1, name: 'Pacific Trust Fund', method: 'CPA Letter', status: 'verified', verifiedDate: '2025-06-15', expiryDate: '2026-06-15' },
+        { id: 2, name: 'Chen Family Office', method: 'Third Party (VerifyInvestor)', status: 'verified', verifiedDate: '2025-08-20', expiryDate: '2026-08-20' },
+        { id: 3, name: 'Smith Holdings LLC', method: 'Attorney Letter', status: 'verified', verifiedDate: '2025-07-10', expiryDate: '2026-07-10' },
+        { id: 4, name: 'Johnson Capital', method: 'Self-Certification', status: 'expiring', verifiedDate: '2025-02-15', expiryDate: '2026-02-15' },
+        { id: 5, name: 'Williams Group', method: 'CPA Letter', status: 'verified', verifiedDate: '2025-09-05', expiryDate: '2026-09-05' },
+        { id: 6, name: 'Robert Chen', method: 'Third Party (VerifyInvestor)', status: 'pending', verifiedDate: null, expiryDate: null },
+        { id: 7, name: 'Maria Garcia', method: 'Self-Certification', status: 'verified', verifiedDate: '2025-12-01', expiryDate: '2026-12-01' },
+        { id: 8, name: 'David Kim', method: 'Pending', status: 'pending', verifiedDate: null, expiryDate: null },
+        { id: 9, name: 'Lisa Thompson', method: 'CPA Letter', status: 'expiring', verifiedDate: '2025-02-20', expiryDate: '2026-02-20' },
+        { id: 10, name: 'James Wilson', method: 'Self-Certification', status: 'verified', verifiedDate: '2025-11-25', expiryDate: '2026-11-25' }
+    ]
+};
+
+// ============================================
+// COMPLIANCE PAGE
+// ============================================
+
+function loadCompliancePage() {
+    loadW9List();
+    loadAccredList();
+    updateComplianceStats();
+}
+
+function showComplianceTab(tab) {
+    // Update tab buttons
+    document.querySelectorAll('.compliance-tab').forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline');
+    });
+    document.querySelector(`.compliance-tab[data-tab="${tab}"]`).classList.remove('btn-outline');
+    document.querySelector(`.compliance-tab[data-tab="${tab}"]`).classList.add('btn-primary');
+    
+    // Show/hide content
+    document.querySelectorAll('.compliance-tab-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    document.getElementById(`${tab}-tab`).style.display = 'block';
+}
+
+function loadW9List(filter = 'all', propertyFilter = 'all') {
+    const container = document.getElementById('w9List');
+    if (!container) return;
+    
+    let data = complianceData.w9;
+    
+    if (filter !== 'all') {
+        data = data.filter(item => item.status === filter);
+    }
+    
+    if (propertyFilter !== 'all') {
+        data = data.filter(item => item.properties.includes(propertyFilter));
+    }
+    
+    const statusBadges = {
+        'collected': '<span class="status-badge active">✅ Collected</span>',
+        'pending': '<span class="status-badge pending">⏳ Pending</span>',
+        'expired': '<span class="status-badge" style="background: rgba(239,68,68,0.1); color: var(--danger);">❌ Expired</span>'
+    };
+    
+    container.innerHTML = data.map(item => {
+        const propertyNames = item.properties.map(pId => {
+            const prop = CS3Data.properties.find(p => p.id === pId);
+            return prop ? prop.name : pId;
+        }).join(', ');
+        
+        return `
+            <tr>
+                <td><input type="checkbox" class="w9-checkbox" data-id="${item.id}"></td>
+                <td><strong>${item.name}</strong></td>
+                <td>${item.email}</td>
+                <td>${propertyNames}</td>
+                <td>${statusBadges[item.status]}</td>
+                <td>${item.date || '-'}</td>
+                <td>
+                    ${item.status === 'pending' ? `
+                        <button class="btn btn-small btn-outline" onclick="sendW9Reminder(${item.id})">
+                            <i class="fas fa-bell"></i> Remind
+                        </button>
+                        <button class="btn btn-small btn-primary" onclick="markW9Collected(${item.id})">
+                            <i class="fas fa-check"></i> Mark Collected
+                        </button>
+                    ` : `
+                        <button class="btn btn-small btn-outline" onclick="viewW9(${item.id})">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    `}
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function loadAccredList(filter = 'all') {
+    const container = document.getElementById('accredList');
+    if (!container) return;
+    
+    let data = complianceData.accreditation;
+    
+    if (filter !== 'all') {
+        data = data.filter(item => item.status === filter);
+    }
+    
+    const statusBadges = {
+        'verified': '<span class="status-badge active">✅ Verified</span>',
+        'pending': '<span class="status-badge pending">⏳ Pending</span>',
+        'expiring': '<span class="status-badge" style="background: rgba(245,158,11,0.1); color: var(--warning);">⚠️ Expiring Soon</span>',
+        'expired': '<span class="status-badge" style="background: rgba(239,68,68,0.1); color: var(--danger);">❌ Expired</span>'
+    };
+    
+    container.innerHTML = data.map(item => `
+        <tr>
+            <td><input type="checkbox" class="accred-checkbox" data-id="${item.id}"></td>
+            <td><strong>${item.name}</strong></td>
+            <td>${item.method}</td>
+            <td>${statusBadges[item.status]}</td>
+            <td>${item.verifiedDate || '-'}</td>
+            <td>${item.expiryDate || '-'}</td>
+            <td>
+                ${item.status === 'pending' ? `
+                    <button class="btn btn-small btn-outline" onclick="sendAccredReminder(${item.id})">
+                        <i class="fas fa-bell"></i> Remind
+                    </button>
+                    <button class="btn btn-small btn-primary" onclick="markAccredVerified(${item.id})">
+                        <i class="fas fa-check"></i> Verify
+                    </button>
+                ` : item.status === 'expiring' ? `
+                    <button class="btn btn-small btn-outline" onclick="sendRenewalReminder(${item.id})">
+                        <i class="fas fa-redo"></i> Send Renewal
+                    </button>
+                ` : `
+                    <button class="btn btn-small btn-outline" onclick="viewAccred(${item.id})">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                `}
+            </td>
+        </tr>
+    `).join('');
+}
+
+function updateComplianceStats() {
+    const w9Collected = complianceData.w9.filter(i => i.status === 'collected').length;
+    const w9Pending = complianceData.w9.filter(i => i.status === 'pending').length;
+    const accredVerified = complianceData.accreditation.filter(i => i.status === 'verified').length;
+    const accredExpiring = complianceData.accreditation.filter(i => i.status === 'expiring').length;
+    
+    // Update badge
+    const badge = document.getElementById('complianceBadge');
+    if (badge) {
+        const totalPending = w9Pending + accredExpiring;
+        badge.textContent = totalPending;
+        badge.style.display = totalPending > 0 ? 'inline' : 'none';
+    }
+}
+
+function filterW9() {
+    const status = document.getElementById('w9Filter').value;
+    const property = document.getElementById('w9PropertyFilter').value;
+    loadW9List(status, property);
+}
+
+function filterAccred() {
+    const status = document.getElementById('accredFilter').value;
+    loadAccredList(status);
+}
+
+function sendW9Reminder(id) {
+    const item = complianceData.w9.find(i => i.id === id);
+    if (item) {
+        alert(`W-9 reminder sent to ${item.name} (${item.email})`);
+    }
+}
+
+function markW9Collected(id) {
+    const item = complianceData.w9.find(i => i.id === id);
+    if (item) {
+        item.status = 'collected';
+        item.date = new Date().toISOString().split('T')[0];
+        loadW9List();
+        updateComplianceStats();
+        alert(`W-9 marked as collected for ${item.name}`);
+    }
+}
+
+function sendAccredReminder(id) {
+    const item = complianceData.accreditation.find(i => i.id === id);
+    if (item) {
+        alert(`Accreditation reminder sent to ${item.name}`);
+    }
+}
+
+function markAccredVerified(id) {
+    const item = complianceData.accreditation.find(i => i.id === id);
+    if (item) {
+        item.status = 'verified';
+        item.verifiedDate = new Date().toISOString().split('T')[0];
+        const expiry = new Date();
+        expiry.setFullYear(expiry.getFullYear() + 1);
+        item.expiryDate = expiry.toISOString().split('T')[0];
+        loadAccredList();
+        updateComplianceStats();
+        alert(`Accreditation verified for ${item.name}`);
+    }
+}
+
+function sendRenewalReminder(id) {
+    const item = complianceData.accreditation.find(i => i.id === id);
+    if (item) {
+        alert(`Renewal reminder sent to ${item.name}`);
+    }
+}
+
+function sendComplianceReminders() {
+    const pendingW9 = complianceData.w9.filter(i => i.status === 'pending');
+    const expiringAccred = complianceData.accreditation.filter(i => i.status === 'expiring' || i.status === 'pending');
+    
+    const total = pendingW9.length + expiringAccred.length;
+    
+    if (total === 0) {
+        alert('No pending compliance items!');
+        return;
+    }
+    
+    if (confirm(`Send reminders to ${total} investors?\n- ${pendingW9.length} pending W-9\n- ${expiringAccred.length} accreditation issues`)) {
+        alert(`Reminders sent to ${total} investors!`);
+    }
+}
+
+function selectAllW9(checkbox) {
+    document.querySelectorAll('.w9-checkbox').forEach(cb => {
+        cb.checked = checkbox.checked;
+    });
+}
+
+function selectAllAccred(checkbox) {
+    document.querySelectorAll('.accred-checkbox').forEach(cb => {
+        cb.checked = checkbox.checked;
+    });
+}
+
+function viewW9(id) {
+    const item = complianceData.w9.find(i => i.id === id);
+    if (item) {
+        alert(`W-9 for ${item.name}\nCollected: ${item.date}\nEmail: ${item.email}`);
+    }
+}
+
+function viewAccred(id) {
+    const item = complianceData.accreditation.find(i => i.id === id);
+    if (item) {
+        alert(`Accreditation for ${item.name}\nMethod: ${item.method}\nVerified: ${item.verifiedDate}\nExpires: ${item.expiryDate}`);
     }
 }

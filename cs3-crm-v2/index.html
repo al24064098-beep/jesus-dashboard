@@ -61,6 +61,11 @@
                 
                 <div class="nav-section">
                     <div class="nav-section-title">Operations</div>
+                    <a href="#" class="nav-item" data-page="compliance">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Compliance</span>
+                        <span class="badge warning" id="complianceBadge">12</span>
+                    </a>
                     <a href="#" class="nav-item" data-page="distributions">
                         <i class="fas fa-money-bill-wave"></i>
                         <span>Distributions</span>
@@ -428,6 +433,207 @@
                         </div>
                         <div class="card-body">
                             <p style="color: var(--text-secondary);">Communications tracking coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COMPLIANCE PAGE -->
+                <div id="compliance-page" class="page">
+                    <div class="page-header">
+                        <div>
+                            <h1>Compliance Tracker</h1>
+                            <p class="page-subtitle">Track W-9 and accreditation document collection</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="sendComplianceReminders()">
+                            <i class="fas fa-bell"></i> Send Reminders
+                        </button>
+                    </div>
+                    
+                    <!-- Compliance Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon success"><i class="fas fa-file-contract"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="w9Complete">589</span>
+                                <span class="stat-label">W-9 Collected</span>
+                            </div>
+                            <span class="stat-change positive">95% complete</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon warning"><i class="fas fa-file-contract"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="w9Pending">34</span>
+                                <span class="stat-label">W-9 Pending</span>
+                            </div>
+                            <span class="stat-change negative">Action needed</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon success"><i class="fas fa-user-check"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="accredComplete">612</span>
+                                <span class="stat-label">Accreditation Verified</span>
+                            </div>
+                            <span class="stat-change positive">98% complete</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon warning"><i class="fas fa-user-clock"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="accredExpiring">8</span>
+                                <span class="stat-label">Expiring Soon (30 days)</span>
+                            </div>
+                            <span class="stat-change negative">Renewal needed</span>
+                        </div>
+                    </div>
+
+                    <!-- Compliance Tabs -->
+                    <div class="compliance-tabs" style="display: flex; gap: 10px; margin-bottom: 24px;">
+                        <button class="btn btn-primary compliance-tab active" data-tab="w9" onclick="showComplianceTab('w9')">
+                            <i class="fas fa-file-contract"></i> W-9 Tracking
+                        </button>
+                        <button class="btn btn-outline compliance-tab" data-tab="accreditation" onclick="showComplianceTab('accreditation')">
+                            <i class="fas fa-user-check"></i> Accreditation
+                        </button>
+                        <button class="btn btn-outline compliance-tab" data-tab="overview" onclick="showComplianceTab('overview')">
+                            <i class="fas fa-chart-pie"></i> Overview
+                        </button>
+                    </div>
+
+                    <!-- W-9 Tab -->
+                    <div id="w9-tab" class="compliance-tab-content">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-file-contract"></i> W-9 Collection Status</h3>
+                                <div style="display: flex; gap: 10px;">
+                                    <select class="form-input" style="width: auto;" id="w9Filter" onchange="filterW9()">
+                                        <option value="all">All Status</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="collected">Collected</option>
+                                        <option value="expired">Expired</option>
+                                    </select>
+                                    <select class="form-input" style="width: auto;" id="w9PropertyFilter" onchange="filterW9()">
+                                        <option value="all">All Properties</option>
+                                        <option value="mckenzie">McKenzie STL</option>
+                                        <option value="legacy">Legacy Townhomes</option>
+                                        <option value="reserve">The Reserve</option>
+                                        <option value="winding-springs">Winding Springs</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" id="selectAllW9" onchange="selectAllW9(this)"></th>
+                                            <th>Investor</th>
+                                            <th>Email</th>
+                                            <th>Properties</th>
+                                            <th>W-9 Status</th>
+                                            <th>Last Updated</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="w9List">
+                                        <!-- Populated by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accreditation Tab -->
+                    <div id="accreditation-tab" class="compliance-tab-content" style="display: none;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-user-check"></i> Accreditation Verification Status</h3>
+                                <div style="display: flex; gap: 10px;">
+                                    <select class="form-input" style="width: auto;" id="accredFilter" onchange="filterAccred()">
+                                        <option value="all">All Status</option>
+                                        <option value="verified">Verified</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="expiring">Expiring Soon</option>
+                                        <option value="expired">Expired</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" id="selectAllAccred" onchange="selectAllAccred(this)"></th>
+                                            <th>Investor</th>
+                                            <th>Verification Method</th>
+                                            <th>Status</th>
+                                            <th>Verified Date</th>
+                                            <th>Expiry Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="accredList">
+                                        <!-- Populated by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overview Tab -->
+                    <div id="overview-tab" class="compliance-tab-content" style="display: none;">
+                        <div class="stats-grid">
+                            <div class="card" style="padding: 24px;">
+                                <h4 style="margin-bottom: 20px;"><i class="fas fa-file-contract" style="color: var(--cs3-teal);"></i> W-9 Summary</h4>
+                                <div class="compliance-chart">
+                                    <div class="chart-item">
+                                        <div class="chart-bar-h">
+                                            <div class="chart-fill-h success" style="width: 95%"></div>
+                                        </div>
+                                        <div class="chart-labels-h">
+                                            <span>Collected</span>
+                                            <span>589 (95%)</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart-item">
+                                        <div class="chart-bar-h">
+                                            <div class="chart-fill-h warning" style="width: 5%"></div>
+                                        </div>
+                                        <div class="chart-labels-h">
+                                            <span>Pending</span>
+                                            <span>34 (5%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="padding: 24px;">
+                                <h4 style="margin-bottom: 20px;"><i class="fas fa-user-check" style="color: var(--cs3-teal);"></i> Accreditation Summary</h4>
+                                <div class="compliance-chart">
+                                    <div class="chart-item">
+                                        <div class="chart-bar-h">
+                                            <div class="chart-fill-h success" style="width: 98%"></div>
+                                        </div>
+                                        <div class="chart-labels-h">
+                                            <span>Verified</span>
+                                            <span>612 (98%)</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart-item">
+                                        <div class="chart-bar-h">
+                                            <div class="chart-fill-h warning" style="width: 1%"></div>
+                                        </div>
+                                        <div class="chart-labels-h">
+                                            <span>Expiring</span>
+                                            <span>8 (1%)</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart-item">
+                                        <div class="chart-bar-h">
+                                            <div class="chart-fill-h danger" style="width: 1%"></div>
+                                        </div>
+                                        <div class="chart-labels-h">
+                                            <span>Pending</span>
+                                            <span>3 (0.5%)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
