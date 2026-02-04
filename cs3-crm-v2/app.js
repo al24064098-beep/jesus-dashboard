@@ -1808,7 +1808,7 @@ async function sendToGemini() {
             
             chatHistory.innerHTML += `
                 <div class="ai-message" style="background: linear-gradient(135deg, #f0f4f8, #e8f4f8); padding: 16px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid #4285f4;">
-                    <div style="font-size: 11px; color: #4285f4; margin-bottom: 8px; font-weight: 500;">✨ Gemini 1.5 Flash</div>
+                    <div style="font-size: 11px; color: #4285f4; margin-bottom: 8px; font-weight: 500;">✨ Gemini 2.0 Flash</div>
                     <p style="margin: 0; line-height: 1.6;">${formattedResponse}</p>
                 </div>
             `;
