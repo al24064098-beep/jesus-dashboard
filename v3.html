@@ -3494,3 +3494,63 @@
     </script>
 </body>
 </html>
+
+<!-- INLINE: Devotion recipient switching - GUARANTEED TO WORK -->
+<script>
+window.showRecipient = function(name) {
+    // Update active button
+    document.querySelectorAll('.recipient-tab').forEach(btn => btn.classList.remove('active'));
+    if (event && event.target) event.target.classList.add('active');
+    
+    const devotions = {
+        carlos: {
+            name: 'Carlos', greeting: 'Good morning Carlos! ☀️',
+            encouragement: 'I hope this message finds you ready to embrace another incredible day. Your dedication to the team and your unwavering faith continue to inspire everyone around you.',
+            scripture: '"Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."',
+            ref: '— Proverbs 3:5-6 (KJV)',
+            reflection: 'Today\'s verse reminds us that true wisdom comes from surrendering our plans to God\'s perfect guidance.',
+            closing: '🔥 Let\'s make today count, Carlos! Go out there and be the light in every room you enter.'
+        },
+        brandon: {
+            name: 'Brandon', greeting: 'Good morning Brandon! 🌟',
+            encouragement: 'Rise and shine! Your commitment to growth and excellence is truly remarkable. Today holds new opportunities to serve others and build something meaningful.',
+            scripture: '"For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future."',
+            ref: '— Jeremiah 29:11 (NIV)',
+            reflection: 'God has already prepared the path before you. Even when circumstances seem uncertain, His plans for your life are good.',
+            closing: '💪 Brandon, you\'re built for this! Keep pushing forward with faith and courage!'
+        },
+        grace: {
+            name: 'Grace', greeting: 'Good morning Grace! 💫',
+            encouragement: 'What a blessing it is to start another day! Your kindness and compassion touch so many lives. You carry God\'s light wherever you go.',
+            scripture: '"She is clothed with strength and dignity; she can laugh at the days to come. She speaks with wisdom, and faithful instruction is on her tongue."',
+            ref: '— Proverbs 31:25-26 (NIV)',
+            reflection: 'You embody strength and grace in everything you do. This verse celebrates the woman who leads with wisdom and walks confidently in her calling.',
+            closing: '✨ Grace, shine bright today! Your presence is a gift to everyone around you!'
+        },
+        al: {
+            name: 'Al', greeting: 'Good morning Al! ⚡',
+            encouragement: 'Leader, visionary, steward—today is yours to shape. Your faithfulness in stewarding what God has entrusted to you continues to multiply blessings for many.',
+            scripture: '"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters."',
+            ref: '— Colossians 3:23 (NIV)',
+            reflection: 'Every deal, every conversation, every decision is an act of worship when done unto the Lord. Your work has eternal significance.',
+            closing: '🔥 Al, lead boldly today! You\'re building a legacy that glorifies God!'
+        }
+    };
+    
+    const d = devotions[name] || devotions.carlos;
+    
+    const el = (id) => document.getElementById(id);
+    const qs = (sel) => document.querySelector(sel);
+    
+    if (el('emailTo')) el('emailTo').textContent = 'To: ' + d.name;
+    if (el('emailGreeting')) el('emailGreeting').textContent = d.greeting;
+    if (el('emailEncouragement')) el('emailEncouragement').textContent = d.encouragement;
+    if (qs('.email-scripture')) qs('.email-scripture').textContent = d.scripture;
+    if (qs('.email-ref')) qs('.email-ref').textContent = d.ref;
+    if (qs('.email-reflection p')) qs('.email-reflection p').textContent = d.reflection;
+    if (el('emailClosing')) el('emailClosing').textContent = d.closing;
+    
+    console.log('Switched to:', name);
+};
+console.log('✅ Inline showRecipient loaded');
+</script>
