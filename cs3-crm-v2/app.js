@@ -1825,3 +1825,402 @@ function createReengagementCampaign() {
 function viewHighPotential() {
     alert('High Potential Investors:\n\n1. Pacific Trust Fund - Interested in +$500K\n2. Chen Family Office - Interested in +$300K\n3. Smith Holdings - Interested in +$400K\n4. Johnson Capital - Interested in +$250K\n...\n\nTotal Potential: $2.4M');
 }
+
+// ============================================
+// PARTNERSHIP TRACKING (Aspire Community + CS3)
+// ============================================
+
+const PartnershipData = {
+    aspire: { amount: 3200000, investors: 28 },
+    cs3: { amount: 3600000, investors: 32 }
+};
+
+function recalculatePartnership() {
+    // Parse input values
+    const aspireInput = document.getElementById('aspireAmount');
+    const cs3Input = document.getElementById('cs3Amount');
+    
+    let aspireAmount = parseFloat(aspireInput.value.replace(/[$,]/g, '')) || 0;
+    let cs3Amount = parseFloat(cs3Input.value.replace(/[$,]/g, '')) || 0;
+    
+    const total = aspireAmount + cs3Amount;
+    const aspirePercent = total > 0 ? ((aspireAmount / total) * 100).toFixed(1) : 0;
+    const cs3Percent = total > 0 ? ((cs3Amount / total) * 100).toFixed(1) : 0;
+    
+    // Update displays
+    document.getElementById('aspirePercent').textContent = `${aspirePercent}% of total raise`;
+    document.getElementById('cs3Percent').textContent = `${cs3Percent}% of total raise`;
+    document.getElementById('totalPartnership').textContent = formatCurrency(total);
+    
+    // Update progress bars
+    document.getElementById('aspireBar').style.width = `${aspirePercent}%`;
+    document.getElementById('aspireBar').textContent = `Aspire ${aspirePercent}%`;
+    document.getElementById('cs3Bar').style.width = `${cs3Percent}%`;
+    document.getElementById('cs3Bar').textContent = `CS3 ${cs3Percent}%`;
+    
+    // Save to local storage
+    PartnershipData.aspire.amount = aspireAmount;
+    PartnershipData.cs3.amount = cs3Amount;
+    saveToLocalStorage('partnershipData', PartnershipData);
+    
+    // Show save confirmation
+    showSaveIndicator();
+}
+
+function recalculateCapital() {
+    const retirementInput = document.getElementById('retirementAmount');
+    const cashInput = document.getElementById('cashAmount');
+    
+    let retirementAmount = parseFloat(retirementInput.value.replace(/[$,]/g, '')) || 0;
+    let cashAmount = parseFloat(cashInput.value.replace(/[$,]/g, '')) || 0;
+    
+    const total = retirementAmount + cashAmount;
+    const retirementPercent = total > 0 ? ((retirementAmount / total) * 100).toFixed(0) : 0;
+    const cashPercent = total > 0 ? ((cashAmount / total) * 100).toFixed(0) : 0;
+    
+    // Update details
+    document.getElementById('retirementDetail').textContent = `${retirementPercent}% of collected • 18 investors`;
+    document.getElementById('cashDetail').textContent = `${cashPercent}% of collected • 42 investors`;
+    
+    // Save
+    saveToLocalStorage('capitalBreakdown', { retirement: retirementAmount, cash: cashAmount });
+    showSaveIndicator();
+}
+
+// ============================================
+// REFERRALS DATA & FUNCTIONS
+// ============================================
+
+const ReferralsData = {
+    stats: { total: 47, converted: 28, capital: 8400000 },
+    topReferrers: [
+        { id: 1, name: 'John Smith', referrals: 7, converted: 5, capital: 1250000, lastReferral: '2026-01-28' },
+        { id: 2, name: 'Pacific Trust Fund', referrals: 5, converted: 4, capital: 950000, lastReferral: '2026-01-15' },
+        { id: 3, name: 'Chen Family Office', referrals: 4, converted: 3, capital: 720000, lastReferral: '2026-01-20' },
+        { id: 4, name: 'Maria Garcia', referrals: 4, converted: 3, capital: 680000, lastReferral: '2026-02-01' },
+        { id: 5, name: 'Robert Chen', referrals: 3, converted: 2, capital: 450000, lastReferral: '2025-12-15' }
+    ],
+    allReferrals: [
+        { id: 1, referredBy: 'John Smith', name: 'Michael Johnson', email: 'mjohnson@email.com', phone: '(555) 123-4567', status: 'converted', interest: 'high', date: '2026-01-28', investment: 250000 },
+        { id: 2, referredBy: 'John Smith', name: 'Sarah Williams', email: 'swilliams@email.com', phone: '(555) 234-5678', status: 'interested', interest: 'medium', date: '2026-01-25', investment: 0 },
+        { id: 3, referredBy: 'Pacific Trust', name: 'David Lee', email: 'dlee@company.com', phone: '(555) 345-6789', status: 'converted', interest: 'high', date: '2026-01-20', investment: 350000 },
+        { id: 4, referredBy: 'Maria Garcia', name: 'Jennifer Chen', email: 'jchen@email.com', phone: '(555) 456-7890', status: 'contacted', interest: 'medium', date: '2026-02-01', investment: 0 },
+        { id: 5, referredBy: 'Chen Family', name: 'Andrew Taylor', email: 'ataylor@business.com', phone: '(555) 567-8901', status: 'new', interest: 'low', date: '2026-02-03', investment: 0 },
+        { id: 6, referredBy: 'Robert Chen', name: 'Michelle Brown', email: 'mbrown@email.com', phone: '(555) 678-9012', status: 'converted', interest: 'high', date: '2025-12-15', investment: 150000 },
+        { id: 7, referredBy: 'John Smith', name: 'Christopher Davis', email: 'cdavis@corp.com', phone: '(555) 789-0123', status: 'declined', interest: 'low', date: '2025-11-28', investment: 0 }
+    ]
+};
+
+function loadReferrals() {
+    loadTopReferrers();
+    loadAllReferrals();
+}
+
+function loadTopReferrers() {
+    const container = document.getElementById('topReferrersList');
+    if (!container) return;
+    
+    const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
+    
+    container.innerHTML = ReferralsData.topReferrers.map((ref, i) => `
+        <tr>
+            <td style="font-size: 20px;">${medals[i]}</td>
+            <td><strong>${ref.name}</strong></td>
+            <td style="text-align: center;"><span class="badge">${ref.referrals}</span></td>
+            <td style="text-align: center;"><span class="badge success">${ref.converted}</span></td>
+            <td style="font-weight: 600; color: var(--cs3-teal);">${formatCurrency(ref.capital)}</td>
+            <td>${ref.lastReferral}</td>
+            <td>
+                <button class="btn btn-small btn-outline" onclick="thankReferrer('${ref.name}')"><i class="fas fa-gift"></i></button>
+                <button class="btn btn-small btn-outline" onclick="viewReferrerDetails('${ref.id}')"><i class="fas fa-eye"></i></button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function loadAllReferrals() {
+    const container = document.getElementById('allReferralsList');
+    if (!container) return;
+    
+    const statusColors = {
+        'new': 'warning',
+        'contacted': 'info',
+        'interested': 'primary',
+        'converted': 'success',
+        'declined': 'danger'
+    };
+    
+    const interestIcons = {
+        'high': '🔥',
+        'medium': '⭐',
+        'low': '❄️'
+    };
+    
+    container.innerHTML = ReferralsData.allReferrals.map(ref => `
+        <tr>
+            <td>${ref.referredBy}</td>
+            <td><strong>${ref.name}</strong></td>
+            <td>${ref.email}</td>
+            <td>${ref.phone}</td>
+            <td><span class="badge ${statusColors[ref.status]}">${ref.status.toUpperCase()}</span></td>
+            <td style="text-align: center;">${interestIcons[ref.interest]} ${ref.interest}</td>
+            <td>${ref.date}</td>
+            <td style="font-weight: 600; color: var(--cs3-teal);">${ref.investment > 0 ? formatCurrency(ref.investment) : '-'}</td>
+            <td>
+                <button class="btn btn-small btn-outline" onclick="editReferral(${ref.id})"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-small btn-outline" onclick="contactReferral(${ref.id})"><i class="fas fa-phone"></i></button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function filterReferrals() {
+    const search = document.getElementById('referralSearch')?.value.toLowerCase() || '';
+    const status = document.getElementById('referralStatusFilter')?.value || 'all';
+    
+    const filtered = ReferralsData.allReferrals.filter(ref => {
+        const matchesSearch = ref.name.toLowerCase().includes(search) || 
+                             ref.referredBy.toLowerCase().includes(search) ||
+                             ref.email.toLowerCase().includes(search);
+        const matchesStatus = status === 'all' || ref.status === status;
+        return matchesSearch && matchesStatus;
+    });
+    
+    const container = document.getElementById('allReferralsList');
+    if (!container) return;
+    
+    const statusColors = { 'new': 'warning', 'contacted': 'info', 'interested': 'primary', 'converted': 'success', 'declined': 'danger' };
+    const interestIcons = { 'high': '🔥', 'medium': '⭐', 'low': '❄️' };
+    
+    container.innerHTML = filtered.map(ref => `
+        <tr>
+            <td>${ref.referredBy}</td>
+            <td><strong>${ref.name}</strong></td>
+            <td>${ref.email}</td>
+            <td>${ref.phone}</td>
+            <td><span class="badge ${statusColors[ref.status]}">${ref.status.toUpperCase()}</span></td>
+            <td style="text-align: center;">${interestIcons[ref.interest]} ${ref.interest}</td>
+            <td>${ref.date}</td>
+            <td style="font-weight: 600; color: var(--cs3-teal);">${ref.investment > 0 ? formatCurrency(ref.investment) : '-'}</td>
+            <td>
+                <button class="btn btn-small btn-outline" onclick="editReferral(${ref.id})"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-small btn-outline" onclick="contactReferral(${ref.id})"><i class="fas fa-phone"></i></button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function showAddReferralModal() {
+    const html = `
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2><i class="fas fa-share-alt"></i> Log New Referral</h2>
+                <button class="close-btn" onclick="closeModal('addReferralModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Referred By *</label>
+                    <select id="referredBy" class="form-input">
+                        <option value="">Select investor...</option>
+                        ${CS3Data.investors.map(inv => `<option value="${inv.name}">${inv.name}</option>`).join('')}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Referral Name *</label>
+                    <input type="text" id="referralName" class="form-input" placeholder="Full name">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="referralEmail" class="form-input" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="referralPhone" class="form-input" placeholder="(555) 123-4567">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Interest Level</label>
+                    <select id="referralInterest" class="form-input">
+                        <option value="high">🔥 High - Ready to invest</option>
+                        <option value="medium">⭐ Medium - Interested</option>
+                        <option value="low">❄️ Low - Just exploring</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="referralNotes" class="form-input" rows="3" placeholder="Any additional context..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('addReferralModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="saveReferral()"><i class="fas fa-save"></i> Save Referral</button>
+            </div>
+        </div>
+    `;
+    
+    showDynamicModal('addReferralModal', html);
+}
+
+function saveReferral() {
+    const referredBy = document.getElementById('referredBy')?.value;
+    const name = document.getElementById('referralName')?.value;
+    const email = document.getElementById('referralEmail')?.value;
+    const phone = document.getElementById('referralPhone')?.value;
+    const interest = document.getElementById('referralInterest')?.value;
+    const notes = document.getElementById('referralNotes')?.value;
+    
+    if (!referredBy || !name) {
+        alert('Please fill in required fields');
+        return;
+    }
+    
+    const newReferral = {
+        id: ReferralsData.allReferrals.length + 1,
+        referredBy,
+        name,
+        email,
+        phone,
+        status: 'new',
+        interest,
+        date: new Date().toISOString().split('T')[0],
+        investment: 0,
+        notes
+    };
+    
+    ReferralsData.allReferrals.unshift(newReferral);
+    ReferralsData.stats.total++;
+    
+    // Update display
+    document.getElementById('totalReferrals').textContent = ReferralsData.stats.total;
+    loadReferrals();
+    closeModal('addReferralModal');
+    
+    alert('✅ Referral saved! AI will auto-generate follow-up tasks.');
+}
+
+function thankReferrer(name) {
+    alert(`Scheduling thank-you for ${name}...\n\nOptions:\n• Send thank-you email\n• Send gift card ($50-$500)\n• Schedule appreciation call\n• Feature in newsletter`);
+}
+
+function viewReferrerDetails(id) {
+    const referrer = ReferralsData.topReferrers.find(r => r.id == id);
+    if (!referrer) return;
+    
+    alert(`${referrer.name}\n\n📊 Referral Stats:\n• Total Referrals: ${referrer.referrals}\n• Converted: ${referrer.converted}\n• Capital Generated: ${formatCurrency(referrer.capital)}\n• Last Referral: ${referrer.lastReferral}`);
+}
+
+function editReferral(id) {
+    const ref = ReferralsData.allReferrals.find(r => r.id == id);
+    if (!ref) return;
+    
+    alert(`Editing ${ref.name}...\n\nThis would open an edit modal for the referral details.`);
+}
+
+function contactReferral(id) {
+    const ref = ReferralsData.allReferrals.find(r => r.id == id);
+    if (!ref) return;
+    
+    alert(`Contacting ${ref.name}...\n\nOptions:\n• Call: ${ref.phone}\n• Email: ${ref.email}\n• Schedule meeting`);
+}
+
+function startReferralCampaign() {
+    alert('🚀 Starting Referral Outreach Campaign...\n\nAI will:\n1. Identify 5 high-satisfaction investors\n2. Generate personalized referral ask emails\n3. Schedule follow-up reminders\n4. Track responses automatically');
+}
+
+function scheduleThankYou(investorId) {
+    alert('📅 Scheduling thank-you for top referrer...\n\nOptions queued:\n• Thank-you email\n• $100 Amazon gift card\n• Personal call from Carlos');
+}
+
+// ============================================
+// INLINE EDITING & SAVE
+// ============================================
+
+function saveEdit(element, fieldId) {
+    const value = element.textContent.trim();
+    console.log(`Saving ${fieldId}: ${value}`);
+    
+    // Save to localStorage
+    const editData = JSON.parse(localStorage.getItem('cs3EditedData') || '{}');
+    editData[fieldId] = value;
+    localStorage.setItem('cs3EditedData', JSON.stringify(editData));
+    
+    showSaveIndicator();
+}
+
+function showSaveIndicator() {
+    // Create or show save indicator
+    let indicator = document.getElementById('saveIndicator');
+    if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'saveIndicator';
+        indicator.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: var(--success); color: white; padding: 12px 20px; border-radius: 8px; font-weight: 500; z-index: 10000; display: none; animation: slideIn 0.3s ease;';
+        indicator.innerHTML = '<i class="fas fa-check"></i> Saved';
+        document.body.appendChild(indicator);
+    }
+    
+    indicator.style.display = 'block';
+    setTimeout(() => indicator.style.display = 'none', 2000);
+}
+
+function showDynamicModal(id, html) {
+    let modal = document.getElementById(id);
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = id;
+        modal.className = 'modal';
+        modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center;';
+        document.body.appendChild(modal);
+    }
+    modal.innerHTML = html;
+    modal.style.display = 'flex';
+}
+
+// ============================================
+// LOCAL STORAGE HELPERS
+// ============================================
+
+function saveToLocalStorage(key, data) {
+    localStorage.setItem(`cs3_${key}`, JSON.stringify(data));
+}
+
+function loadFromLocalStorage(key) {
+    const data = localStorage.getItem(`cs3_${key}`);
+    return data ? JSON.parse(data) : null;
+}
+
+// Load saved data on init
+function loadSavedData() {
+    // Load partnership data
+    const savedPartnership = loadFromLocalStorage('partnershipData');
+    if (savedPartnership) {
+        PartnershipData.aspire = savedPartnership.aspire;
+        PartnershipData.cs3 = savedPartnership.cs3;
+    }
+    
+    // Load edited fields
+    const editData = JSON.parse(localStorage.getItem('cs3EditedData') || '{}');
+    Object.keys(editData).forEach(fieldId => {
+        const el = document.getElementById(fieldId);
+        if (el) {
+            if (el.tagName === 'INPUT') {
+                el.value = editData[fieldId];
+            } else {
+                el.textContent = editData[fieldId];
+            }
+        }
+    });
+}
+
+// Update navigation to include referrals
+const originalLoadPageData = loadPageData;
+loadPageData = function(page) {
+    if (page === 'referrals') {
+        loadReferrals();
+    } else {
+        originalLoadPageData(page);
+    }
+};
+
+// Initialize saved data on load
+document.addEventListener('DOMContentLoaded', loadSavedData);

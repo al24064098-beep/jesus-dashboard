@@ -53,6 +53,11 @@
                         <i class="fas fa-filter"></i>
                         <span>Pipeline</span>
                     </a>
+                    <a href="#" class="nav-item" data-page="referrals">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Referrals</span>
+                        <span class="badge success" id="referralCount">47</span>
+                    </a>
                     <a href="#" class="nav-item" data-page="communications">
                         <i class="fas fa-comments"></i>
                         <span>Communications</span>
@@ -342,20 +347,64 @@
                             </div>
                         </div>
 
-                        <!-- Capital Breakdown -->
+                        <!-- Partnership Breakdown: Aspire Community vs CS3 -->
+                        <h4 style="margin: 30px 0 20px; color: var(--cs3-teal-dark);"><i class="fas fa-handshake"></i> Partnership Capital Breakdown</h4>
+                        <div class="capital-breakdown" style="background: linear-gradient(135deg, rgba(0,79,89,0.05), rgba(188,164,96,0.05)); padding: 24px; border-radius: 16px; margin-bottom: 24px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+                                <!-- Aspire Community -->
+                                <div class="breakdown-card" style="border-left: 4px solid #6366f1;">
+                                    <h4 style="color: #6366f1;"><i class="fas fa-building-user"></i> Aspire Community</h4>
+                                    <div class="breakdown-amounts">
+                                        <input type="text" class="editable-input" id="aspireAmount" value="$3,200,000" onchange="recalculatePartnership()" style="font-size: 28px; font-weight: 700; color: #6366f1; border: 1px dashed #6366f1; padding: 8px; border-radius: 8px; text-align: center; width: 100%;">
+                                        <span class="breakdown-detail" id="aspirePercent" style="color: #6366f1; font-weight: 600;">47.1% of total raise</span>
+                                        <span class="breakdown-detail" id="aspireInvestors">28 investors</span>
+                                    </div>
+                                </div>
+                                <!-- CS3 Investments -->
+                                <div class="breakdown-card" style="border-left: 4px solid var(--cs3-teal);">
+                                    <h4 style="color: var(--cs3-teal);"><i class="fas fa-building"></i> CS3 Investments</h4>
+                                    <div class="breakdown-amounts">
+                                        <input type="text" class="editable-input" id="cs3Amount" value="$3,600,000" onchange="recalculatePartnership()" style="font-size: 28px; font-weight: 700; color: var(--cs3-teal); border: 1px dashed var(--cs3-teal); padding: 8px; border-radius: 8px; text-align: center; width: 100%;">
+                                        <span class="breakdown-detail" id="cs3Percent" style="color: var(--cs3-teal); font-weight: 600;">52.9% of total raise</span>
+                                        <span class="breakdown-detail" id="cs3Investors">32 investors</span>
+                                    </div>
+                                </div>
+                                <!-- Combined Total -->
+                                <div class="breakdown-card" style="border-left: 4px solid var(--cs3-gold); background: rgba(188,164,96,0.1);">
+                                    <h4 style="color: var(--cs3-gold);"><i class="fas fa-calculator"></i> Combined Total</h4>
+                                    <div class="breakdown-amounts">
+                                        <span class="breakdown-main" id="totalPartnership" style="font-size: 28px; color: var(--cs3-gold);">$6,800,000</span>
+                                        <span class="breakdown-detail" style="color: var(--success);">100% of collected funds</span>
+                                        <span class="breakdown-detail" id="totalPartnershipInvestors">60 investors</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Visual Progress Bar -->
+                            <div style="background: #e5e7eb; border-radius: 12px; height: 32px; overflow: hidden; display: flex;">
+                                <div id="aspireBar" style="background: linear-gradient(90deg, #6366f1, #8b5cf6); width: 47.1%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">
+                                    Aspire 47.1%
+                                </div>
+                                <div id="cs3Bar" style="background: linear-gradient(90deg, var(--cs3-teal), #00838f); width: 52.9%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px;">
+                                    CS3 52.9%
+                                </div>
+                            </div>
+                            <p style="text-align: center; margin-top: 12px; color: #666; font-size: 12px;"><i class="fas fa-info-circle"></i> Edit amounts above - percentages auto-calculate</p>
+                        </div>
+
+                        <!-- Capital Source Breakdown -->
                         <h4 style="margin: 30px 0 20px; color: var(--cs3-teal-dark);"><i class="fas fa-pie-chart"></i> Capital Source Breakdown</h4>
                         <div class="capital-breakdown">
                             <div class="breakdown-card">
                                 <h4><i class="fas fa-piggy-bank" style="color: var(--cs3-teal);"></i> Retirement Accounts (SDIRA/401k)</h4>
                                 <div class="breakdown-amounts">
-                                    <span class="breakdown-main" id="retirementAmount">$2.4M</span>
+                                    <input type="text" class="editable-input" id="retirementAmount" value="$2,400,000" onchange="recalculateCapital()" style="font-size: 24px; font-weight: 700; color: var(--cs3-teal); border: 1px dashed var(--cs3-teal); padding: 8px; border-radius: 8px; width: 100%;">
                                     <span class="breakdown-detail" id="retirementDetail">35% of collected • 18 investors</span>
                                 </div>
                             </div>
                             <div class="breakdown-card">
                                 <h4><i class="fas fa-money-bill-wave" style="color: var(--success);"></i> Cash / Wire Transfers</h4>
                                 <div class="breakdown-amounts">
-                                    <span class="breakdown-main" id="cashAmount">$4.4M</span>
+                                    <input type="text" class="editable-input" id="cashAmount" value="$4,400,000" onchange="recalculateCapital()" style="font-size: 24px; font-weight: 700; color: var(--success); border: 1px dashed var(--success); padding: 8px; border-radius: 8px; width: 100%;">
                                     <span class="breakdown-detail" id="cashDetail">65% of collected • 42 investors</span>
                                 </div>
                             </div>
@@ -453,6 +502,140 @@
                                 <span class="badge">3</span>
                             </div>
                             <div class="card-body" id="pipelineFunded"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REFERRALS PAGE -->
+                <div id="referrals-page" class="page">
+                    <div class="page-header">
+                        <div>
+                            <h1>Investor Referrals</h1>
+                            <p class="page-subtitle">Track referrals from existing investors and reward top advocates</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="showAddReferralModal()">
+                            <i class="fas fa-plus"></i> Log New Referral
+                        </button>
+                    </div>
+                    
+                    <!-- Referral Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon teal"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value editable" contenteditable="true" onblur="saveEdit(this, 'totalReferrals')" id="totalReferrals">47</span>
+                                <span class="stat-label">Total Referrals</span>
+                            </div>
+                            <span class="stat-change positive">+8 this month</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon gold"><i class="fas fa-handshake"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value editable" contenteditable="true" onblur="saveEdit(this, 'convertedReferrals')" id="convertedReferrals">28</span>
+                                <span class="stat-label">Converted to Investors</span>
+                            </div>
+                            <span class="stat-change positive">60% conversion</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon navy"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value editable" contenteditable="true" onblur="saveEdit(this, 'referralCapital')" id="referralCapital">$8.4M</span>
+                                <span class="stat-label">Capital from Referrals</span>
+                            </div>
+                            <span class="stat-change positive">12% of AUM</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon success"><i class="fas fa-trophy"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="topReferrerCount">12</span>
+                                <span class="stat-label">Top Referrers (3+)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Referral Insights -->
+                    <div class="card" style="background: linear-gradient(135deg, rgba(66,133,244,0.05), rgba(234,67,53,0.05)); border: 2px solid rgba(66,133,244,0.2); margin-bottom: 24px;">
+                        <div class="card-header">
+                            <h3><i class="fas fa-brain" style="color: #4285f4;"></i> AI Referral Insights</h3>
+                            <span style="background: linear-gradient(135deg, #4285f4, #34a853); color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px;">Auto-Generated</span>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                                <div style="padding: 16px; background: white; border-radius: 12px; border-left: 4px solid #4285f4;">
+                                    <p style="margin: 0;"><span style="font-size: 20px;">💡</span> <strong>5 investors</strong> haven't been asked for referrals yet but have high satisfaction scores.</p>
+                                    <button class="btn btn-small btn-outline" style="margin-top: 8px;" onclick="startReferralCampaign()">Start Outreach</button>
+                                </div>
+                                <div style="padding: 16px; background: white; border-radius: 12px; border-left: 4px solid #34a853;">
+                                    <p style="margin: 0;"><span style="font-size: 20px;">🏆</span> <strong>John Smith</strong> has 7 successful referrals. Consider a thank-you gift.</p>
+                                    <button class="btn btn-small btn-outline" style="margin-top: 8px;" onclick="scheduleThankYou('john-smith')">Schedule Thank You</button>
+                                </div>
+                                <div style="padding: 16px; background: white; border-radius: 12px; border-left: 4px solid #fbbc05;">
+                                    <p style="margin: 0;"><span style="font-size: 20px;">📈</span> Referrals are <strong>3x more likely</strong> to invest vs cold leads. Focus here!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Referrers -->
+                    <div class="card" style="margin-bottom: 24px;">
+                        <div class="card-header">
+                            <h3><i class="fas fa-trophy" style="color: var(--cs3-gold);"></i> Top Referrers</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Investor</th>
+                                        <th>Total Referrals</th>
+                                        <th>Converted</th>
+                                        <th>Capital Generated</th>
+                                        <th>Last Referral</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="topReferrersList">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- All Referrals -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-list"></i> All Referrals</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="text" class="form-input" placeholder="Search referrals..." style="width: 200px;" id="referralSearch" onkeyup="filterReferrals()">
+                                <select class="form-input" style="width: auto;" id="referralStatusFilter" onchange="filterReferrals()">
+                                    <option value="all">All Status</option>
+                                    <option value="new">New Lead</option>
+                                    <option value="contacted">Contacted</option>
+                                    <option value="interested">Interested</option>
+                                    <option value="converted">Converted</option>
+                                    <option value="declined">Declined</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Referred By</th>
+                                        <th>Referral Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Interest Level</th>
+                                        <th>Date Referred</th>
+                                        <th>Investment</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="allReferralsList">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
