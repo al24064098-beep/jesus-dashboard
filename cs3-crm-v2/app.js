@@ -1,881 +1,534 @@
-// CS3 Intelligence CRM - Application Logic
-// Built for Al Liao - CS3 Investments
+/**
+ * CS3 CRM V3 - Real Functional App
+ * With Properties, Capital Tracker, and Investor Management
+ */
 
-// ========== SAMPLE DATA ==========
-const sampleInvestors = [
-    { id: 1, name: "Michael Chen", email: "michael.chen@email.com", phone: "(415) 555-0123", status: "active", tier: "platinum", invested: 750000, properties: ["McKenzie STL", "Legacy Townhomes", "The Reserve"], lastContact: "2026-01-30", health: "good", initials: "MC" },
-    { id: 2, name: "Sarah Johnson", email: "sarah.j@email.com", phone: "(512) 555-0456", status: "active", tier: "gold", invested: 350000, properties: ["McKenzie STL", "Legacy Townhomes"], lastContact: "2026-01-28", health: "good", initials: "SJ" },
-    { id: 3, name: "Robert Williams", email: "rwilliams@email.com", phone: "(303) 555-0789", status: "active", tier: "gold", invested: 275000, properties: ["The Reserve", "Winding Springs"], lastContact: "2026-01-15", health: "warning", initials: "RW" },
-    { id: 4, name: "Jennifer Martinez", email: "jmartinez@email.com", phone: "(720) 555-0321", status: "prospect", tier: "silver", invested: 100000, properties: ["McKenzie STL"], lastContact: "2026-01-25", health: "good", initials: "JM" },
-    { id: 5, name: "David Thompson", email: "dthompson@email.com", phone: "(214) 555-0654", status: "active", tier: "silver", invested: 150000, properties: ["Legacy Townhomes"], lastContact: "2025-12-20", health: "danger", initials: "DT" },
-    { id: 6, name: "Emily Davis", email: "emily.davis@email.com", phone: "(602) 555-0987", status: "active", tier: "bronze", invested: 75000, properties: ["The Reserve"], lastContact: "2026-01-29", health: "good", initials: "ED" },
-    { id: 7, name: "James Wilson", email: "jwilson@email.com", phone: "(480) 555-1234", status: "inactive", tier: "bronze", invested: 50000, properties: ["McKenzie STL"], lastContact: "2025-11-15", health: "danger", initials: "JW" },
-    { id: 8, name: "Amanda Brown", email: "abrown@email.com", phone: "(619) 555-5678", status: "active", tier: "gold", invested: 400000, properties: ["McKenzie STL", "The Reserve", "Winding Springs"], lastContact: "2026-01-31", health: "good", initials: "AB" },
-    { id: 9, name: "Christopher Lee", email: "clee@email.com", phone: "(858) 555-9012", status: "prospect", tier: "silver", invested: 125000, properties: ["Legacy Townhomes"], lastContact: "2026-01-22", health: "good", initials: "CL" },
-    { id: 10, name: "Patricia Garcia", email: "pgarcia@email.com", phone: "(505) 555-3456", status: "active", tier: "platinum", invested: 500000, properties: ["McKenzie STL", "Legacy Townhomes"], lastContact: "2026-01-27", health: "good", initials: "PG" }
-];
+// ============================================
+// DATA STORE (Will connect to Firestore)
+// ============================================
 
-const sampleTasks = [
-    { id: 1, title: "Follow up with Michael Chen", meta: "Re: Q1 distribution questions", priority: "high", dueDate: "2026-02-01", completed: false },
-    { id: 2, title: "Send K-1 documents to investors", meta: "2025 Tax Documents", priority: "high", dueDate: "2026-02-15", completed: false },
-    { id: 3, title: "Schedule call with Robert Williams", meta: "60-day re-engagement", priority: "medium", dueDate: "2026-02-02", completed: false },
-    { id: 4, title: "Review Winding Springs investor deck", meta: "New deal preparation", priority: "medium", dueDate: "2026-02-05", completed: false },
-    { id: 5, title: "Update CRM notes for Amanda Brown", meta: "Post-call notes", priority: "low", dueDate: "2026-02-01", completed: true }
-];
-
-const sampleCalls = [
-    { id: 1, investor: "Michael Chen", initials: "MC", time: "Today, 2:30 PM", duration: "23 min", type: "inbound", summary: "Discussed Q1 distribution timing and new deal opportunities", sentiment: "positive" },
-    { id: 2, investor: "Sarah Johnson", initials: "SJ", time: "Today, 11:15 AM", duration: "18 min", type: "outbound", summary: "Annual review, interested in increasing allocation", sentiment: "positive" },
-    { id: 3, investor: "Amanda Brown", initials: "AB", time: "Yesterday, 4:45 PM", duration: "31 min", type: "inbound", summary: "Questions about Winding Springs opportunity", sentiment: "positive" },
-    { id: 4, investor: "Robert Williams", initials: "RW", time: "Jan 28, 10:00 AM", duration: "12 min", type: "outbound", summary: "Check-in call, voicemail left", sentiment: "neutral" }
-];
-
-const sampleDeals = {
-    interested: [
-        { name: "John Smith", amount: "$100,000", property: "Winding Springs" },
-        { name: "Lisa Anderson", amount: "$75,000", property: "Winding Springs" },
-        { name: "Mark Taylor", amount: "$150,000", property: "Winding Springs" }
+const CS3Data = {
+    properties: [
+        {
+            id: 'mckenzie',
+            name: 'McKenzie STL',
+            location: 'St. Louis, MO',
+            units: 251,
+            status: 'active', // active, raising, exited
+            aum: 28500000,
+            investors: 187,
+            coC: 8.1,
+            acquired: '2023-06-15',
+            website: 'mckenziestl.com'
+        },
+        {
+            id: 'legacy',
+            name: 'Legacy Townhomes',
+            location: 'Manchester, TN',
+            units: 120,
+            status: 'active',
+            aum: 18200000,
+            investors: 142,
+            coC: 7.5,
+            acquired: '2023-09-01',
+            website: 'legacy-townhomes.com'
+        },
+        {
+            id: 'reserve',
+            name: 'The Reserve at Cool Springs',
+            location: 'Elizabethtown, KY',
+            units: 200,
+            status: 'active',
+            aum: 22100000,
+            investors: 156,
+            coC: 7.8,
+            acquired: '2024-01-15',
+            website: 'thereserveatcoolsprings.com'
+        },
+        {
+            id: 'winding-springs',
+            name: 'Winding Springs',
+            location: 'Elizabethtown, KY',
+            units: 180,
+            status: 'raising',
+            aum: 0,
+            investors: 60,
+            coC: 0,
+            acquired: null,
+            website: null,
+            raise: {
+                goal: 10000000,
+                committed: 7800000,
+                collected: 6800000,
+                retirementAmount: 2400000,
+                retirementInvestors: 18,
+                cashAmount: 4400000,
+                cashInvestors: 42
+            }
+        },
+        {
+            id: 'gateway-village',
+            name: 'Gateway Village',
+            location: 'Murfreesboro, TN',
+            units: 150,
+            status: 'raising',
+            aum: 0,
+            investors: 0,
+            coC: 0,
+            acquired: null,
+            website: 'thegatewayvillage.com',
+            raise: {
+                goal: 8000000,
+                committed: 0,
+                collected: 0,
+                retirementAmount: 0,
+                retirementInvestors: 0,
+                cashAmount: 0,
+                cashInvestors: 0
+            }
+        }
     ],
-    soft: [
-        { name: "Nancy White", amount: "$200,000", property: "Winding Springs" },
-        { name: "Tom Harris", amount: "$125,000", property: "Winding Springs" }
+    
+    investors: [
+        { id: 1, name: 'Pacific Trust Fund', email: 'contact@pacifictrust.com', totalInvested: 2500000, properties: ['mckenzie', 'legacy'], type: 'entity', status: 'active' },
+        { id: 2, name: 'Chen Family Office', email: 'investments@chenfamily.com', totalInvested: 1800000, properties: ['reserve', 'mckenzie'], type: 'entity', status: 'active' },
+        { id: 3, name: 'Smith Holdings LLC', email: 'john@smithholdings.com', totalInvested: 1200000, properties: ['legacy', 'reserve'], type: 'entity', status: 'active' },
+        { id: 4, name: 'Johnson Capital', email: 'mike@johnsoncap.com', totalInvested: 950000, properties: ['mckenzie'], type: 'cash', status: 'active' },
+        { id: 5, name: 'Williams Group', email: 'sarah@williamsgroup.com', totalInvested: 875000, properties: ['reserve'], type: 'sdira', status: 'active' },
+        { id: 6, name: 'Robert Chen', email: 'robert.chen@gmail.com', totalInvested: 500000, properties: ['winding-springs'], type: 'cash', status: 'active' },
+        { id: 7, name: 'Maria Garcia', email: 'mgarcia@outlook.com', totalInvested: 350000, properties: ['winding-springs'], type: 'sdira', status: 'active' },
+        { id: 8, name: 'David Kim', email: 'dkim@techcorp.com', totalInvested: 250000, properties: ['winding-springs'], type: 'solo401k', status: 'active' },
+        { id: 9, name: 'Lisa Thompson', email: 'lisa.t@email.com', totalInvested: 200000, properties: ['winding-springs'], type: 'cash', status: 'active' },
+        { id: 10, name: 'James Wilson', email: 'jwilson@business.com', totalInvested: 150000, properties: ['winding-springs'], type: 'cash', status: 'active' }
     ],
-    hard: [
-        { name: "Kevin Moore", amount: "$250,000", property: "Winding Springs" },
-        { name: "Susan Clark", amount: "$100,000", property: "Winding Springs" }
-    ],
-    funded: [
-        { name: "Michael Chen", amount: "$150,000", property: "Winding Springs" }
+    
+    raiseInvestors: [
+        { name: 'Robert Chen', amount: 500000, type: 'cash', status: 'funded', committedDate: '2025-11-15', fundedDate: '2025-11-22' },
+        { name: 'Maria Garcia', amount: 350000, type: 'sdira', status: 'funded', committedDate: '2025-11-18', fundedDate: '2025-12-01' },
+        { name: 'David Kim', amount: 250000, type: 'solo401k', status: 'funded', committedDate: '2025-11-20', fundedDate: '2025-12-05' },
+        { name: 'Lisa Thompson', amount: 200000, type: 'cash', status: 'funded', committedDate: '2025-11-25', fundedDate: '2025-11-28' },
+        { name: 'James Wilson', amount: 150000, type: 'cash', status: 'committed', committedDate: '2025-12-01', fundedDate: null },
+        { name: 'Sarah Miller', amount: 300000, type: 'sdira', status: 'committed', committedDate: '2025-12-10', fundedDate: null },
+        { name: 'Michael Brown', amount: 400000, type: 'cash', status: 'pending', committedDate: '2026-01-15', fundedDate: null }
     ]
 };
 
-const healthAlerts = [
-    { type: "danger", icon: "⚠️", title: "David Thompson", desc: "No contact in 42 days - at risk" },
-    { type: "danger", icon: "⚠️", title: "James Wilson", desc: "No contact in 77 days - inactive" },
-    { type: "warning", icon: "📞", title: "Robert Williams", desc: "Needs follow-up call - 17 days" },
-    { type: "success", icon: "✨", title: "8 Investors", desc: "Healthy engagement this week" }
-];
+// ============================================
+// NAVIGATION
+// ============================================
 
-// ========== INITIALIZATION ==========
-document.addEventListener('DOMContentLoaded', function() {
-    initNavigation();
-    initSearch();
-    loadDashboard();
-    loadInvestors();
-    loadCalls();
-    loadDeals();
+function navigateTo(page) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    
+    // Show target page
+    const targetPage = document.getElementById(`${page}-page`);
+    if (targetPage) {
+        targetPage.classList.add('active');
+    }
+    
+    // Update nav
+    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+    document.querySelector(`.nav-item[data-page="${page}"]`)?.classList.add('active');
+    
+    // Load page data
+    loadPageData(page);
+}
+
+function loadPageData(page) {
+    switch(page) {
+        case 'dashboard':
+            loadDashboard();
+            break;
+        case 'properties':
+            loadProperties();
+            break;
+        case 'capital':
+            loadCapitalTracker();
+            break;
+        case 'investors':
+            loadInvestors();
+            break;
+        case 'pipeline':
+            loadPipeline();
+            break;
+    }
+}
+
+// ============================================
+// DASHBOARD
+// ============================================
+
+function loadDashboard() {
+    // Update stats
+    const totalInvestors = CS3Data.investors.length;
+    const totalAUM = CS3Data.properties.reduce((sum, p) => sum + p.aum, 0);
+    const totalUnits = CS3Data.properties.reduce((sum, p) => sum + p.units, 0);
+    
+    document.getElementById('statInvestors').textContent = totalInvestors;
+    document.getElementById('statAUM').textContent = formatCurrency(totalAUM);
+    document.getElementById('statUnits').textContent = totalUnits.toLocaleString();
+    
+    // Load dashboard properties
+    const propertiesContainer = document.getElementById('dashboardProperties');
+    if (propertiesContainer) {
+        propertiesContainer.innerHTML = CS3Data.properties.slice(0, 4).map(p => createPropertyCard(p)).join('');
+    }
+    
+    // Update capital tracker for current raise
+    const currentRaise = CS3Data.properties.find(p => p.status === 'raising' && p.raise);
+    if (currentRaise && currentRaise.raise) {
+        const r = currentRaise.raise;
+        const progress = (r.collected / r.goal) * 100;
+        
+        document.getElementById('raiseProgress').style.width = `${progress}%`;
+        document.getElementById('raiseProgressText').textContent = `${Math.round(progress)}% Complete`;
+        document.getElementById('raiseGoalText').textContent = `${formatCurrency(r.goal)} Goal`;
+        
+        document.getElementById('goalAmount').textContent = formatCurrency(r.goal);
+        document.getElementById('committedAmount').textContent = formatCurrency(r.committed);
+        document.getElementById('collectedAmount').textContent = formatCurrency(r.collected);
+        document.getElementById('remainingAmount').textContent = formatCurrency(r.goal - r.collected);
+    }
+}
+
+// ============================================
+// PROPERTIES
+// ============================================
+
+function loadProperties(filter = 'all') {
+    const container = document.getElementById('propertiesGrid');
+    if (!container) return;
+    
+    let properties = CS3Data.properties;
+    
+    if (filter !== 'all') {
+        properties = properties.filter(p => p.status === filter);
+    }
+    
+    container.innerHTML = properties.map(p => createPropertyCard(p, true)).join('');
+}
+
+function createPropertyCard(property, detailed = false) {
+    const statusLabels = {
+        'active': '🟢 Active',
+        'raising': '🟡 Raising',
+        'exited': '⚪ Exited'
+    };
+    
+    const statusClasses = {
+        'active': 'active',
+        'raising': 'raising',
+        'exited': 'exited'
+    };
+    
+    return `
+        <div class="property-card">
+            <div class="property-header">
+                <h4>${property.name}</h4>
+                <div class="property-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    ${property.location}
+                </div>
+            </div>
+            <div class="property-body">
+                <div class="property-stats">
+                    <div class="property-stat">
+                        <div class="property-stat-value">${property.units}</div>
+                        <div class="property-stat-label">Units</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-value">${property.investors}</div>
+                        <div class="property-stat-label">Investors</div>
+                    </div>
+                    <div class="property-stat">
+                        <div class="property-stat-value">${property.coC > 0 ? property.coC + '%' : '-'}</div>
+                        <div class="property-stat-label">CoC</div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="property-status ${statusClasses[property.status]}">${statusLabels[property.status]}</span>
+                    ${property.aum > 0 ? `<span style="font-weight: 600; color: var(--cs3-teal);">${formatCurrency(property.aum)}</span>` : ''}
+                </div>
+                ${property.status === 'raising' && property.raise ? `
+                    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                        <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Capital Progress</div>
+                        <div class="progress-bar-container" style="height: 10px;">
+                            <div class="progress-bar-fill" style="width: ${(property.raise.collected / property.raise.goal) * 100}%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px;">
+                            <span>${formatCurrency(property.raise.collected)} collected</span>
+                            <span>${formatCurrency(property.raise.goal)} goal</span>
+                        </div>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+}
+
+// Property filter buttons
+document.querySelectorAll('.property-filter').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.property-filter').forEach(b => {
+            b.classList.remove('btn-primary');
+            b.classList.add('btn-outline');
+        });
+        this.classList.remove('btn-outline');
+        this.classList.add('btn-primary');
+        loadProperties(this.dataset.filter);
+    });
 });
 
-// ========== NAVIGATION ==========
-function initNavigation() {
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            const page = this.dataset.page;
-            
-            // Update active nav
-            navItems.forEach(nav => nav.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Show page
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(page + '-page').classList.add('active');
-        });
+// ============================================
+// CAPITAL TRACKER
+// ============================================
+
+function loadCapitalTracker() {
+    loadDealData();
+}
+
+function loadDealData() {
+    const dealId = document.getElementById('dealSelector')?.value || 'winding-springs';
+    const property = CS3Data.properties.find(p => p.id === dealId);
+    
+    if (!property) return;
+    
+    // Update header
+    document.getElementById('dealName').textContent = `${property.name} Capital Raise`;
+    
+    // Update status
+    const statusEl = document.getElementById('dealStatus');
+    if (property.status === 'raising') {
+        statusEl.textContent = '🟡 Currently Raising';
+        statusEl.className = 'property-status raising';
+    } else if (property.status === 'active') {
+        statusEl.textContent = '✅ Complete';
+        statusEl.className = 'property-status active';
+    }
+    
+    if (property.raise) {
+        const r = property.raise;
+        const progress = r.goal > 0 ? (r.collected / r.goal) * 100 : 0;
+        
+        // Progress bar
+        document.getElementById('capitalProgress').style.width = `${progress}%`;
+        document.getElementById('capitalProgressText').textContent = `${Math.round(progress)}% of Goal`;
+        document.getElementById('capitalGoalText').textContent = `${formatCurrency(r.goal)} Goal`;
+        
+        // Stats
+        document.getElementById('capitalGoal').textContent = formatCurrency(r.goal);
+        document.getElementById('capitalCommitted').textContent = formatCurrency(r.committed);
+        document.getElementById('capitalCollected').textContent = formatCurrency(r.collected);
+        document.getElementById('capitalRemaining').textContent = formatCurrency(r.goal - r.collected);
+        
+        // Breakdown
+        document.getElementById('retirementAmount').textContent = formatCurrency(r.retirementAmount);
+        document.getElementById('retirementDetail').textContent = `${r.collected > 0 ? Math.round((r.retirementAmount / r.collected) * 100) : 0}% of collected • ${r.retirementInvestors} investors`;
+        
+        document.getElementById('cashAmount').textContent = formatCurrency(r.cashAmount);
+        document.getElementById('cashDetail').textContent = `${r.collected > 0 ? Math.round((r.cashAmount / r.collected) * 100) : 0}% of collected • ${r.cashInvestors} investors`;
+    }
+    
+    // Load investors in this raise
+    loadRaiseInvestors(dealId);
+}
+
+function loadRaiseInvestors(dealId) {
+    const container = document.getElementById('raiseInvestorsList');
+    if (!container) return;
+    
+    const statusBadges = {
+        'funded': '<span class="status-badge active">✅ Funded</span>',
+        'committed': '<span class="status-badge pending">📝 Committed</span>',
+        'pending': '<span class="status-badge" style="background: #f3f4f6;">⏳ Pending</span>'
+    };
+    
+    const typeLabels = {
+        'cash': '💵 Cash',
+        'sdira': '🏦 SDIRA',
+        'solo401k': '📊 Solo 401k',
+        'entity': '🏢 Entity'
+    };
+    
+    container.innerHTML = CS3Data.raiseInvestors.map(inv => `
+        <tr>
+            <td><strong>${inv.name}</strong></td>
+            <td>${formatCurrency(inv.amount)}</td>
+            <td>${typeLabels[inv.type] || inv.type}</td>
+            <td>${statusBadges[inv.status]}</td>
+            <td>${inv.committedDate || '-'}</td>
+            <td>${inv.fundedDate || '-'}</td>
+        </tr>
+    `).join('');
+}
+
+// ============================================
+// INVESTORS
+// ============================================
+
+function loadInvestors() {
+    const container = document.getElementById('allInvestorsList');
+    if (!container) return;
+    
+    const typeLabels = {
+        'cash': '💵 Cash',
+        'sdira': '🏦 SDIRA',
+        'solo401k': '📊 Solo 401k',
+        'entity': '🏢 Entity'
+    };
+    
+    container.innerHTML = CS3Data.investors.map(inv => {
+        const propertyNames = inv.properties.map(pId => {
+            const prop = CS3Data.properties.find(p => p.id === pId);
+            return prop ? prop.name : pId;
+        }).join(', ');
+        
+        return `
+            <tr>
+                <td><strong>${inv.name}</strong></td>
+                <td>${inv.email}</td>
+                <td>${formatCurrency(inv.totalInvested)}</td>
+                <td>${propertyNames}</td>
+                <td>${typeLabels[inv.type] || inv.type}</td>
+                <td><span class="status-badge ${inv.status}">${inv.status}</span></td>
+                <td>
+                    <button class="btn btn-small btn-outline" onclick="viewInvestor(${inv.id})">View</button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function viewInvestor(id) {
+    const investor = CS3Data.investors.find(i => i.id === id);
+    if (investor) {
+        alert(`Investor: ${investor.name}\nEmail: ${investor.email}\nTotal Invested: ${formatCurrency(investor.totalInvested)}`);
+    }
+}
+
+// ============================================
+// PIPELINE
+// ============================================
+
+function loadPipeline() {
+    // This would load from Firestore in production
+    const pipelineData = {
+        leads: ['New Lead 1', 'New Lead 2', 'New Lead 3'],
+        engaged: ['Engaged 1', 'Engaged 2'],
+        committed: ['Committed 1'],
+        funded: ['Funded 1']
+    };
+    
+    ['leads', 'engaged', 'committed', 'funded'].forEach(stage => {
+        const container = document.getElementById(`pipeline${stage.charAt(0).toUpperCase() + stage.slice(1)}`);
+        if (container) {
+            container.innerHTML = pipelineData[stage].map(name => `
+                <div style="padding: 12px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 8px;">
+                    <strong>${name}</strong>
+                </div>
+            `).join('') || '<p style="color: var(--text-secondary); font-size: 13px;">No items</p>';
+        }
     });
 }
 
-// ========== SEARCH ==========
-function initSearch() {
-    const globalSearch = document.getElementById('globalSearch');
-    if (globalSearch) {
-        globalSearch.addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            // Implement search logic
-            console.log('Searching for:', query);
-        });
-    }
+// ============================================
+// MODALS
+// ============================================
+
+function showAddInvestorModal() {
+    document.getElementById('addInvestorModal').style.display = 'flex';
 }
 
-// ========== DASHBOARD ==========
-function loadDashboard() {
-    loadTasks();
-    loadRecentCalls();
-    loadHealthAlerts();
+function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
 }
 
-function loadTasks() {
-    const taskList = document.getElementById('taskList');
-    if (!taskList) return;
+function addInvestor() {
+    const name = document.getElementById('investorName').value;
+    const email = document.getElementById('investorEmail').value;
+    const phone = document.getElementById('investorPhone').value;
+    const type = document.getElementById('investorType').value;
     
-    taskList.innerHTML = sampleTasks.slice(0, 4).map(task => `
-        <div class="task-item">
-            <div class="task-checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${task.id})"></div>
-            <div class="task-content">
-                <div class="task-title">${task.title}</div>
-                <div class="task-meta">${task.meta}</div>
-            </div>
-            <span class="task-priority ${task.priority}">${task.priority}</span>
-        </div>
-    `).join('');
-}
-
-function loadRecentCalls() {
-    const callList = document.getElementById('recentCalls');
-    if (!callList) return;
-    
-    callList.innerHTML = sampleCalls.slice(0, 3).map(call => `
-        <div class="call-item">
-            <div class="call-avatar">${call.initials}</div>
-            <div class="call-info">
-                <div class="call-name">${call.investor}</div>
-                <div class="call-time">${call.time}</div>
-            </div>
-            <div class="call-duration">${call.duration}</div>
-        </div>
-    `).join('');
-}
-
-function loadHealthAlerts() {
-    const alertsContainer = document.getElementById('healthAlerts');
-    if (!alertsContainer) return;
-    
-    alertsContainer.innerHTML = healthAlerts.map(alert => `
-        <div class="health-alert ${alert.type}">
-            <div class="alert-icon">${alert.icon}</div>
-            <div class="alert-content">
-                <div class="alert-title">${alert.title}</div>
-                <div class="alert-desc">${alert.desc}</div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// ========== INVESTORS ==========
-function loadInvestors() {
-    const tbody = document.getElementById('investorsList');
-    if (!tbody) return;
-    
-    tbody.innerHTML = sampleInvestors.map(inv => `
-        <tr onclick="showInvestorDetail(${inv.id})">
-            <td><input type="checkbox" onclick="event.stopPropagation()"></td>
-            <td>
-                <div class="investor-cell">
-                    <div class="investor-avatar">${inv.initials}</div>
-                    <div>
-                        <div class="investor-name">${inv.name}</div>
-                        <div class="investor-email">${inv.email}</div>
-                    </div>
-                </div>
-            </td>
-            <td><span class="status-badge ${inv.status}">${inv.status}</span></td>
-            <td><span class="tier-badge ${inv.tier}">${inv.tier}</span></td>
-            <td>$${inv.invested.toLocaleString()}</td>
-            <td>${inv.properties.length} properties</td>
-            <td>${formatDate(inv.lastContact)}</td>
-            <td>
-                <div class="health-indicator">
-                    <span class="health-dot ${inv.health}"></span>
-                    <span>${inv.health}</span>
-                </div>
-            </td>
-            <td>
-                <div class="action-btns">
-                    <button onclick="event.stopPropagation(); makeCall(${inv.id})" title="Call"><i class="fas fa-phone"></i></button>
-                    <button onclick="event.stopPropagation(); sendEmail(${inv.id})" title="Email"><i class="fas fa-envelope"></i></button>
-                    <button onclick="event.stopPropagation(); showInvestorDetail(${inv.id})" title="View"><i class="fas fa-eye"></i></button>
-                </div>
-            </td>
-        </tr>
-    `).join('');
-}
-
-function showInvestorDetail(id) {
-    const investor = sampleInvestors.find(i => i.id === id);
-    if (!investor) return;
-    
-    document.getElementById('detailAvatar').textContent = investor.initials;
-    document.getElementById('detailName').textContent = investor.name;
-    document.getElementById('detailTier').textContent = investor.tier.charAt(0).toUpperCase() + investor.tier.slice(1) + ' Investor';
-    document.getElementById('detailEmail').textContent = investor.email;
-    document.getElementById('detailPhone').textContent = investor.phone;
-    document.getElementById('detailInvested').textContent = '$' + investor.invested.toLocaleString();
-    document.getElementById('detailProperties').textContent = investor.properties.length;
-    
-    // AI Summary
-    document.getElementById('detailAISummary').innerHTML = generateAISummary(investor);
-    
-    // Activity
-    document.getElementById('detailActivity').innerHTML = `
-        <div class="activity-item">
-            <div class="activity-icon"><i class="fas fa-phone"></i></div>
-            <div class="activity-content">
-                <div>Call completed - 23 min discussion</div>
-                <div class="activity-time">${investor.lastContact}</div>
-            </div>
-        </div>
-        <div class="activity-item">
-            <div class="activity-icon"><i class="fas fa-dollar-sign"></i></div>
-            <div class="activity-content">
-                <div>Q4 2025 Distribution processed</div>
-                <div class="activity-time">Jan 15, 2026</div>
-            </div>
-        </div>
-        <div class="activity-item">
-            <div class="activity-icon"><i class="fas fa-envelope"></i></div>
-            <div class="activity-content">
-                <div>Monthly update email sent</div>
-                <div class="activity-time">Jan 1, 2026</div>
-            </div>
-        </div>
-    `;
-    
-    document.getElementById('investorDetail').classList.add('active');
-}
-
-function closeInvestorDetail() {
-    document.getElementById('investorDetail').classList.remove('active');
-}
-
-function generateAISummary(investor) {
-    const summaries = {
-        good: `<strong>${investor.name}</strong> is a highly engaged ${investor.tier} investor with strong communication patterns. They've shown interest in increasing their allocation and have a 100% on-time investment history. Recommended: Discuss new opportunities in upcoming call.`,
-        warning: `<strong>${investor.name}</strong> engagement has decreased recently. Last contact was ${formatDate(investor.lastContact)}. Recommended: Schedule a check-in call within the next 5 business days to maintain relationship.`,
-        danger: `<strong>⚠️ Attention needed:</strong> ${investor.name} hasn't been contacted in over 40 days. Risk of disengagement. Immediate action recommended: Personal phone call to re-establish connection.`
-    };
-    return summaries[investor.health] || summaries.good;
-}
-
-// ========== CALLS ==========
-function loadCalls() {
-    const tbody = document.getElementById('callsList');
-    if (!tbody) return;
-    
-    tbody.innerHTML = sampleCalls.map(call => `
-        <tr>
-            <td>${call.time}</td>
-            <td>
-                <div class="investor-cell">
-                    <div class="investor-avatar">${call.initials}</div>
-                    <div class="investor-name">${call.investor}</div>
-                </div>
-            </td>
-            <td><span class="status-badge ${call.type}">${call.type}</span></td>
-            <td>${call.duration}</td>
-            <td style="max-width: 300px;">${call.summary}</td>
-            <td><span class="status-badge ${call.sentiment}">${call.sentiment}</span></td>
-            <td>-</td>
-            <td>
-                <div class="action-btns">
-                    <button title="View"><i class="fas fa-eye"></i></button>
-                    <button title="Edit"><i class="fas fa-edit"></i></button>
-                </div>
-            </td>
-        </tr>
-    `).join('');
-}
-
-// ========== DEALS ==========
-function loadDeals() {
-    renderPipelineColumn('pipelineInterested', sampleDeals.interested);
-    renderPipelineColumn('pipelineSoft', sampleDeals.soft);
-    renderPipelineColumn('pipelineHard', sampleDeals.hard);
-    renderPipelineColumn('pipelineFunded', sampleDeals.funded);
-}
-
-function renderPipelineColumn(containerId, deals) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    
-    container.innerHTML = deals.map(deal => `
-        <div class="pipeline-card">
-            <div class="pipeline-card-header">
-                <span class="pipeline-card-name">${deal.name}</span>
-                <span class="pipeline-card-amount">${deal.amount}</span>
-            </div>
-            <div class="pipeline-card-property">${deal.property}</div>
-        </div>
-    `).join('');
-}
-
-// ========== MODALS ==========
-function showModal(type) {
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-    
-    switch(type) {
-        case 'newCall':
-            modalTitle.textContent = 'Log New Call';
-            modalBody.innerHTML = `
-                <form onsubmit="saveCall(event)">
-                    <div class="form-group">
-                        <label>Investor</label>
-                        <select required>
-                            <option value="">Select investor...</option>
-                            ${sampleInvestors.map(inv => `<option value="${inv.id}">${inv.name}</option>`).join('')}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Call Type</label>
-                        <select required>
-                            <option value="outbound">Outbound</option>
-                            <option value="inbound">Inbound</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Duration (minutes)</label>
-                        <input type="number" placeholder="e.g., 15" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Summary</label>
-                        <textarea placeholder="What was discussed..." required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Sentiment</label>
-                        <select required>
-                            <option value="positive">Positive</option>
-                            <option value="neutral">Neutral</option>
-                            <option value="negative">Negative</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%">Save Call</button>
-                </form>
-            `;
-            break;
-            
-        case 'newInvestor':
-            modalTitle.textContent = 'Add New Investor';
-            modalBody.innerHTML = `
-                <form onsubmit="saveInvestor(event)">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="tel" placeholder="(555) 123-4567" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Status</label>
-                        <select required>
-                            <option value="prospect">Prospect</option>
-                            <option value="active">Active</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Notes</label>
-                        <textarea placeholder="Initial notes about this investor..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%">Add Investor</button>
-                </form>
-            `;
-            break;
-            
-        case 'newTask':
-            modalTitle.textContent = 'Add New Task';
-            modalBody.innerHTML = `
-                <form onsubmit="saveTask(event)">
-                    <div class="form-group">
-                        <label>Task Title</label>
-                        <input type="text" placeholder="Follow up with..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Related Investor</label>
-                        <select>
-                            <option value="">No investor (general task)</option>
-                            ${sampleInvestors.map(inv => `<option value="${inv.id}">${inv.name}</option>`).join('')}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Due Date</label>
-                        <input type="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Priority</label>
-                        <select required>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea placeholder="Task details..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width:100%">Create Task</button>
-                </form>
-            `;
-            break;
-            
-        case 'sendEmail':
-            modalTitle.textContent = '✉️ Compose Email';
-            modalBody.innerHTML = `
-                <form onsubmit="sendEmailMessage(event)">
-                    <div class="form-group">
-                        <label>To</label>
-                        <select id="emailTo" required>
-                            <option value="">Select investor...</option>
-                            ${sampleInvestors.map(inv => `<option value="${inv.email}">${inv.name} (${inv.email})</option>`).join('')}
-                            <option value="all-platinum">All Platinum Investors (5)</option>
-                            <option value="all-gold">All Gold Investors (12)</option>
-                            <option value="all-active">All Active Investors (523)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Template (AI-Powered)</label>
-                        <select id="emailTemplate" onchange="loadEmailTemplate()">
-                            <option value="">Start from scratch...</option>
-                            <option value="quarterly">📊 Quarterly Update</option>
-                            <option value="welcome">👋 Welcome New Investor</option>
-                            <option value="distribution">💰 Distribution Notice</option>
-                            <option value="checkin">📞 Check-in Follow-up</option>
-                            <option value="opportunity">🏠 New Investment Opportunity</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" id="emailSubject" placeholder="Email subject..." required>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea id="emailBody" rows="8" placeholder="Write your message or select a template..." required></textarea>
-                    </div>
-                    <div class="form-group ai-enhance">
-                        <button type="button" class="btn btn-secondary" onclick="enhanceWithAI()">
-                            <i class="fas fa-magic"></i> Enhance with AI
-                        </button>
-                        <span class="ai-hint">Let Gemini improve your message</span>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="btn" onclick="saveDraft()">Save Draft</button>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Send Email
-                        </button>
-                    </div>
-                </form>
-            `;
-            break;
-    }
-    
-    document.getElementById('modalOverlay').classList.add('active');
-}
-
-function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('active');
-}
-
-// Close modal on overlay click
-document.getElementById('modalOverlay')?.addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-});
-
-// ========== FORM HANDLERS ==========
-function saveCall(e) {
-    e.preventDefault();
-    alert('Call logged successfully! (Demo - would save to database)');
-    closeModal();
-}
-
-function saveInvestor(e) {
-    e.preventDefault();
-    alert('Investor added successfully! (Demo - would save to database)');
-    closeModal();
-}
-
-function saveTask(e) {
-    e.preventDefault();
-    alert('Task created successfully! (Demo - would save to database)');
-    closeModal();
-}
-
-// ========== EMAIL FUNCTIONS ==========
-const emailTemplates = {
-    quarterly: {
-        subject: 'Q1 2026 Portfolio Update - CS3 Investments',
-        body: `Dear [Investor Name],
-
-I hope this message finds you well. I'm excited to share our Q1 2026 portfolio performance update with you.
-
-**Key Highlights:**
-• Portfolio occupancy remains strong at 94.5%
-• NOI increased 8.2% year-over-year
-• Distributions processed on schedule
-
-Our properties continue to perform exceptionally well, and we remain committed to delivering strong, consistent returns for our investors.
-
-I'd love to schedule a brief call to discuss your investment and answer any questions you may have.
-
-Best regards,
-Al Liao
-Director of Investor Relations
-CS3 Investments`
-    },
-    welcome: {
-        subject: 'Welcome to the CS3 Investments Family! 🎉',
-        body: `Dear [Investor Name],
-
-Welcome to CS3 Investments! We're thrilled to have you as part of our investor family.
-
-Your investment has been successfully processed, and you're now an owner in [Property Name]. Here's what happens next:
-
-1. **Investor Portal Access** - You'll receive login credentials within 24 hours
-2. **Distribution Schedule** - Quarterly distributions, typically within 30 days of quarter-end
-3. **Monthly Updates** - Expect property performance updates via email
-
-If you have any questions, please don't hesitate to reach out. I'm here to help!
-
-Warm regards,
-Al Liao
-Director of Investor Relations
-CS3 Investments`
-    },
-    distribution: {
-        subject: 'Your Q4 2025 Distribution Has Been Processed 💰',
-        body: `Dear [Investor Name],
-
-Great news! Your Q4 2025 distribution has been processed and should arrive in your bank account within 3-5 business days.
-
-**Distribution Details:**
-• Amount: $[Amount]
-• Property: [Property Name]
-• Period: Q4 2025
-• Payment Method: ACH Transfer
-
-Thank you for your continued trust in CS3 Investments. We're committed to delivering consistent returns and exceptional service.
-
-Best regards,
-Al Liao
-Director of Investor Relations
-CS3 Investments`
-    },
-    checkin: {
-        subject: 'Quick Check-in - How Can We Serve You Better?',
-        body: `Dear [Investor Name],
-
-I hope you're doing well! I wanted to reach out personally to check in and see how things are going.
-
-A few things I'd love to discuss:
-• Your experience with CS3 Investments so far
-• Any questions about your current investments
-• Upcoming opportunities that might interest you
-
-Would you have 15-20 minutes this week for a quick call? I'm available:
-• [Day/Time Option 1]
-• [Day/Time Option 2]
-
-Looking forward to connecting!
-
-Warm regards,
-Al Liao
-Director of Investor Relations
-CS3 Investments`
-    },
-    opportunity: {
-        subject: 'Exclusive: New Investment Opportunity - [Property Name]',
-        body: `Dear [Investor Name],
-
-As a valued CS3 investor, I wanted to give you early access to our newest opportunity.
-
-**[Property Name] - Quick Overview:**
-• Location: [City, State]
-• Units: [Number] multifamily units
-• Target Returns: [X]% CoC, [Y]% IRR
-• Minimum Investment: $50,000
-
-This property fits perfectly with our value-add strategy, and we're excited about its potential.
-
-Want to learn more? Reply to this email or schedule a call at [Link].
-
-Investment closes: [Date]
-
-Best regards,
-Al Liao
-Director of Investor Relations
-CS3 Investments`
-    }
-};
-
-function loadEmailTemplate() {
-    const template = document.getElementById('emailTemplate').value;
-    if (template && emailTemplates[template]) {
-        document.getElementById('emailSubject').value = emailTemplates[template].subject;
-        document.getElementById('emailBody').value = emailTemplates[template].body;
-    }
-}
-
-function enhanceWithAI() {
-    const body = document.getElementById('emailBody');
-    const currentText = body.value;
-    
-    if (!currentText.trim()) {
-        alert('Please write some content first for AI to enhance.');
+    if (!name || !email) {
+        alert('Please fill in required fields');
         return;
     }
     
-    // Simulate AI enhancement
-    alert('🤖 AI is enhancing your message...');
+    // Add to local data (would save to Firestore in production)
+    const newInvestor = {
+        id: CS3Data.investors.length + 1,
+        name,
+        email,
+        phone,
+        totalInvested: 0,
+        properties: [],
+        type,
+        status: 'prospect'
+    };
     
-    setTimeout(() => {
-        // Add AI-enhanced version
-        body.value = currentText + '\n\n---\n[AI Enhanced: Added personalization, improved tone, and optimized for engagement]';
-    }, 1000);
-}
-
-function saveDraft() {
-    alert('📝 Draft saved! You can find it in your Drafts folder.');
-}
-
-function sendEmailMessage(e) {
-    e.preventDefault();
-    const to = document.getElementById('emailTo').value;
-    const subject = document.getElementById('emailSubject').value;
+    CS3Data.investors.push(newInvestor);
     
-    alert(`✅ Email sent successfully!\n\nTo: ${to}\nSubject: ${subject}\n\n(Demo - would send via Gmail API)`);
-    closeModal();
+    // Clear form
+    document.getElementById('investorName').value = '';
+    document.getElementById('investorEmail').value = '';
+    document.getElementById('investorPhone').value = '';
+    
+    // Close modal
+    closeModal('addInvestorModal');
+    
+    // Refresh
+    loadInvestors();
+    
+    alert(`Added investor: ${name}`);
 }
 
-function toggleTask(id) {
-    // Would toggle task completion in database
-    console.log('Toggle task:', id);
-}
+// ============================================
+// UTILITIES
+// ============================================
 
-function makeCall(id) {
-    const investor = sampleInvestors.find(i => i.id === id);
-    if (investor) {
-        alert(`Calling ${investor.name} at ${investor.phone}...`);
+function formatCurrency(amount) {
+    if (amount >= 1000000) {
+        return '$' + (amount / 1000000).toFixed(1) + 'M';
+    } else if (amount >= 1000) {
+        return '$' + (amount / 1000).toFixed(0) + 'K';
     }
+    return '$' + amount.toLocaleString();
 }
 
-function sendEmail(id) {
-    const investor = sampleInvestors.find(i => i.id === id);
-    if (investor) {
-        window.location.href = `mailto:${investor.email}`;
+function refreshData() {
+    const currentPage = document.querySelector('.page.active')?.id?.replace('-page', '');
+    if (currentPage) {
+        loadPageData(currentPage);
     }
+    console.log('Data refreshed');
 }
 
-// ========== UTILITIES ==========
-function formatDate(dateStr) {
-    const date = new Date(dateStr);
-    const now = new Date();
-    const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
-    
-    if (diffDays === 0) return 'Today';
-    if (diffDays === 1) return 'Yesterday';
-    if (diffDays < 7) return `${diffDays} days ago`;
-    
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
+// ============================================
+// INITIALIZATION
+// ============================================
 
-// Mobile menu toggle
-document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-    document.querySelector('.sidebar').classList.toggle('active');
+document.addEventListener('DOMContentLoaded', function() {
+    // Set up navigation
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = this.dataset.page;
+            if (page) {
+                navigateTo(page);
+            }
+        });
+    });
+    
+    // Load dashboard
+    loadDashboard();
+    
+    console.log('CS3 CRM V3 Loaded');
 });
 
-// ========== AI ASSISTANT ==========
-document.querySelector('.header-btn[title="AI Assistant"]')?.addEventListener('click', function() {
-    showAIAssistant();
+// Close modal on outside click
+window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+    }
 });
-
-function showAIAssistant() {
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-    
-    modalTitle.textContent = '🤖 Gemini AI Assistant';
-    modalBody.innerHTML = `
-        <div class="ai-assistant-container">
-            <div class="ai-chat-messages" id="aiChatMessages">
-                <div class="ai-message assistant">
-                    <div class="message-avatar">🤖</div>
-                    <div class="message-content">
-                        Hi! I'm your AI assistant powered by Gemini. How can I help you today?
-                        <div class="quick-prompts">
-                            <button onclick="aiPrompt('Who needs a follow-up call?')">📞 Who needs a follow-up?</button>
-                            <button onclick="aiPrompt('Draft an email to platinum investors')">✉️ Draft investor email</button>
-                            <button onclick="aiPrompt('Summarize this week\\'s activity')">📊 Weekly summary</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ai-chat-input">
-                <input type="text" id="aiInput" placeholder="Ask anything about your investors..." onkeypress="if(event.key==='Enter') sendAIMessage()">
-                <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    `;
-    
-    document.getElementById('modalOverlay').classList.add('active');
-    document.getElementById('aiInput').focus();
-}
-
-function aiPrompt(prompt) {
-    document.getElementById('aiInput').value = prompt;
-    sendAIMessage();
-}
-
-function sendAIMessage() {
-    const input = document.getElementById('aiInput');
-    const message = input.value.trim();
-    if (!message) return;
-    
-    const chatMessages = document.getElementById('aiChatMessages');
-    
-    // Add user message
-    chatMessages.innerHTML += `
-        <div class="ai-message user">
-            <div class="message-content">${message}</div>
-            <div class="message-avatar">AL</div>
-        </div>
-    `;
-    
-    input.value = '';
-    
-    // Simulate AI response
-    setTimeout(() => {
-        const response = generateAIResponse(message);
-        chatMessages.innerHTML += `
-            <div class="ai-message assistant">
-                <div class="message-avatar">🤖</div>
-                <div class="message-content">${response}</div>
-            </div>
-        `;
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 1000);
-}
-
-function generateAIResponse(message) {
-    const lowerMessage = message.toLowerCase();
-    
-    if (lowerMessage.includes('follow-up') || lowerMessage.includes('contact')) {
-        return `📞 <strong>Follow-up Needed:</strong><br><br>
-        Based on your investor data, I found:<br>
-        • <strong>David Thompson</strong> - No contact in 42 days (HIGH PRIORITY)<br>
-        • <strong>James Wilson</strong> - No contact in 77 days (AT RISK)<br>
-        • <strong>Robert Williams</strong> - 17 days since last call<br><br>
-        <button onclick="createFollowUpTasks()" class="btn btn-small btn-primary">Create Follow-up Tasks</button>`;
-    }
-    
-    if (lowerMessage.includes('email') || lowerMessage.includes('draft')) {
-        return `✉️ <strong>Email Draft Ready:</strong><br><br>
-        Subject: Q1 2026 Update - Exciting News from CS3 Investments<br><br>
-        Dear [Investor Name],<br><br>
-        I hope this message finds you well. I wanted to reach out personally to share some exciting updates about our portfolio...<br><br>
-        <button onclick="copyEmailDraft()" class="btn btn-small btn-primary">Copy Full Draft</button>
-        <button onclick="editEmailDraft()" class="btn btn-small">Edit Draft</button>`;
-    }
-    
-    if (lowerMessage.includes('summary') || lowerMessage.includes('week')) {
-        return `📊 <strong>This Week's Summary:</strong><br><br>
-        📞 <strong>47 calls</strong> made (↑8 from last week)<br>
-        👥 <strong>12 new investors</strong> added<br>
-        💰 <strong>$2.1M</strong> new commitments<br>
-        ✅ <strong>89%</strong> positive sentiment<br><br>
-        Top performer: You had 5 calls with platinum investors this week!`;
-    }
-    
-    return `I understand you're asking about "${message}".<br><br>
-    Based on your CRM data, here's what I found:<br>
-    • Total investors: 623<br>
-    • Active this month: 312<br>
-    • Requiring attention: 23<br><br>
-    Would you like me to provide more specific insights?`;
-}
-
-function createFollowUpTasks() {
-    alert('✅ Created 3 follow-up tasks for at-risk investors!');
-}
-
-function copyEmailDraft() {
-    alert('📋 Email draft copied to clipboard!');
-}
-
-function editEmailDraft() {
-    alert('Opening email editor...');
-}
-
-// ========== GOOGLE VOICE INTEGRATION ==========
-function initiateGoogleVoiceCall(phoneNumber, investorName) {
-    // In production, this would use Google Voice API
-    console.log(`Initiating Google Voice call to ${investorName} at ${phoneNumber}`);
-    
-    // Show call UI
-    showCallUI(phoneNumber, investorName);
-}
-
-function showCallUI(phoneNumber, name) {
-    const callUI = document.createElement('div');
-    callUI.className = 'call-overlay';
-    callUI.innerHTML = `
-        <div class="call-modal">
-            <div class="call-status">Calling...</div>
-            <div class="call-name">${name}</div>
-            <div class="call-number">${phoneNumber}</div>
-            <div class="call-timer" id="callTimer">00:00</div>
-            <div class="call-actions">
-                <button class="call-btn mute"><i class="fas fa-microphone-slash"></i></button>
-                <button class="call-btn end" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
-                <button class="call-btn speaker"><i class="fas fa-volume-up"></i></button>
-            </div>
-        </div>
-    `;
-    document.body.appendChild(callUI);
-    
-    // Start timer
-    let seconds = 0;
-    window.callTimerInterval = setInterval(() => {
-        seconds++;
-        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const secs = (seconds % 60).toString().padStart(2, '0');
-        document.getElementById('callTimer').textContent = `${mins}:${secs}`;
-    }, 1000);
-}
-
-function endCall() {
-    clearInterval(window.callTimerInterval);
-    document.querySelector('.call-overlay')?.remove();
-    showModal('newCall'); // Prompt to log the call
-}
-
-// ========== REAL-TIME UPDATES ==========
-function updateDashboardStats() {
-    // Simulate real-time stat updates
-    const totalInvestorsEl = document.getElementById('totalInvestors');
-    const callsThisWeekEl = document.getElementById('callsThisWeek');
-    
-    if (totalInvestorsEl) {
-        // Occasionally increment
-        if (Math.random() > 0.95) {
-            const current = parseInt(totalInvestorsEl.textContent);
-            totalInvestorsEl.textContent = current + 1;
-            showNotification('🎉 New investor added!');
-        }
-    }
-}
-
-function showNotification(message) {
-    const notif = document.createElement('div');
-    notif.className = 'toast-notification';
-    notif.innerHTML = message;
-    document.body.appendChild(notif);
-    
-    setTimeout(() => notif.classList.add('show'), 100);
-    setTimeout(() => {
-        notif.classList.remove('show');
-        setTimeout(() => notif.remove(), 300);
-    }, 3000);
-}
-
-// Update stats every 30 seconds
-setInterval(updateDashboardStats, 30000);
-
-console.log('🚀 CS3 Intelligence CRM loaded successfully!');
-console.log('📊 Loaded', sampleInvestors.length, 'investors');
-console.log('📞 Loaded', sampleCalls.length, 'recent calls');
-console.log('✅ Loaded', sampleTasks.length, 'tasks');
-console.log('🤖 AI Assistant ready');
-console.log('📱 Google Voice integration ready');
