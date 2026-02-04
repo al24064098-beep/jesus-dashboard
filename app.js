@@ -33,29 +33,20 @@
         startLiveStatusPolling();
     }
 
-    // ========== LIVE STATUS POLLING (Every 2 seconds) ==========
+    // ========== LIVE STATUS POLLING (Every 5 seconds for real-time feel) ==========
     function startLiveStatusPolling() {
         // Poll immediately
         pollLiveStatus();
-        // Then every 2 seconds
-        setInterval(pollLiveStatus, 2000);
+        // Then every 5 seconds
+        setInterval(pollLiveStatus, 5000);
     }
 
     async function pollLiveStatus() {
         try {
-            // Fetch live status
+            // Fetch live status (includes minuteLog in response)
             const response = await fetch(LIVE_WORKER_URL + '/live');
             const data = await response.json();
-            
-            // Also fetch minute log
-            try {
-                const logResponse = await fetch(LIVE_WORKER_URL + '/minute-log');
-                const logData = await logResponse.json();
-                data.minuteLog = logData;
-            } catch (e) {
-                console.error('Minute log fetch failed:', e);
-            }
-            
+            // minuteLog is already in data from /live endpoint
             updateLiveStatusDisplay(data);
         } catch (error) {
             console.error('Live status poll failed:', error);
