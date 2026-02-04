@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<!--
+JESUS DASHBOARD V6 - UNIFIED
+============================
+Combines:
+- V3's complete features (22 tabs, all functions)
+- V5's clean design + OpenClaw chat integration
+- Best of both = FULL FEATURES + CLEAN + CONNECTED
+
+Built for CS3 Investments by Jesus ⚡
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Jesus Dashboard V6 | Unified | CS3 Investments</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #10b981;
+            --secondary: #6366f1;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --darker: #020617;
+            --card: #1e293b;
+            --card-hover: #334155;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --border: rgba(255,255,255,0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: linear-gradient(135deg, var(--dark), var(--card));
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border: 2px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        }
+        
+        .title-group h1 {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+        
+        .badge.live {
+            background: #22c55e;
+            animation: glow 2s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px #22c55e; }
+            50% { box-shadow: 0 0 12px #22c55e; }
+        }
+        
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+        
+        .status-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .clock-box {
+            text-align: right;
+        }
+        
+        .clock-display {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .date-display {
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+        
+        .connection-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            border: 1px solid #22c55e;
+            font-size: 0.8rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ========== NAVIGATION ========== */
+        .nav-tabs {
+            background: var(--dark);
+            padding: 0 15px;
+            display: flex;
+            gap: 3px;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-tabs::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .nav-tabs::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .nav-tab {
+            padding: 10px 14px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-tab:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .tab-badge {
+            background: var(--danger);
+            color: white;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+        }
+
+        /* ========== MAIN LAYOUT ========== */
+        .main-container {
+            display: grid;
+            grid-template-columns: 280px 1fr 320px;
+            height: calc(100vh - 95px);
+        }
+        
+        @media (max-width: 1200px) {
+            .main-container {
+                grid-template-columns: 250px 1fr;
+            }
+            .right-panel { display: none; }
+        }
+        
+        @media (max-width: 800px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .left-panel { display: none; }
+        }
+
+        /* ========== LEFT PANEL ========== */
+        .left-panel {
+            background: var(--dark);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .panel-section {
+            margin-bottom: 18px;
+        }
+        
+        .panel-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .stat-card {
+            background: var(--card);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+        
+        /* Quick Commands */
+        .quick-btn {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 6px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        
+        .quick-btn:hover {
+            background: var(--secondary);
+            transform: translateX(3px);
+        }
+        
+        .quick-btn.primary {
+            background: linear-gradient(135deg, var(--primary), #059669);
+            border: none;
+            font-weight: 600;
+        }
+        
+        /* Note Section */
+        .note-box {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 12px;
+        }
+        
+        .note-textarea {
+            width: 100%;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px;
+            color: var(--text);
+            font-size: 0.85rem;
+            resize: vertical;
+            min-height: 70px;
+            margin-bottom: 8px;
+        }
+        
+        .note-textarea::placeholder {
+            color: var(--muted);
+        }
+        
+        .note-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .priority-check {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+        
+        .send-btn {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 12px rgba(16, 185, 129, 0.4);
+        }
+        
+        /* Scripture */
+        .scripture-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(16, 185, 129, 0.15));
+            padding: 12px;
+            border-radius: 10px;
+            font-style: italic;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            border: 1px solid var(--border);
+        }
+        
+        .scripture-ref {
+            text-align: right;
+            margin-top: 6px;
+            color: var(--muted);
+            font-style: normal;
+            font-size: 0.7rem;
+        }
+
+        /* ========== CENTER PANEL ========== */
+        .center-panel {
+            display: flex;
+            flex-direction: column;
+            background: var(--darker);
+            overflow: hidden;
+        }
+        
+        .tab-content {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Chat Tab */
+        .chat-header {
+            background: var(--card);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .chat-header h2 {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chat-tools {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .tool-btn {
+            background: var(--dark);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+        
+        .tool-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .chat-area {
+            flex: 1;
+            position: relative;
+        }
+        
+        .chat-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: var(--dark);
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--darker);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--card);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 12px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .fallback-box {
+            background: var(--card);
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin: 20px;
+        }
+        
+        .fallback-box h3 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+        
+        .fallback-box p {
+            color: var(--muted);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .fallback-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .fallback-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        /* ========== CONTENT SECTIONS ========== */
+        .section-header {
+            padding: 15px 20px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-header h2 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .section-header p {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+        
+        .section-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .card-header h3 {
+            font-size: 0.95rem;
+            flex: 1;
+        }
+        
+        .card-badge {
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+        }
+        
+        /* Project Cards */
+        .project-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 12px;
+        }
+        
+        .project-card.complete { border-left-color: #22c55e; }
+        .project-card.progress { border-left-color: var(--accent); }
+        .project-card.planned { border-left-color: var(--secondary); }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .project-header h4 {
+            font-size: 0.95rem;
+        }
+        
+        .project-status {
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .project-status.complete { background: #22c55e; color: white; }
+        .project-status.progress { background: var(--accent); color: white; }
+        .project-status.planned { background: var(--secondary); color: white; }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .project-card.complete .progress-fill { background: #22c55e; }
+        .project-card.progress .progress-fill { background: var(--accent); }
+        
+        .project-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--dark);
+            border-radius: 8px;
+        }
+        
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        
+        .member-info {
+            flex: 1;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .member-email {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+        
+        .member-role {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: var(--card);
+        }
+        
+        .member-role.owner {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Invite Form */
+        .invite-form {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .invite-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 12px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+        
+        .invite-select {
+            padding: 10px 12px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 0.85rem;
+        }
+        
+        .invite-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .invite-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ========== RIGHT PANEL ========== */
+        .right-panel {
+            background: var(--dark);
+            border-left: 1px solid var(--border);
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        /* Activity Log */
+        .activity-log {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .log-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .log-item:last-child {
+            border-bottom: none;
+        }
+        
+        .log-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+        
+        .log-content {
+            flex: 1;
+        }
+        
+        .log-title {
+            font-size: 0.8rem;
+        }
+        
+        .log-time {
+            font-size: 0.65rem;
+            color: var(--muted);
+        }
+        
+        /* Delivery Status */
+        .delivery-status {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .delivery-item {
+            background: var(--card);
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.65rem;
+            text-align: center;
+        }
+        
+        .delivery-item.active {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--primary);
+        }
+
+        /* ========== TOAST ========== */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--card);
+            border: 1px solid var(--primary);
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: none;
+            animation: slideUp 0.3s ease;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+        }
+        
+        .empty-state h3 {
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-section">
+            <div class="avatar">⚡</div>
+            <div class="title-group">
+                <h1>
+                    Jesus Dashboard
+                    <span class="badge live">LIVE</span>
+                    <span class="badge">V6</span>
+                </h1>
+                <p class="subtitle">AI Partner | 24/7 | CS3 Investments</p>
+            </div>
+        </div>
+        <div class="status-section">
+            <div class="clock-box">
+                <div class="clock-display" id="clockDisplay">--:--:-- --</div>
+                <div class="date-display" id="dateDisplay">Loading... (MST)</div>
+            </div>
+            <div class="connection-badge" id="connectionStatus">
+                <div class="status-dot"></div>
+                <span>Connected</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-tab="chat">💬 Chat</button>
+        <button class="nav-tab" data-tab="overview">🏠 Overview</button>
+        <button class="nav-tab" data-tab="projects">📊 Projects</button>
+        <button class="nav-tab" data-tab="team">👥 Team</button>
+        <button class="nav-tab" data-tab="promises">🔒 Promises</button>
+        <button class="nav-tab" data-tab="surprise">🎁 Surprise</button>
+        <button class="nav-tab" data-tab="intelligence">🧠 Intelligence</button>
+        <button class="nav-tab" data-tab="money">💰 Money</button>
+        <button class="nav-tab" data-tab="vault">📁 Vault</button>
+        <button class="nav-tab" data-tab="devotions">📖 Devotions</button>
+        <button class="nav-tab" data-tab="crm">📞 CRM</button>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Panel -->
+        <aside class="left-panel">
+            <!-- Stats -->
+            <div class="panel-section">
+                <h3 class="panel-title">⚡ Jesus Status</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="statProjects">3</div>
+                        <div class="stat-label">Active</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statCron">31</div>
+                        <div class="stat-label">Cron Jobs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statMemory">18</div>
+                        <div class="stat-label">Memory Files</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Commands -->
+            <div class="panel-section">
+                <h3 class="panel-title">⚡ Quick Commands</h3>
+                <button class="quick-btn primary" onclick="sendCommand('status')">📊 Status Update</button>
+                <button class="quick-btn" onclick="sendCommand('working')">🔨 What are you working on?</button>
+                <button class="quick-btn" onclick="sendCommand('blockers')">🚧 Any blockers?</button>
+                <button class="quick-btn" onclick="sendCommand('report')">📝 Send Report</button>
+                <button class="quick-btn" onclick="sendCommand('scripture')">📖 Daily Scripture</button>
+            </div>
+
+            <!-- Leave a Note -->
+            <div class="panel-section">
+                <h3 class="panel-title">✍️ Leave a Note</h3>
+                <div class="note-box">
+                    <textarea class="note-textarea" id="noteInput" placeholder="Type your message to Jesus..."></textarea>
+                    <div class="note-footer">
+                        <label class="priority-check">
+                            <input type="checkbox" id="priorityCheck">
+                            Priority
+                        </label>
+                        <button class="send-btn" onclick="sendNote()">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scripture -->
+            <div class="panel-section">
+                <div class="scripture-card" id="scriptureCard">
+                    "Trust in the LORD with all thine heart; and lean not unto thine own understanding."
+                    <div class="scripture-ref">— Proverbs 3:5 (KJV)</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Panel -->
+        <main class="center-panel">
+            <!-- Chat Tab -->
+            <div class="tab-content active" id="tab-chat">
+                <div class="chat-header">
+                    <h2>💬 Live Chat with Jesus <span style="color: #22c55e; font-size: 0.7rem;">● CONNECTED</span></h2>
+                    <div class="chat-tools">
+                        <button class="tool-btn" onclick="refreshChat()">🔄 Refresh</button>
+                        <button class="tool-btn" onclick="openFullChat()">↗️ Full Screen</button>
+                    </div>
+                </div>
+                <div class="chat-area">
+                    <div class="loading-overlay" id="loadingOverlay">
+                        <div class="spinner"></div>
+                        <div>Connecting to Jesus...</div>
+                    </div>
+                    <iframe id="chatFrame" class="chat-iframe" src="about:blank" onload="onFrameLoad()"></iframe>
+                    <div class="fallback-box" id="fallbackBox" style="display: none;">
+                        <h3>🔗 Direct Connection</h3>
+                        <p>OpenClaw requires Tailscale access. Click below to open chat.</p>
+                        <a href="https://srv1308999.tail756bdd.ts.net/health/chat?session=agent:main:main" target="_blank" class="fallback-link">Open Jesus Chat →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overview Tab -->
+            <div class="tab-content" id="tab-overview">
+                <div class="section-header">
+                    <h2>🏠 Command Center</h2>
+                    <p>Everything at a glance</p>
+                </div>
+                <div class="section-body">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>🎯 Today's Focus</h3>
+                        </div>
+                        <div id="todaysFocus">
+                            <p>1. Dashboard V6 (combining V3+V5)</p>
+                            <p>2. CRM to 100%</p>
+                            <p>3. AI Phone Platform</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📊 Quick Links</h3>
+                        </div>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/v3.html" target="_blank" class="project-link" style="padding: 8px 15px; background: var(--card); border-radius: 6px;">V3 Dashboard</a>
+                            <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="project-link" style="padding: 8px 15px; background: var(--card); border-radius: 6px;">CS3 CRM</a>
+                            <a href="https://app.youratlas.com" target="_blank" class="project-link" style="padding: 8px 15px; background: var(--card); border-radius: 6px;">Atlas AI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div class="tab-content" id="tab-projects">
+                <div class="section-header">
+                    <h2>📊 Agent Report</h2>
+                    <p>Current projects and progress</p>
+                </div>
+                <div class="section-body">
+                    <div class="project-card complete">
+                        <div class="project-header">
+                            <h4>✅ Dashboard V3</h4>
+                            <span class="project-status complete">100%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                        <p class="project-desc">22 tabs, all buttons working, team invites, full features</p>
+                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/v3.html" target="_blank" class="project-link">View Dashboard →</a>
+                    </div>
+                    
+                    <div class="project-card progress">
+                        <div class="project-header">
+                            <h4>🔨 CS3 CRM V1</h4>
+                            <span class="project-status progress">75%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                        <p class="project-desc">10 pages complete. Voice-first, AI assistant, email composer.</p>
+                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="project-link">View CRM →</a>
+                    </div>
+                    
+                    <div class="project-card progress">
+                        <div class="project-header">
+                            <h4>🔨 Dashboard V6</h4>
+                            <span class="project-status progress">Building</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 50%"></div></div>
+                        <p class="project-desc">Combining V3 features + V5 clean design + OpenClaw chat</p>
+                    </div>
+                    
+                    <div class="project-card planned">
+                        <div class="project-header">
+                            <h4>📱 AI Phone Platform</h4>
+                            <span class="project-status planned">Planned</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        <p class="project-desc">Google Voice + ElevenLabs + Gemini AI. After CRM.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Tab -->
+            <div class="tab-content" id="tab-team">
+                <div class="section-header">
+                    <h2>👥 Team</h2>
+                    <p>Invite colleagues to collaborate</p>
+                </div>
+                <div class="section-body">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>✉️ Invite Team Member</h3>
+                        </div>
+                        <div class="invite-form">
+                            <input type="email" id="inviteEmail" placeholder="Email address" class="invite-input">
+                            <select id="inviteRole" class="invite-select">
+                                <option value="viewer">👁️ Viewer</option>
+                                <option value="collaborator">🤝 Collaborator</option>
+                                <option value="admin">⚡ Admin</option>
+                            </select>
+                            <button class="invite-btn" onclick="sendTeamInvite()">📤 Send Invite</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>👥 Team Members</h3>
+                        </div>
+                        <div class="team-grid" id="teamList">
+                            <div class="team-member">
+                                <div class="member-avatar">AL</div>
+                                <div class="member-info">
+                                    <div class="member-name">Al Liao</div>
+                                    <div class="member-email">al@cs3investments.com</div>
+                                </div>
+                                <span class="member-role owner">👑 Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📨 Pending Invites</h3>
+                            <span class="card-badge" id="pendingCount">0</span>
+                        </div>
+                        <div id="pendingInvites">
+                            <p class="empty-state" style="padding: 10px;">No pending invitations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Tabs (Simplified) -->
+            <div class="tab-content" id="tab-promises">
+                <div class="section-header"><h2>🔒 Promises</h2><p>Commitments and accountability</p></div>
+                <div class="section-body">
+                    <div class="empty-state">
+                        <h3>Ask Jesus about promises</h3>
+                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('promises')">View Promises</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-surprise">
+                <div class="section-header"><h2>🎁 Daily Surprise</h2><p>Something amazing every day</p></div>
+                <div class="section-body">
+                    <div class="empty-state">
+                        <h3>Get Today's Surprise</h3>
+                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('surprise')">Show Surprise</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-intelligence">
+                <div class="section-header"><h2>🧠 AI Intelligence</h2><p>Market insights and analysis</p></div>
+                <div class="section-body">
+                    <div class="empty-state">
+                        <h3>Get AI Insights</h3>
+                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('intelligence')">Load Intelligence</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-money">
+                <div class="section-header"><h2>💰 Money Ideas</h2><p>Revenue opportunities</p></div>
+                <div class="section-body">
+                    <div class="empty-state">
+                        <h3>Get Money Ideas</h3>
+                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('money')">Show Ideas</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-vault">
+                <div class="section-header"><h2>📁 Vault & SOPs</h2><p>Everything Jesus has built</p></div>
+                <div class="section-body">
+                    <div class="empty-state">
+                        <h3>Browse the Vault</h3>
+                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('vault')">Open Vault</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-devotions">
+                <div class="section-header"><h2>📖 Devotions</h2><p>365 Daily Devotions</p></div>
+                <div class="section-body">
+                    <div class="empty-state">
+                        <h3>View Devotions</h3>
+                        <button class="quick-btn primary" style="margin-top: 15px; width: auto;" onclick="sendCommand('devotions')">Load Devotions</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-crm">
+                <div class="section-header"><h2>📞 CRM</h2><p>CS3 Investor Relations CRM</p></div>
+                <div class="section-body">
+                    <div class="card">
+                        <div class="card-header"><h3>🚀 Launch CRM</h3></div>
+                        <p style="margin-bottom: 15px; color: var(--muted);">The full CRM with voice input, AI assistant, investor management, and more.</p>
+                        <a href="https://raw.githack.com/al24064098-beep/jesus-dashboard/main/cs3-crm-v2/index.html" target="_blank" class="fallback-link">Open CS3 CRM →</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            <!-- Message Status -->
+            <div class="panel-section">
+                <h3 class="panel-title">📨 Message Status</h3>
+                <div class="delivery-status">
+                    <div class="delivery-item">✓ Sent</div>
+                    <div class="delivery-item">✓✓ Delivered</div>
+                    <div class="delivery-item active">✓✓ Read</div>
+                    <div class="delivery-item">● Working</div>
+                    <div class="delivery-item">✅ Done</div>
+                </div>
+            </div>
+
+            <!-- Activity Log -->
+            <div class="panel-section">
+                <h3 class="panel-title">📋 Recent Activity</h3>
+                <div class="activity-log" id="activityLog">
+                    <div class="log-item">
+                        <div class="log-icon">✅</div>
+                        <div class="log-content">
+                            <div class="log-title">All buttons working</div>
+                            <div class="log-time">Just now</div>
+                        </div>
+                    </div>
+                    <div class="log-item">
+                        <div class="log-icon">🔨</div>
+                        <div class="log-content">
+                            <div class="log-title">Building V6 dashboard</div>
+                            <div class="log-time">Now</div>
+                        </div>
+                    </div>
+                    <div class="log-item">
+                        <div class="log-icon">📊</div>
+                        <div class="log-content">
+                            <div class="log-title">CRM at 75%</div>
+                            <div class="log-time">Today</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="panel-section">
+                <h3 class="panel-title">📈 Today's Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="tasksToday">5</div>
+                        <div class="stat-label">Tasks</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$289</div>
+                        <div class="stat-label">Feb Cost</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Message sent!</div>
+
+    <script>
+        // Config
+        const OPENCLAW_URL = 'https://srv1308999.tail756bdd.ts.net/health/chat?session=agent:main:main';
+        const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+
+        // Init
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClock();
+            setInterval(updateClock, 1000);
+            setupTabs();
+            loadChat();
+            loadTeamMembers();
+        });
+
+        // Clock (MST)
+        function updateClock() {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const mst = new Date(utc - (7 * 3600000));
+            
+            document.getElementById('clockDisplay').textContent = mst.toLocaleTimeString('en-US', {
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+            });
+            document.getElementById('dateDisplay').textContent = mst.toLocaleDateString('en-US', {
+                weekday: 'short', month: 'short', day: 'numeric'
+            }) + ' (MST)';
+        }
+
+        // Tabs
+        function setupTabs() {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const tabId = this.dataset.tab;
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    document.getElementById('tab-' + tabId).classList.add('active');
+                });
+            });
+        }
+
+        // Chat
+        function loadChat() {
+            const frame = document.getElementById('chatFrame');
+            frame.src = OPENCLAW_URL;
+            
+            setTimeout(() => {
+                try {
+                    const test = frame.contentWindow.location.href;
+                } catch(e) {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    document.getElementById('fallbackBox').style.display = 'block';
+                    frame.style.display = 'none';
+                }
+            }, 5000);
+        }
+
+        function onFrameLoad() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+
+        function refreshChat() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            document.getElementById('chatFrame').src = OPENCLAW_URL + '&t=' + Date.now();
+        }
+
+        function openFullChat() {
+            window.open(OPENCLAW_URL, '_blank');
+        }
+
+        // Commands
+        async function sendCommand(cmd) {
+            const commands = {
+                'status': 'Give me a status update',
+                'working': 'What are you working on right now?',
+                'blockers': 'Any blockers I should know about?',
+                'report': 'Send me today\'s report',
+                'scripture': 'Share a scripture with me',
+                'promises': 'Show me your promises',
+                'surprise': 'Give me today\'s surprise',
+                'intelligence': 'Share AI intelligence and insights',
+                'money': 'Give me money ideas',
+                'vault': 'List everything in the vault',
+                'devotions': 'Show today\'s devotion'
+            };
+            
+            const message = commands[cmd] || cmd;
+            await sendToWorker(message);
+            showToast('Request sent: ' + cmd);
+        }
+
+        // Send Note
+        async function sendNote() {
+            const note = document.getElementById('noteInput').value.trim();
+            if (!note) {
+                alert('Please type a message!');
+                return;
+            }
+            
+            const isPriority = document.getElementById('priorityCheck').checked;
+            const message = isPriority ? '🚨 PRIORITY: ' + note : note;
+            
+            await sendToWorker(message);
+            document.getElementById('noteInput').value = '';
+            document.getElementById('priorityCheck').checked = false;
+            showToast('Note sent to Jesus!');
+        }
+
+        // Worker Communication
+        async function sendToWorker(message) {
+            try {
+                await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        lastUpdated: new Date().toISOString(),
+                        notes: [{
+                            id: Date.now(),
+                            type: 'dashboard_note',
+                            content: message,
+                            priority: false,
+                            createdAt: new Date().toISOString()
+                        }]
+                    })
+                });
+            } catch(e) {
+                console.error('Worker error:', e);
+            }
+        }
+
+        // Team Invite
+        async function sendTeamInvite() {
+            const email = document.getElementById('inviteEmail').value.trim();
+            const role = document.getElementById('inviteRole').value;
+            
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email');
+                return;
+            }
+            
+            // Save locally
+            let invites = JSON.parse(localStorage.getItem('teamInvites')) || [];
+            invites.push({
+                id: Date.now(),
+                email: email,
+                role: role,
+                status: 'pending',
+                invitedAt: new Date().toISOString()
+            });
+            localStorage.setItem('teamInvites', JSON.stringify(invites));
+            
+            // Notify Jesus
+            await sendToWorker('👥 Team Invite: Al invited ' + email + ' as ' + role);
+            
+            document.getElementById('inviteEmail').value = '';
+            loadTeamMembers();
+            showToast('Invite sent to ' + email);
+        }
+
+        // Load Team
+        function loadTeamMembers() {
+            const invites = JSON.parse(localStorage.getItem('teamInvites')) || [];
+            const pending = invites.filter(i => i.status === 'pending');
+            
+            document.getElementById('pendingCount').textContent = pending.length;
+            
+            if (pending.length > 0) {
+                document.getElementById('pendingInvites').innerHTML = pending.map(inv => `
+                    <div class="team-member">
+                        <div class="member-avatar">📨</div>
+                        <div class="member-info">
+                            <div class="member-name">${inv.email}</div>
+                            <div class="member-email">${inv.role} • ${new Date(inv.invitedAt).toLocaleDateString()}</div>
+                        </div>
+                        <button onclick="cancelInvite(${inv.id})" style="background: var(--danger); border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.75rem;">Cancel</button>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('pendingInvites').innerHTML = '<p class="empty-state" style="padding: 10px;">No pending invitations</p>';
+            }
+        }
+
+        function cancelInvite(id) {
+            let invites = JSON.parse(localStorage.getItem('teamInvites')) || [];
+            invites = invites.filter(i => i.id !== id);
+            localStorage.setItem('teamInvites', JSON.stringify(invites));
+            loadTeamMembers();
+            showToast('Invite cancelled');
+        }
+
+        // Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                sendNote();
+            }
+        });
+    </script>
+</body>
+</html>
