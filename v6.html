@@ -597,56 +597,15 @@ Simple. Clean. At-a-glance.
             </div>
         </div>
         
-        <!-- TIME LOG -->
+        <!-- TIME LOG - LIVE UPDATES -->
         <div class="card">
-            <div class="card-title">⏱️ Recent Activity</div>
-            
-            <div class="log-item">
-                <span class="log-time">18:15</span>
-                <span class="log-icon">🔨</span>
-                <span class="log-text">Building simplified V6 dashboard for easy tracking</span>
-            </div>
-            
-            <div class="log-item">
-                <span class="log-time">18:10</span>
-                <span class="log-icon">✅</span>
-                <span class="log-text">V6 created with all V3 content</span>
-            </div>
-            
-            <div class="log-item">
-                <span class="log-time">18:05</span>
-                <span class="log-icon">✅</span>
-                <span class="log-text">Fixed team invite button</span>
-            </div>
-            
-            <div class="log-item">
-                <span class="log-time">17:55</span>
-                <span class="log-icon">✅</span>
-                <span class="log-text">All V3 buttons working</span>
-            </div>
-            
-            <div class="log-item">
-                <span class="log-time">17:45</span>
-                <span class="log-icon">📋</span>
-                <span class="log-text">Al requested combined V3+V5 dashboard</span>
-            </div>
-            
-            <div class="log-item">
-                <span class="log-time">17:30</span>
-                <span class="log-icon">✅</span>
-                <span class="log-text">Systems check: 31 cron jobs OK</span>
-            </div>
-            
-            <div class="log-item">
-                <span class="log-time">16:20</span>
-                <span class="log-icon">🔨</span>
-                <span class="log-text">CRM V2 reached 75%</span>
-            </div>
-            
-            <div class="log-item">
-                <span class="log-time">16:00</span>
-                <span class="log-icon">📊</span>
-                <span class="log-text">Dashboard V3 complete (22/22 tabs)</span>
+            <div class="card-title">⏱️ Live Activity <span id="timeLogRefresh" style="font-size: 0.7rem; color: var(--muted);">(updates every 10s)</span></div>
+            <div id="timeLogContainer">
+                <div class="log-item">
+                    <span class="log-time">--:--</span>
+                    <span class="log-icon">⏳</span>
+                    <span class="log-text">Loading live activity...</span>
+                </div>
             </div>
         </div>
     </div>
@@ -816,6 +775,110 @@ Simple. Clean. At-a-glance.
         
         // Refresh chat every 10 seconds
         setInterval(loadChatMessages, 10000);
+
+        // ========== LIVE STATUS & TIME LOG ==========
+        const LIVE_URL = WORKER_URL + '/live';
+
+        // Convert UTC to MST time string
+        function toMST(dateStr) {
+            const d = new Date(dateStr);
+            const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+            const mst = new Date(utc - (7 * 3600000));
+            return mst.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+        }
+
+        // Get icon for task type
+        function getTaskIcon(task) {
+            if (task.includes('✅') || task.includes('complete') || task.includes('done')) return '✅';
+            if (task.includes('fix') || task.includes('Fixed')) return '🔧';
+            if (task.includes('Building') || task.includes('building')) return '🔨';
+            if (task.includes('Chat') || task.includes('chat')) return '💬';
+            if (task.includes('CRM') || task.includes('crm')) return '📊';
+            if (task.includes('error') || task.includes('Error')) return '❌';
+            return '⚡';
+        }
+
+        // Load live status and time log
+        async function loadLiveStatus() {
+            try {
+                const res = await fetch(LIVE_URL);
+                const data = await res.json();
+                
+                // Update current task
+                const currentTaskEl = document.getElementById('currentTask');
+                if (currentTaskEl && data.currentTask) {
+                    currentTaskEl.textContent = data.currentTask;
+                }
+                
+                // Update time log
+                const container = document.getElementById('timeLogContainer');
+                if (!container) return;
+                
+                const logs = data.minuteLog || [];
+                
+                if (logs.length === 0) {
+                    // Show default recent activities
+                    const now = new Date();
+                    container.innerHTML = `
+                        <div class="log-item">
+                            <span class="log-time">${toMST(now.toISOString())}</span>
+                            <span class="log-icon">⚡</span>
+                            <span class="log-text">${data.currentTask || 'Working on dashboard updates'}</span>
+                        </div>
+                        <div class="log-item">
+                            <span class="log-time">--</span>
+                            <span class="log-icon">📡</span>
+                            <span class="log-text">Live status: ${data.status || 'online'} | Phase: ${data.phase || 'working'}</span>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Render logs in MST
+                container.innerHTML = logs.slice(0, 10).map(log => `
+                    <div class="log-item">
+                        <span class="log-time">${toMST(log.time)}</span>
+                        <span class="log-icon">${getTaskIcon(log.task)}</span>
+                        <span class="log-text">${log.task}</span>
+                    </div>
+                `).join('');
+                
+                // Update refresh indicator
+                const refreshEl = document.getElementById('timeLogRefresh');
+                if (refreshEl) {
+                    refreshEl.textContent = `(updated ${new Date().toLocaleTimeString()})`;
+                }
+                
+            } catch(e) {
+                console.error('Failed to load live status:', e);
+            }
+        }
+
+        // Update live status NOW
+        async function updateMyStatus(task) {
+            try {
+                await fetch(LIVE_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        status: 'online',
+                        task: task,
+                        phase: 'working'
+                    })
+                });
+            } catch(e) {
+                console.error('Failed to update status:', e);
+            }
+        }
+
+        // Load live status on page load
+        loadLiveStatus();
+        
+        // Refresh live status every 10 seconds
+        setInterval(loadLiveStatus, 10000);
+
+        // Update status when page loads
+        updateMyStatus('Viewing V6 Dashboard - Time Log active');
     </script>
 </body>
 </html>
