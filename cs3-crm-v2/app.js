@@ -190,16 +190,16 @@ const CS3Data = {
     ],
     
     investors: [
-        { id: 1, name: 'Pacific Trust Fund', email: 'contact@pacifictrust.com', totalInvested: 2500000, properties: ['mckenzie', 'legacy'], type: 'entity', status: 'active' },
-        { id: 2, name: 'Chen Family Office', email: 'investments@chenfamily.com', totalInvested: 1800000, properties: ['reserve', 'mckenzie'], type: 'entity', status: 'active' },
-        { id: 3, name: 'Smith Holdings LLC', email: 'john@smithholdings.com', totalInvested: 1200000, properties: ['legacy', 'reserve'], type: 'entity', status: 'active' },
-        { id: 4, name: 'Johnson Capital', email: 'mike@johnsoncap.com', totalInvested: 950000, properties: ['mckenzie'], type: 'cash', status: 'active' },
-        { id: 5, name: 'Williams Group', email: 'sarah@williamsgroup.com', totalInvested: 875000, properties: ['reserve'], type: 'sdira', status: 'active' },
-        { id: 6, name: 'Robert Chen', email: 'robert.chen@gmail.com', totalInvested: 500000, properties: ['winding-springs'], type: 'cash', status: 'active' },
-        { id: 7, name: 'Maria Garcia', email: 'mgarcia@outlook.com', totalInvested: 350000, properties: ['winding-springs'], type: 'sdira', status: 'active' },
-        { id: 8, name: 'David Kim', email: 'dkim@techcorp.com', totalInvested: 250000, properties: ['winding-springs'], type: 'solo401k', status: 'active' },
-        { id: 9, name: 'Lisa Thompson', email: 'lisa.t@email.com', totalInvested: 200000, properties: ['winding-springs'], type: 'cash', status: 'active' },
-        { id: 10, name: 'James Wilson', email: 'jwilson@business.com', totalInvested: 150000, properties: ['winding-springs'], type: 'cash', status: 'active' }
+        { id: 1, name: 'Pacific Trust Fund', email: 'contact@pacifictrust.com', totalInvested: 2500000, properties: ['mckenzie', 'legacy', 'reserve', 'winding-springs', 'gateway-village', 'summit'], dealCount: 6, type: 'entity', status: 'active' },
+        { id: 2, name: 'Chen Family Office', email: 'investments@chenfamily.com', totalInvested: 1800000, properties: ['reserve', 'mckenzie', 'legacy', 'winding-springs', 'gateway-village', 'summit', 'oak-ridge'], dealCount: 7, type: 'entity', status: 'active' },
+        { id: 3, name: 'Smith Holdings LLC', email: 'john@smithholdings.com', totalInvested: 1200000, properties: ['legacy', 'reserve', 'mckenzie', 'winding-springs'], dealCount: 4, type: 'entity', status: 'active' },
+        { id: 4, name: 'Johnson Capital', email: 'mike@johnsoncap.com', totalInvested: 950000, properties: ['mckenzie', 'legacy', 'reserve'], dealCount: 3, type: 'cash', status: 'active' },
+        { id: 5, name: 'Williams Group', email: 'sarah@williamsgroup.com', totalInvested: 875000, properties: ['reserve', 'legacy'], dealCount: 2, type: 'sdira', status: 'active' },
+        { id: 6, name: 'Robert Chen', email: 'robert.chen@gmail.com', totalInvested: 500000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active' },
+        { id: 7, name: 'Maria Garcia', email: 'mgarcia@outlook.com', totalInvested: 350000, properties: ['winding-springs', 'legacy'], dealCount: 2, type: 'sdira', status: 'active' },
+        { id: 8, name: 'David Kim', email: 'dkim@techcorp.com', totalInvested: 250000, properties: ['winding-springs', 'reserve', 'mckenzie', 'legacy', 'gateway-village'], dealCount: 5, type: 'solo401k', status: 'active' },
+        { id: 9, name: 'Lisa Thompson', email: 'lisa.t@email.com', totalInvested: 200000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active' },
+        { id: 10, name: 'James Wilson', email: 'jwilson@business.com', totalInvested: 150000, properties: ['winding-springs', 'reserve', 'legacy'], dealCount: 3, type: 'cash', status: 'active' }
     ],
     
     raiseInvestors: [
@@ -2224,3 +2224,158 @@ loadPageData = function(page) {
 
 // Initialize saved data on load
 document.addEventListener('DOMContentLoaded', loadSavedData);
+
+// ============================================
+// INVESTOR TIER FUNCTIONS
+// ============================================
+
+function getInvestorTier(dealCount) {
+    if (dealCount >= 6) return { tier: 'vip', icon: '👑', label: 'VIP', color: '#ec4899' };
+    if (dealCount >= 4) return { tier: 'loyal', icon: '🌳', label: 'Loyal', color: '#f59e0b' };
+    if (dealCount >= 2) return { tier: 'repeat', icon: '🌿', label: 'Repeat', color: '#22c55e' };
+    return { tier: 'first-time', icon: '🌱', label: 'First-Time', color: '#0ea5e9' };
+}
+
+function filterByTier(tier) {
+    navigateTo('investors');
+    setTimeout(() => filterInvestorsByTier(tier), 100);
+}
+
+function filterInvestorsByTier(tier) {
+    // Update button states
+    document.querySelectorAll('.tier-filter').forEach(btn => {
+        btn.classList.remove('active', 'btn-primary');
+        btn.classList.add('btn-outline');
+    });
+    const activeBtn = document.querySelector(`.tier-filter[data-tier="${tier}"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active', 'btn-primary');
+        activeBtn.classList.remove('btn-outline');
+    }
+    
+    // Filter and display
+    const filtered = tier === 'all' 
+        ? CS3Data.investors 
+        : CS3Data.investors.filter(inv => getInvestorTier(inv.dealCount || 1).tier === tier);
+    
+    displayInvestorsWithTier(filtered);
+}
+
+function displayInvestorsWithTier(investors) {
+    const container = document.getElementById('allInvestorsList');
+    if (!container) return;
+    
+    container.innerHTML = investors.map(inv => {
+        const tierInfo = getInvestorTier(inv.dealCount || inv.properties?.length || 1);
+        const avgPerDeal = inv.dealCount ? formatCurrency(inv.totalInvested / inv.dealCount) : '-';
+        
+        return `
+            <tr>
+                <td><span style="background: ${tierInfo.color}20; color: ${tierInfo.color}; padding: 4px 10px; border-radius: 20px; font-size: 12px;">${tierInfo.icon} ${tierInfo.label}</span></td>
+                <td><strong>${inv.name}</strong></td>
+                <td>${inv.email}</td>
+                <td style="font-weight: 600; color: var(--cs3-teal);">${formatCurrency(inv.totalInvested)}</td>
+                <td style="text-align: center;"><span class="badge">${inv.dealCount || inv.properties?.length || 1}</span></td>
+                <td>${avgPerDeal}</td>
+                <td><span class="badge ${inv.type === 'entity' ? 'primary' : inv.type === 'sdira' ? 'warning' : ''}">${inv.type.toUpperCase()}</span></td>
+                <td><span class="badge success">Active</span></td>
+                <td>
+                    <button class="btn btn-small btn-outline" onclick="viewInvestor(${inv.id})"><i class="fas fa-eye"></i></button>
+                    <button class="btn btn-small btn-outline" onclick="editInvestor(${inv.id})"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-small btn-outline" onclick="callInvestor('${inv.name}')"><i class="fas fa-phone"></i></button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function filterInvestors() {
+    const search = document.getElementById('investorSearch')?.value.toLowerCase() || '';
+    const typeFilter = document.getElementById('investorTypeFilter')?.value || 'all';
+    
+    const filtered = CS3Data.investors.filter(inv => {
+        const matchesSearch = inv.name.toLowerCase().includes(search) || inv.email.toLowerCase().includes(search);
+        const matchesType = typeFilter === 'all' || inv.type === typeFilter;
+        return matchesSearch && matchesType;
+    });
+    
+    displayInvestorsWithTier(filtered);
+}
+
+// Update loadInvestors to use new display function
+function loadInvestors() {
+    displayInvestorsWithTier(CS3Data.investors);
+}
+
+function viewInvestor(id) {
+    const inv = CS3Data.investors.find(i => i.id === id);
+    if (!inv) return;
+    
+    const tierInfo = getInvestorTier(inv.dealCount || 1);
+    
+    alert(`${inv.name}\n\n${tierInfo.icon} ${tierInfo.label} Investor\n\n📊 Investment Summary:\n• Total Invested: ${formatCurrency(inv.totalInvested)}\n• Deals: ${inv.dealCount || inv.properties?.length || 1}\n• Avg per Deal: ${formatCurrency(inv.totalInvested / (inv.dealCount || 1))}\n• Type: ${inv.type.toUpperCase()}\n\n📧 ${inv.email}`);
+}
+
+function editInvestor(id) {
+    alert(`Opening edit modal for investor ID: ${id}...`);
+}
+
+function callInvestor(name) {
+    alert(`Initiating call with ${name}...`);
+}
+
+// ============================================
+// CAPITAL ANALYTICS FUNCTIONS
+// ============================================
+
+function followUpPending() {
+    alert('📧 Sending follow-up emails to 12 committed investors who haven\'t funded yet...\n\nTotal pending capital: $1.0M\n\nAI will:\n1. Generate personalized follow-up emails\n2. Include funding instructions\n3. Schedule reminder calls');
+}
+
+function calculateCapitalAnalytics() {
+    const investors = CS3Data.investors;
+    const totalInvested = investors.reduce((sum, inv) => sum + inv.totalInvested, 0);
+    const avgInvestment = totalInvested / investors.length;
+    
+    // Calculate tier stats
+    const tierStats = {
+        'first-time': { count: 0, capital: 0 },
+        'repeat': { count: 0, capital: 0 },
+        'loyal': { count: 0, capital: 0 },
+        'vip': { count: 0, capital: 0 }
+    };
+    
+    investors.forEach(inv => {
+        const tier = getInvestorTier(inv.dealCount || 1).tier;
+        tierStats[tier].count++;
+        tierStats[tier].capital += inv.totalInvested;
+    });
+    
+    return { totalInvested, avgInvestment, tierStats };
+}
+
+// Update raise investors table to include tier
+function loadRaiseInvestors() {
+    const container = document.getElementById('raiseInvestorsList');
+    if (!container) return;
+    
+    container.innerHTML = CS3Data.raiseInvestors.map(inv => {
+        // Find the investor in main list to get their tier
+        const mainInvestor = CS3Data.investors.find(i => i.name === inv.name);
+        const tierInfo = getInvestorTier(mainInvestor?.dealCount || 1);
+        
+        const statusClass = inv.status === 'funded' ? 'success' : inv.status === 'committed' ? 'warning' : '';
+        
+        return `
+            <tr>
+                <td><strong>${inv.name}</strong></td>
+                <td><span style="background: ${tierInfo.color}20; color: ${tierInfo.color}; padding: 2px 8px; border-radius: 12px; font-size: 11px;">${tierInfo.icon}</span></td>
+                <td style="font-weight: 600; color: var(--cs3-teal);">${formatCurrency(inv.amount)}</td>
+                <td><span class="badge ${inv.type === 'sdira' ? 'warning' : ''}">${inv.type.toUpperCase()}</span></td>
+                <td><span class="badge ${statusClass}">${inv.status.toUpperCase()}</span></td>
+                <td>${inv.committedDate}</td>
+                <td>${inv.fundedDate || '-'}</td>
+            </tr>
+        `;
+    }).join('');
+}

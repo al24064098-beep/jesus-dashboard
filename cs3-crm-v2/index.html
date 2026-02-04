@@ -163,12 +163,12 @@
                             <span class="stat-change positive">+$2.1M this quarter</span>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon navy"><i class="fas fa-building"></i></div>
+                            <div class="stat-icon navy"><i class="fas fa-calculator"></i></div>
                             <div class="stat-info">
-                                <span class="stat-value" id="statUnits">1,847</span>
-                                <span class="stat-label">Units Managed</span>
+                                <span class="stat-value" id="statAvgInvestment">$117K</span>
+                                <span class="stat-label">Avg Investment</span>
                             </div>
-                            <span class="stat-change neutral">6 properties</span>
+                            <span class="stat-change positive">↑ from $98K</span>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon success"><i class="fas fa-chart-pie"></i></div>
@@ -177,6 +177,66 @@
                                 <span class="stat-label">Total Distributed</span>
                             </div>
                             <span class="stat-change positive">Q4 complete</span>
+                        </div>
+                    </div>
+
+                    <!-- Investor Tiers - AI Auto-Tracked -->
+                    <div class="card" style="margin-bottom: 24px; background: linear-gradient(135deg, rgba(0,79,89,0.03), rgba(188,164,96,0.03));">
+                        <div class="card-header">
+                            <h3><i class="fas fa-layer-group" style="color: var(--cs3-teal);"></i> Investor Loyalty Tiers</h3>
+                            <span style="background: var(--cs3-teal); color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px;">AI Auto-Tracked</span>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                                <!-- First-Time -->
+                                <div class="tier-card" onclick="filterByTier('first-time')" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); padding: 20px; border-radius: 12px; cursor: pointer; transition: transform 0.2s; border-left: 4px solid #0ea5e9;">
+                                    <div style="font-size: 32px; margin-bottom: 8px;">🌱</div>
+                                    <div style="font-size: 28px; font-weight: 700; color: #0369a1;" id="tierFirstTime">245</div>
+                                    <div style="font-size: 13px; color: #0c4a6e; font-weight: 500;">First-Time</div>
+                                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">1 deal invested</div>
+                                </div>
+                                <!-- Repeat -->
+                                <div class="tier-card" onclick="filterByTier('repeat')" style="background: linear-gradient(135deg, #dcfce7, #bbf7d0); padding: 20px; border-radius: 12px; cursor: pointer; transition: transform 0.2s; border-left: 4px solid #22c55e;">
+                                    <div style="font-size: 32px; margin-bottom: 8px;">🌿</div>
+                                    <div style="font-size: 28px; font-weight: 700; color: #15803d;" id="tierRepeat">198</div>
+                                    <div style="font-size: 13px; color: #14532d; font-weight: 500;">Repeat</div>
+                                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">2-3 deals</div>
+                                </div>
+                                <!-- Loyal -->
+                                <div class="tier-card" onclick="filterByTier('loyal')" style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 20px; border-radius: 12px; cursor: pointer; transition: transform 0.2s; border-left: 4px solid #f59e0b;">
+                                    <div style="font-size: 32px; margin-bottom: 8px;">🌳</div>
+                                    <div style="font-size: 28px; font-weight: 700; color: #b45309;" id="tierLoyal">127</div>
+                                    <div style="font-size: 13px; color: #78350f; font-weight: 500;">Loyal</div>
+                                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">4-5 deals</div>
+                                </div>
+                                <!-- VIP -->
+                                <div class="tier-card" onclick="filterByTier('vip')" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8); padding: 20px; border-radius: 12px; cursor: pointer; transition: transform 0.2s; border-left: 4px solid #ec4899;">
+                                    <div style="font-size: 32px; margin-bottom: 8px;">👑</div>
+                                    <div style="font-size: 28px; font-weight: 700; color: #be185d;" id="tierVIP">53</div>
+                                    <div style="font-size: 13px; color: #831843; font-weight: 500;">VIP</div>
+                                    <div style="font-size: 11px; color: #64748b; margin-top: 4px;">6+ deals</div>
+                                </div>
+                            </div>
+                            <!-- Tier Insights -->
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Avg Investment by Tier</div>
+                                    <div style="display: flex; justify-content: center; gap: 12px; margin-top: 8px;">
+                                        <span style="font-size: 12px;">🌱 $75K</span>
+                                        <span style="font-size: 12px;">🌿 $95K</span>
+                                        <span style="font-size: 12px;">🌳 $145K</span>
+                                        <span style="font-size: 12px;">👑 $285K</span>
+                                    </div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">VIP Capital Share</div>
+                                    <div style="font-size: 24px; font-weight: 700; color: var(--cs3-teal);" id="vipCapitalShare">42%</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Conversion Path</div>
+                                    <div style="font-size: 12px; margin-top: 8px;">🌱 → 🌿: <strong>38%</strong> | 🌿 → 🌳: <strong>45%</strong></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -412,11 +472,12 @@
 
                         <!-- Investors in this raise -->
                         <h4 style="margin: 30px 0 20px; color: var(--cs3-teal-dark);"><i class="fas fa-users"></i> Investors in This Raise</h4>
-                        <div class="card">
+                        <div class="card" style="margin-bottom: 30px;">
                             <table class="data-table" id="raiseInvestorsTable">
                                 <thead>
                                     <tr>
                                         <th>Investor</th>
+                                        <th>Tier</th>
                                         <th>Amount</th>
                                         <th>Type</th>
                                         <th>Status</th>
@@ -429,31 +490,196 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <!-- Comprehensive Capital Analytics -->
+                        <h4 style="margin: 30px 0 20px; color: var(--cs3-teal-dark);"><i class="fas fa-chart-bar"></i> Capital Raising Analytics (AI-Driven)</h4>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;">
+                            <div class="stat-card" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                                <div style="font-size: 11px; color: #64748b; text-transform: uppercase; margin-bottom: 8px;">Avg Investment This Raise</div>
+                                <div style="font-size: 28px; font-weight: 700; color: #15803d;" id="avgInvestmentRaise">$113K</div>
+                                <div style="font-size: 11px; color: #64748b;">60 investors</div>
+                            </div>
+                            <div class="stat-card" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
+                                <div style="font-size: 11px; color: #64748b; text-transform: uppercase; margin-bottom: 8px;">Repeat Investor Rate</div>
+                                <div style="font-size: 28px; font-weight: 700; color: #b45309;" id="repeatInvestorRate">67%</div>
+                                <div style="font-size: 11px; color: #64748b;">40 of 60 returning</div>
+                            </div>
+                            <div class="stat-card" style="background: linear-gradient(135deg, #e0e7ff, #c7d2fe);">
+                                <div style="font-size: 11px; color: #64748b; text-transform: uppercase; margin-bottom: 8px;">Days to Fully Fund</div>
+                                <div style="font-size: 28px; font-weight: 700; color: #4338ca;" id="daysToFund">~18 days</div>
+                                <div style="font-size: 11px; color: #64748b;">AI prediction</div>
+                            </div>
+                            <div class="stat-card" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">
+                                <div style="font-size: 11px; color: #64748b; text-transform: uppercase; margin-bottom: 8px;">VIP Capital</div>
+                                <div style="font-size: 28px; font-weight: 700; color: #be185d;" id="vipCapitalRaise">$3.2M</div>
+                                <div style="font-size: 11px; color: #64748b;">47% of total</div>
+                            </div>
+                        </div>
+
+                        <!-- Investor Tier Breakdown for This Raise -->
+                        <div class="card" style="margin-bottom: 24px;">
+                            <div class="card-header">
+                                <h3><i class="fas fa-layer-group"></i> Investor Tiers in This Raise</h3>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                                    <div style="text-align: center; padding: 16px; background: #f0f9ff; border-radius: 12px;">
+                                        <div style="font-size: 24px;">🌱</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: #0369a1;" id="raiseTierFirst">12</div>
+                                        <div style="font-size: 12px; color: #64748b;">First-Time</div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #0c4a6e; margin-top: 4px;" id="raiseTierFirstAmt">$890K</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 16px; background: #f0fdf4; border-radius: 12px;">
+                                        <div style="font-size: 24px;">🌿</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: #15803d;" id="raiseTierRepeat">22</div>
+                                        <div style="font-size: 12px; color: #64748b;">Repeat</div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #14532d; margin-top: 4px;" id="raiseTierRepeatAmt">$1.8M</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 16px; background: #fffbeb; border-radius: 12px;">
+                                        <div style="font-size: 24px;">🌳</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: #b45309;" id="raiseTierLoyal">14</div>
+                                        <div style="font-size: 12px; color: #64748b;">Loyal</div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #78350f; margin-top: 4px;" id="raiseTierLoyalAmt">$1.9M</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 16px; background: #fdf2f8; border-radius: 12px;">
+                                        <div style="font-size: 24px;">👑</div>
+                                        <div style="font-size: 24px; font-weight: 700; color: #be185d;" id="raiseTierVIP">12</div>
+                                        <div style="font-size: 12px; color: #64748b;">VIP</div>
+                                        <div style="font-size: 18px; font-weight: 600; color: #831843; margin-top: 4px;" id="raiseTierVIPAmt">$2.2M</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Conversion Funnel -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-funnel-dollar"></i> Capital Raise Funnel</h3>
+                                <span style="background: var(--cs3-teal); color: white; padding: 4px 12px; border-radius: 20px; font-size: 11px;">Live Tracking</span>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="flex: 1; text-align: center; padding: 16px; background: #f1f5f9; border-radius: 8px;">
+                                        <div style="font-size: 24px; font-weight: 700;" id="funnelProspects">156</div>
+                                        <div style="font-size: 11px; color: #64748b;">Prospects</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right" style="color: #94a3b8;"></i>
+                                    <div style="flex: 1; text-align: center; padding: 16px; background: #dbeafe; border-radius: 8px;">
+                                        <div style="font-size: 24px; font-weight: 700;" id="funnelInterested">89</div>
+                                        <div style="font-size: 11px; color: #64748b;">Interested</div>
+                                        <div style="font-size: 10px; color: #3b82f6;">57%</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right" style="color: #94a3b8;"></i>
+                                    <div style="flex: 1; text-align: center; padding: 16px; background: #fef3c7; border-radius: 8px;">
+                                        <div style="font-size: 24px; font-weight: 700;" id="funnelCommitted">72</div>
+                                        <div style="font-size: 11px; color: #64748b;">Committed</div>
+                                        <div style="font-size: 10px; color: #f59e0b;">81%</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right" style="color: #94a3b8;"></i>
+                                    <div style="flex: 1; text-align: center; padding: 16px; background: #dcfce7; border-radius: 8px;">
+                                        <div style="font-size: 24px; font-weight: 700;" id="funnelFunded">60</div>
+                                        <div style="font-size: 11px; color: #64748b;">Funded</div>
+                                        <div style="font-size: 10px; color: #22c55e;">83%</div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 12px; color: #64748b;"><i class="fas fa-lightbulb" style="color: #f59e0b;"></i> AI Insight: 12 committed investors haven't funded yet. Total pending: <strong>$1.0M</strong></span>
+                                    <button class="btn btn-small btn-primary" onclick="followUpPending()">Send Follow-ups</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- INVESTORS PAGE -->
                 <div id="investors-page" class="page">
                     <div class="page-header">
-                        <h1>Investors</h1>
-                        <p class="page-subtitle">Manage all investor relationships</p>
+                        <div>
+                            <h1>Investors</h1>
+                            <p class="page-subtitle">Manage all investor relationships with AI-driven insights</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="showAddInvestorModal()">
+                            <i class="fas fa-plus"></i> Add Investor
+                        </button>
+                    </div>
+
+                    <!-- Investor Quick Stats -->
+                    <div class="stats-grid" style="margin-bottom: 24px;">
+                        <div class="stat-card">
+                            <div class="stat-icon teal"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalInvestorsCount">623</span>
+                                <span class="stat-label">Total Investors</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon gold"><i class="fas fa-calculator"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="avgInvestmentAll">$117K</span>
+                                <span class="stat-label">Avg Investment</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon navy"><i class="fas fa-redo"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="repeatInvestorsCount">378</span>
+                                <span class="stat-label">Repeat Investors</span>
+                            </div>
+                            <span class="stat-change positive">61% of total</span>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon success"><i class="fas fa-crown"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="vipInvestorsCount">53</span>
+                                <span class="stat-label">VIP Investors</span>
+                            </div>
+                            <span class="stat-change positive">$30.9M capital</span>
+                        </div>
+                    </div>
+
+                    <!-- Tier Filter Buttons -->
+                    <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+                        <button class="btn btn-primary tier-filter active" data-tier="all" onclick="filterInvestorsByTier('all')">
+                            All Investors (623)
+                        </button>
+                        <button class="btn btn-outline tier-filter" data-tier="first-time" onclick="filterInvestorsByTier('first-time')" style="border-color: #0ea5e9;">
+                            🌱 First-Time (245)
+                        </button>
+                        <button class="btn btn-outline tier-filter" data-tier="repeat" onclick="filterInvestorsByTier('repeat')" style="border-color: #22c55e;">
+                            🌿 Repeat (198)
+                        </button>
+                        <button class="btn btn-outline tier-filter" data-tier="loyal" onclick="filterInvestorsByTier('loyal')" style="border-color: #f59e0b;">
+                            🌳 Loyal (127)
+                        </button>
+                        <button class="btn btn-outline tier-filter" data-tier="vip" onclick="filterInvestorsByTier('vip')" style="border-color: #ec4899;">
+                            👑 VIP (53)
+                        </button>
                     </div>
                     
                     <div class="card">
                         <div class="card-header">
                             <h3><i class="fas fa-users"></i> All Investors</h3>
-                            <button class="btn btn-primary btn-small" onclick="showAddInvestorModal()">
-                                <i class="fas fa-plus"></i> Add Investor
-                            </button>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="text" class="form-input" placeholder="Search investors..." style="width: 200px;" id="investorSearch" onkeyup="filterInvestors()">
+                                <select class="form-input" style="width: auto;" id="investorTypeFilter" onchange="filterInvestors()">
+                                    <option value="all">All Types</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="sdira">SDIRA</option>
+                                    <option value="solo401k">Solo 401k</option>
+                                    <option value="entity">Entity</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="card-body">
                             <table class="data-table">
                                 <thead>
                                     <tr>
+                                        <th>Tier</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Total Invested</th>
-                                        <th>Properties</th>
+                                        <th>Deals (#)</th>
+                                        <th>Avg per Deal</th>
                                         <th>Type</th>
                                         <th>Status</th>
                                         <th>Actions</th>
