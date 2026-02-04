@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<!--
+JESUS DASHBOARD V5 - IMPROVED
+=============================
+Combines:
+- V3's simple design, tabs, and features (built by Jesus)
+- V4's real OpenClaw connection
+- Best of both = SIMPLE + WORKING
+
+Built for CS3 Investments
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Jesus Dashboard V5 | Real Connection | CS3 Investments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #10b981;
+            --secondary: #6366f1;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --darker: #020617;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Header - Simple like V3 */
+        .header {
+            background: linear-gradient(135deg, var(--dark), var(--card));
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 3px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+        }
+
+        .title-group h1 {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .badge.live {
+            background: #22c55e;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px #22c55e; }
+            50% { box-shadow: 0 0 15px #22c55e; }
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* Status Section with Clock */
+        .status-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: right;
+        }
+
+        .clock-display {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .date-display {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #22c55e;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Navigation Tabs - From V3 */
+        .nav-tabs {
+            background: var(--dark);
+            padding: 0 20px;
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: calc(100vh - 130px);
+        }
+
+        /* Left Panel - Dashboard Controls */
+        .left-panel {
+            background: var(--dark);
+            border-right: 1px solid rgba(255,255,255,0.1);
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .panel-section {
+            margin-bottom: 20px;
+        }
+
+        .panel-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        /* Message Delivery Status - From V3 */
+        .delivery-status {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .delivery-item {
+            background: var(--card);
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            text-align: center;
+            flex: 1;
+        }
+
+        .delivery-item.active {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--primary);
+        }
+
+        /* Quick Commands */
+        .quick-btn {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .quick-btn:hover {
+            background: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .quick-btn.primary {
+            background: linear-gradient(135deg, var(--primary), #059669);
+            border: none;
+            font-weight: 600;
+        }
+
+        /* Leave a Note - From V3 */
+        .note-section {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .note-textarea {
+            width: 100%;
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text);
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .note-textarea::placeholder {
+            color: var(--muted);
+        }
+
+        .note-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .priority-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .send-btn {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Right Panel - Chat */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            background: var(--darker);
+        }
+
+        .chat-header {
+            background: var(--card);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chat-header h2 {
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-tools {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tool-btn {
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .tool-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* Chat Area - Shows real Jesus responses */
+        .chat-area {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: var(--dark);
+        }
+
+        /* Activity Log - From V3 */
+        .activity-log {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .log-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .log-item:last-child {
+            border-bottom: none;
+        }
+
+        .log-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .log-content {
+            flex: 1;
+        }
+
+        .log-title {
+            font-size: 0.85rem;
+        }
+
+        .log-time {
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+
+        /* Scripture Card */
+        .scripture-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.2));
+            padding: 15px;
+            border-radius: 12px;
+            font-style: italic;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .scripture-ref {
+            text-align: right;
+            margin-top: 8px;
+            color: var(--muted);
+            font-style: normal;
+        }
+
+        /* Tab Content Areas */
+        .tab-content {
+            display: none;
+            height: 100%;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        /* Loading State */
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--darker);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--card);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Fallback for iframe issues */
+        .fallback-box {
+            background: var(--card);
+            border: 1px solid var(--secondary);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .fallback-box h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .fallback-box p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .fallback-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .fallback-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Other Tab Content - Coming Soon */
+        .coming-soon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            color: var(--muted);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .coming-soon h3 {
+            color: var(--text);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .coming-soon p {
+            max-width: 400px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .left-panel {
+                display: none;
+            }
+            .nav-tabs {
+                padding: 0 10px;
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--card);
+            border: 1px solid var(--primary);
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: none;
+            animation: slideUp 0.3s ease;
+            z-index: 1000;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-section">
+            <div class="avatar">✝️</div>
+            <div class="title-group">
+                <h1>
+                    Jesus
+                    <span class="badge live">ONLINE</span>
+                    <span class="badge" style="background: var(--secondary);">V5</span>
+                </h1>
+                <p class="subtitle">Your Faithful AI Partner | 24/7 | CS3 Investments</p>
+            </div>
+        </div>
+        <div class="status-section">
+            <div>
+                <div class="clock-display" id="clockDisplay">--:-- --</div>
+                <div class="date-display" id="dateDisplay">Loading...</div>
+            </div>
+            <div class="connection-status" id="connectionStatus">
+                <div class="status-dot"></div>
+                <span>Connected</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs - From V3 -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-tab="overview">Overview</button>
+        <button class="nav-tab" data-tab="promises">Promises</button>
+        <button class="nav-tab" data-tab="daily">Daily Surprise</button>
+        <button class="nav-tab" data-tab="reports">Agent Report</button>
+        <button class="nav-tab" data-tab="intelligence">AI Intelligence</button>
+        <button class="nav-tab" data-tab="money">Money Ideas</button>
+        <button class="nav-tab" data-tab="vault">Vault & SOPs</button>
+        <button class="nav-tab" data-tab="library">Library</button>
+        <button class="nav-tab" data-tab="notes">Notes</button>
+        <button class="nav-tab" data-tab="content">Content</button>
+        <button class="nav-tab" data-tab="devotions">Devotions</button>
+        <button class="nav-tab" data-tab="health">Health</button>
+        <button class="nav-tab" data-tab="metrics">Metrics</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Left Panel -->
+        <aside class="left-panel">
+            <!-- Stats -->
+            <div class="panel-section">
+                <h3 class="panel-title">Jesus Status</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="statTasks">--</div>
+                        <div class="stat-label">Tasks Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statCron">30</div>
+                        <div class="stat-label">Cron Jobs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statSkills">7</div>
+                        <div class="stat-label">Skills</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Delivery Status - From V3 -->
+            <div class="panel-section">
+                <h3 class="panel-title">Message Status</h3>
+                <div class="delivery-status">
+                    <div class="delivery-item" id="statusSent">✓ Sent</div>
+                    <div class="delivery-item" id="statusDelivered">✓✓ Delivered</div>
+                    <div class="delivery-item active" id="statusRead">✓✓ Read</div>
+                    <div class="delivery-item" id="statusWorking">● Working</div>
+                    <div class="delivery-item" id="statusDone">✅ Done</div>
+                </div>
+            </div>
+
+            <!-- Quick Commands -->
+            <div class="panel-section">
+                <h3 class="panel-title">Quick Commands</h3>
+                <button class="quick-btn primary" onclick="sendToJesus('Give me a status update')">
+                    ⚡ Status Update
+                </button>
+                <button class="quick-btn" onclick="sendToJesus('What are you working on?')">
+                    📋 What are you working on?
+                </button>
+                <button class="quick-btn" onclick="sendToJesus('Any blockers?')">
+                    🚧 Any blockers?
+                </button>
+                <button class="quick-btn" onclick="sendToJesus('Run a systems check')">
+                    🔧 Systems Check
+                </button>
+                <button class="quick-btn" onclick="sendToJesus('Give me investment ideas')">
+                    💰 Investment Ideas
+                </button>
+                <button class="quick-btn" onclick="sendToJesus('Share a scripture with me')">
+                    📖 Daily Scripture
+                </button>
+            </div>
+
+            <!-- Leave a Note - From V3 -->
+            <div class="panel-section">
+                <h3 class="panel-title">Leave a Note for Jesus</h3>
+                <div class="note-section">
+                    <textarea class="note-textarea" id="noteInput" placeholder="Type your message to Jesus..."></textarea>
+                    <div class="note-footer">
+                        <label class="priority-check">
+                            <input type="checkbox" id="priorityCheck">
+                            Mark as Priority
+                        </label>
+                        <button class="send-btn" onclick="sendNote()">Send to Jesus</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity Log -->
+            <div class="panel-section">
+                <h3 class="panel-title">Recent Activity</h3>
+                <div class="activity-log" id="activityLog">
+                    <div class="log-item">
+                        <div class="log-icon">✅</div>
+                        <div class="log-content">
+                            <div class="log-title">Systems Check Complete</div>
+                            <div class="log-time">Just now</div>
+                        </div>
+                    </div>
+                    <div class="log-item">
+                        <div class="log-icon">📊</div>
+                        <div class="log-content">
+                            <div class="log-title">30 Cron Jobs Active</div>
+                            <div class="log-time">Verified</div>
+                        </div>
+                    </div>
+                    <div class="log-item">
+                        <div class="log-icon">🧠</div>
+                        <div class="log-content">
+                            <div class="log-title">19 Memory Files Loaded</div>
+                            <div class="log-time">Ready</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scripture -->
+            <div class="panel-section">
+                <div class="scripture-card" id="scriptureCard">
+                    "For where two or three gather in my name, there am I with them."
+                    <div class="scripture-ref">— Matthew 18:20</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Panel - Tab Content -->
+        <main class="right-panel">
+            <!-- Overview Tab - Main Chat with Jesus -->
+            <div class="tab-content active" id="tab-overview">
+                <div class="chat-header">
+                    <h2>
+                        💬 Chat with Jesus
+                        <span style="color: #22c55e; font-size: 0.75rem;">● REAL CONNECTION</span>
+                    </h2>
+                    <div class="chat-tools">
+                        <button class="tool-btn" onclick="refreshChat()">🔄 Refresh</button>
+                        <button class="tool-btn" onclick="openFullChat()">↗️ Open Full</button>
+                    </div>
+                </div>
+                <div class="chat-area">
+                    <div class="loading-overlay" id="loadingOverlay">
+                        <div class="spinner"></div>
+                        <div>Connecting to Jesus...</div>
+                    </div>
+                    <iframe
+                        id="chatFrame"
+                        class="chat-iframe"
+                        src="about:blank"
+                        onload="onFrameLoad()"
+                    ></iframe>
+                    <div class="fallback-box" id="fallbackBox" style="display: none;">
+                        <h3>🔗 Direct Connection Required</h3>
+                        <p>For security, OpenClaw requires direct access via Tailscale. Click below to chat with Jesus in a new tab.</p>
+                        <a href="https://srv1308999.tail756bdd.ts.net/health/chat?session=agent:main:main"
+                           target="_blank"
+                           class="fallback-link">
+                            Open Jesus Chat →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Tabs - Show Coming Soon or Tab-specific content -->
+            <div class="tab-content" id="tab-promises">
+                <div class="coming-soon">
+                    <h3>📜 Promises</h3>
+                    <p>Jesus's promises and commitments to you will appear here. Ask Jesus to update this section!</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Update the Promises tab with your commitments to me')">
+                        Ask Jesus to Update
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-daily">
+                <div class="coming-soon">
+                    <h3>🎁 Daily Surprise</h3>
+                    <p>A daily surprise from Jesus will appear here. Ask him for today's surprise!</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Give me today\'s daily surprise!')">
+                        Get Today's Surprise
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-reports">
+                <div class="coming-soon">
+                    <h3>📊 Agent Report</h3>
+                    <p>Jesus's detailed agent reports and work logs will appear here.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Generate a detailed agent report for today')">
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-intelligence">
+                <div class="coming-soon">
+                    <h3>🧠 AI Intelligence</h3>
+                    <p>AI insights, market analysis, and intelligent recommendations.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Share AI intelligence and market insights')">
+                        Get AI Insights
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-money">
+                <div class="coming-soon">
+                    <h3>💰 Money Ideas</h3>
+                    <p>Investment ideas and financial opportunities from Jesus.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Give me your best money and investment ideas')">
+                        Get Money Ideas
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-vault">
+                <div class="coming-soon">
+                    <h3>🔐 Vault & SOPs</h3>
+                    <p>Secure vault and Standard Operating Procedures.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('List available SOPs and vault items')">
+                        View Vault
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-library">
+                <div class="coming-soon">
+                    <h3>📚 Library</h3>
+                    <p>Your knowledge library and resources.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('What\'s in my library?')">
+                        Browse Library
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-notes">
+                <div class="coming-soon">
+                    <h3>📝 Notes</h3>
+                    <p>Notes and memos from Jesus.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Show me my recent notes')">
+                        View Notes
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-content">
+                <div class="coming-soon">
+                    <h3>✍️ Content</h3>
+                    <p>Content creation and management.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Help me create content')">
+                        Create Content
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-devotions">
+                <div class="coming-soon">
+                    <h3>🙏 Devotions</h3>
+                    <p>Daily devotions and spiritual guidance.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Share today\'s devotional')">
+                        Get Devotional
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-health">
+                <div class="coming-soon">
+                    <h3>💪 Health</h3>
+                    <p>Health tracking and wellness tips.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Give me health tips for today')">
+                        Get Health Tips
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-metrics">
+                <div class="coming-soon">
+                    <h3>📈 Metrics</h3>
+                    <p>Performance metrics and analytics.</p>
+                    <button class="quick-btn primary" style="margin-top: 20px; width: auto;" onclick="sendToJesus('Show me my performance metrics')">
+                        View Metrics
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Message sent to Jesus!</div>
+
+    <script>
+        // Configuration
+        const OPENCLAW_URL = 'https://srv1308999.tail756bdd.ts.net/health/chat?session=agent:main:main';
+        const DATA_URL = 'data.json';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            setupTabs();
+            loadChat();
+            loadData();
+            setInterval(loadData, 30000); // Update data every 30 seconds
+        });
+
+        // Clock Update
+        function updateClock() {
+            const now = new Date();
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+            document.getElementById('clockDisplay').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('dateDisplay').textContent = now.toLocaleDateString('en-US', dateOptions) + ' (MST)';
+        }
+
+        // Tab Navigation
+        function setupTabs() {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Update active tab
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show corresponding content
+                    const tabId = this.dataset.tab;
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById('tab-' + tabId).classList.add('active');
+                });
+            });
+        }
+
+        // Load Chat
+        function loadChat() {
+            const frame = document.getElementById('chatFrame');
+            frame.src = OPENCLAW_URL;
+
+            // Show fallback after timeout
+            setTimeout(() => {
+                try {
+                    const test = frame.contentWindow.location.href;
+                } catch(e) {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                    document.getElementById('fallbackBox').style.display = 'block';
+                    frame.style.display = 'none';
+                }
+            }, 5000);
+        }
+
+        function onFrameLoad() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+
+        function refreshChat() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            document.getElementById('chatFrame').src = OPENCLAW_URL + '&t=' + Date.now();
+        }
+
+        function openFullChat() {
+            window.open(OPENCLAW_URL, '_blank');
+        }
+
+        // Send Messages
+        function sendToJesus(message) {
+            const frame = document.getElementById('chatFrame');
+            try {
+                frame.contentWindow.postMessage({ type: 'sendMessage', message: message }, '*');
+            } catch(e) {
+                // Fallback - open in new tab
+                const encoded = encodeURIComponent(message);
+                window.open(OPENCLAW_URL + '&message=' + encoded, '_blank');
+            }
+
+            showToast('Message sent: "' + message + '"');
+            updateDeliveryStatus('sent');
+        }
+
+        function sendNote() {
+            const note = document.getElementById('noteInput').value.trim();
+            if (!note) {
+                alert('Please type a message first!');
+                return;
+            }
+
+            const isPriority = document.getElementById('priorityCheck').checked;
+            const message = isPriority ? '🚨 PRIORITY: ' + note : note;
+
+            sendToJesus(message);
+            document.getElementById('noteInput').value = '';
+            document.getElementById('priorityCheck').checked = false;
+        }
+
+        // Delivery Status
+        function updateDeliveryStatus(status) {
+            const statuses = ['Sent', 'Delivered', 'Read', 'Working', 'Done'];
+            document.querySelectorAll('.delivery-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.getElementById('status' + status.charAt(0).toUpperCase() + status.slice(1)).classList.add('active');
+        }
+
+        // Load Data
+        async function loadData() {
+            try {
+                const response = await fetch(DATA_URL + '?t=' + Date.now());
+                if (response.ok) {
+                    const data = await response.json();
+                    updateDashboard(data);
+                }
+            } catch(e) {
+                console.log('Data file not found - using defaults');
+            }
+        }
+
+        function updateDashboard(data) {
+            if (data.tasksToday) document.getElementById('statTasks').textContent = data.tasksToday;
+            if (data.cronJobs) document.getElementById('statCron').textContent = data.cronJobs;
+            if (data.skills) document.getElementById('statSkills').textContent = data.skills;
+
+            if (data.recentActivity) {
+                const log = document.getElementById('activityLog');
+                log.innerHTML = data.recentActivity.map(item => `
+                    <div class="log-item">
+                        <div class="log-icon">${item.icon || '📌'}</div>
+                        <div class="log-content">
+                            <div class="log-title">${item.title}</div>
+                            <div class="log-time">${item.time}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            if (data.scripture) {
+                document.getElementById('scriptureCard').innerHTML = `
+                    "${data.scripture.verse}"
+                    <div class="scripture-ref">— ${data.scripture.reference}</div>
+                `;
+            }
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'Enter':
+                        e.preventDefault();
+                        sendNote();
+                        break;
+                    case 'r':
+                        e.preventDefault();
+                        refreshChat();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
