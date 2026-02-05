@@ -2193,7 +2193,15 @@ async function loadChatFromWorker() {
     try {
         const res = await fetch(CHAT_WORKER_URL);
         const data = await res.json();
-        return data.messages || [];
+        
+        // Worker returns 'notes', convert to message format
+        const notes = data.notes || [];
+        return notes.map(note => ({
+            id: note.id,
+            from: note.type === 'jesus_response' ? 'jesus' : 'al',
+            text: note.content,
+            time: note.createdAt
+        }));
     } catch (e) {
         console.error('Failed to load chat:', e);
         return [];
