@@ -2230,9 +2230,6 @@ async function sendChatToWorker(text) {
         console.error('Failed to send chat:', e);
     }
 }
-window.sendChatToWorker = sendChatToWorker;
-window.renderChat = renderChat;
-
 async function renderChat() {
     const container = document.getElementById('chatMessages');
     if (!container) return;
@@ -3361,3 +3358,8 @@ window.addChallenge = function() {
 };
 
 console.log('✅ All missing functions loaded');
+
+// Export chat functions to global scope (for v3.html inline scripts)
+if (typeof renderChat === 'function') window.renderChat = renderChat;
+if (typeof sendChatToWorker === 'function') window.sendChatToWorker = sendChatToWorker;
+if (typeof loadChatFromWorker === 'function') window.loadChatFromWorker = loadChatFromWorker;
