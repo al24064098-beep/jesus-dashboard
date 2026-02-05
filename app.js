@@ -5,8 +5,8 @@
     'use strict';
 
     // ========== GLOBAL CONSTANTS ==========
-    const WORKER_URL = 'https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev';
-    const LIVE_WORKER_URL = 'https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev'; // Worker with /live endpoint
+    const WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
+    const LIVE_WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev'; // Worker with /live endpoint
 
     // ========== INITIALIZATION ==========
     document.addEventListener('DOMContentLoaded', init);
@@ -2186,7 +2186,7 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 
 // ========== CHAT INTERFACE ==========
 // Chat endpoint for real-time messages
-const CHAT_WORKER_URL = 'https://jesus-dashboard-worker.throbbing-mode-0605.workers.dev/chat';
+const CHAT_WORKER_URL = 'https://spring-mouse-1a4b.throbbing-mode-0605.workers.dev';
 
 // Load chat from worker
 async function loadChatFromWorker() {
