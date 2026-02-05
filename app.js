@@ -2231,6 +2231,7 @@ async function sendChatToWorker(text) {
     }
 }
 window.sendChatToWorker = sendChatToWorker;
+window.renderChat = renderChat;
 
 async function renderChat() {
     const container = document.getElementById('chatMessages');
