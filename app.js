@@ -2214,7 +2214,16 @@ async function sendChatToWorker(text) {
         await fetch(CHAT_WORKER_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ from: 'al', text: text })
+            body: JSON.stringify({
+                lastUpdated: new Date().toISOString(),
+                notes: [{
+                    id: Date.now(),
+                    type: 'dashboard_note',
+                    content: text,
+                    priority: false,
+                    createdAt: new Date().toISOString()
+                }]
+            })
         });
         renderChat(); // Refresh chat
     } catch (e) {
