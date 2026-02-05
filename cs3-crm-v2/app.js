@@ -189,24 +189,12 @@ const CS3Data = {
         }
     ],
     
-    // INVESTORS with source tracking (aspire vs cs3)
+    // REAL INVESTORS - Loaded from cs3-real-investors.js
+    // 450 investors, $74M+ total capital
     // source: 'aspire' = Aspire Community investor, 'cs3' = CS3 direct investor
-    investors: [
-        // ASPIRE COMMUNITY INVESTORS
-        { id: 1, name: 'Pacific Trust Fund', email: 'contact@pacifictrust.com', totalInvested: 2500000, properties: ['mckenzie', 'legacy', 'reserve', 'winding-springs'], dealCount: 4, type: 'entity', status: 'active', source: 'aspire' },
-        { id: 2, name: 'Chen Family Office', email: 'investments@chenfamily.com', totalInvested: 1800000, properties: ['reserve', 'mckenzie', 'legacy'], dealCount: 3, type: 'entity', status: 'active', source: 'aspire' },
-        { id: 3, name: 'Maria Garcia', email: 'mgarcia@outlook.com', totalInvested: 350000, properties: ['winding-springs', 'legacy'], dealCount: 2, type: 'sdira', status: 'active', source: 'aspire' },
-        { id: 4, name: 'David Kim', email: 'dkim@techcorp.com', totalInvested: 250000, properties: ['winding-springs', 'reserve'], dealCount: 2, type: 'solo401k', status: 'active', source: 'aspire' },
-        { id: 5, name: 'Sarah Miller', email: 'smiller@email.com', totalInvested: 300000, properties: ['winding-springs'], dealCount: 1, type: 'sdira', status: 'active', source: 'aspire' },
-        
-        // CS3 DIRECT INVESTORS
-        { id: 6, name: 'Smith Holdings LLC', email: 'john@smithholdings.com', totalInvested: 1200000, properties: ['legacy', 'reserve', 'mckenzie', 'winding-springs'], dealCount: 4, type: 'entity', status: 'active', source: 'cs3' },
-        { id: 7, name: 'Johnson Capital', email: 'mike@johnsoncap.com', totalInvested: 950000, properties: ['mckenzie', 'legacy', 'reserve'], dealCount: 3, type: 'cash', status: 'active', source: 'cs3' },
-        { id: 8, name: 'Williams Group', email: 'sarah@williamsgroup.com', totalInvested: 875000, properties: ['reserve', 'legacy'], dealCount: 2, type: 'sdira', status: 'active', source: 'cs3' },
-        { id: 9, name: 'Robert Chen', email: 'robert.chen@gmail.com', totalInvested: 500000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active', source: 'cs3' },
-        { id: 10, name: 'Lisa Thompson', email: 'lisa.t@email.com', totalInvested: 200000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active', source: 'cs3' },
-        { id: 11, name: 'James Wilson', email: 'jwilson@business.com', totalInvested: 150000, properties: ['winding-springs', 'reserve', 'legacy'], dealCount: 3, type: 'cash', status: 'active', source: 'cs3' },
-        { id: 12, name: 'Michael Brown', email: 'mbrown@corp.com', totalInvested: 400000, properties: ['winding-springs'], dealCount: 1, type: 'cash', status: 'active', source: 'cs3' }
+    investors: (typeof CS3RealInvestors !== 'undefined') ? CS3RealInvestors : [
+        // Fallback sample data if real data not loaded
+        { id: 1, name: 'Carlos Salguero', email: 'carlos@cs3investments.com', totalInvested: 4439750, properties: ['McKenzie', 'Winding Springs', 'Reserve', 'Legacy Townhomes', 'Legends', 'Lakeland', 'Gateway Village'], dealCount: 7, type: 'individual', status: 'funded', source: 'cs3', tier: 'vip' }
     ],
     
     raiseInvestors: [

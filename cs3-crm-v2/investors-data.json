@@ -1,0 +1,7374 @@
+[
+  {
+    "name": "Carlos Salguero",
+    "email": "carlos@cs3investments.com",
+    "phone": "3036198349",
+    "city": "Federal Heights",
+    "state": "CO",
+    "totalInvested": 4439750,
+    "dealCount": 7,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve",
+      "Legacy Townhomes",
+      "Legends",
+      "Lizard Spot",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "VIP",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ashley Thompson",
+    "email": "aathompson1988@gmail.com",
+    "phone": "+447828658159",
+    "city": "Aylesbury",
+    "state": "Buckinghamshire",
+    "totalInvested": 1350000,
+    "dealCount": 2,
+    "properties": [
+      "Legends",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Robert Gallo",
+    "email": "rgallo0715@gmail.com",
+    "phone": "9088920868",
+    "city": "Brick",
+    "state": "New Jersey",
+    "totalInvested": 1300000,
+    "dealCount": 6,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve",
+      "Legacy Townhomes",
+      "Legends",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "VIP",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Juan Navia",
+    "email": "juanfernavia@gmail.com",
+    "phone": "7866002838",
+    "city": "miami",
+    "state": "fl",
+    "totalInvested": 1150000,
+    "dealCount": 6,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve",
+      "Legacy Townhomes",
+      "Legends",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "VIP",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Travis Bare",
+    "email": "travis@tbareroofing.com",
+    "phone": "7205304316",
+    "city": "timnath",
+    "state": "co ",
+    "totalInvested": 1000000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Samuel Pray",
+    "email": "Samuel_pray@yahoo.com",
+    "phone": "7856501323",
+    "city": "Andover",
+    "state": "ks",
+    "totalInvested": 1000000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Alejandrina Saa Redinger",
+    "email": "isabelnwo@gmail.com",
+    "phone": "3038865529",
+    "city": "Oakland",
+    "state": "FL",
+    "totalInvested": 810870.3300000001,
+    "dealCount": 5,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Legacy Townhomes",
+      "Lizard Spot",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "VIP",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Giuseppe Salpietro",
+    "email": "gsalpietro62@gmail.com",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "totalInvested": 750000,
+    "dealCount": 2,
+    "properties": [
+      "Legends",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Salvatore Salpietro",
+    "email": "sal@ATM-up.com",
+    "phone": "3053180406",
+    "city": "Ft Lauderdale",
+    "state": "Fl",
+    "totalInvested": 750000,
+    "dealCount": 2,
+    "properties": [
+      "Legends",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Clint Bezdek",
+    "email": "cjbezdek@gmail.com",
+    "phone": "3039476143",
+    "city": "littleton",
+    "state": "CO",
+    "totalInvested": 700000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Elizabeth Cox",
+    "email": "emailelizabethcox@gmail.com",
+    "phone": "8285562233",
+    "city": "Asheville",
+    "state": "North Carolina",
+    "totalInvested": 668250.9199999999,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Justin Owen",
+    "email": "jowen1919@icloud.com",
+    "phone": "7703242086",
+    "city": "cartersville",
+    "state": "GA",
+    "totalInvested": 600000,
+    "dealCount": 2,
+    "properties": [
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ricardo Salguero",
+    "email": "pabloricardosalguero@gmail.com",
+    "phone": "3057337823",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "totalInvested": 556652.3400000001,
+    "dealCount": 4,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Legacy Townhomes",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "VIP",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Paula Hepp",
+    "email": "petrawyoming@gmail.com",
+    "phone": "3076895840",
+    "city": "Buffalo",
+    "state": "Wyoming",
+    "totalInvested": 550000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Cameron Sprenger",
+    "email": "sprengercameron@gmail.com",
+    "phone": "7204101608",
+    "city": "fort Collins",
+    "state": "CO",
+    "totalInvested": 550000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kristi Prisciandaro",
+    "email": "taxdeed2010@gmail.com",
+    "phone": "4079294679",
+    "city": "sanford",
+    "state": "FL",
+    "totalInvested": 535000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Wendy Moran",
+    "email": "moranw0316@gmail.com",
+    "phone": "3233998712",
+    "city": "Los Angeles",
+    "state": "CA",
+    "totalInvested": 520000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "DIANA AHEDO",
+    "email": "summit.ahero2@gmail.com",
+    "phone": "+52 7222619737",
+    "city": "Sheridan",
+    "state": "WY",
+    "totalInvested": 500000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Lance Mendes",
+    "email": "Lance@wethrive.biz",
+    "phone": "209.918.9900",
+    "city": "Prosper",
+    "state": "TX",
+    "totalInvested": 500000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Ken Richey",
+    "email": "ken@richeymay.com",
+    "phone": "3035874719",
+    "city": "Castle Rock",
+    "state": "Colorado",
+    "totalInvested": 500000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jennifer Smith",
+    "email": "jennifer@danceexpressions.net",
+    "phone": "281-638-5084",
+    "city": "Friendswood",
+    "state": "TX",
+    "totalInvested": 500000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Randy Thompson",
+    "email": "randyssk3@yahoo.com",
+    "phone": "3078875296",
+    "city": "Afton",
+    "state": "WY",
+    "totalInvested": 500000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Rob Lemoine",
+    "email": "rob@residentialinspector.com",
+    "phone": "6783006414",
+    "city": "Nashville",
+    "state": "TN",
+    "totalInvested": 450000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Torrie Nguyen",
+    "email": "matrixgirl303@yahoo.com",
+    "phone": "720-201-5639",
+    "city": "Denver",
+    "state": "CO",
+    "totalInvested": 445000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Kelly Koonce",
+    "email": "kellywkoonce@gmail.com",
+    "phone": "5712751687",
+    "city": "Herndon",
+    "state": "VA",
+    "totalInvested": 425000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jose Ingles",
+    "email": "jose.ingles75@gmail.com",
+    "phone": "7199301230",
+    "city": "Coloradi Springs",
+    "state": "Colorado",
+    "totalInvested": 403521.2,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Melissa Baca",
+    "email": "melissa@thepswgroup.com",
+    "phone": "9099219154",
+    "city": "Cypress",
+    "state": "TX",
+    "totalInvested": 400000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Lynn Beswick",
+    "email": "lynnmarie10@aol.com",
+    "phone": "3039199142",
+    "city": "Lone Tree",
+    "state": "CO",
+    "totalInvested": 400000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Taylor Ewing",
+    "email": "mbita12@hotmail.com",
+    "phone": "12108540949",
+    "city": "",
+    "state": "",
+    "totalInvested": 400000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kevin Foley",
+    "email": "klnhf777@gmail.com",
+    "phone": "2063962777",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "totalInvested": 400000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Blake Hudson",
+    "email": "bhud970@gmail.com",
+    "phone": "7203124311",
+    "city": "Thornton",
+    "state": "CO",
+    "totalInvested": 400000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Machelle Tucker",
+    "email": "mredmond@rainecompanies.com",
+    "phone": "4048195338",
+    "city": "Smyrna",
+    "state": "GA",
+    "totalInvested": 400000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Heather Bundgaard",
+    "email": "heatherbundgaard@yahoo.com",
+    "phone": "7733688158",
+    "city": "Volo",
+    "state": "IL",
+    "totalInvested": 350000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Kathleen Courville",
+    "email": "escentspoiled@gmail.com",
+    "phone": "4694419517",
+    "city": "Spring Branch",
+    "state": "Tx",
+    "totalInvested": 350000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Alan Kirshenbaum",
+    "email": "alan.kirshenbaum@gmail.com",
+    "phone": "9172820777",
+    "city": "Short Hills",
+    "state": "NJ",
+    "totalInvested": 350000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Mario Maya",
+    "email": "marioenrikomaya@hotmail.com",
+    "phone": "3057441706",
+    "city": "Miami",
+    "state": "Florida",
+    "totalInvested": 350000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Millie Santiago-Wolf",
+    "email": "millie.s.wolf@gmail.com",
+    "phone": "1-814-392-4073",
+    "city": "Erie ",
+    "state": "Pennsylvania",
+    "totalInvested": 350000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Jose Alessandrini",
+    "email": "tony@aicmiami.com",
+    "phone": "7864120217",
+    "city": "miami",
+    "state": "FL",
+    "totalInvested": 325000,
+    "dealCount": 3,
+    "properties": [
+      "Winding Springs",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Joshua Spurlock",
+    "email": "joshspurlock17@gmail.com",
+    "phone": "7204900990",
+    "city": "Golden",
+    "state": "CO",
+    "totalInvested": 319234.04,
+    "dealCount": 2,
+    "properties": [
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jeremy Guillette",
+    "email": "jeremy@guillettegroup.com",
+    "phone": "239-771-6237",
+    "city": "Fort Myers",
+    "state": "FL",
+    "totalInvested": 318000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jadd Helma",
+    "email": "thehelmas@gmail.com",
+    "phone": "3037759394",
+    "city": "Golden",
+    "state": "Co",
+    "totalInvested": 315000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kurt Clausen",
+    "email": "kurtclausen@comcast.net",
+    "phone": "18473704097",
+    "city": "Volo",
+    "state": "IL",
+    "totalInvested": 300000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Terrell Cuffee",
+    "email": "cuffee2020@gmail.com",
+    "phone": "7577350153",
+    "city": "Chesapeake",
+    "state": "VA",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jeffrey Davidson",
+    "email": "jsdjsd90@aol.com",
+    "phone": "7328651208",
+    "city": "Tinton Falls",
+    "state": "NJ",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Courtney Epps",
+    "email": "courtney@otbtax.com",
+    "phone": "8645531428",
+    "city": "Taylors",
+    "state": "SC",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Daniel Gomes",
+    "email": "dlgomes82@gmail.com",
+    "phone": "516-523-9610",
+    "city": "Patchogue",
+    "state": "NY",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Heidi Hamels",
+    "email": "hhamels78@gmail.com",
+    "phone": "8177892368",
+    "city": "argyle ",
+    "state": "TX ",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Kirsten K. Harris",
+    "email": "kirsten@eavolu.com",
+    "phone": "2538200378",
+    "city": "Normandy Park",
+    "state": "WA",
+    "totalInvested": 300000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Lloyd Janice Leflet",
+    "email": "landjbiz0804@gmail.com",
+    "phone": "9704819257",
+    "city": "Fort Collins",
+    "state": "CO",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Felix Lopez",
+    "email": "flexx236@gmail.com",
+    "phone": "2016500617",
+    "city": "Kearny",
+    "state": "NJ",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "Legends",
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "David Mansour",
+    "email": "davidmansourdo@gmail.com",
+    "phone": "6199059568",
+    "city": "el cajon",
+    "state": "CA",
+    "totalInvested": 300000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Xiaojing Ren",
+    "email": "jing@jmtlending.com",
+    "phone": "5164235812",
+    "city": "Glenwood Landing",
+    "state": "NY",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Shirley Solis",
+    "email": "level7assets@gmail.com",
+    "phone": "7866249444",
+    "city": "Miami",
+    "state": "Florida",
+    "totalInvested": 300000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Heather Stone",
+    "email": "drheather@thefmshift.com",
+    "phone": "3032460625",
+    "city": "Hempstead",
+    "state": "TX",
+    "totalInvested": 300000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Hollen Stone",
+    "email": "drhollenstone@gmail.com",
+    "phone": "9729550383",
+    "city": "Argyle",
+    "state": "TX",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "William Stroud",
+    "email": "roywrc118@gmail.com",
+    "phone": "8454890225",
+    "city": "Wilmington",
+    "state": "NC",
+    "totalInvested": 300000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Karla Rodriguez",
+    "email": "karlaito@hotmail.com",
+    "phone": "7132089803",
+    "city": "Cypress",
+    "state": "TX",
+    "totalInvested": 279574.16000000003,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Birche Meese",
+    "email": "birche@meesepropertygroup.com",
+    "phone": "9106919550",
+    "city": "Southern Pines",
+    "state": "NC",
+    "totalInvested": 251408.45,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Mervyn Arana",
+    "email": "mervyna29@gmail.com",
+    "phone": "7329477011",
+    "city": "Fort Myers",
+    "state": "FL",
+    "totalInvested": 250000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Robin Godlewski",
+    "email": "dreamreinvestments@gmail.com",
+    "phone": "7192437584",
+    "city": "Colorado Springs",
+    "state": "CO",
+    "totalInvested": 250000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Russell Gyure",
+    "email": "rgyure@mac.com",
+    "phone": "9193398662",
+    "city": "Haslet",
+    "state": "TX",
+    "totalInvested": 250000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "SandiLyn & Andrew Hamilton",
+    "email": "Pointe103@gmail.com",
+    "phone": "518-210-1776",
+    "city": "Conroe",
+    "state": "TX",
+    "totalInvested": 250000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Joshua Holland",
+    "email": "jholland@drhollandmd.com",
+    "phone": "602-418-6368",
+    "city": "Glendale",
+    "state": "Arizona",
+    "totalInvested": 250000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Michael Noel",
+    "email": "mdnoel32@gmail.com",
+    "phone": "7206287477",
+    "city": "Westminster",
+    "state": "Colorado",
+    "totalInvested": 250000,
+    "dealCount": 3,
+    "properties": [
+      "Reserve",
+      "Legacy Townhomes",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Dierdra O'Rourke",
+    "email": "dierdra@dierdraorourke.com",
+    "phone": "3175148749",
+    "city": "Westfield",
+    "state": "IN",
+    "totalInvested": 250000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "John Reynolds",
+    "email": "johnreynolds1234@gmail.com",
+    "phone": "7329956344",
+    "city": "jackson",
+    "state": "nj",
+    "totalInvested": 250000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Matthew Schechtman",
+    "email": "cstiv@clearblack.net",
+    "phone": "7032808089",
+    "city": "Fairfax",
+    "state": "VA",
+    "totalInvested": 250000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Clifford Smith",
+    "email": "cliff.smith@security101.com",
+    "phone": "281-638-5084",
+    "city": "Friendswood",
+    "state": "Tx",
+    "totalInvested": 250000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Damara Meese",
+    "email": "damara@meesepropertygroup.com",
+    "phone": "9106919550",
+    "city": "Whispering Pines ",
+    "state": "NC",
+    "totalInvested": 245436.57,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Garrett Johnson",
+    "email": "maricopavalleyaz@gmail.com",
+    "phone": "7074944364",
+    "city": "Chandler ",
+    "state": "AZ",
+    "totalInvested": 241604.28,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tom Crowley",
+    "email": "tcrowley3@gmail.com",
+    "phone": "9174144980",
+    "city": "New York",
+    "state": "NY",
+    "totalInvested": 225000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Manny Del Val",
+    "email": "mdelval@delvalinvestmentgroup.com",
+    "phone": "3059853190",
+    "city": "Satellite Beach",
+    "state": "Fl",
+    "totalInvested": 225000,
+    "dealCount": 2,
+    "properties": [
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Joe Marzullo",
+    "email": "joe@marzullosellshomes.com",
+    "phone": "7194104663",
+    "city": "Peyton",
+    "state": "CO",
+    "totalInvested": 225000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Christopher McVety",
+    "email": "ChrisMcVety@gmail.com",
+    "phone": "8133619040",
+    "city": "Tampa",
+    "state": "FL",
+    "totalInvested": 225000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kesh Kesic",
+    "email": "kkesic@ampletechrefresh.com",
+    "phone": "4805593143",
+    "city": "Scottsdale",
+    "state": "AZ",
+    "totalInvested": 220000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Kevin Keller",
+    "email": "kevinkeller64@gmail.com",
+    "phone": "4046673997",
+    "city": "Marietta",
+    "state": "GA",
+    "totalInvested": 218000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Kelly Martin",
+    "email": "kmbechard@gmail.com",
+    "phone": "5185781347",
+    "city": "Erie",
+    "state": "Colorado",
+    "totalInvested": 215000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Rodrigo Motoa",
+    "email": "rmotoa@msn.com",
+    "phone": "9544838468",
+    "city": "Miramar",
+    "state": "Florida",
+    "totalInvested": 210000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Hee Jung Lee",
+    "email": "hee.mich.elaine@gmail.com",
+    "phone": "7142532353",
+    "city": "Los Altos",
+    "state": "california",
+    "totalInvested": 200025,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Andrea Abdu",
+    "email": "andreabdus@gmail.com",
+    "phone": "9548128102",
+    "city": "parkland",
+    "state": "florida ",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Douglas Benting",
+    "email": "drbenting@gmail.com",
+    "phone": "4803819055",
+    "city": "Tempe",
+    "state": "AZ",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Eugene Berger",
+    "email": "hebegeberger@hotmail.com",
+    "phone": "6199443129",
+    "city": "",
+    "state": "",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Rodney Blunk",
+    "email": "Asv-futures@verizon.net",
+    "phone": "443-994-3054",
+    "city": "Edgewater",
+    "state": "MD",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ronald Bradshaw",
+    "email": "rbradshaw20@yahoo.com",
+    "phone": "6109552718",
+    "city": "Richmond ",
+    "state": "Tx ",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Peggy Choudhry",
+    "email": "peggychoudhry@gmail.com",
+    "phone": "4075725342",
+    "city": "Kissimmee, FL - 34747",
+    "state": "FL",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Morris Collie",
+    "email": "morris_collie@yahoo.com",
+    "phone": "4057605714",
+    "city": "Houston",
+    "state": "TX",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "John Corbett",
+    "email": "johncorbett_1@yahoo.com",
+    "phone": "3036185000",
+    "city": "Denver",
+    "state": "Colorado",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Brian Cox",
+    "email": "coxbrian10@gmail.com",
+    "phone": "6786440280",
+    "city": "Good Hope ",
+    "state": "Ga",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Patricia Coy",
+    "email": "info@patriciacoy.com",
+    "phone": "9546529929",
+    "city": "Miami",
+    "state": "FL",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "Legacy Townhomes",
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Lynne DuVivier",
+    "email": "lynne.duvivier@outlook.com",
+    "phone": "2032167777",
+    "city": "Riviera Beach",
+    "state": "FL",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Fernando Esponda",
+    "email": "theleavitts@comcast.net",
+    "phone": "801-836-2582",
+    "city": "Orem",
+    "state": "UT",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Crystal Fernandes",
+    "email": "crystal.fernandes1022@yahoo.com",
+    "phone": "6318484320",
+    "city": "Lauderdale by the Sea",
+    "state": "Florida",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Brandon Ford",
+    "email": "brandonaford5@gmail.com",
+    "phone": "3043894208",
+    "city": "Westminister",
+    "state": "CO",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Reena Gajjar",
+    "email": "reena@mac.com",
+    "phone": "4807940708",
+    "city": "Scottsdale",
+    "state": "Arizona",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Richard \"Terry\" Gardner",
+    "email": "rtgardner@gmail.com",
+    "phone": "9498772750",
+    "city": "Irvine",
+    "state": "CA",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Charlotte Green",
+    "email": "ckgreen@comcast.net",
+    "phone": "2679925610",
+    "city": "San Mateo",
+    "state": "CA",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Russell Griffin",
+    "email": "rgriffin@apsbuildingservices.com",
+    "phone": "2813301110",
+    "city": "Tomball",
+    "state": "TX",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "James Hadfield",
+    "email": "jimclearsky1@aol.com",
+    "phone": "9375819091",
+    "city": "Cartersville",
+    "state": "GA",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Heather Henson",
+    "email": "acuity2662@yahoo.com",
+    "phone": "9727439147",
+    "city": "Van Alstyne",
+    "state": "TX",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "James Hika",
+    "email": "jim.hika1@gmail.com",
+    "phone": "6199851504",
+    "city": "Gilbert",
+    "state": "AZ",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Daniel Kinder",
+    "email": "dankind@hotmail.com",
+    "phone": "8329848922",
+    "city": "Crosby",
+    "state": "TX",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Randall KreagerSchmidt",
+    "email": "kreagersc1@gmail.com",
+    "phone": "9702223924",
+    "city": "Johnstown",
+    "state": "CO",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Macys Lao-Subrath",
+    "email": "mvsubrath@gmail.com",
+    "phone": "9178052388",
+    "city": "Beechhurst",
+    "state": "NY",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Teresa Lavagnino",
+    "email": "t_lava@hotmail.com",
+    "phone": "8314022334",
+    "city": "Kailua Kona",
+    "state": "HI",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Sarah LeClaire",
+    "email": "SarahALeClaire@gmail.com",
+    "phone": "817-915-9499",
+    "city": "Farmers Branch",
+    "state": "TX",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ellen Lin",
+    "email": "ellen.aquaedge@gmail.com",
+    "phone": "3103820516",
+    "city": "Chino Hills",
+    "state": "CA",
+    "totalInvested": 200000,
+    "dealCount": 3,
+    "properties": [
+      "Winding Springs",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Lonnie Loutzenhiser",
+    "email": "LonnieLoutzenhiser4@hotmail.com",
+    "phone": "3038853437",
+    "city": "Denver",
+    "state": "CO",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Matthew Ludowig",
+    "email": "matthew.ludowig@gmail.com",
+    "phone": "2817037814",
+    "city": "Cypress",
+    "state": "TEXAS",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jose Mejia",
+    "email": "a.mejia007@yahoo.com",
+    "phone": "9095494011",
+    "city": "Colton",
+    "state": "CA",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "timothy miles",
+    "email": "tmiles99@yahoo.com",
+    "phone": "6318346258",
+    "city": "centerport",
+    "state": "ny",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Karen Prager",
+    "email": "karen@green-lightproperties.com",
+    "phone": "561-271-8385",
+    "city": "Boca Raton",
+    "state": "FL",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Erich Schlegel",
+    "email": "erich.schlegel.04@gmail.com",
+    "phone": "9728410794",
+    "city": "Murphy",
+    "state": "TX",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Tamara Searle",
+    "email": "searledtammy@gmail.com",
+    "phone": "9707993882",
+    "city": "Parker",
+    "state": "CO",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Stacy Strube",
+    "email": "stacyalexander@bellsouth.net",
+    "phone": "7705964325",
+    "city": "Hoschton",
+    "state": "GA",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Gayle Sweeney",
+    "email": "gayle709@gmail.com",
+    "phone": "7039309306",
+    "city": "El Cajon",
+    "state": "CA",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Craig Talbot",
+    "email": "cjt.construction@yahoo.com",
+    "phone": "7202442545",
+    "city": "Basalt",
+    "state": "CO",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jaime Villegas",
+    "email": "kwolter@bobsmithplumbing.com",
+    "phone": "9542425717",
+    "city": "Boca Ratoon",
+    "state": "Florida",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Nicola Walsh",
+    "email": "nicola@monip-group.com",
+    "phone": "3054847583",
+    "city": "FLL",
+    "state": "FL",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kenneth Work",
+    "email": "kjmarine93@gmail.com",
+    "phone": "3039607138",
+    "city": "Broomfield",
+    "state": "Colorado",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Kevin Work",
+    "email": "Workhorse00@hotmail.com",
+    "phone": "3036682276",
+    "city": "Arvada",
+    "state": "CO",
+    "totalInvested": 200000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Raul Zavala",
+    "email": "raulzavala7878@gmail.com",
+    "phone": "5128048671",
+    "city": "DelValle",
+    "state": "TX",
+    "totalInvested": 200000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Rick Spurlock",
+    "email": "joshs81382@hotmail.com",
+    "phone": "5134171447",
+    "city": "arvada",
+    "state": "CO",
+    "totalInvested": 199999,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "James Katina",
+    "email": "james@cs3investments.com",
+    "phone": "6154985001",
+    "city": "franklin",
+    "state": "TN",
+    "totalInvested": 199773.29,
+    "dealCount": 3,
+    "properties": [
+      "Legacy Townhomes",
+      "Legends",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Hugh Thomas",
+    "email": "hughthom@outlook.com",
+    "phone": "7209904469",
+    "city": "Thornton",
+    "state": "CO",
+    "totalInvested": 190000,
+    "dealCount": 2,
+    "properties": [
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jose Melendez",
+    "email": "melendez@4myins.com",
+    "phone": "6308543781",
+    "city": "chicago",
+    "state": "il",
+    "totalInvested": 185000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Craig Allem",
+    "email": "craigallem1@gmail.com",
+    "phone": "3013997001",
+    "city": "Pine",
+    "state": "CO",
+    "totalInvested": 175000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Juliet Goode",
+    "email": "Wgoode80@verizon.net",
+    "phone": "8563321914",
+    "city": "Bridgeton ",
+    "state": "NJ",
+    "totalInvested": 175000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Matthew Tregoning",
+    "email": "mdtregoning@gmail.com",
+    "phone": "3214660100",
+    "city": "Satellite Beach",
+    "state": "FL",
+    "totalInvested": 170000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Sandra Munoz",
+    "email": "sandeemunoz00@gmail.com",
+    "phone": "4086809133",
+    "city": "Westminster",
+    "state": "Colorado",
+    "totalInvested": 160000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Selvin Vivar",
+    "email": "Selvin7Vivar@gmail.com",
+    "phone": "7143267790",
+    "city": "Garden Grove",
+    "state": "CA 92840",
+    "totalInvested": 150257.43,
+    "dealCount": 2,
+    "properties": [
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Aurora Archer",
+    "email": "aurora@theopt-in.com",
+    "phone": "2817287786",
+    "city": "San Antonio",
+    "state": "TX",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Mary Bane",
+    "email": "charlie.mary.3@gmail.com",
+    "phone": "9376898866",
+    "city": "Dayton",
+    "state": "Ohio",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Esperanza Coy",
+    "email": "marcela.suarez@agrocampo.com.co",
+    "phone": "7864451498",
+    "city": "Doral",
+    "state": "FL",
+    "totalInvested": 150000,
+    "dealCount": 2,
+    "properties": [
+      "Legacy Townhomes",
+      "Lakeland"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Anselmo Delino",
+    "email": "anselmo.delino@gmail.com",
+    "phone": "(619) 871-5224",
+    "city": "Spring Valley",
+    "state": "CA",
+    "totalInvested": 150000,
+    "dealCount": 2,
+    "properties": [
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Vanessa Flores",
+    "email": "vanessa@thestrongfitlife.com",
+    "phone": "7086389469",
+    "city": "Murfreesboro",
+    "state": "TN",
+    "totalInvested": 150000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Matt Glassman",
+    "email": "mglassman44@gmail.com",
+    "phone": "8584050122",
+    "city": "Redondo Beach",
+    "state": "CA",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ruth Jean-Louis",
+    "email": "rujealou@gmail.com",
+    "phone": "4049335760",
+    "city": "Peachtree Corners",
+    "state": "Georgia",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Matthew Krac",
+    "email": "mattkrac@gmail.com",
+    "phone": "17864885722",
+    "city": "Davie",
+    "state": "FL",
+    "totalInvested": 150000,
+    "dealCount": 2,
+    "properties": [
+      "Legends",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Bernard Laryea",
+    "email": "civicomus@gmail.com",
+    "phone": "3309905789",
+    "city": "Streetsboro",
+    "state": "Ohio",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Andres Murillo",
+    "email": "anmurlon@gmail.com",
+    "phone": "9546324443",
+    "city": "Winter Garden",
+    "state": "Florida",
+    "totalInvested": 150000,
+    "dealCount": 2,
+    "properties": [
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Emma Ocop",
+    "email": "em_ocop@hotmail.com",
+    "phone": "6197883313",
+    "city": "Esconddio",
+    "state": "CA",
+    "totalInvested": 150000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Andres Orozco",
+    "email": "andresorozcoa@hotmail.com",
+    "phone": "57 3127771807",
+    "city": "cali",
+    "state": "valle",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Clark Pope",
+    "email": "clarkpope@hotmail.com",
+    "phone": "303-653-3104",
+    "city": "Westminster",
+    "state": "CO",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Karen Rebek",
+    "email": "kcr1010@gmail.com",
+    "phone": "12487675472",
+    "city": "",
+    "state": "",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Karen Robinson",
+    "email": "healthrivedream@gmail.com",
+    "phone": "5714090998",
+    "city": "",
+    "state": "",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Silvia Maria Sanchez",
+    "email": "sanchezsilviamaria@hotmail.com",
+    "phone": "7867905845",
+    "city": "Miami",
+    "state": "Florida",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Juan Carlos Tobon",
+    "email": "Juanca@tobongroup.com",
+    "phone": "3058985526",
+    "city": "Hallandale Beach",
+    "state": "Florida",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Jorge Torres",
+    "email": "jottorres@bellsouth.net",
+    "phone": "3055424743",
+    "city": "Miramar",
+    "state": "FL",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Megan Verbanick",
+    "email": "mlv428@hotmail.com",
+    "phone": "4129746014",
+    "city": "Charlotte",
+    "state": "NC",
+    "totalInvested": 150000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Charity Podsendnik",
+    "email": "charity.podz@gmail.com",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "totalInvested": 143000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Stephan Alheim",
+    "email": "salheim74@gmail.com",
+    "phone": "7082507886",
+    "city": "Lyons",
+    "state": "IL",
+    "totalInvested": 140000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Carter Moore",
+    "email": "cartermoore756@gmail.com",
+    "phone": "7577050773",
+    "city": "dillon",
+    "state": "co",
+    "totalInvested": 140000,
+    "dealCount": 4,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "VIP",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "JASON ZWIBEL",
+    "email": "jzwibel@hotmail.com",
+    "phone": "561-214-3779",
+    "city": "WELLINGTON",
+    "state": "FL",
+    "totalInvested": 140000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Keith Nichols",
+    "email": "keith.nichols@dknq.com",
+    "phone": "9546838263",
+    "city": "AUSTIN",
+    "state": "TX",
+    "totalInvested": 135000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "PVBFL LLC Ponte Vedra",
+    "email": "jsimmons@aspire4more.com",
+    "phone": "9546465511",
+    "city": "Sheridan ",
+    "state": "WY",
+    "totalInvested": 135000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Chao Hsiang Liao",
+    "email": "al@marketerbros.com",
+    "phone": "7207107035",
+    "city": "Sheridan",
+    "state": "WY",
+    "totalInvested": 131590,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Andrew Cunje",
+    "email": "a.cunje@gmail.com",
+    "phone": "7035823657",
+    "city": "Ashburn",
+    "state": "VA",
+    "totalInvested": 130000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jose Blanco",
+    "email": "vguthomes@gmail.com",
+    "phone": "8017500291",
+    "city": "Magna",
+    "state": "UT",
+    "totalInvested": 125000,
+    "dealCount": 3,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jeffery Davis",
+    "email": "jeffery@inspiring-breakthroughs.com",
+    "phone": "4152035046",
+    "city": "Laredo",
+    "state": "TX",
+    "totalInvested": 125000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ann Gottwig",
+    "email": "agottwig@gmail.com",
+    "phone": "8458575611",
+    "city": "Santa Rosa Valley",
+    "state": "CA",
+    "totalInvested": 125000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jennifer Koonce",
+    "email": "JenniferhKoonce@gmail.com",
+    "phone": "571-275-1686",
+    "city": "Herndon",
+    "state": "VA",
+    "totalInvested": 125000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Carmalita Lall",
+    "email": "carmalita.lall@gmail.com",
+    "phone": "4073086675",
+    "city": "Clermont",
+    "state": "Florida",
+    "totalInvested": 125000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Marisela Montes",
+    "email": "marise1a@yahoo.com",
+    "phone": "(916)505-4520",
+    "city": "Gold River",
+    "state": "CA",
+    "totalInvested": 125000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Johnel Mugnaini",
+    "email": "jimugnaini@gmail.com",
+    "phone": "312-497-0321",
+    "city": "Chicago",
+    "state": "IL",
+    "totalInvested": 125000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Shawn Parsell",
+    "email": "PARSELLSHAWN@YAHOO.COM",
+    "phone": "9088920863",
+    "city": "Bordentown",
+    "state": "New Jersey",
+    "totalInvested": 125000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Richard Wagner",
+    "email": "richiewagz@gmail.com",
+    "phone": "7323304243",
+    "city": "Manalapan",
+    "state": "NJ",
+    "totalInvested": 125000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Rie Koubong",
+    "email": "lkoubong@gmail.com",
+    "phone": "4087819958",
+    "city": "Watsonville ",
+    "state": "CA",
+    "totalInvested": 124855.79,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Staysha Cunningham",
+    "email": "Staysha.cunningham@gmail.com",
+    "phone": "7039095035",
+    "city": "Nokesville",
+    "state": "VA",
+    "totalInvested": 120000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "ADRIENNE NASRI",
+    "email": "adrienne@nomsolution.com",
+    "phone": "210-698-8273",
+    "city": "SAN ANTONIO",
+    "state": "TEXAS",
+    "totalInvested": 120000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Cully Buranen",
+    "email": "cjburanen@gmail.com",
+    "phone": "6128658079",
+    "city": "Minnetonka",
+    "state": "MN",
+    "totalInvested": 119093.74,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "William Leech",
+    "email": "bill@summitheatingco.com",
+    "phone": "303-434-7149",
+    "city": "Parker",
+    "state": "CO",
+    "totalInvested": 112000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Masina Tavita",
+    "email": "masina.tavita99@gmail.com",
+    "phone": "7065936519",
+    "city": "Columbus",
+    "state": "GA",
+    "totalInvested": 110000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Mark Laine",
+    "email": "mark4x4ing@yahoo.com",
+    "phone": "408 422-6434",
+    "city": "Gilroy ",
+    "state": "CA",
+    "totalInvested": 108000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Keston Glasgow",
+    "email": "kes@purposewaze.com",
+    "phone": "3472834717",
+    "city": "Mableton",
+    "state": "GA",
+    "totalInvested": 106642.72,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "David Luongo",
+    "email": "davidluongo44@gmail.com",
+    "phone": "3039035052",
+    "city": "Arvada",
+    "state": "CO",
+    "totalInvested": 105750,
+    "dealCount": 2,
+    "properties": [
+      "Winding Springs",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Josephine Hughes",
+    "email": "josephinehughes111@gmail.com",
+    "phone": "3129274195",
+    "city": "LAKE ZURICH",
+    "state": "Illinois",
+    "totalInvested": 105000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Theresa Robin Petelo",
+    "email": "TLPetelo@gmail.com",
+    "phone": "5208227030",
+    "city": "Tucson",
+    "state": "AZ",
+    "totalInvested": 105000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Paul Rodriguez",
+    "email": "paulmoreese@gmail.com",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "totalInvested": 104000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Candace Alonzo-ochoa",
+    "email": "candace.alonzo@gmail.com",
+    "phone": "18058271834",
+    "city": "",
+    "state": "",
+    "totalInvested": 103000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Dean Hargrave",
+    "email": "ndhgroup0@gmail.com",
+    "phone": "3038099208",
+    "city": "Castle Rock",
+    "state": "Select Province...",
+    "totalInvested": 100044.71,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Dmitri Alexeev",
+    "email": "dmitri.m.alexeev@gmail.com",
+    "phone": "847-791-4202",
+    "city": "Barrington",
+    "state": "IL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Lynn Almond",
+    "email": "lynn@lynnalmond.com",
+    "phone": "7138294512",
+    "city": "Pearland",
+    "state": "TX",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Soibel Almora",
+    "email": "soibelalmora@yahoo.com",
+    "phone": "786-399-5679",
+    "city": "Hialeah",
+    "state": "Florida",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Javier Amador",
+    "email": "amador.javier@ymail.com",
+    "phone": "9494495258",
+    "city": "Placentia",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Carolina Ambra",
+    "email": "carosolutions30@gmail.com",
+    "phone": "2014466544",
+    "city": "succasunna",
+    "state": "nj",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Gabriel Baca",
+    "email": "GabeBaca11@gmail.com",
+    "phone": "9099215016",
+    "city": "Houston",
+    "state": "Texas",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Jesse Bezdek",
+    "email": "jesse.bezdek@gmail.com",
+    "phone": "3039942614",
+    "city": "Mead",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ankit Bhavsar",
+    "email": "ankitbhav@gmail.com",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 2,
+    "properties": [
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Brian Boeggeman",
+    "email": "boegge54@yahoo.com",
+    "phone": "7326445293",
+    "city": "Brick ",
+    "state": "NJ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Lisa Bradley",
+    "email": "infinitihomecare1@gmail.com",
+    "phone": "3144796121",
+    "city": "Chesterfield",
+    "state": "Missouri",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Jason Briggs",
+    "email": "russell0734@gmail.com",
+    "phone": "4698784464",
+    "city": "Sunnyvale",
+    "state": "TX",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Andrea Bryant",
+    "email": "ayoder2727@gmail.com",
+    "phone": "8134691019",
+    "city": "Land o Lakes",
+    "state": "Florida",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Abril Burgoyne",
+    "email": "abrilburgoyne@gmail.com",
+    "phone": "8018241083",
+    "city": "Farmington",
+    "state": "UT",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Lisa Carmichael",
+    "email": "lisacarm@gmail.com",
+    "phone": "5163597063",
+    "city": "Oyster Bay",
+    "state": "NY",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Christopher Carpenter",
+    "email": "christopher.r.carpenter@gmail.com",
+    "phone": "3038002923",
+    "city": "Morrison",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Susan Carpio",
+    "email": "suz.carpio@gmail.com",
+    "phone": "19705682372",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Storm Chancy",
+    "email": "schancy95@gmail.com",
+    "phone": "8502926699",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Olga Chang",
+    "email": "yiyi.playground@gmail.com",
+    "phone": "2027734567",
+    "city": "dover",
+    "state": "DE",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tim Clark",
+    "email": "tclark@southlandwholesale.com",
+    "phone": "9312606868",
+    "city": "Cookeville",
+    "state": "Tennessee",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Michelle Corder",
+    "email": "michellecorder1@gmail.com",
+    "phone": "5628586493",
+    "city": "Long Beach",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Edward Cosman",
+    "email": "ned.cosman@yahoo.com",
+    "phone": "732-580-7905",
+    "city": "Branchburg",
+    "state": "NJ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Jennifer Crane",
+    "email": "jcrane@procurellc.com",
+    "phone": "8606088005",
+    "city": "Austin",
+    "state": "Texas",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Wray Crippin",
+    "email": "wraycrippin@gmail.com",
+    "phone": "4322669729",
+    "city": "Cary",
+    "state": "NC",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Kyle Dach",
+    "email": "kyle.dach99@gmail.com",
+    "phone": "8159886820",
+    "city": "Rockford",
+    "state": "IL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Sandra Dalton",
+    "email": "sandidalton@gmail.com",
+    "phone": "7325675329",
+    "city": "Ft Lauderdale",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Jeff Davis",
+    "email": "jdcdkdmd@gmail.com",
+    "phone": "14325664468",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Abel Delgado",
+    "email": "jefferdelgado2884@gmail.com",
+    "phone": "9735582981",
+    "city": "wharton",
+    "state": "new jersey",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tatiane De Moraes",
+    "email": "tudemoraes@hotmail.com",
+    "phone": "9544707892",
+    "city": "Coral Springs",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Christine Dersch",
+    "email": "macpherson03@yahoo.com",
+    "phone": "8624380540",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Charles Dizon",
+    "email": "Charles@charlesdizonhomes.com",
+    "phone": "2068532680",
+    "city": "Everett",
+    "state": "WA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Gloria Duarte",
+    "email": "Gloria.duarte1@gmail.com",
+    "phone": "773.715.9804",
+    "city": "Melrose Park",
+    "state": "Illinois",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Angela Duncan",
+    "email": "Info@Empowerhermoney.com",
+    "phone": "8135389890",
+    "city": "cooper city",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tara Dunne",
+    "email": "tara.dunne@gmail.com",
+    "phone": "7034897483",
+    "city": "Wilmington ",
+    "state": "NORTH CAROLINA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Craig Eisenreich",
+    "email": "ceisenreich385@gmail.com",
+    "phone": "3035884551",
+    "city": "Arvada",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Steve Erd",
+    "email": "erds0500@gmail.com",
+    "phone": "2027184433",
+    "city": "rockville",
+    "state": "md",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Andrew Figueroa",
+    "email": "andrew.figueroa@outlook.com",
+    "phone": "3059897534",
+    "city": "Miami",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jerome Fransua",
+    "email": "Jerome.Fransua@gmail.com",
+    "phone": "13032633731",
+    "city": "Littleton",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Angie Fransua",
+    "email": "angie.fransua@gmail.com",
+    "phone": "3032632351",
+    "city": "Littleton",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Chase Friedman",
+    "email": "chasefriedman@gmail.com",
+    "phone": "3237703550",
+    "city": "Manhattan Beach",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "James Fritz",
+    "email": "billfritz20@yahoo.com",
+    "phone": "732-859-8364",
+    "city": "Manalapan",
+    "state": "NJ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Sergio Furer",
+    "email": "sfurer11@gmail.com",
+    "phone": "3037181745",
+    "city": "Longmont",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Aleksandra Gardner",
+    "email": "aleksmeeker@gmail.com",
+    "phone": "8327641523",
+    "city": "Spring ",
+    "state": "TX",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Hope Gibbs",
+    "email": "espi2066@gmail.com",
+    "phone": "305-467-5605",
+    "city": "LOWELL",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Brent Giltner",
+    "email": "mr.giltner@gmail.com",
+    "phone": "2192185532",
+    "city": "Roswell",
+    "state": "GA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Kevin Glory",
+    "email": "edglory@aol.com",
+    "phone": "9737139435",
+    "city": "Freehold",
+    "state": "New Jersey ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Tanya Golovanoff",
+    "email": "tanyagolovanoff@hotmail.com",
+    "phone": "7204122583",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Catalina Gomez",
+    "email": "losllanogomez@gmail.com",
+    "phone": "7866425052",
+    "city": "Doral",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Mateo Gomez",
+    "email": "mateosilvestre64@gmail.com",
+    "phone": "+14232770658",
+    "city": "Morristown",
+    "state": "tennessee",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Noriel Gonzalez",
+    "email": "Realtor@norielgonzalez.com",
+    "phone": "7865624090",
+    "city": "Homestead",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "William Green",
+    "email": "billcorinne22@gmail.com",
+    "phone": "6619028662",
+    "city": "Stafford",
+    "state": "VA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Barbara Hall",
+    "email": "barb.hall@warrantyconsultants.com",
+    "phone": "262-749-9168",
+    "city": "Magnolia",
+    "state": "Texas",
+    "totalInvested": 100000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Christie Hallihan",
+    "email": "healthyvibes.christie@gmail.com",
+    "phone": "7032318726",
+    "city": "Springfield",
+    "state": "VA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Alejandra Harvey",
+    "email": "alejandra.harvey+icloud@gmail.com",
+    "phone": "3035134521",
+    "city": "Denver",
+    "state": "Co",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Oliverio Hernandez",
+    "email": "hernandez1188@hotmail.com",
+    "phone": "7702315116",
+    "city": "Conyers ",
+    "state": "GA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Cindy Heyerdahl",
+    "email": "clheyerdahl@comcast.net",
+    "phone": "3038085225",
+    "city": "Littleton",
+    "state": "Colorado",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Lucas Hirata",
+    "email": "lucashirata@gmail.com",
+    "phone": "3232295150",
+    "city": "Livermore",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "William Hockemeier",
+    "email": "hollyandtaylor@gmail.com",
+    "phone": "3036532939",
+    "city": "Denver",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Will Hudson",
+    "email": "whudson@twtllc.net",
+    "phone": "6154568304",
+    "city": "Gallatin",
+    "state": "TN",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "John Imbriano",
+    "email": "johnimbriano@gmail.com",
+    "phone": "5166479808",
+    "city": "Mount Pleasant",
+    "state": "SC",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Janae Jochum",
+    "email": "jjochum@mail.com",
+    "phone": "19703792065",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Leandro Kabbach",
+    "email": "leandro.kabbach@gmail.com",
+    "phone": "7867793751",
+    "city": "Weston",
+    "state": "Florida",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Susan Karkut",
+    "email": "Surfseal@yahoo.com",
+    "phone": "714-309-0337",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Abram Kemp",
+    "email": "aokemp@aol.com",
+    "phone": "3039057590",
+    "city": "Brighton",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Andrew Kha",
+    "email": "andrewkart123@gmail.com",
+    "phone": "626-701-7459",
+    "city": "El Monte",
+    "state": "California",
+    "totalInvested": 100000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jason Kilpatrick",
+    "email": "jason@strategicedge.llc",
+    "phone": "3109456877",
+    "city": "Venice",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Davison Kirchmyer",
+    "email": "dkirchmyer@gmail.com",
+    "phone": "4079028730",
+    "city": "Lakeland",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Daniel Klausmeier",
+    "email": "daniel.klausmeier@gmail.com",
+    "phone": "7192437035",
+    "city": "colorado springs",
+    "state": "co",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Carl Kline",
+    "email": "cmkline3@gmail.com",
+    "phone": "9134856031",
+    "city": "Macomb",
+    "state": "MI",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Christa Kohler",
+    "email": "christa@christakohler.com",
+    "phone": "561-990-9602",
+    "city": "Boca Raton",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Nikita Koloff",
+    "email": "nikitaskoloff@gmail.com",
+    "phone": "6174603208",
+    "city": "Fort Mill",
+    "state": "South Carolina",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Hemalatha Konki",
+    "email": "hemausud@gmail.com",
+    "phone": "6028143466",
+    "city": "Acworth",
+    "state": "GA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ajay Kuckreja",
+    "email": "luckylogan@gmail.com",
+    "phone": "7205803054",
+    "city": "BOULDER",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Jason Lafser",
+    "email": "jasonlafser@yahoo.com",
+    "phone": "904-307-1030",
+    "city": "Saint Johns",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Karen Lally",
+    "email": "karenlal@icloud.com",
+    "phone": "7082432450",
+    "city": "Palos Park",
+    "state": "IL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Mylene Latulippe",
+    "email": "mlatulippe@hotmail.com",
+    "phone": "3037174187",
+    "city": "Highlands Ranch",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Austin Lee",
+    "email": "alhykz@gmail.com",
+    "phone": "2402348135",
+    "city": "McLean",
+    "state": "Virginia",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kathy Lehmeyer",
+    "email": "kl@lehmeyerdevelopment.com",
+    "phone": "5035695384",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tim Lever",
+    "email": "tim.lever@carolinaone.com",
+    "phone": "8437087200",
+    "city": "Lebanon",
+    "state": "TN",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Wei Li",
+    "email": "albertoli123@yahoo.com",
+    "phone": "4072021568",
+    "city": "Orlando",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 2,
+    "properties": [
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Romulo Lituma",
+    "email": "manolomrn64@gmail.com",
+    "phone": "8452826366",
+    "city": "Nyack",
+    "state": "New york",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ruth Lopez",
+    "email": "rolulo90@gmail.com",
+    "phone": "+19179821970",
+    "city": "Brooklyn ",
+    "state": "Ny",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Victoria Lopez Leon",
+    "email": "momonaham@yahoo.com",
+    "phone": "714 728 8642",
+    "city": "Anaheim ",
+    "state": "California ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jim Maher",
+    "email": "jameslmaher@comcast.net",
+    "phone": "847-867-3637",
+    "city": "Lincolnshire",
+    "state": "Illinois",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Lisa Marshall",
+    "email": "writelisam@yahoo.com",
+    "phone": "720.808.1117",
+    "city": "Broomfield",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Nicholas Mason",
+    "email": "nmason85@gmail.com",
+    "phone": "6698885660",
+    "city": "Gilroy",
+    "state": "California",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Kristin Maurer",
+    "email": "Kristin4293@gmail.com",
+    "phone": "281-386-8149",
+    "city": "McKinney ",
+    "state": "Texas ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Michele McLaughlin",
+    "email": "mem910@me.com",
+    "phone": "6125992326",
+    "city": "Independence",
+    "state": "MN",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Mark McLaughlin",
+    "email": "mhmclaughlin14@gmail.com",
+    "phone": "3038853289",
+    "city": "Denver",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Danielle Michel",
+    "email": "daniellemichelinvests@gmail.com",
+    "phone": "6317861701",
+    "city": "Mount Pleasant ",
+    "state": "SC",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Justin Miller",
+    "email": "jrmiller1210@gmail.com",
+    "phone": "7068169395",
+    "city": "Greensboro",
+    "state": "Ga",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Manuel Mizhirumbay",
+    "email": "mizh20@icloud.com",
+    "phone": "508 930 6891",
+    "city": "Albany",
+    "state": "NY",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ricki Moskow",
+    "email": "reehmj@gmail.com",
+    "phone": "9548292878",
+    "city": "Pompano Beach",
+    "state": "Florida",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Stacy Murphy",
+    "email": "smurphy@absolutebestins.com",
+    "phone": "5616678855",
+    "city": "Greenacres",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Mai Nguyen",
+    "email": "maimary.roses@yahoo.com",
+    "phone": "714-322-9422",
+    "city": "Buena Park",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Lisa Nguyen",
+    "email": "nguyenthekeys@gmail.com",
+    "phone": "13126943232",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Eddy Ovalles",
+    "email": "eos536@hotmail.com",
+    "phone": "954 55812-48",
+    "city": "Miramar",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "willy palomino boche",
+    "email": "willypalomino40@gmail.com",
+    "phone": "3057647496",
+    "city": "homestead",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Barbara Patterson",
+    "email": "barbjp3@gmail.com",
+    "phone": "8188002065",
+    "city": "Santa Rosa Valley",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Teteisha Pearson",
+    "email": "ttpeacnp.pc@gmail.com",
+    "phone": "3153134620",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Angelluz Perez",
+    "email": "perezangelluz@yahoo.com",
+    "phone": "7146141709",
+    "city": "Buena Park",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Dominic Petty",
+    "email": "dominic@innerpeaceadvisor.com",
+    "phone": "9178257098",
+    "city": "Miami",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Cliff Pollard",
+    "email": "cliff@unlimitedfix.com",
+    "phone": "9519707843",
+    "city": "Madison",
+    "state": "Alabama",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Jeff Pray",
+    "email": "jeff.l.pray@gmail.com",
+    "phone": "8015993293",
+    "city": "Sturgeon Bay",
+    "state": "Wisconsin",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Paul Quinn",
+    "email": "pwquinn1@gmail.com",
+    "phone": "4405522856",
+    "city": "Fort Myers",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Zeshan Rana",
+    "email": "zrana7@gmail.com",
+    "phone": "2154101971",
+    "city": "Fairfax Station",
+    "state": "VA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Robert Ray",
+    "email": "rob@raycorporation.com",
+    "phone": "207576699",
+    "city": "Greene",
+    "state": "Maine",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ryan Reynolds",
+    "email": "007.70r@gmail.com",
+    "phone": "714-341 1459",
+    "city": "St John's ",
+    "state": "Florida ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Carrie Richardson",
+    "email": "carrie_richardson1@msn.com",
+    "phone": "17192876677",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Megan Rickborn",
+    "email": "jrickborn@gmail.com",
+    "phone": "6096651514",
+    "city": "Mount Holly",
+    "state": "NJ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Clayton Rife",
+    "email": "clayton.c.rife@gmail.com",
+    "phone": "8153540910",
+    "city": "West Bend, WI",
+    "state": "WI",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Sonia Rojas",
+    "email": "rojassoonia@gmail.com",
+    "phone": "6462981078",
+    "city": "Valley Stream",
+    "state": "NY",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Rocky Rueda",
+    "email": "Rrueda@hyperion369.com",
+    "phone": "7735774100",
+    "city": "Frankfort",
+    "state": "IL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jaisimha Sadhanala",
+    "email": "jsadhanala04@gmail.com",
+    "phone": "3467775215",
+    "city": "Spring",
+    "state": "TX",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Anne Sahm",
+    "email": "administration512@proton.me",
+    "phone": "7606907851",
+    "city": "San Diego",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Thomas Saman",
+    "email": "marrder@me.com",
+    "phone": "8329699938",
+    "city": "Houston",
+    "state": "TX",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Regina Betty Sanchez Perez",
+    "email": "yulmiroque3@gmail.com",
+    "phone": "+17033003037",
+    "city": "Alexandria",
+    "state": "Virginia",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Belinda Sawyer",
+    "email": "belindawyohomes@gmail.com",
+    "phone": "13076315434",
+    "city": "",
+    "state": "",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Lisa Schwartz",
+    "email": "lisanschwartz@gmail.com",
+    "phone": "7732094076",
+    "city": "Chicago",
+    "state": "IL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ashley Schwartz",
+    "email": "adigischwartz@gmail.com",
+    "phone": "7204956919",
+    "city": "SAN TAN VALLEY",
+    "state": "AZ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Cory Schwartz",
+    "email": "schwartzcd1@gmail.com",
+    "phone": "2088595102",
+    "city": "San Tan Valley",
+    "state": "AZ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Jeffrey Scott",
+    "email": "jeffscottnp@gmail.com",
+    "phone": "4808629571",
+    "city": "Mesa",
+    "state": "Arizona",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ryan Searle",
+    "email": "rsearle@ogiminerals.com",
+    "phone": "9709039801",
+    "city": "Pagosa Springs",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Debra Sepanske",
+    "email": "chaddavies@hotmail.com",
+    "phone": "9702109955",
+    "city": "Castle Rock",
+    "state": "Colorado",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Nekole Shelton",
+    "email": "ravynd1@gmail.com",
+    "phone": "7082995345",
+    "city": "Westmont",
+    "state": "IL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Lakh Singh",
+    "email": "lakhsingh@hammerheadprotection.com",
+    "phone": "2097517278",
+    "city": "Manteca",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Greg Slaughter",
+    "email": "GregSlaughter@gregslaughter.com",
+    "phone": "6026441286",
+    "city": "Mesa",
+    "state": "AZ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Michael Smith",
+    "email": "msmith9363@gmail.com",
+    "phone": "6175998595",
+    "city": "Middletown",
+    "state": "Virginia",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Scott Southworth",
+    "email": "scottsouth78@gmail.com",
+    "phone": "714-309-2093",
+    "city": "Santa Ana",
+    "state": "California",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "James Stapleton",
+    "email": "jstapes79@gmail.com",
+    "phone": "3038197621",
+    "city": "Broomfield",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "caulin Struyk",
+    "email": "colinstriker10189@gmail.com",
+    "phone": "3036560359",
+    "city": "Denver",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Jingbo Sun",
+    "email": "jingbo93090@gmail.com",
+    "phone": "6462417866",
+    "city": "Bronx ",
+    "state": "NY",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Rina Tamrakar",
+    "email": "rina.tmkr@gmail.com",
+    "phone": "7046775948",
+    "city": "CHARLOTTE",
+    "state": "NC",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Steven Test",
+    "email": "steven.test94@gmail.com",
+    "phone": "7209009686",
+    "city": "Superior",
+    "state": "CO",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "James Thielfoldt",
+    "email": "james.thielfoldt@gmail.com",
+    "phone": "7206354415",
+    "city": "Wheat Ridge",
+    "state": "CO ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Cary Thompson",
+    "email": "dblct@yahoo.com",
+    "phone": "4157602827",
+    "city": "San Mateo",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Brady Thurgood",
+    "email": "bthurgood1@gmail.com",
+    "phone": "8013725510",
+    "city": "Eagle Mountain",
+    "state": "Utah",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Levine Toilolo",
+    "email": "toilolo11@yahoo.com",
+    "phone": "6199904880",
+    "city": "Poway",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Xenia Torres",
+    "email": "xntorres@cs.com",
+    "phone": "3056082658",
+    "city": "Miramar",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Matt Uhler",
+    "email": "mattuhler2520@gmail.com",
+    "phone": "9283011505",
+    "city": "Prescott",
+    "state": "AZ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Ray Uzonyi",
+    "email": "Found20llc@gmail.com",
+    "phone": "9047082675",
+    "city": "Winter Park",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kathy Van Benthuysen",
+    "email": "smiles23@optonline.net",
+    "phone": "732-616-7356",
+    "city": "Wall",
+    "state": "NJ",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Claudia Van Harn",
+    "email": "claudiavanharn@gmail.com",
+    "phone": "281-995-6845",
+    "city": "Spring",
+    "state": "TX",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Freddie Veteto",
+    "email": "freddie@buildingbrighthouston.com",
+    "phone": "281-382-8241",
+    "city": "Houston",
+    "state": "Texas",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Marianne Viele",
+    "email": "marianneviele@gmail.com",
+    "phone": "3058010225",
+    "city": "palm city",
+    "state": "fl",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Edgar Vivar",
+    "email": "bj45123@hotmail.com",
+    "phone": "3237914676",
+    "city": "Gardena",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Jamie wall",
+    "email": "jcwall@reagan.com",
+    "phone": "7043021013",
+    "city": "Tega Cay",
+    "state": "South Carolina",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Lawren Ward",
+    "email": "ward4law2@gmail.com",
+    "phone": "5107506078",
+    "city": "Oakland",
+    "state": "CA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Deborah Weller",
+    "email": "debbiekweller@gmail.com",
+    "phone": "3865478586",
+    "city": "Ormond Beach",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Kelly Wickham",
+    "email": "kwickham67@gmail.com",
+    "phone": "5189298363",
+    "city": "LELAND",
+    "state": "NC",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Darwin Alexander Yanza Cardenas",
+    "email": "dylhomesllc25@gmail.com",
+    "phone": "3478607446",
+    "city": "Ridgewood",
+    "state": " NY",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Helen Yi",
+    "email": "helen.yi2021@gmail.com",
+    "phone": "7039017355",
+    "city": "Herndon",
+    "state": "VA",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Kareen Zahr Walsh",
+    "email": "kzw@kareenwalsh.com",
+    "phone": "7209355180",
+    "city": "Fort Lauderdale",
+    "state": "FL",
+    "totalInvested": 100000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ryan Doberstein",
+    "email": "Aspire4RD@gmail.com",
+    "phone": "7169125744",
+    "city": "Charlotte",
+    "state": "NC",
+    "totalInvested": 86000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Shahina Halmedi",
+    "email": "halmedishahina@gmail.com",
+    "phone": "7206959705",
+    "city": "Aurora",
+    "state": "CO ",
+    "totalInvested": 85450,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Juan Saa",
+    "email": "juanandres9010@gmail.com",
+    "phone": "3059027061",
+    "city": "Miami",
+    "state": "Florida",
+    "totalInvested": 84560,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jon Cloutier",
+    "email": "jon@lifemedsafety.com",
+    "phone": "3037204801",
+    "city": "Brighton",
+    "state": "CO",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Lisa Cloutier",
+    "email": "lisa@lifemedsafety.com",
+    "phone": "3037204801",
+    "city": "Brighton",
+    "state": "CO",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Rocco & Donna Cornelia",
+    "email": "Rcornelia58@gmail.com",
+    "phone": "516-492-2925",
+    "city": "Sanford",
+    "state": "FL",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ashley Cunje",
+    "email": "ashley.cunje@gmail.com",
+    "phone": "7038991850",
+    "city": "Ashburn",
+    "state": "VA",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Sandra Echeverry",
+    "email": "sandra@sparkbco.com",
+    "phone": "5614523416",
+    "city": "Boynton Beach",
+    "state": "FL",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Mark Meredith",
+    "email": "meredmar@yahoo.com",
+    "phone": "7202805075",
+    "city": "Thornton",
+    "state": "CO",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Trinh Pham",
+    "email": "trinhocx@gmail.com",
+    "phone": "7203202518",
+    "city": "Larkspur",
+    "state": "CO",
+    "totalInvested": 75000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Timothy  and Amy Schoendorf",
+    "email": "amie.schoendorf@aim.com",
+    "phone": "9403901342",
+    "city": "Denton",
+    "state": "TX",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Benjamin Tankard",
+    "email": "bentankard@aol.com",
+    "phone": "6156318189",
+    "city": "Murfreesboro",
+    "state": "TN",
+    "totalInvested": 75000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "CHRIS Neuzil",
+    "email": "ckprop@gmail.com",
+    "phone": "14027401505",
+    "city": "Papillion",
+    "state": "NE",
+    "totalInvested": 70000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "jorge torres",
+    "email": "truck52torres@gmail.com",
+    "phone": "7083102442",
+    "city": "chicago",
+    "state": "illinois",
+    "totalInvested": 60000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Stefan Trifan",
+    "email": "irene@aplcargoinc.com",
+    "phone": "7086745207",
+    "city": "West Lafayette",
+    "state": "IN",
+    "totalInvested": 52151.93,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Norma Becerra",
+    "email": "norma7s@hotmail.com",
+    "phone": "2566738291",
+    "city": "Madison",
+    "state": "AL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Daniela Bennett",
+    "email": "danibnyc17@gmail.com",
+    "phone": "9172926970",
+    "city": "Lake Worth",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Andrea Botero",
+    "email": "info@andreabotero.realtor",
+    "phone": "7864451498",
+    "city": "Hialeah ",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Neil Bunker",
+    "email": "neil.bunk@gmail.com",
+    "phone": "9704716301",
+    "city": "Northglenn",
+    "state": "CO",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Rahima Butler",
+    "email": "rahimakaba@gmail.com",
+    "phone": "2133214961",
+    "city": "Culver City",
+    "state": "CA",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Stephen Capoano",
+    "email": "cap0375@aol.com",
+    "phone": "7327734550",
+    "city": "Point Pleasant Boro",
+    "state": "New Jersey",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Adriana Casas",
+    "email": "adriana.casas@gmail.com",
+    "phone": "4083153662",
+    "city": "Milpitas",
+    "state": "CA",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Michaele F Chappell",
+    "email": "mchappell1@comcast.net",
+    "phone": "615-542-5436",
+    "city": "Murfreesboro",
+    "state": "TN",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Shane Conway",
+    "email": "sconwa1@gmail.com",
+    "phone": "6304336340",
+    "city": "Morton Grove",
+    "state": "Illinois",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Lev Cooper",
+    "email": "lev.cooper@gmail.com",
+    "phone": "7016513283",
+    "city": "Williston",
+    "state": "North Dakota",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Anthony Darryl adams",
+    "email": "invest@anthonydadams.com",
+    "phone": "13106898875",
+    "city": "",
+    "state": "",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Rachel Davis",
+    "email": "nrjdavis.66@gmail.com",
+    "phone": "2814506579",
+    "city": "Willis",
+    "state": "Texas",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Cleveland DeLoatch",
+    "email": "yohance@ymail.com",
+    "phone": "2019933080",
+    "city": "Miami",
+    "state": "Fl",
+    "totalInvested": 50000,
+    "dealCount": 2,
+    "properties": [
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Javier Dugarte",
+    "email": "jdugarte@gocloudinc.net",
+    "phone": "3057812258",
+    "city": "miami ",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tatiana Gomez",
+    "email": "tatianatarheels1@gmail.com",
+    "phone": "7868973101",
+    "city": "Miami",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Rock Graham II",
+    "email": "rock.graham@yahoo.com",
+    "phone": "7134174830",
+    "city": "Tomball",
+    "state": "TX",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Neil Gumbs",
+    "email": "gumbsy6@hotmail.com",
+    "phone": "3057818871",
+    "city": "Miami Beach",
+    "state": "Florida",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jay Haizlip",
+    "email": "jayhaizlip@me.com",
+    "phone": "714-402-4468",
+    "city": "Newport Beach ",
+    "state": "Ca",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Timothy Hall",
+    "email": "thall@warrantyconsultants.com",
+    "phone": "2627499167",
+    "city": "Magnolia",
+    "state": "TX",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Lisa Harvey",
+    "email": "lisa@jeremiahventures.com",
+    "phone": "2034344983",
+    "city": "Willowbrook",
+    "state": "Il",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Krandon Henry",
+    "email": "kjhenry.mail@gmail.com",
+    "phone": "8706921301",
+    "city": "LOVELAND",
+    "state": "CO",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "William Hudgins",
+    "email": "denhudgins@gmail.com",
+    "phone": "9126958061",
+    "city": "Savannah",
+    "state": "GA",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Dustin Johnson",
+    "email": "dustinjohnson50@outlook.com",
+    "phone": "2148866476",
+    "city": "Lindale",
+    "state": "TX",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Lauren Kappel",
+    "email": "kappel216@gmail.com",
+    "phone": "8476095974",
+    "city": "Boynton Beach",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "joe and lori katina",
+    "email": "ejkatina@yahoo.com",
+    "phone": "6153003335",
+    "city": "franklin",
+    "state": "tn",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Meghan Kelly",
+    "email": "melizakelly321@gmail.com",
+    "phone": "5402074779",
+    "city": "Fredericksburg",
+    "state": "VA",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "George Kingston",
+    "email": "gkingboys@aol.com",
+    "phone": "410-300-7791",
+    "city": "Woodbine",
+    "state": "MD",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Emily Kingston",
+    "email": "emilywolf7@gmail.com",
+    "phone": "4105990259",
+    "city": "Woodbine",
+    "state": "MD",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Kory Koralewski",
+    "email": "jen@optimumfss.com",
+    "phone": "7202710702",
+    "city": "Castle Rock",
+    "state": "CO",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Sam Kwak",
+    "email": "sarcanglk816@gmail.com",
+    "phone": "2674718739",
+    "city": "Ivyland",
+    "state": "Pa",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Laura Lorenz",
+    "email": "Ljlorenz5@gmail.com",
+    "phone": "945-349-2800",
+    "city": "Chicago",
+    "state": "IL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "joseph mallozzi",
+    "email": "Mallozzipropertygroup@gmail.com",
+    "phone": "2157380449",
+    "city": "boynton beach",
+    "state": "fl",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ragen Martinek",
+    "email": "Ragen.martinek48@gmail.com",
+    "phone": "2143259018",
+    "city": "Ennis",
+    "state": "TX",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ernest Martinek",
+    "email": "ernie.martinek@gmail.com",
+    "phone": "2143259087",
+    "city": "Ennis",
+    "state": "TX",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Bertha Martinez-Carmona",
+    "email": "berthaloans@gmail.com",
+    "phone": "7144235033",
+    "city": "Corona",
+    "state": "CA",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Elizabeth Matthews",
+    "email": "finance@elizabeth-matthews.com",
+    "phone": "3106139193",
+    "city": "LOS ANGELES",
+    "state": "California",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Omar Messallam",
+    "email": "omar.messallam@gmail.com",
+    "phone": "619-703-7222",
+    "city": "Miami",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Enrique Montoya",
+    "email": "enriqueluismontoya@gmail.com",
+    "phone": "3057539826",
+    "city": "Miami",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "CodiAnn Moritz",
+    "email": "codiann.moritz.1@gmail.com",
+    "phone": "3076319750",
+    "city": "Cheyenne",
+    "state": "Wyoming",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Susana Mosqueda",
+    "email": "shaya.ikal@gmail.com",
+    "phone": "3037097718",
+    "city": "Longmont",
+    "state": "CO",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Cherie Noel",
+    "email": "cherienoel60@gmail.com",
+    "phone": "3034210444",
+    "city": "Westminster",
+    "state": "Colorado",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Carisa Olmos",
+    "email": "clo76@live.com",
+    "phone": "7202191949",
+    "city": "Thornton ",
+    "state": "CO",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jennifer Peters",
+    "email": "jr_peters@yahoo.com",
+    "phone": "4076175729",
+    "city": "denver ",
+    "state": "co",
+    "totalInvested": 50000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Randi Jo & Max Pieper",
+    "email": "randijopieper@gmail.com",
+    "phone": "3035030258",
+    "city": "Brighton",
+    "state": "Colorado",
+    "totalInvested": 50000,
+    "dealCount": 2,
+    "properties": [
+      "McKenzie",
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Elias Querales",
+    "email": "nenriqueq@hotmail.com",
+    "phone": "9548543924",
+    "city": "Doral",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Monica Quintero DeVlaeminck",
+    "email": "monicaqd44@gmail.com",
+    "phone": "5032683063",
+    "city": "Clackamas",
+    "state": "Oregon",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ravindranath Ramnath",
+    "email": "ravisinghr@yahoo.com",
+    "phone": "6306974077",
+    "city": "Bartlett",
+    "state": "IL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Brian Rios",
+    "email": "Brian.rios@stayhobknob.com",
+    "phone": "8129895349",
+    "city": "Jeffersonville",
+    "state": "IN",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Jaime Rivera",
+    "email": "Jrivera15@cox.net",
+    "phone": "9492354739",
+    "city": "Mission Viejo",
+    "state": "Ca",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Alex Romine",
+    "email": "alexromine3@gmail.com",
+    "phone": "2176497302",
+    "city": "Denver",
+    "state": "CO",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Chad Rusher",
+    "email": "chadrusher@hotmail.com",
+    "phone": "5734246515",
+    "city": "Marietta",
+    "state": "GA",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Keibby Salcedo",
+    "email": "kbsalcedo@icloud.com",
+    "phone": "954-696-9616",
+    "city": "Deerfield Beach",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Ed Salviolo",
+    "email": "esalviolo@mac.com",
+    "phone": "7326164666",
+    "city": "Red Bank",
+    "state": "NJ",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Eduardo Santos",
+    "email": "edu_pds@live.com",
+    "phone": "9175005279",
+    "city": "Coral Springs",
+    "state": "FL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Laura Schrock",
+    "email": "lsmies@msn.com",
+    "phone": "3124206660",
+    "city": "Evergreen",
+    "state": "CO",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Noormin Sohani",
+    "email": "noormin.sohani@gmail.com",
+    "phone": "6783151747",
+    "city": "Atlanta",
+    "state": "GA",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Gendrri Sontay",
+    "email": "Henrysontay281@gmail.com",
+    "phone": "9703817305",
+    "city": "Greeley",
+    "state": "co",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Monica Tracy",
+    "email": "wasatchinvestmentsgroup@gmail.com",
+    "phone": "8014036729",
+    "city": "Taylorsville ",
+    "state": "UT",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Brandon Tripp",
+    "email": "Brandon@trippdesigngroup.com",
+    "phone": "720.445.5614",
+    "city": "denver",
+    "state": "colorado",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Hernan Vidal",
+    "email": "hvidal1978@gmail.com",
+    "phone": "7863899074",
+    "city": "Richmond",
+    "state": "TX",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Kate Walsh",
+    "email": "katewalsh07@yahoo.com",
+    "phone": "6304009543",
+    "city": "Naperville",
+    "state": "IL",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Loreen Wilfong",
+    "email": "pdq.llc17@gmail.com",
+    "phone": "9125722997",
+    "city": "Marlin",
+    "state": "Texas",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Santiago Xec",
+    "email": "santiagoxec84@gmail.com",
+    "phone": "6129167971",
+    "city": "brookly park",
+    "state": "mn",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Lawrence Yatch",
+    "email": "lyatch@gmail.com",
+    "phone": "6197086123",
+    "city": "Kamas",
+    "state": "Utah",
+    "totalInvested": 50000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Zach Garza",
+    "email": "zachgarzatx@gmail.com",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "totalInvested": 45000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Marcel Barwanietz",
+    "email": "MEBStrategicholdings@gmail.com",
+    "phone": "4234892629",
+    "city": "Ooltewah",
+    "state": "TN",
+    "totalInvested": 40000,
+    "dealCount": 1,
+    "properties": [
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Daniel Cavallaro",
+    "email": "dcpersonaltraining365@gmail.com",
+    "phone": "8607299413",
+    "city": "Fort Lauderdale",
+    "state": "Florida",
+    "totalInvested": 40000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ricardo Cunningham",
+    "email": "ricardoacunningham@gmail.com",
+    "phone": "5713443445",
+    "city": "Nokesville",
+    "state": "VA",
+    "totalInvested": 40000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Aaron Deja",
+    "email": "dejaaaron@gmail.com",
+    "phone": "6169168341",
+    "city": "Murfreesboro ",
+    "state": "Tennessee ",
+    "totalInvested": 40000,
+    "dealCount": 2,
+    "properties": [
+      "Legacy Townhomes",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "santiago guzman",
+    "email": "Santiago_guzmanleon@hotmail.com",
+    "phone": "00593987276305",
+    "city": "quito",
+    "state": "ecuador",
+    "totalInvested": 40000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "sal vittorio",
+    "email": "teamevolutioncoachingstaff@gmail.com",
+    "phone": "6313166839",
+    "city": "Boca Raton ",
+    "state": "Florida ",
+    "totalInvested": 40000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Brandon Ford",
+    "email": "brandon@cs3investments.com",
+    "phone": "3043808274",
+    "city": "Westminister",
+    "state": "CO",
+    "totalInvested": 35100,
+    "dealCount": 3,
+    "properties": [
+      "Winding Springs",
+      "Reserve",
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "Loyal",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Anita Rivadeneira",
+    "email": "guillo_456@yahoo.com",
+    "phone": "7194545382",
+    "city": "Sheridan",
+    "state": "WY",
+    "totalInvested": 35000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "MARIA NEMONE ALCANTARA",
+    "email": "levelupwithnemone@gmail.com",
+    "phone": "6506085111",
+    "city": "DALY CITY",
+    "state": "CA",
+    "totalInvested": 30000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Carmen Baldovi",
+    "email": "cabaldovi@hotmail.com",
+    "phone": "+447825581601",
+    "city": "North Fambridge",
+    "state": "Essex",
+    "totalInvested": 30000,
+    "dealCount": 1,
+    "properties": [
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tap Gaoteote",
+    "email": "tapdat@yahoo.com",
+    "phone": "5203329042",
+    "city": "Tucson ",
+    "state": "AZ",
+    "totalInvested": 30000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Ana Michel",
+    "email": "acmre@mfdhp.com",
+    "phone": "3233336531",
+    "city": "Downey",
+    "state": "CA",
+    "totalInvested": 30000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Isaac Salguero",
+    "email": "isaac@netdirectsales.com",
+    "phone": "7202613356",
+    "city": "Federal Heights",
+    "state": "CO",
+    "totalInvested": 30000,
+    "dealCount": 4,
+    "properties": [
+      "McKenzie",
+      "Reserve",
+      "Legacy Townhomes",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "VIP",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Leydy Santillanes",
+    "email": "leydyrodas.lr@gmail.com",
+    "phone": "7202668648",
+    "city": "Aurora",
+    "state": "CO",
+    "totalInvested": 30000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Grace Wilson",
+    "email": "gracegaowilson@gmail.com",
+    "phone": "2066410976",
+    "city": "Seattle",
+    "state": "WA",
+    "totalInvested": 30000,
+    "dealCount": 2,
+    "properties": [
+      "Legacy Townhomes",
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "Repeat",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Laura Allem",
+    "email": "allemx2@gmail.com",
+    "phone": "3039039352",
+    "city": "Pine",
+    "state": "Colorado",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Radoslav Bily",
+    "email": "radobily13@gmail.com",
+    "phone": "8182387991",
+    "city": "Golden",
+    "state": "CO",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "James Bowbliss",
+    "email": "jim@bowbliss.com",
+    "phone": "4157405748",
+    "city": "Tiburon",
+    "state": "CA",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Mike Boyd",
+    "email": "boydmultifamily@gmail.com",
+    "phone": "8183841387",
+    "city": "Tulsa",
+    "state": "OK",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Matt Deja",
+    "email": "mdeja@sbcglobal.net",
+    "phone": "6169153350",
+    "city": "Rockford",
+    "state": "MI",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Renzo Delzo",
+    "email": "delzoinvestmentscorp@gmail.com",
+    "phone": "2485797704",
+    "city": "Westland",
+    "state": "Michigan",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Gilmore Gabriel",
+    "email": "gilanna.gabriel@protonmail.com",
+    "phone": "13237917219",
+    "city": "Diamond Bar",
+    "state": "CA",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Gateway Village"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Moises Gonzalez",
+    "email": "mdgelectric@hotmail.com",
+    "phone": "2132652664",
+    "city": "Pomona",
+    "state": "Ca",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Vanessa Liboy",
+    "email": "rlinvestmentgroup@yahoo.com",
+    "phone": "904-832-2325",
+    "city": "Yulee",
+    "state": "FL",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Tomer Rabinovich",
+    "email": "tomer@jointopdog.com",
+    "phone": "+972525205626",
+    "city": "",
+    "state": "",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Cesarina Reyes",
+    "email": "cesarinacoach@gmail.com",
+    "phone": "809 753 9860",
+    "city": "santiago",
+    "state": "santiago",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": true
+  },
+  {
+    "name": "Kalen Richey",
+    "email": "kalen@richeymay.com",
+    "phone": "7202312642",
+    "city": "Parker",
+    "state": "CO",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Freddy Rivera",
+    "email": "fred@vamosenterprises.com",
+    "phone": "9843684520",
+    "city": "Austin",
+    "state": "California",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Paul Robertson",
+    "email": "brobertsonkc@gmail.com",
+    "phone": "9133829158",
+    "city": "Basehor",
+    "state": "KS",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "James Stewart",
+    "email": "jessica.lynn.gruber@gmail.com",
+    "phone": "8174566033",
+    "city": "San Diego",
+    "state": "CA",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Tara Wagner",
+    "email": "tara.wagner@gmail.com",
+    "phone": "9083073478",
+    "city": "Manalapan",
+    "state": "New Jersey",
+    "totalInvested": 25000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": false
+  },
+  {
+    "name": "Rashedah Henriques",
+    "email": "info@shedah3.com",
+    "phone": "3472773382",
+    "city": "Bayonne",
+    "state": "NY",
+    "totalInvested": 23000,
+    "dealCount": 1,
+    "properties": [
+      "Legends"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Christine Katina",
+    "email": "chrissykatina@gmail.com",
+    "phone": "6153006569",
+    "city": "Franklin",
+    "state": "TN",
+    "totalInvested": 21000,
+    "dealCount": 1,
+    "properties": [
+      "Reserve"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Eric Tung",
+    "email": "erictung0912@gmail.com",
+    "phone": "7207363890",
+    "city": "Westminster",
+    "state": "CO",
+    "totalInvested": 15000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Catherine Doberstein",
+    "email": "CMdoberstein@gmail.com",
+    "phone": "7047752121",
+    "city": "Charlotte",
+    "state": "NC",
+    "totalInvested": 14000,
+    "dealCount": 1,
+    "properties": [
+      "McKenzie"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "ira",
+    "accredited": true
+  },
+  {
+    "name": "Stash Hershberger",
+    "email": "travelingstash@mail.com",
+    "phone": "18104717877",
+    "city": "",
+    "state": "",
+    "totalInvested": 11600,
+    "dealCount": 1,
+    "properties": [
+      "Winding Springs"
+    ],
+    "source": "aspire",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Oscar Jimenez",
+    "email": "seriouspropertysolutions@gmail.com",
+    "phone": "2144931723",
+    "city": "",
+    "state": "",
+    "totalInvested": 10000,
+    "dealCount": 1,
+    "properties": [
+      "Lizard Spot"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  },
+  {
+    "name": "Hector badillo",
+    "email": "hectorbadillo215@gmail.com",
+    "phone": "2679122845",
+    "city": "philadelphia",
+    "state": "pa ",
+    "totalInvested": 5000,
+    "dealCount": 1,
+    "properties": [
+      "Legacy Townhomes"
+    ],
+    "source": "cs3",
+    "tier": "First-Time",
+    "type": "individual",
+    "accredited": false
+  }
+]
