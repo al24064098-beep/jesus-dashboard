@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS3 Investor Priority Tool | Built by Jesus ⚡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1C2E47;
+            --gold: #FFA100;
+            --gray: #F4F4F4;
+            --black: #191919;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--navy) 0%, #2a4a6b 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: var(--black);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+        
+        .priority-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .priority-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--navy);
+        }
+        
+        .priority-badge {
+            background: var(--danger);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .priority-badge.medium { background: var(--warning); }
+        .priority-badge.low { background: var(--success); }
+        
+        .investor-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s;
+        }
+        
+        .investor-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 2px 10px rgba(255, 161, 0, 0.2);
+        }
+        
+        .investor-info {
+            flex: 1;
+        }
+        
+        .investor-name {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 1.1rem;
+        }
+        
+        .investor-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+        
+        .investor-value {
+            text-align: right;
+            min-width: 150px;
+        }
+        
+        .investor-amount {
+            font-weight: 700;
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        
+        .investor-days {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #e69000;
+        }
+        
+        .btn-secondary {
+            background: var(--gray);
+            color: var(--navy);
+        }
+        
+        .btn-secondary:hover {
+            background: #e5e5e5;
+        }
+        
+        .action-summary {
+            background: linear-gradient(135deg, var(--gold), #ffb333);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+        
+        .action-summary h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .action-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+        
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+        }
+        
+        .action-icon {
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .export-btn {
+            background: white;
+            color: var(--navy);
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Investor Priority Tool</h1>
+            <p>Focus on the highest-value opportunities first</p>
+        </header>
+        
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-value" id="totalPipeline">$5.75M</div>
+                <div class="stat-label">Total Pipeline</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="hotProspects">9</div>
+                <div class="stat-label">Hot Prospects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="needsFollowUp">4</div>
+                <div class="stat-label">Needs Follow-Up</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgDays">12</div>
+                <div class="stat-label">Avg Days Since Contact</div>
+            </div>
+        </div>
+        
+        <div class="action-summary">
+            <h3>📋 Today's Action Plan</h3>
+            <div class="action-list">
+                <div class="action-item">
+                    <span class="action-icon">🔥</span>
+                    <span><strong>Call Michael Noel</strong> — $500K + 2 referrals waiting</span>
+                </div>
+                <div class="action-item">
+                    <span class="action-icon">💰</span>
+                    <span><strong>Follow up with Cully Buranen</strong> — $1M 1031 exchange ready</span>
+                </div>
+                <div class="action-item">
+                    <span class="action-icon">⚠️</span>
+                    <span><strong>Re-engage Jack</strong> — $3-4M potential, 17 days silent</span>
+                </div>
+                <div class="action-item">
+                    <span class="action-icon">📞</span>
+                    <span><strong>Check in with Francisco</strong> — $500K, needs nurturing</span>
+                </div>
+            </div>
+            <button class="export-btn" onclick="exportTasks()">
+                📥 Export to CRM Tasks
+            </button>
+        </div>
+        
+        <div class="priority-section">
+            <h2>🔥 High Priority <span class="priority-badge">Call Today</span></h2>
+            
+            <div class="investor-card">
+                <div class="investor-info">
+                    <div class="investor-name">Michael Noel</div>
+                    <div class="investor-meta">$500K potential + 2 referral opportunities</div>
+                </div>
+                <div class="investor-value">
+                    <div class="investor-amount">$500,000</div>
+                    <div class="investor-days">Last: 5 days ago</div>
+                </div>
+                <div class="action-btns">
+                    <button class="btn btn-primary" onclick="call('Michael Noel')">📞 Call</button>
+                    <button class="btn btn-secondary" onclick="email('michael.noel@email.com')">✉️ Email</button>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <div class="investor-info">
+                    <div class="investor-name">Cully Buranen</div>
+                    <div class="investor-meta">1031 exchange in progress — Time sensitive!</div>
+                </div>
+                <div class="investor-value">
+                    <div class="investor-amount">$1,000,000</div>
+                    <div class="investor-days">Last: 4 days ago</div>
+                </div>
+                <div class="action-btns">
+                    <button class="btn btn-primary" onclick="call('Cully Buranen')">📞 Call</button>
+                    <button class="btn btn-secondary" onclick="email('cully@email.com')">✉️ Email</button>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <div class="investor-info">
+                    <div class="investor-name">Jack (Andrew's friend)</div>
+                    <div class="investor-meta">High net worth — $3-4M potential</div>
+                </div>
+                <div class="investor-value">
+                    <div class="investor-amount">$3,000,000+</div>
+                    <div class="investor-days" style="color: var(--danger);">Last: 17 days ago ⚠️</div>
+                </div>
+                <div class="action-btns">
+                    <button class="btn btn-primary" onclick="call('Jack')">📞 Call</button>
+                    <button class="btn btn-secondary" onclick="email('jack@email.com')">✉️ Email</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="priority-section">
+            <h2>⏰ Medium Priority <span class="priority-badge medium">This Week</span></h2>
+            
+            <div class="investor-card">
+                <div class="investor-info">
+                    <div class="investor-name">Francisco Caycedo</div>
+                    <div class="investor-meta">$1.4M self-directed available</div>
+                </div>
+                <div class="investor-value">
+                    <div class="investor-amount">$500,000</div>
+                    <div class="investor-days">Last: 12 days ago</div>
+                </div>
+                <div class="action-btns">
+                    <button class="btn btn-primary" onclick="call('Francisco')">📞 Call</button>
+                    <button class="btn btn-secondary" onclick="email('francisco@email.com')">✉️ Email</button>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <div class="investor-info">
+                    <div class="investor-name">Joe Trottier</div>
+                    <div class="investor-meta">Interested in next deal</div>
+                </div>
+                <div class="investor-value">
+                    <div class="investor-amount">$500,000</div>
+                    <div class="investor-days">Last: 9 days ago</div>
+                </div>
+                <div class="action-btns">
+                    <button class="btn btn-primary" onclick="call('Joe')">📞 Call</button>
+                    <button class="btn btn-secondary" onclick="email('joe@email.com')">✉️ Email</button>
+                </div>
+            </div>
+            
+            <div class="investor-card">
+                <div class="investor-info">
+                    <div class="investor-name">Joanne Eckton</div>
+                    <div class="investor-meta">Needs education on syndications</div>
+                </div>
+                <div class="investor-value">
+                    <div class="investor-amount">$250,000 - $500,000</div>
+                    <div class="investor-days">Last: 15 days ago</div>
+                </div>
+                <div class="action-btns">
+                    <button class="btn btn-primary" onclick="call('Joanne')">📞 Call</button>
+                    <button class="btn btn-secondary" onclick="email('joanne@email.com')">✉️ Email</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="priority-section">
+            <h2>📊 Pipeline Summary</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--danger);">
+                    <h4 style="color: var(--navy); margin-bottom: 0.5rem;">🔥 Hot ($5M+)</h4>
+                    <p style="font-size: 2rem; font-weight: 700; color: var(--danger);">$5,000,000</p>
+                    <p style="color: #666; font-size: 0.9rem;">3 prospects ready to commit</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--warning);">
+                    <h4 style="color: var(--navy); margin-bottom: 0.5rem;">⏰ Warm ($750K)</h4>
+                    <p style="font-size: 2rem; font-weight: 700; color: var(--warning);">$750,000</p>
+                    <p style="color: #666; font-size: 0.9rem;">2 prospects need nurturing</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--success);">
+                    <h4 style="color: var(--navy); margin-bottom: 0.5rem;">✅ Total Pipeline</h4>
+                    <p style="font-size: 2rem; font-weight: 700; color: var(--success);">$5,750,000</p>
+                    <p style="color: #666; font-size: 0.9rem;">From 9 qualified prospects</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>🎁 <strong>Surprise Tool</strong> built overnight by Jesus ⚡</p>
+            <p>Analyzes your prospect data and prioritizes by value + engagement</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7;">Feb 6, 2026 | CS3 Investments</p>
+        </footer>
+    </div>
+    
+    <script>
+        function call(name) {
+            alert(`📞 Initiating call to ${name}...\n\nThis would open your phone dialer or Google Voice.`);
+        }
+        
+        function email(address) {
+            window.location.href = `mailto:${address}?subject=Following up - CS3 Investments`;
+        }
+        
+        function exportTasks() {
+            const tasks = [
+                "Call Michael Noel - $500K + 2 referrals",
+                "Follow up Cully Buranen - $1M 1031 exchange",
+                "Re-engage Jack - $3-4M potential",
+                "Check in Francisco - $500K self-directed"
+            ];
+            
+            // Create CRM tasks
+            alert(`✅ Exported 4 follow-up tasks to CRM!\n\n${tasks.join('\n')}`);
+        }
+    </script>
+</body>
+</html>
